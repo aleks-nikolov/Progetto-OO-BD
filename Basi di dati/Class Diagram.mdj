@@ -2524,13 +2524,30 @@
 											"height": 13,
 											"text": "PiazzaNapoli",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLEnumerationLiteralView",
+											"_id": "AAAAAAFvlWRBrhRLS2c=",
+											"_parent": {
+												"$ref": "AAAAAAFvhhoVuL1XZIc="
+											},
+											"model": {
+												"$ref": "AAAAAAFvlWRBmBRCYqw="
+											},
+											"font": "Arial;13;0",
+											"left": 117,
+											"top": 335,
+											"width": 127,
+											"height": 13,
+											"text": "Gucci",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 112,
 									"top": 270,
 									"width": 137,
-									"height": 68
+									"height": 83
 								}
 							],
 							"font": "Arial;13;0",
@@ -4199,6 +4216,14 @@
 								"$ref": "AAAAAAFvhhoVt71Lh18="
 							},
 							"name": "PiazzaNapoli"
+						},
+						{
+							"_type": "UMLEnumerationLiteral",
+							"_id": "AAAAAAFvlWRBmBRCYqw=",
+							"_parent": {
+								"$ref": "AAAAAAFvhhoVt71Lh18="
+							},
+							"name": "Gucci"
 						}
 					]
 				},
