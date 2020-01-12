@@ -15,8 +15,9 @@ import java.awt.Font;
 import java.awt.Cursor;
 import java.awt.Component;
 import javax.swing.Box;
+import javax.swing.border.LineBorder;
 
-public class FinestraVendite extends JFrame{
+public class VenditeFrame extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
 	private SwingController sc;
@@ -35,7 +36,7 @@ public class FinestraVendite extends JFrame{
 	private Component upperHorizontalStrut;
 	private Component lowerHorizontalStrut;
 
-	public FinestraVendite(SwingController sc) {
+	public VenditeFrame(SwingController sc) {
 		//Reference a SwingController
 		this.sc = sc;
 		
@@ -47,14 +48,25 @@ public class FinestraVendite extends JFrame{
 	}
 	
 	public void AggiungiListener() {
+		
+		btnNew.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				sc.CambiaFrame(VenditeFrame.this, sc.getAggiungiArticoli());
+			}
 			
+		});
+		
 		btnIndietro.addActionListener(new ActionListener() {
 	
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				sc.CambiaFrame(FinestraVendite.this, sc.getHomePage());
+				sc.CambiaFrame(VenditeFrame.this, sc.getHomePage());
 			}});
 			
 	}
+
 	
 	public void ImpostaFinestra() {
 		setTitle("Vendite");
@@ -64,6 +76,7 @@ public class FinestraVendite extends JFrame{
 	
 	public void ImpostaPanelSuperiore() {
 		pannelloSuperiore = new JPanel();
+		pannelloSuperiore.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		getContentPane().add(pannelloSuperiore, BorderLayout.NORTH);
 		btnNew = new JButton("+");
 		btnNew.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -90,11 +103,13 @@ public class FinestraVendite extends JFrame{
 	public void ImpostaPanelCentrale() {
 		table = new JTable();
 		scrollPane = new JScrollPane(table);
+		scrollPane.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 	}
 	
 	public void ImpostaPanelInferiore() {
 		pannelloInferiore = new JPanel();
+		pannelloInferiore.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		getContentPane().add(pannelloInferiore, BorderLayout.SOUTH);
 		pannelloInferiore.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		lowerHorizontalStrut = Box.createHorizontalStrut(700);

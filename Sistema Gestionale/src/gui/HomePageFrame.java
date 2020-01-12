@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Cursor;
 
-public class HomePage extends JFrame {
+public class HomePageFrame extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 		
@@ -19,7 +19,7 @@ public class HomePage extends JFrame {
 	private JButton btnStatistiche;
 	private JButton btnEsci;
 	
-	public HomePage(SwingController sc) {
+	public HomePageFrame(SwingController sc) {
 		//Reference a SwingController
 		this.sc = sc;
 		
@@ -72,12 +72,14 @@ public class HomePage extends JFrame {
 		
 		btnVendite.addActionListener(new ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				sc.CambiaFrame(HomePage.this, sc.getFinestraVendite());
+				sc.CambiaFrame(HomePageFrame.this, sc.getVendite());
 			}});
 		
 		btnEsci.addActionListener(new ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
 			}});
