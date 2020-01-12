@@ -13,6 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Font;
 import java.awt.Cursor;
+import java.awt.Component;
+import javax.swing.Box;
 
 public class FinestraVendite extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -30,17 +32,37 @@ public class FinestraVendite extends JFrame{
 	private JButton btnIndietro;
 	
 	private JTable table;
+	private Component upperHorizontalStrut;
+	private Component lowerHorizontalStrut;
 
 	public FinestraVendite(SwingController sc) {
 		//Reference a SwingController
 		this.sc = sc;
 		
-		//Impostazione finestra
+		ImpostaFinestra();
+		ImpostaPanelSuperiore();
+		ImpostaPanelCentrale();
+		ImpostaPanelInferiore();
+		AggiungiListener();
+	}
+	
+	public void AggiungiListener() {
+			
+		btnIndietro.addActionListener(new ActionListener() {
+	
+			public void actionPerformed(ActionEvent arg0) {
+				sc.CambiaFrame(FinestraVendite.this, sc.getHomePage());
+			}});
+			
+	}
+	
+	public void ImpostaFinestra() {
 		setTitle("Vendite");
 		setBounds(100, 100, 1000, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//Impostazione pannello superiore
+	}
+	
+	public void ImpostaPanelSuperiore() {
 		pannelloSuperiore = new JPanel();
 		getContentPane().add(pannelloSuperiore, BorderLayout.NORTH);
 		btnNew = new JButton("+");
@@ -61,34 +83,28 @@ public class FinestraVendite extends JFrame{
 		btnRefresh.setBackground(new Color(255, 255, 255));
 		btnRefresh.setMargin(new Insets(10, 10, 10, 10));
 		pannelloSuperiore.add(btnRefresh);
-		
-		//Impostazione pannello centrale e tabella
+		upperHorizontalStrut = Box.createHorizontalStrut(700);
+		pannelloSuperiore.add(upperHorizontalStrut);
+	}
+	
+	public void ImpostaPanelCentrale() {
 		table = new JTable();
 		scrollPane = new JScrollPane(table);
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
-		
-		//Impostazione pannello inferiore
+	}
+	
+	public void ImpostaPanelInferiore() {
 		pannelloInferiore = new JPanel();
 		getContentPane().add(pannelloInferiore, BorderLayout.SOUTH);
 		pannelloInferiore.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		lowerHorizontalStrut = Box.createHorizontalStrut(700);
+		pannelloInferiore.add(lowerHorizontalStrut);
 		btnIndietro = new JButton("INDIETRO");
 		btnIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnIndietro.setFont(new Font("Arial Black", Font.PLAIN, 12));
 		btnIndietro.setBackground(new Color(165, 42, 42));
 		btnIndietro.setMargin(new Insets(10, 20, 10, 20));
 		pannelloInferiore.add(btnIndietro);
-		
-		AggiungiListener();
-	}
-	
-	public void AggiungiListener() {
-		
-		btnIndietro.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
-				sc.CambiaFrame(FinestraVendite.this, sc.getHomePage());
-			}});
-
 	}
 
 }
