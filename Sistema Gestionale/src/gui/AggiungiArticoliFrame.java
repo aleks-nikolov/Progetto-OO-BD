@@ -9,6 +9,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Component;
+
 import javax.swing.Box;
 import java.awt.FlowLayout;
 import javax.swing.ScrollPaneConstants;
@@ -21,15 +22,22 @@ public class AggiungiArticoliFrame extends JFrame{
 	
 	private SwingController sc;
 	
+	private ContenitoreArticolo contenitore;
+
+	
 	private JButton btnApplica;
 	private JButton btnAnnulla;
-	
+	private JButton btnAdd;
+		
 	private JPanel pannelloInferiore;
 	private JPanel panel;
 	private JScrollPane scroll;
+
 	
 	public AggiungiArticoliFrame(SwingController sc){
 		this.sc = sc;
+		
+		contenitore = new ContenitoreArticolo(this);
 		
 		ImpostaFinestra();
 		ImpostaPanelloCentrale();
@@ -38,6 +46,8 @@ public class AggiungiArticoliFrame extends JFrame{
 	}
 	
 	public void AggiungiListener() {
+		
+		
 		btnAnnulla.addActionListener(new ActionListener() {
 
 			@Override
@@ -46,8 +56,29 @@ public class AggiungiArticoliFrame extends JFrame{
 			}
 			
 		});
+		
+		btnAdd.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				AggiungiArticolo();
+			}
+			
+		});
 	}
 	
+	public void AggiungiArticolo() {
+		ContenitoreArticolo temp = new ContenitoreArticolo(this);
+		panel.add(temp);
+		panel.revalidate();
+		panel.repaint();
+	}
+	
+	public void RimuoviArticolo(ContenitoreArticolo contenitoreDaRimuovere) {
+		panel.remove(contenitoreDaRimuovere);
+		panel.revalidate();
+		panel.repaint();
+	}
 	
 	public void ImpostaFinestra() {
 		setTitle("Aggiunta Articoli");
@@ -63,6 +94,8 @@ public class AggiungiArticoliFrame extends JFrame{
 		scroll = new JScrollPane(panel);
 		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         getContentPane().add(scroll, BorderLayout.CENTER);
+        
+        panel.add(contenitore);
 	}
 	
 	public void ImpostaPanelInferiore() {
@@ -83,5 +116,8 @@ public class AggiungiArticoliFrame extends JFrame{
 		btnAnnulla.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		btnAnnulla.setMargin(new Insets(10, 20, 10, 20));
 		pannelloInferiore.add(btnAnnulla);
+		
+		btnAdd = new JButton("+");
+		pannelloInferiore.add(btnAdd);
 	}
 }
