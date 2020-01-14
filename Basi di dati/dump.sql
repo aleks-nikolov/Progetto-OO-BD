@@ -133,13 +133,44 @@ CREATE TABLE public."Articolo" (
 ALTER TABLE public."Articolo" OWNER TO postgres;
 
 --
+-- Name: ComposizioneTransazione; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."ComposizioneTransazione" (
+    "codiceArticolo" character varying(25)[] NOT NULL,
+    "codiceTransazione" character varying(25)[] NOT NULL,
+    "quantità" integer NOT NULL,
+    valore double precision NOT NULL
+);
+
+
+ALTER TABLE public."ComposizioneTransazione" OWNER TO postgres;
+
+--
+-- Name: Fornitore; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Fornitore" (
+    "partitaIva" character varying(11) NOT NULL,
+    nome character varying(30) NOT NULL,
+    via character varying(30) NOT NULL,
+    "numeroCivico" character varying(5) NOT NULL,
+    cap character varying(5) NOT NULL,
+    "numeroDiTelefono" character varying(10)
+);
+
+
+ALTER TABLE public."Fornitore" OWNER TO postgres;
+
+--
 -- Name: Transazione; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public."Transazione" (
     "codiceTransazione" character varying(25)[] NOT NULL,
     data date NOT NULL,
-    "valoreTotale" double precision NOT NULL
+    "valoreTotale" double precision NOT NULL,
+    "partitaIva" character varying(11)
 );
 
 
@@ -154,10 +185,26 @@ COPY public."Articolo" (codice, nome, descrizione, marca, taglia, colore, "prezz
 
 
 --
+-- Data for Name: ComposizioneTransazione; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."ComposizioneTransazione" ("codiceArticolo", "codiceTransazione", "quantità", valore) FROM stdin;
+\.
+
+
+--
+-- Data for Name: Fornitore; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Fornitore" ("partitaIva", nome, via, "numeroCivico", cap, "numeroDiTelefono") FROM stdin;
+\.
+
+
+--
 -- Data for Name: Transazione; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Transazione" ("codiceTransazione", data, "valoreTotale") FROM stdin;
+COPY public."Transazione" ("codiceTransazione", data, "valoreTotale", "partitaIva") FROM stdin;
 \.
 
 
@@ -167,6 +214,22 @@ COPY public."Transazione" ("codiceTransazione", data, "valoreTotale") FROM stdin
 
 ALTER TABLE ONLY public."Articolo"
     ADD CONSTRAINT "pkArticolo" PRIMARY KEY (codice);
+
+
+--
+-- Name: ComposizioneTransazione pkComposizioneTransazione; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."ComposizioneTransazione"
+    ADD CONSTRAINT "pkComposizioneTransazione" PRIMARY KEY ("codiceArticolo", "codiceTransazione");
+
+
+--
+-- Name: Fornitore pkFornitore; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Fornitore"
+    ADD CONSTRAINT "pkFornitore" PRIMARY KEY ("partitaIva");
 
 
 --
@@ -183,6 +246,30 @@ ALTER TABLE ONLY public."Transazione"
 
 ALTER TABLE ONLY public."Articolo"
     ADD CONSTRAINT "u1Articolo" UNIQUE ("pathImmagine");
+
+
+--
+-- Name: ComposizioneTransazione fk1ComposizioneTransazione; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."ComposizioneTransazione"
+    ADD CONSTRAINT "fk1ComposizioneTransazione" FOREIGN KEY ("codiceArticolo") REFERENCES public."Articolo"(codice) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: Transazione fk1Transazione; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Transazione"
+    ADD CONSTRAINT "fk1Transazione" FOREIGN KEY ("partitaIva") REFERENCES public."Fornitore"("partitaIva") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: ComposizioneTransazione fk2ComposizioneTransazione; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."ComposizioneTransazione"
+    ADD CONSTRAINT "fk2ComposizioneTransazione" FOREIGN KEY ("codiceTransazione") REFERENCES public."Transazione"("codiceTransazione") ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
