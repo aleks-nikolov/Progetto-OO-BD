@@ -112,8 +112,8 @@ SET default_table_access_method = heap;
 --
 
 CREATE TABLE public."Articolo" (
-    codice character varying(25)[] NOT NULL,
-    nome character varying(30)[] NOT NULL,
+    codice character varying(25) NOT NULL,
+    nome character varying(30) NOT NULL,
     descrizione text NOT NULL,
     marca public."Marche" NOT NULL,
     taglia public."Taglie" NOT NULL,
@@ -137,8 +137,8 @@ ALTER TABLE public."Articolo" OWNER TO postgres;
 --
 
 CREATE TABLE public."ComposizioneTransazione" (
-    "codiceArticolo" character varying(25)[] NOT NULL,
-    "codiceTransazione" character varying(25)[] NOT NULL,
+    "codiceArticolo" character varying(25) NOT NULL,
+    "codiceTransazione" character varying(25) NOT NULL,
     "quantità" integer NOT NULL,
     valore double precision NOT NULL
 );
@@ -167,7 +167,7 @@ ALTER TABLE public."Fornitore" OWNER TO postgres;
 --
 
 CREATE TABLE public."Transazione" (
-    "codiceTransazione" character varying(25)[] NOT NULL,
+    "codiceTransazione" character varying(25) NOT NULL,
     data date NOT NULL,
     "valoreTotale" double precision NOT NULL,
     "partitaIva" character varying(11)
