@@ -21,19 +21,18 @@ SET row_security = off;
 --
 
 CREATE TYPE public."Categorie" AS ENUM (
-    'magliette',
-    'maglioni',
-    'felpe',
-    'giacche',
-    'cappotti',
-    'pantaloni',
-    'jeans',
-    'camicie',
-    'intimo',
-    'accessori',
-    'pantaloncini',
-    'gonne',
-    'top'
+    'Magliette',
+    'Maglioni',
+    'Felpe',
+    'Giacche',
+    'Cappotti',
+    'Pantaloni',
+    'Jeans',
+    'Camicie',
+    'Intimo',
+    'Accessori',
+    'Pantaloncini',
+    'Gonne'
 );
 
 
@@ -44,12 +43,12 @@ ALTER TYPE public."Categorie" OWNER TO postgres;
 --
 
 CREATE TYPE public."Colori" AS ENUM (
-    'nero',
-    'bianco',
-    'rosso',
-    'blu',
-    'verde',
-    'grigio'
+    'Nero',
+    'Bianco',
+    'Rosso',
+    'Blu',
+    'Verde',
+    'Grigio'
 );
 
 
@@ -60,44 +59,31 @@ ALTER TYPE public."Colori" OWNER TO postgres;
 --
 
 CREATE TYPE public."Marche" AS ENUM (
-    'adidas',
-    'alcott',
-    'bershka',
-    'gucci',
-    'h&m',
-    'nike',
-    'piazzaItalia',
-    'versace',
-    'napapijiri'
+    'Adidas',
+    'Nike',
+    'H&M',
+    'PiazzaItalia',
+    'Alcott',
+    'Bershka',
+    'Versace',
+    'Gucci',
+    'Napapijiri'
 );
 
 
 ALTER TYPE public."Marche" OWNER TO postgres;
 
 --
--- Name: Sessi; Type: TYPE; Schema: public; Owner: postgres
---
-
-CREATE TYPE public."Sessi" AS ENUM (
-    'M',
-    'F',
-    'U'
-);
-
-
-ALTER TYPE public."Sessi" OWNER TO postgres;
-
---
 -- Name: Taglie; Type: TYPE; Schema: public; Owner: postgres
 --
 
 CREATE TYPE public."Taglie" AS ENUM (
-    'xs',
-    's',
-    'm',
-    'l',
-    'xl',
-    'xxl'
+    'XS',
+    'S',
+    'M',
+    'L',
+    'XL',
+    'XXL'
 );
 
 
@@ -112,21 +98,22 @@ SET default_table_access_method = heap;
 --
 
 CREATE TABLE public."Articolo" (
-    codice character varying(25) NOT NULL,
-    nome character varying(30) NOT NULL,
-    descrizione text NOT NULL,
-    marca public."Marche" NOT NULL,
-    taglia public."Taglie" NOT NULL,
-    colore public."Colori" NOT NULL,
-    "prezzoDiListino" double precision NOT NULL,
-    saldo integer NOT NULL,
-    "quantità" integer NOT NULL,
-    categoria public."Categorie" NOT NULL,
-    "pathImmagine" text NOT NULL,
-    sesso public."Sessi" NOT NULL,
-    CONSTRAINT valoreprezzodilistino CHECK (("prezzoDiListino" >= (0)::double precision)),
-    CONSTRAINT "valorequantità" CHECK (("quantità" > 0)),
-    CONSTRAINT valoresaldo CHECK (((saldo >= 0) AND (saldo <= 100)))
+    "Codice" character(25) NOT NULL,
+    "Nome" character varying(30) NOT NULL,
+    "Descrizione" character varying(100) NOT NULL,
+    "Marca" public."Marche" NOT NULL,
+    "Taglia" public."Taglie" NOT NULL,
+    "Colore" public."Colori" NOT NULL,
+    "Categoria" public."Categorie" NOT NULL,
+    "Sesso" "char" NOT NULL,
+    "PrezzoDiListino" double precision NOT NULL,
+    "Saldo" double precision NOT NULL,
+    "Quantità" integer NOT NULL,
+    "PathImmagine" character varying(100) NOT NULL,
+    CONSTRAINT valoreprezzodilistino CHECK (("PrezzoDiListino" >= (0)::double precision)),
+    CONSTRAINT "valorequantità" CHECK (("Quantità" > 0)),
+    CONSTRAINT valoresaldo CHECK ((("Saldo" >= (0)::double precision) AND ("Saldo" <= (100)::double precision))),
+    CONSTRAINT valoresesso CHECK ((("Sesso" = 'M'::"char") OR ("Sesso" = 'F'::"char") OR ("Sesso" = 'U'::"char")))
 );
 
 
@@ -137,10 +124,11 @@ ALTER TABLE public."Articolo" OWNER TO postgres;
 --
 
 CREATE TABLE public."ComposizioneTransazione" (
-    "codiceArticolo" character varying(25) NOT NULL,
-    "codiceTransazione" character varying(25) NOT NULL,
-    "quantità" integer NOT NULL,
-    valore double precision NOT NULL
+    "CodiceArticolo" character(25) NOT NULL,
+    "CodiceTransazione" character(25) NOT NULL,
+    "Data" date NOT NULL,
+    "Valore" double precision,
+    CONSTRAINT valorevalore CHECK (("Valore" > (0)::double precision))
 );
 
 
@@ -151,12 +139,12 @@ ALTER TABLE public."ComposizioneTransazione" OWNER TO postgres;
 --
 
 CREATE TABLE public."Fornitore" (
-    "partitaIva" character varying(11) NOT NULL,
-    nome character varying(30) NOT NULL,
-    via character varying(30) NOT NULL,
-    "numeroCivico" character varying(5) NOT NULL,
-    cap character varying(5) NOT NULL,
-    "numeroDiTelefono" character varying(10)
+    "PartitaIva" character(11) NOT NULL,
+    "Nome" character varying(30) NOT NULL,
+    "Via" character varying(30) NOT NULL,
+    "NumeroCivico" character varying(10) NOT NULL,
+    "CAP" character(5) NOT NULL,
+    "NumeroDiTelefono" character(10)
 );
 
 
@@ -167,10 +155,11 @@ ALTER TABLE public."Fornitore" OWNER TO postgres;
 --
 
 CREATE TABLE public."Transazione" (
-    "codiceTransazione" character varying(25) NOT NULL,
-    data date NOT NULL,
-    "valoreTotale" double precision NOT NULL,
-    "partitaIva" character varying(11)
+    "CodiceTransazione" character(25) NOT NULL,
+    "Data" date NOT NULL,
+    "ValoreTotale" double precision,
+    "PartitaIva" character(11),
+    CONSTRAINT valorevaloretotale CHECK (("ValoreTotale" > (0)::double precision))
 );
 
 
@@ -180,7 +169,7 @@ ALTER TABLE public."Transazione" OWNER TO postgres;
 -- Data for Name: Articolo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Articolo" (codice, nome, descrizione, marca, taglia, colore, "prezzoDiListino", saldo, "quantità", categoria, "pathImmagine", sesso) FROM stdin;
+COPY public."Articolo" ("Codice", "Nome", "Descrizione", "Marca", "Taglia", "Colore", "Categoria", "Sesso", "PrezzoDiListino", "Saldo", "Quantità", "PathImmagine") FROM stdin;
 \.
 
 
@@ -188,7 +177,7 @@ COPY public."Articolo" (codice, nome, descrizione, marca, taglia, colore, "prezz
 -- Data for Name: ComposizioneTransazione; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."ComposizioneTransazione" ("codiceArticolo", "codiceTransazione", "quantità", valore) FROM stdin;
+COPY public."ComposizioneTransazione" ("CodiceArticolo", "CodiceTransazione", "Data", "Valore") FROM stdin;
 \.
 
 
@@ -196,7 +185,7 @@ COPY public."ComposizioneTransazione" ("codiceArticolo", "codiceTransazione", "q
 -- Data for Name: Fornitore; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Fornitore" ("partitaIva", nome, via, "numeroCivico", cap, "numeroDiTelefono") FROM stdin;
+COPY public."Fornitore" ("PartitaIva", "Nome", "Via", "NumeroCivico", "CAP", "NumeroDiTelefono") FROM stdin;
 \.
 
 
@@ -204,7 +193,7 @@ COPY public."Fornitore" ("partitaIva", nome, via, "numeroCivico", cap, "numeroDi
 -- Data for Name: Transazione; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Transazione" ("codiceTransazione", data, "valoreTotale", "partitaIva") FROM stdin;
+COPY public."Transazione" ("CodiceTransazione", "Data", "ValoreTotale", "PartitaIva") FROM stdin;
 \.
 
 
@@ -213,7 +202,7 @@ COPY public."Transazione" ("codiceTransazione", data, "valoreTotale", "partitaIv
 --
 
 ALTER TABLE ONLY public."Articolo"
-    ADD CONSTRAINT "pkArticolo" PRIMARY KEY (codice);
+    ADD CONSTRAINT "pkArticolo" PRIMARY KEY ("Codice");
 
 
 --
@@ -221,7 +210,7 @@ ALTER TABLE ONLY public."Articolo"
 --
 
 ALTER TABLE ONLY public."ComposizioneTransazione"
-    ADD CONSTRAINT "pkComposizioneTransazione" PRIMARY KEY ("codiceArticolo", "codiceTransazione");
+    ADD CONSTRAINT "pkComposizioneTransazione" PRIMARY KEY ("CodiceArticolo", "CodiceTransazione");
 
 
 --
@@ -229,7 +218,7 @@ ALTER TABLE ONLY public."ComposizioneTransazione"
 --
 
 ALTER TABLE ONLY public."Fornitore"
-    ADD CONSTRAINT "pkFornitore" PRIMARY KEY ("partitaIva");
+    ADD CONSTRAINT "pkFornitore" PRIMARY KEY ("PartitaIva");
 
 
 --
@@ -237,15 +226,23 @@ ALTER TABLE ONLY public."Fornitore"
 --
 
 ALTER TABLE ONLY public."Transazione"
-    ADD CONSTRAINT "pkTransazione" PRIMARY KEY ("codiceTransazione");
+    ADD CONSTRAINT "pkTransazione" PRIMARY KEY ("CodiceTransazione");
 
 
 --
--- Name: Articolo u1Articolo; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: Fornitore uNumeroDiTelefono; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Fornitore"
+    ADD CONSTRAINT "uNumeroDiTelefono" UNIQUE ("NumeroDiTelefono");
+
+
+--
+-- Name: Articolo uPathImmagine; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public."Articolo"
-    ADD CONSTRAINT "u1Articolo" UNIQUE ("pathImmagine");
+    ADD CONSTRAINT "uPathImmagine" UNIQUE ("PathImmagine");
 
 
 --
@@ -253,15 +250,7 @@ ALTER TABLE ONLY public."Articolo"
 --
 
 ALTER TABLE ONLY public."ComposizioneTransazione"
-    ADD CONSTRAINT "fk1ComposizioneTransazione" FOREIGN KEY ("codiceArticolo") REFERENCES public."Articolo"(codice) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: Transazione fk1Transazione; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."Transazione"
-    ADD CONSTRAINT "fk1Transazione" FOREIGN KEY ("partitaIva") REFERENCES public."Fornitore"("partitaIva") ON UPDATE CASCADE ON DELETE CASCADE;
+    ADD CONSTRAINT "fk1ComposizioneTransazione" FOREIGN KEY ("CodiceArticolo") REFERENCES public."Articolo"("Codice") ON UPDATE CASCADE;
 
 
 --
@@ -269,7 +258,15 @@ ALTER TABLE ONLY public."Transazione"
 --
 
 ALTER TABLE ONLY public."ComposizioneTransazione"
-    ADD CONSTRAINT "fk2ComposizioneTransazione" FOREIGN KEY ("codiceTransazione") REFERENCES public."Transazione"("codiceTransazione") ON UPDATE CASCADE ON DELETE CASCADE;
+    ADD CONSTRAINT "fk2ComposizioneTransazione" FOREIGN KEY ("CodiceTransazione") REFERENCES public."Transazione"("CodiceTransazione") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: Transazione fkTransazione; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Transazione"
+    ADD CONSTRAINT "fkTransazione" FOREIGN KEY ("PartitaIva") REFERENCES public."Fornitore"("PartitaIva") ON UPDATE CASCADE;
 
 
 --
