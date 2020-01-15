@@ -66,7 +66,7 @@ CREATE TYPE public."Marche" AS ENUM (
     'Alcott',
     'Bershka',
     'Versace',
-    'Gucci',
+    'Guppi',
     'Napapijiri'
 );
 
@@ -98,22 +98,15 @@ SET default_table_access_method = heap;
 --
 
 CREATE TABLE public."Articolo" (
-    "Codice" character(25) NOT NULL,
-    "Nome" character varying(30) NOT NULL,
-    "Descrizione" character varying(100) NOT NULL,
-    "Marca" public."Marche" NOT NULL,
+    "CodiceArticolo" character(20) NOT NULL,
     "Taglia" public."Taglie" NOT NULL,
     "Colore" public."Colori" NOT NULL,
-    "Categoria" public."Categorie" NOT NULL,
-    "Sesso" "char" NOT NULL,
-    "PrezzoDiListino" double precision NOT NULL,
-    "Saldo" double precision NOT NULL,
+    "Saldo" integer NOT NULL,
     "Quantità" integer NOT NULL,
-    "PathImmagine" character varying(100) NOT NULL,
-    CONSTRAINT valoreprezzodilistino CHECK (("PrezzoDiListino" >= (0)::double precision)),
-    CONSTRAINT "valorequantità" CHECK (("Quantità" > 0)),
-    CONSTRAINT valoresaldo CHECK ((("Saldo" >= (0)::double precision) AND ("Saldo" <= (100)::double precision))),
-    CONSTRAINT valoresesso CHECK ((("Sesso" = 'M'::"char") OR ("Sesso" = 'F'::"char") OR ("Sesso" = 'U'::"char")))
+    "PathImmagine" character varying(200) NOT NULL,
+    "CodiceABarre" character(11) NOT NULL,
+    CONSTRAINT "valorequantità" CHECK (("Quantità" >= 0)),
+    CONSTRAINT valoresaldo CHECK ((("Saldo" >= 0) AND ("Saldo" <= 100)))
 );
 
 
@@ -124,15 +117,35 @@ ALTER TABLE public."Articolo" OWNER TO postgres;
 --
 
 CREATE TABLE public."ComposizioneTransazione" (
-    "CodiceArticolo" character(25) NOT NULL,
-    "CodiceTransazione" character(25) NOT NULL,
-    "Data" date NOT NULL,
+    "CodiceArticolo" character(20) NOT NULL,
+    "CodiceTransazione" character(20) NOT NULL,
+    "Quantità" integer NOT NULL,
     "Valore" double precision,
-    CONSTRAINT valorevalore CHECK (("Valore" > (0)::double precision))
+    CONSTRAINT "valorequantità" CHECK (("Quantità" > 0)),
+    CONSTRAINT valorevalore CHECK (("Valore" >= (0)::double precision))
 );
 
 
 ALTER TABLE public."ComposizioneTransazione" OWNER TO postgres;
+
+--
+-- Name: DescrittoreArticolo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."DescrittoreArticolo" (
+    "CodiceABarre" character(11) NOT NULL,
+    "Marca" public."Marche" NOT NULL,
+    "Categoria" public."Categorie" NOT NULL,
+    "Sesso" "char" NOT NULL,
+    "PrezzoDiListino" double precision NOT NULL,
+    "Nome" character varying(25) NOT NULL,
+    "Descrizione" character varying(100) NOT NULL,
+    CONSTRAINT valoreprezzodilistino CHECK (("PrezzoDiListino" >= (0)::double precision)),
+    CONSTRAINT valoresesso CHECK ((("Sesso" = 'M'::"char") OR ("Sesso" = 'F'::"char") OR ("Sesso" = 'U'::"char")))
+);
+
+
+ALTER TABLE public."DescrittoreArticolo" OWNER TO postgres;
 
 --
 -- Name: Fornitore; Type: TABLE; Schema: public; Owner: postgres
@@ -140,10 +153,10 @@ ALTER TABLE public."ComposizioneTransazione" OWNER TO postgres;
 
 CREATE TABLE public."Fornitore" (
     "PartitaIva" character(11) NOT NULL,
-    "Nome" character varying(30) NOT NULL,
+    "Nome" character varying(50) NOT NULL,
     "Via" character varying(30) NOT NULL,
     "NumeroCivico" character varying(10) NOT NULL,
-    "CAP" character(5) NOT NULL,
+    "CAP" character varying(5) NOT NULL,
     "NumeroDiTelefono" character(10)
 );
 
@@ -155,11 +168,11 @@ ALTER TABLE public."Fornitore" OWNER TO postgres;
 --
 
 CREATE TABLE public."Transazione" (
-    "CodiceTransazione" character(25) NOT NULL,
+    "CodiceTransazione" character(20) NOT NULL,
     "Data" date NOT NULL,
     "ValoreTotale" double precision,
     "PartitaIva" character(11),
-    CONSTRAINT valorevaloretotale CHECK (("ValoreTotale" > (0)::double precision))
+    CONSTRAINT valorevaloretotale CHECK (("ValoreTotale" >= (0)::double precision))
 );
 
 
@@ -169,7 +182,7 @@ ALTER TABLE public."Transazione" OWNER TO postgres;
 -- Data for Name: Articolo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Articolo" ("Codice", "Nome", "Descrizione", "Marca", "Taglia", "Colore", "Categoria", "Sesso", "PrezzoDiListino", "Saldo", "Quantità", "PathImmagine") FROM stdin;
+COPY public."Articolo" ("CodiceArticolo", "Taglia", "Colore", "Saldo", "Quantità", "PathImmagine", "CodiceABarre") FROM stdin;
 \.
 
 
@@ -177,7 +190,15 @@ COPY public."Articolo" ("Codice", "Nome", "Descrizione", "Marca", "Taglia", "Col
 -- Data for Name: ComposizioneTransazione; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."ComposizioneTransazione" ("CodiceArticolo", "CodiceTransazione", "Data", "Valore") FROM stdin;
+COPY public."ComposizioneTransazione" ("CodiceArticolo", "CodiceTransazione", "Quantità", "Valore") FROM stdin;
+\.
+
+
+--
+-- Data for Name: DescrittoreArticolo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."DescrittoreArticolo" ("CodiceABarre", "Marca", "Categoria", "Sesso", "PrezzoDiListino", "Nome", "Descrizione") FROM stdin;
 \.
 
 
@@ -202,7 +223,7 @@ COPY public."Transazione" ("CodiceTransazione", "Data", "ValoreTotale", "Partita
 --
 
 ALTER TABLE ONLY public."Articolo"
-    ADD CONSTRAINT "pkArticolo" PRIMARY KEY ("Codice");
+    ADD CONSTRAINT "pkArticolo" PRIMARY KEY ("CodiceArticolo");
 
 
 --
@@ -211,6 +232,14 @@ ALTER TABLE ONLY public."Articolo"
 
 ALTER TABLE ONLY public."ComposizioneTransazione"
     ADD CONSTRAINT "pkComposizioneTransazione" PRIMARY KEY ("CodiceArticolo", "CodiceTransazione");
+
+
+--
+-- Name: DescrittoreArticolo pkDescrittoreArticolo; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."DescrittoreArticolo"
+    ADD CONSTRAINT "pkDescrittoreArticolo" PRIMARY KEY ("CodiceABarre");
 
 
 --
@@ -250,7 +279,7 @@ ALTER TABLE ONLY public."Articolo"
 --
 
 ALTER TABLE ONLY public."ComposizioneTransazione"
-    ADD CONSTRAINT "fk1ComposizioneTransazione" FOREIGN KEY ("CodiceArticolo") REFERENCES public."Articolo"("Codice") ON UPDATE CASCADE;
+    ADD CONSTRAINT "fk1ComposizioneTransazione" FOREIGN KEY ("CodiceArticolo") REFERENCES public."Articolo"("CodiceArticolo") ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
@@ -258,7 +287,15 @@ ALTER TABLE ONLY public."ComposizioneTransazione"
 --
 
 ALTER TABLE ONLY public."ComposizioneTransazione"
-    ADD CONSTRAINT "fk2ComposizioneTransazione" FOREIGN KEY ("CodiceTransazione") REFERENCES public."Transazione"("CodiceTransazione") ON UPDATE CASCADE ON DELETE CASCADE;
+    ADD CONSTRAINT "fk2ComposizioneTransazione" FOREIGN KEY ("CodiceTransazione") REFERENCES public."Transazione"("CodiceTransazione") ON UPDATE CASCADE;
+
+
+--
+-- Name: Articolo fkArticolo; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Articolo"
+    ADD CONSTRAINT "fkArticolo" FOREIGN KEY ("CodiceABarre") REFERENCES public."DescrittoreArticolo"("CodiceABarre") ON UPDATE CASCADE;
 
 
 --
