@@ -10,8 +10,8 @@ public class SwingController {
 	
 	private HomePageFrame home;
 	private VenditeFrame finestraVendite;
-	private AggiungiArticoliFrame aggiungiArticoli;
-	
+	private ContenutoVendita aggiungiArticoli;
+
 	public void Inizializza() {
 		//Inizializza e apre la home page
 		home = new HomePageFrame(this);
@@ -19,14 +19,13 @@ public class SwingController {
 		
 		//Inizializza le altre finestre
 		finestraVendite = new VenditeFrame(this);
-		aggiungiArticoli = new AggiungiArticoliFrame(this);
+		aggiungiArticoli = new ContenutoVendita(this);
 	}
 
 	public void CambiaFrame(JFrame frameDaNascondere, JFrame frameDaMostrare) {
 		frameDaNascondere.setVisible(false);
 		frameDaMostrare.setVisible(true);
 	}
-	
 	
 	//Getter degli oggetti Frame
 	public HomePageFrame getHomePage() {
@@ -35,7 +34,7 @@ public class SwingController {
 	public VenditeFrame getVendite() {
 		return finestraVendite;
 	}
-	public AggiungiArticoliFrame getAggiungiArticoli() {
+	public ContenutoVendita getAggiungiArticoli() {
 		return aggiungiArticoli;
 	}
 

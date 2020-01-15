@@ -11,7 +11,6 @@ import java.awt.Color;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Font;
 import java.awt.Cursor;
 import java.awt.Component;
 import javax.swing.Box;
@@ -21,6 +20,7 @@ public class VenditeFrame extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
 	private SwingController sc;
+	private Utilit‡Aspetto utilit‡;
 	
 	//Definizione componenti grafici
 	private JPanel pannelloSuperiore;
@@ -39,6 +39,7 @@ public class VenditeFrame extends JFrame{
 	public VenditeFrame(SwingController sc) {
 		//Reference a SwingController
 		this.sc = sc;
+		utilit‡ = new Utilit‡Aspetto();
 		
 		ImpostaFinestra();
 		ImpostaPanelSuperiore();
@@ -72,30 +73,39 @@ public class VenditeFrame extends JFrame{
 		setTitle("Vendite");
 		setBounds(100, 100, 1000, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBackground(utilit‡.bg);
 	}
 	
 	public void ImpostaPanelSuperiore() {
+		
 		pannelloSuperiore = new JPanel();
 		pannelloSuperiore.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		getContentPane().add(pannelloSuperiore, BorderLayout.NORTH);
+		
 		btnNew = new JButton("+");
 		btnNew.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNew.setFont(new Font("Arial Black", Font.PLAIN, 12));
+		btnNew.setFont(utilit‡.arialS);
 		btnNew.setMargin(new Insets(10, 15, 10, 15));
-		btnNew.setBackground(new Color(60, 179, 113));
+		btnNew.setForeground(utilit‡.fg);
+		btnNew.setBackground(utilit‡.greenBtn);
 		pannelloSuperiore.add(btnNew);
+		
 		btnDelete = new JButton("-");
 		btnDelete.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnDelete.setFont(new Font("Arial Black", Font.PLAIN, 12));
+		btnDelete.setFont(utilit‡.arialS);
 		btnDelete.setMargin(new Insets(10, 15, 10, 15));
-		btnDelete.setBackground(new Color(165, 42, 42));
+		btnDelete.setForeground(utilit‡.fg);
+		btnDelete.setBackground(utilit‡.redBtn);
 		pannelloSuperiore.add(btnDelete);
+		
 		btnRefresh = new JButton("REFRESH");
 		btnRefresh.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnRefresh.setFont(new Font("Arial Black", Font.PLAIN, 12));
+		btnRefresh.setFont(utilit‡.arialS);
+		btnRefresh.setForeground(utilit‡.fg);
 		btnRefresh.setBackground(new Color(255, 255, 255));
 		btnRefresh.setMargin(new Insets(10, 10, 10, 10));
 		pannelloSuperiore.add(btnRefresh);
+		
 		upperHorizontalStrut = Box.createHorizontalStrut(700);
 		pannelloSuperiore.add(upperHorizontalStrut);
 	}
@@ -111,13 +121,16 @@ public class VenditeFrame extends JFrame{
 		pannelloInferiore = new JPanel();
 		pannelloInferiore.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		getContentPane().add(pannelloInferiore, BorderLayout.SOUTH);
+		
 		pannelloInferiore.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		lowerHorizontalStrut = Box.createHorizontalStrut(700);
 		pannelloInferiore.add(lowerHorizontalStrut);
+		
 		btnIndietro = new JButton("INDIETRO");
 		btnIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnIndietro.setFont(new Font("Arial Black", Font.PLAIN, 12));
-		btnIndietro.setBackground(new Color(165, 42, 42));
+		btnIndietro.setFont(utilit‡.arialS);
+		btnIndietro.setForeground(utilit‡.fg);
+		btnIndietro.setBackground(utilit‡.redBtn);
 		btnIndietro.setMargin(new Insets(10, 20, 10, 20));
 		pannelloInferiore.add(btnIndietro);
 	}
