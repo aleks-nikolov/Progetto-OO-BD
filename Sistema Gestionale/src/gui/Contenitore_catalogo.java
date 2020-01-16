@@ -10,12 +10,15 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
 
 public class Contenitore_catalogo extends ContenitoreArticolo {
 	
@@ -26,6 +29,9 @@ public class Contenitore_catalogo extends ContenitoreArticolo {
 	private JPanel panelloLaterale;
 	private JButton btnAggiungi;
 	private JLabel labelPrezzo;
+	private JLabel labelQuantità;
+	private JPanel panelloQuantità;
+	private JComboBox<Integer> boxQuantità;
 	
 	public Contenitore_catalogo(ContenutoVendita cv) {
 		super(cv);
@@ -78,5 +84,21 @@ public class Contenitore_catalogo extends ContenitoreArticolo {
 		btnAggiungi.setBackground(getUtilities().greenBtn);
 		btnAggiungi.setMargin(new Insets(20, 20, 20, 20));
 		btnAggiungi.setPreferredSize(new Dimension(10, 10));
+		
+		panelloLaterale.add(Box.createRigidArea(new Dimension(150, 10)));
+		
+		panelloQuantità = new JPanel();
+		panelloQuantità.setBackground(getUtilities().bg);
+		panelloQuantità.setMaximumSize(new Dimension(150, 50));
+		panelloLaterale.add(panelloQuantità);
+		
+		labelQuantità = new JLabel("Quantit\u00E0");
+		labelQuantità.setFont(getUtilities().arialS);
+		panelloQuantità.add(labelQuantità);
+		labelQuantità.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		boxQuantità = new JComboBox<Integer>(new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+		boxQuantità.setFont(getUtilities().arialS);
+		panelloQuantità.add(boxQuantità);
 	}
 }

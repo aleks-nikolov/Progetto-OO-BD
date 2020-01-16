@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Dialog.ModalityType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,6 +24,8 @@ public class AvvisoElimina extends JDialog {
 
 	public AvvisoElimina(Contenitore_vendita contenitore) {
 		utilità = new Utilities();
+		
+		contenitore.getContenutoVendita().setEnabled(false);
 		
 		setVisible(true);
 		setTitle("Attenzione");
@@ -62,6 +65,7 @@ public class AvvisoElimina extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				contenitore.getContenutoVendita().setEnabled(true);
 				contenitore.Rimuovi();
 				AvvisoElimina.this.setVisible(false);
 			}});
@@ -70,6 +74,7 @@ public class AvvisoElimina extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				contenitore.getContenutoVendita().setEnabled(true);
 				AvvisoElimina.this.setVisible(false);
 			}});
 

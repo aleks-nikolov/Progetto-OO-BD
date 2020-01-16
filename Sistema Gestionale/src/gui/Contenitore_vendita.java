@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
+import java.awt.Dialog.ModalityType;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Insets;
@@ -43,6 +44,7 @@ public class Contenitore_vendita extends ContenitoreArticolo {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				dialog = new AvvisoElimina(Contenitore_vendita.this);
+				
 			}
 			
 		});
@@ -89,5 +91,9 @@ public class Contenitore_vendita extends ContenitoreArticolo {
 		btnRimuovi.setBackground(getUtilities().redBtn);
 		btnRimuovi.setMargin(new Insets(20, 20, 20, 20));
 		btnRimuovi.setPreferredSize(new Dimension(10, 10));
+	}
+	
+	public ContenutoVendita getContenutoVendita() {
+		return contenutoVendita;
 	}
 }

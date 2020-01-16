@@ -4,6 +4,9 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import logic.Controller;
+
 import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
 import javax.swing.Box;
@@ -11,13 +14,18 @@ import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.JToggleButton;
 import javax.swing.ScrollPaneConstants;
 
 public class Catalogo extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
-	private SwingController sc;
+	private Controller controller;
 	private ContenutoVendita contenutoVendita;
 	private Utilities utilities;
 	
@@ -30,10 +38,11 @@ public class Catalogo extends JFrame {
 	private JToggleButton tglbtnRed;
 	private JToggleButton tglbtnGreen;
 	private JToggleButton tglbtnBlue;
+	JButton btnAnnulla;
 
-	public Catalogo(SwingController sc, ContenutoVendita contenutoVendita) {
+	public Catalogo(Controller controller, ContenutoVendita contenutoVendita) {
 		//Reference a ContenutoVendita
-		this.sc = sc;
+		this.controller = controller;
 		this.contenutoVendita = contenutoVendita;
 		
 		utilities = new Utilities();
@@ -42,7 +51,30 @@ public class Catalogo extends JFrame {
 		ImpostaPanelloSuperiore();
 		ImpostaPanelloCentrale();
 		ImpostaPanelloInferiore();
+		AggiungiListener();
 	}
+	
+	
+	public void AggiungiListener() {
+		btnAnnulla.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				contenutoVendita.setEnabled(true);
+				controller.ChiudiFrame(Catalogo.this);
+			}
+			
+		});
+
+		this.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                contenutoVendita.setEnabled(true);
+                controller.ChiudiFrame(Catalogo.this);
+            }
+        });
+
+	}
+
 	
 	public void ImpostaFinestra() {
 		setVisible(true);
@@ -58,7 +90,7 @@ public class Catalogo extends JFrame {
 		JPanel panelloSuperiore = new JPanel();
 		contentPane.add(panelloSuperiore, BorderLayout.NORTH);
 		
-		boxCategoria = new JComboBox(sc.getCategoria().toArray());
+		boxCategoria = new JComboBox(controller.getCategoria().toArray());
 		boxCategoria.setPreferredSize(new Dimension(150, 25));
 		boxCategoria.setFont(utilities.arialS);
 		panelloSuperiore.add(boxCategoria);
@@ -95,12 +127,12 @@ public class Catalogo extends JFrame {
 		btnGroup.add(tglbtnBlue);
 		panelloSuperiore.add(tglbtnBlue);
 		
-		boxMarca = new JComboBox(sc.getMarca().toArray());
+		boxMarca = new JComboBox(controller.getMarca().toArray());
 		boxMarca.setPreferredSize(new Dimension(150, 25));
 		boxMarca.setFont(utilities.arialS);
 		panelloSuperiore.add(boxMarca);
 		
-		boxTaglia = new JComboBox(sc.getTaglia().toArray());
+		boxTaglia = new JComboBox(controller.getTaglia().toArray());
 		boxTaglia.setPreferredSize(new Dimension(150, 25));
 		boxTaglia.setFont(utilities.arialS);
 		panelloSuperiore.add(boxTaglia);
@@ -124,7 +156,7 @@ public class Catalogo extends JFrame {
 		JPanel panelloInferiore = new JPanel();
 		contentPane.add(panelloInferiore, BorderLayout.SOUTH);
 		
-		JButton btnAnnulla = new JButton("Annulla");
+		btnAnnulla = new JButton("Annulla");
 		btnAnnulla.setFont(utilities.arialL);
 		btnAnnulla.setBackground(utilities.redBtn);
 		panelloInferiore.add(btnAnnulla);

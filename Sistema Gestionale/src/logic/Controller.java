@@ -1,22 +1,38 @@
 package logic;
 
-import gui.*;
 import java.util.ArrayList;
-import gui.*;
 
-public class MainController {
+import javax.swing.JFrame;
 
+import gui.ContenutoVendita;
+import gui.HomePageFrame;
+import gui.VenditeFrame;
+
+public class Controller {
+
+	private HomePageFrame home;
+	private VenditeFrame finestraVendite;
+	private ContenutoVendita contenutoVendita;
+	
 	private ArrayList<String> categoria = new ArrayList<String>();
 	private ArrayList<String> marca = new ArrayList<String>();
 	private ArrayList<String> colore = new ArrayList<String>();
 	private ArrayList<String> taglia = new ArrayList<String>();
 	private ArrayList<Articolo> articoli = new ArrayList<Articolo>();
 	
-	public MainController() {
+	public Controller() {
 		InizializzaArrayList();
+		InizializzaFinestre();
+	}
+	
+	public void InizializzaFinestre() {
+		//Inizializza e apre la home page
+		home = new HomePageFrame(this);
+		home.setVisible(true);
 		
-		SwingController sc = new SwingController(this);
-		sc.Inizializza();
+		//Inizializza le altre finestre
+		finestraVendite = new VenditeFrame(this);
+		contenutoVendita = new ContenutoVendita(this);
 	}
 	
 	public void InizializzaArrayList() {
@@ -53,6 +69,16 @@ public class MainController {
 		articoli.add(new Articolo("Maglietta di cotone", "Maglietta leggera di cotone", "Magliette", "Adidas", "XL", "Nero", 15.25f, 0, 5, "123", 'M', "res\\images\\magliette\\adidas_black.png"));
 	}
 	
+	public void CambiaFrame(JFrame frameDaNascondere, JFrame frameDaMostrare) {
+		ChiudiFrame(frameDaNascondere);
+		frameDaMostrare.setVisible(true);
+	}
+	
+	public void ChiudiFrame(JFrame frameDaChiudere) {
+		frameDaChiudere.setVisible(false);
+		frameDaChiudere.dispose();
+	}
+	
 	public Articolo getArticolo() {
 		Articolo articolo = articoli.get(0);
 		
@@ -76,5 +102,16 @@ public class MainController {
 		return taglia;
 	}
 
+	
+	
+	public HomePageFrame getHomePage() {
+		return home;
+	}
+	public VenditeFrame getVendite() {
+		return finestraVendite;
+	}
+	public ContenutoVendita getContenutoVendita() {
+		return contenutoVendita;
+	}
 
 }

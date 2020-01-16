@@ -11,6 +11,9 @@ import java.awt.event.ActionListener;
 import java.awt.Component;
 import javax.swing.Box;
 import javax.swing.ScrollPaneConstants;
+
+import logic.Controller;
+
 import javax.swing.BoxLayout;
 import java.awt.Dimension;
 
@@ -18,7 +21,7 @@ public class ContenutoVendita extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
 	
-	private SwingController sc;
+	private Controller controller;
 	private Utilities utilities;
 	
 	private JButton btnApplica;
@@ -32,8 +35,8 @@ public class ContenutoVendita extends JFrame{
 	private Component horizontalStrut_1;
 
 	
-	public ContenutoVendita(SwingController sc){
-		this.sc = sc;
+	public ContenutoVendita(Controller controller){
+		this.controller = controller;
 		utilities = new Utilities();
 		
 		ImpostaFinestra();
@@ -49,7 +52,7 @@ public class ContenutoVendita extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				sc.CambiaFrame(ContenutoVendita.this, sc.getVendite());
+				controller.CambiaFrame(ContenutoVendita.this, controller.getVendite());
 			}
 			
 		});
@@ -58,7 +61,8 @@ public class ContenutoVendita extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Catalogo catalogo = new Catalogo(sc, ContenutoVendita.this);
+				ContenutoVendita.this.setEnabled(false);
+				Catalogo catalogo = new Catalogo(controller, ContenutoVendita.this);
 			}
 			
 		});
@@ -129,8 +133,7 @@ public class ContenutoVendita extends JFrame{
 		pannelloInferiore.add(btnAnnulla);
 	}
 	
-	
-	public SwingController getsc() {
-		return sc;
+	public Controller getController() {
+		return controller;
 	}
 }

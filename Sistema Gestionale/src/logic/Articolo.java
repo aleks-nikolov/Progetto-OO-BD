@@ -2,9 +2,6 @@ package logic;
 
 public class Articolo {
 
-	
-	
-	
 	private ComposizioneTransazione compTransazione;
 	
 	private String nome;

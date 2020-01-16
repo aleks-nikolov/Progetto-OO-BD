@@ -16,10 +16,12 @@ import java.awt.Component;
 import javax.swing.Box;
 import javax.swing.border.LineBorder;
 
+import logic.Controller;
+
 public class VenditeFrame extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
-	private SwingController sc;
+	private Controller controller;
 	private Utilities utilities;
 	
 	//Definizione componenti grafici
@@ -36,9 +38,9 @@ public class VenditeFrame extends JFrame{
 	private Component upperHorizontalStrut;
 	private Component lowerHorizontalStrut;
 
-	public VenditeFrame(SwingController sc) {
+	public VenditeFrame(Controller controller) {
 		//Reference a SwingController
-		this.sc = sc;
+		this.controller = controller;
 		utilities = new Utilities();
 		
 		ImpostaFinestra();
@@ -54,7 +56,7 @@ public class VenditeFrame extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				sc.CambiaFrame(VenditeFrame.this, sc.getContenutoVendita());
+				controller.CambiaFrame(VenditeFrame.this, controller.getContenutoVendita());
 			}
 			
 		});
@@ -63,7 +65,7 @@ public class VenditeFrame extends JFrame{
 	
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				sc.CambiaFrame(VenditeFrame.this, sc.getHomePage());
+				controller.CambiaFrame(VenditeFrame.this, controller.getHomePage());
 			}});
 			
 	}

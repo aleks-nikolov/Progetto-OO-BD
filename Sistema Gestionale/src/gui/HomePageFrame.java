@@ -8,13 +8,16 @@ import java.awt.event.ActionListener;
 import java.awt.Cursor;
 import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
+
+import logic.Controller;
+
 import java.awt.FlowLayout;
 
 public class HomePageFrame extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 		
-	private SwingController sc;
+	private Controller controller;
 	private Utilities utilities;
 	
 	private JButton btnVendite;
@@ -23,9 +26,9 @@ public class HomePageFrame extends JFrame {
 	private JButton btnEsci;
 	private JPanel footer;
 	
-	public HomePageFrame(SwingController sc) {
+	public HomePageFrame(Controller controller) {
 		//Reference a SwingController
-		this.sc = sc;
+		this.controller = controller;
 		utilities = new Utilities();
 		
 		ImpostaFinestra();
@@ -40,7 +43,7 @@ public class HomePageFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				sc.CambiaFrame(HomePageFrame.this, sc.getVendite());
+				controller.CambiaFrame(HomePageFrame.this, controller.getVendite());
 			}});
 		
 		btnEsci.addActionListener(new ActionListener() {

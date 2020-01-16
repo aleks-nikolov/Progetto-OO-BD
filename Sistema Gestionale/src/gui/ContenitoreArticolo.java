@@ -49,12 +49,6 @@ public class ContenitoreArticolo extends JPanel {
 		this.contenutoVendita = contenutoVendita;
 		utilities = new Utilities();
 		
-		setBackground(utilities.bg);
-		setMinimumSize(new Dimension(1200, 150));
-		setPreferredSize(new Dimension(1200, 150));
-		
-		setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		
 		ImpostaPanello();
 		ImpostaPanelloImmagine();
 		ImpostaPanelloDati();
@@ -75,7 +69,7 @@ public class ContenitoreArticolo extends JPanel {
 	}
 	
 	public void InserisciDati() {
-		articolo = contenutoVendita.getsc().getArticolo();
+		articolo = contenutoVendita.getController().getArticolo();
 		labelNome.setText(articolo.getNome());
 		labelDescrizione.setText(articolo.getDescrizione());
 		labelMarca.setText(articolo.getMarca());
@@ -88,6 +82,8 @@ public class ContenitoreArticolo extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		setPreferredSize(new Dimension(1200, 150));
 		setMaximumSize(new Dimension(1200, 150));
+		setBackground(utilities.bg);
+		setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 	}
 	
 	public void ImpostaPanelloImmagine() {
