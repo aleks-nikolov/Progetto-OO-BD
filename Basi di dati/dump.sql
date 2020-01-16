@@ -267,14 +267,6 @@ ALTER TABLE ONLY public."Fornitore"
 
 
 --
--- Name: Articolo uPathImmagine; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."Articolo"
-    ADD CONSTRAINT "uPathImmagine" UNIQUE ("PathImmagine");
-
-
---
 -- Name: ComposizioneTransazione fk1ComposizioneTransazione; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
