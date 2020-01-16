@@ -24,6 +24,7 @@ import java.awt.Component;
 import javax.swing.Box;
 import javax.swing.SwingConstants;
 import java.awt.Cursor;
+import javax.swing.border.MatteBorder;
 
 public class ContenitoreArticolo extends JPanel {
 
@@ -35,16 +36,20 @@ public class ContenitoreArticolo extends JPanel {
 	private JPanel pannelloImmagine;
 	private JLabel labelImg;
 	private ImageIcon img;
-	private JPanel panel;
+	private JPanel panelloLaterale;
 	private JPanel contenitoreDati;
 	private JLabel labelTaglia;
 	private JLabel labelMarca;
 	private JLabel labelQuantità;
 	private JButton btnRimuovi;
-	private JPanel panel_1;
+	private JPanel panelloDati;
 	private JLabel labelNome;
 	private JLabel labelPrezzo;
 	private JLabel labelColore;
+	private JLabel labelDescrizione;
+	private JPanel panelloQualità;
+	private Component horizontalStrut;
+	private Component horizontalStrut_1;
 	
 	public ContenitoreArticolo(ContenutoVendita contenutoVendita) {
 		//Reference al parente
@@ -54,7 +59,7 @@ public class ContenitoreArticolo extends JPanel {
 		setBackground(utilità.bg);
 		setMinimumSize(new Dimension(1200, 150));
 		
-		setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		
 		ImpostaPanello();
 		ImpostaPanelloImmagine();
@@ -79,7 +84,7 @@ public class ContenitoreArticolo extends JPanel {
 	public ImageIcon GetImage(int width, int height) {
 		
 		try {
-			BufferedImage temp = ImageIO.read(new File("res\\images\\black_tshirt.png"));
+			BufferedImage temp = ImageIO.read(new File("res\\images\\magliette\\nike_black.png"));
 			Image image = temp.getScaledInstance(width, height, Image.SCALE_SMOOTH);
 			img = new ImageIcon(image);
 		} catch (IOException e) {
@@ -98,13 +103,16 @@ public class ContenitoreArticolo extends JPanel {
 	
 	public void ImpostaPanelloImmagine() {
 		pannelloImmagine = new JPanel();
+		pannelloImmagine.setBorder(new MatteBorder(0, 0, 0, 2, (Color) Color.GRAY));
 		pannelloImmagine.setBackground(utilità.bg);
 		add(pannelloImmagine, BorderLayout.WEST);
 		pannelloImmagine.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		labelImg = new JLabel("");
+		labelImg.setHorizontalAlignment(SwingConstants.CENTER);
+		labelImg.setAlignmentX(Component.CENTER_ALIGNMENT);
 		pannelloImmagine.add(labelImg);
-		labelImg.setBorder(new LineBorder(new Color(0, 0, 0)));
+		labelImg.setBorder(null);
 		labelImg.setPreferredSize(new Dimension(140, 140));
 		labelImg.setMaximumSize(new Dimension(180, 300));
 		labelImg.setIcon(GetImage(labelImg.getPreferredSize().width, labelImg.getPreferredSize().height));
@@ -117,69 +125,87 @@ public class ContenitoreArticolo extends JPanel {
 		contenitoreDati.setLayout(new BorderLayout(0, 0));
 		contenitoreDati.setBorder(new EmptyBorder(10, 10, 10, 10));
 		add(contenitoreDati, BorderLayout.CENTER);
-		
-		panel = new JPanel();
-		panel.setBackground(utilità.bg);
-		panel.setPreferredSize(new Dimension(150, 10));
-		contenitoreDati.add(panel, BorderLayout.WEST);
-		panel.setBorder(new LineBorder(new Color(192, 192, 192), 2));
-		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-		
-		labelMarca = new JLabel("Marca: Adidas");
-		labelMarca.setAlignmentX(Component.CENTER_ALIGNMENT);
-		labelMarca.setFont(utilità.arialS);
-		labelMarca.setPreferredSize(new Dimension(68, 15));
-		panel.add(labelMarca);
-		
-		panel.add(Box.createRigidArea(new Dimension(20, 15)));
-		
-		labelColore = new JLabel("Colore: nero");
-		labelColore.setAlignmentX(Component.CENTER_ALIGNMENT);
-		labelColore.setFont(utilità.arialS);
-		panel.add(labelColore);
-		
-		panel.add(Box.createRigidArea(new Dimension(20, 15)));
-		
-		labelTaglia = new JLabel("Taglia: M");
-		labelTaglia.setAlignmentX(Component.CENTER_ALIGNMENT);
-		labelTaglia.setFont(utilità.arialS);
-		labelTaglia.setPreferredSize(new Dimension(43, 15));
-		panel.add(labelTaglia);
 
-		panel.add(Box.createRigidArea(new Dimension(20, 15)));
-		
-		labelQuantità = new JLabel("Quantita: 10");
-		labelQuantità.setAlignmentX(Component.CENTER_ALIGNMENT);
-		labelQuantità.setFont(utilità.arialS);
-		labelQuantità.setPreferredSize(new Dimension(49, 15));
-		panel.add(labelQuantità);
-
-		panel_1 = new JPanel();
-		panel_1.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
-		panel_1.setBackground(utilità.bg);
-		contenitoreDati.add(panel_1, BorderLayout.CENTER);
-		panel_1.setLayout(new BorderLayout(0, 0));
+		panelloDati = new JPanel();
+		panelloDati.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
+		panelloDati.setBackground(utilità.bg);
+		contenitoreDati.add(panelloDati, BorderLayout.CENTER);
+		panelloDati.setLayout(new BorderLayout(0, 0));
 		
 		labelNome = new JLabel("Maglietta di cotone");
+		panelloDati.add(labelNome, BorderLayout.NORTH);
 		labelNome.setHorizontalAlignment(SwingConstants.CENTER);
 		labelNome.setHorizontalTextPosition(SwingConstants.CENTER);
 		labelNome.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		labelNome.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panel_1.add(labelNome, BorderLayout.NORTH);
+		
+		labelDescrizione = new JLabel("Descrizione articolo");
+		labelDescrizione.setHorizontalAlignment(SwingConstants.CENTER);
+		labelDescrizione.setVerticalAlignment(SwingConstants.TOP);
+		labelDescrizione.setFont(utilità.arial);
+		panelloDati.add(labelDescrizione, BorderLayout.CENTER);
+		labelDescrizione.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		panelloQualità = new JPanel();
+		panelloQualità.setBorder(new MatteBorder(2, 0, 0, 0, (Color) Color.LIGHT_GRAY));
+		panelloQualità.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+		panelloQualità.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panelloQualità.setBackground(utilità.bg);
+		panelloDati.add(panelloQualità, BorderLayout.SOUTH);
+		
+		
+		labelMarca = new JLabel("Marca: Adidas");
+		panelloQualità.add(labelMarca);
+		labelMarca.setAlignmentX(Component.CENTER_ALIGNMENT);
+		labelMarca.setFont(utilità.arialS);
+		labelMarca.setPreferredSize(new Dimension(150, 15));
+		
+		horizontalStrut = Box.createHorizontalStrut(200);
+		panelloQualità.add(horizontalStrut);
+		
+		labelColore = new JLabel("Colore: nero");
+		labelColore.setPreferredSize(new Dimension(100, 14));
+		panelloQualità.add(labelColore);
+		labelColore.setAlignmentX(Component.CENTER_ALIGNMENT);
+		labelColore.setFont(utilità.arialS);
+		
+		horizontalStrut_1 = Box.createHorizontalStrut(200);
+		panelloQualità.add(horizontalStrut_1);
+		
+		labelTaglia = new JLabel("Taglia: M");
+		panelloQualità.add(labelTaglia);
+		labelTaglia.setAlignmentX(Component.CENTER_ALIGNMENT);
+		labelTaglia.setFont(utilità.arialS);
+		labelTaglia.setPreferredSize(new Dimension(100, 15));
+		
+		panelloLaterale = new JPanel();
+		panelloLaterale.setBackground(utilità.bg);
+		panelloLaterale.setPreferredSize(new Dimension(150, 10));
+		contenitoreDati.add(panelloLaterale, BorderLayout.EAST);
+		panelloLaterale.setBorder(new LineBorder(new Color(192, 192, 192), 2));
+		panelloLaterale.setLayout(new BoxLayout(panelloLaterale, BoxLayout.Y_AXIS));
 		
 		labelPrezzo = new JLabel("15,20\u20AC");
+		panelloLaterale.add(labelPrezzo);
 		labelPrezzo.setHorizontalTextPosition(SwingConstants.CENTER);
 		labelPrezzo.setHorizontalAlignment(SwingConstants.CENTER);
 		labelPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
 		labelPrezzo.setFont(new Font("Arial Black", Font.PLAIN, 20));
-		panel_1.add(labelPrezzo, BorderLayout.EAST);
+		
+		labelQuantità = new JLabel("Quantita: 10");
+		labelQuantità.setHorizontalAlignment(SwingConstants.CENTER);
+		labelQuantità.setAlignmentX(Component.CENTER_ALIGNMENT);
+		labelQuantità.setFont(utilità.arialS);
+		labelQuantità.setPreferredSize(new Dimension(49, 15));
+		panelloLaterale.add(labelQuantità);
 		
 		btnRimuovi = new JButton("X");
+		btnRimuovi.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panelloLaterale.add(btnRimuovi);
 		btnRimuovi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnRimuovi.setBackground(utilità.redBtn);
-		contenitoreDati.add(btnRimuovi, BorderLayout.EAST);
-		btnRimuovi.setMargin(new Insets(2, 2, 2, 2));
-		btnRimuovi.setPreferredSize(new Dimension(100, 30));
+		btnRimuovi.setMargin(new Insets(20, 20, 20, 20));
+		btnRimuovi.setPreferredSize(new Dimension(10, 10));
 	}
 	
 	

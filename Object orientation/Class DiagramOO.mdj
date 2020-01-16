@@ -662,6 +662,7 @@
 											"model": {
 												"$ref": "AAAAAAFviyILD/bCvp8="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 109,
 											"top": 142,
@@ -679,9 +680,10 @@
 											"model": {
 												"$ref": "AAAAAAFviyIVZPbmcSc="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 109,
-											"top": 157,
+											"top": 142,
 											"width": 143,
 											"height": 13,
 											"text": "Azzurro",
@@ -696,9 +698,10 @@
 											"model": {
 												"$ref": "AAAAAAFviyXZDPh0H44="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 109,
-											"top": 172,
+											"top": 142,
 											"width": 143,
 											"height": 13,
 											"text": "Grigio",
@@ -713,9 +716,10 @@
 											"model": {
 												"$ref": "AAAAAAFviyXfkPiY8CQ="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 109,
-											"top": 187,
+											"top": 142,
 											"width": 143,
 											"height": 13,
 											"text": "Arancione",
@@ -730,9 +734,10 @@
 											"model": {
 												"$ref": "AAAAAAFviyXl1vi8HOM="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 109,
-											"top": 202,
+											"top": 142,
 											"width": 143,
 											"height": 13,
 											"text": "Marrone",
@@ -747,9 +752,10 @@
 											"model": {
 												"$ref": "AAAAAAFviyXtSfjgU7Y="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 109,
-											"top": 217,
+											"top": 142,
 											"width": 143,
 											"height": 13,
 											"text": "Beige",
@@ -764,9 +770,10 @@
 											"model": {
 												"$ref": "AAAAAAFviyX16/kEQuw="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 109,
-											"top": 232,
+											"top": 142,
 											"width": 143,
 											"height": 13,
 											"text": "Bordeaux",
@@ -781,9 +788,10 @@
 											"model": {
 												"$ref": "AAAAAAFviyvEov2qW0E="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 109,
-											"top": 247,
+											"top": 142,
 											"width": 143,
 											"height": 13,
 											"text": "Viola",
@@ -794,7 +802,7 @@
 									"left": 104,
 									"top": 62,
 									"width": 153,
-									"height": 203
+									"height": 83
 								}
 							],
 							"font": "Arial;13;0",
@@ -1004,7 +1012,7 @@
 											"top": 67,
 											"width": 142,
 											"height": 13,
-											"text": "T-Shirt",
+											"text": "Magliette",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1067,6 +1075,7 @@
 											"model": {
 												"$ref": "AAAAAAFvhjRUv8oOYww="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 293,
 											"top": 127,
@@ -1086,7 +1095,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 142,
+											"top": 127,
 											"width": 142,
 											"height": 13,
 											"text": "Pantaloni",
@@ -1101,9 +1110,10 @@
 											"model": {
 												"$ref": "AAAAAAFvhjRnlMp65SA="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 157,
+											"top": 142,
 											"width": 142,
 											"height": 13,
 											"text": "Jeans",
@@ -1120,7 +1130,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 172,
+											"top": 142,
 											"width": 142,
 											"height": 13,
 											"text": "Camicie",
@@ -1135,9 +1145,10 @@
 											"model": {
 												"$ref": "AAAAAAFvhjVPYMwzHFM="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 187,
+											"top": 157,
 											"width": 142,
 											"height": 13,
 											"text": "Intimo",
@@ -1154,7 +1165,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 202,
+											"top": 157,
 											"width": 142,
 											"height": 13,
 											"text": "Accessori",
@@ -1169,9 +1180,10 @@
 											"model": {
 												"$ref": "AAAAAAFviygUwvrZSOM="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 217,
+											"top": 172,
 											"width": 142,
 											"height": 13,
 											"text": "Pantaloncini",
@@ -1186,9 +1198,10 @@
 											"model": {
 												"$ref": "AAAAAAFviygeoPr9sok="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 232,
+											"top": 172,
 											"width": 142,
 											"height": 13,
 											"text": "Gonne",
@@ -1203,9 +1216,10 @@
 											"model": {
 												"$ref": "AAAAAAFviyiQBvtyGx8="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 247,
+											"top": 172,
 											"width": 142,
 											"height": 13,
 											"text": "Top",
@@ -1216,7 +1230,7 @@
 									"left": 288,
 									"top": 62,
 									"width": 152,
-									"height": 203
+									"height": 113
 								}
 							],
 							"font": "Arial;13;0",
@@ -8935,7 +8949,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFvhbQxRafVi2w="
 							},
-							"name": "T-Shirt"
+							"name": "Magliette"
 						},
 						{
 							"_type": "UMLEnumerationLiteral",

@@ -6,6 +6,8 @@ import java.awt.Font;
 public class Utilit‡Aspetto {
 	
 	//Font
+	Font arial = new Font("Arial", Font.PLAIN, 14);
+	
 	Font arialXS = new Font("Arial Black", Font.PLAIN, 12);
 	Font arialS = new Font("Arial Black", Font.PLAIN, 14);
 	Font arialM = new Font("Arial Black", Font.PLAIN, 16);

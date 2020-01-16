@@ -543,6 +543,7 @@
 											"model": {
 												"$ref": "AAAAAAFviyXZDPh0H44="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 109,
 											"top": 142,
@@ -556,7 +557,7 @@
 									"left": 104,
 									"top": 62,
 									"width": 153,
-									"height": 98
+									"height": 83
 								}
 							],
 							"font": "Arial;13;0",
@@ -829,6 +830,7 @@
 											"model": {
 												"$ref": "AAAAAAFvhjRUv8oOYww="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 293,
 											"top": 127,
@@ -848,7 +850,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 142,
+											"top": 127,
 											"width": 142,
 											"height": 13,
 											"text": "Pantaloni",
@@ -863,9 +865,10 @@
 											"model": {
 												"$ref": "AAAAAAFvhjRnlMp65SA="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 157,
+											"top": 142,
 											"width": 142,
 											"height": 13,
 											"text": "Jeans",
@@ -882,7 +885,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 172,
+											"top": 142,
 											"width": 142,
 											"height": 13,
 											"text": "Camicie",
@@ -897,9 +900,10 @@
 											"model": {
 												"$ref": "AAAAAAFvhjVPYMwzHFM="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 187,
+											"top": 157,
 											"width": 142,
 											"height": 13,
 											"text": "Intimo",
@@ -916,7 +920,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 202,
+											"top": 157,
 											"width": 142,
 											"height": 13,
 											"text": "Accessori",
@@ -931,9 +935,10 @@
 											"model": {
 												"$ref": "AAAAAAFviygUwvrZSOM="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 217,
+											"top": 187,
 											"width": 142,
 											"height": 13,
 											"text": "Pantaloncini",
@@ -948,9 +953,10 @@
 											"model": {
 												"$ref": "AAAAAAFviygeoPr9sok="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 232,
+											"top": 202,
 											"width": 142,
 											"height": 13,
 											"text": "Gonne",
@@ -961,7 +967,7 @@
 									"left": 288,
 									"top": 62,
 									"width": 152,
-									"height": 188
+									"height": 113
 								}
 							],
 							"font": "Arial;13;0",
