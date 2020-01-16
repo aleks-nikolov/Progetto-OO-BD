@@ -1,55 +1,15 @@
 package logic;
 
-enum marca {
-	ADIDAS,
-	NIKE,
-	HANDM,
-	PIAZZAITALIA,
-	ALCOTT,
-	BERSHKA,
-	VERSACE,
-	GUCCI,
-	NAPAPIJRI
-}
-
-enum taglia {
-	XS,
-	S,
-	M,
-	L,
-	XL,
-	XXL
-}
-
-enum colore {
-	NERO,
-	GRIGIO,
-	BIANCO,
-	ROSSO,
-	BLU,
-	VERDE
-}
-
-enum categoria {
-	MAGLIETTE,
-	MAGLIONI,
-	FELPE,
-	GIACCHE,
-	PANTALONI,
-	CAMICIE,
-	ACCESSORI
-}
-
 public class Articolo {
 
 	private ComposizioneTransazione compTransazione;
 	
 	private String nome;
 	private String descrizione;
-	private categoria categoria;
-	private marca marca;
-	private taglia taglia;
-	private colore colore;
+	private String categoria;
+	private String marca;
+	private String taglia;
+	private String colore;
 	private float prezzoDiListino;
 	private int percentualeSaldo;
 	private int quantità;
@@ -72,28 +32,28 @@ public class Articolo {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
-	public categoria getCategoria() {
+	public String getCategoria() {
 		return categoria;
 	}
-	public void setCategoria(categoria categoria) {
+	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-	public marca getMarca() {
+	public String getMarca() {
 		return marca;
 	}
-	public void setMarca(marca marca) {
+	public void setMarca(String marca) {
 		this.marca = marca;
 	}
-	public taglia getTaglia() {
+	public String getTaglia() {
 		return taglia;
 	}
-	public void setTaglia(taglia taglia) {
+	public void setTaglia(String taglia) {
 		this.taglia = taglia;
 	}
-	public colore getColore() {
+	public String getColore() {
 		return colore;
 	}
-	public void setColore(colore colore) {
+	public void setColore(String colore) {
 		this.colore = colore;
 	}
 	public float getPrezzoDiListino() {

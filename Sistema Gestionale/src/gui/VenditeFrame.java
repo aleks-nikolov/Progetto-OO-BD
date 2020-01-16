@@ -54,7 +54,7 @@ public class VenditeFrame extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				sc.CambiaFrame(VenditeFrame.this, sc.getAggiungiArticoli());
+				sc.CambiaFrame(VenditeFrame.this, sc.getContenutoVendita());
 			}
 			
 		});

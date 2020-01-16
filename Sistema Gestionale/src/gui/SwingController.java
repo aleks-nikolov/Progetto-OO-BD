@@ -1,17 +1,25 @@
 package gui;
 
+import logic.*;
+
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 
 public class SwingController {
 	/* La classe è associata a tutte le finestre possibili del programma.
 	 * Si occupa del controllo tra i passaggi da un frame all'altro e di
 	 *  qualsiasi funzionalità dell'interfaccia grafica.*/
-	
-	
+	private MainController mc;
+
 	private HomePageFrame home;
 	private VenditeFrame finestraVendite;
-	private ContenutoVendita aggiungiArticoli;
+	private ContenutoVendita contenutoVendita;
 
+	public SwingController(MainController mc) {
+		this.mc = mc;
+	}
+	
 	public void Inizializza() {
 		//Inizializza e apre la home page
 		home = new HomePageFrame(this);
@@ -19,7 +27,7 @@ public class SwingController {
 		
 		//Inizializza le altre finestre
 		finestraVendite = new VenditeFrame(this);
-		aggiungiArticoli = new ContenutoVendita(this);
+		contenutoVendita = new ContenutoVendita(this);
 	}
 
 	public void CambiaFrame(JFrame frameDaNascondere, JFrame frameDaMostrare) {
@@ -34,8 +42,23 @@ public class SwingController {
 	public VenditeFrame getVendite() {
 		return finestraVendite;
 	}
-	public ContenutoVendita getAggiungiArticoli() {
-		return aggiungiArticoli;
+	public ContenutoVendita getContenutoVendita() {
+		return contenutoVendita;
+	}
+	
+	public ArrayList<String> getCategoria() {
+		return mc.getCategoria();
 	}
 
+	public ArrayList<String> getMarca() {
+		return mc.getMarca();
+	}
+	
+	public ArrayList<String> getColore() {
+		return mc.getColore();
+	}
+	
+	public ArrayList<String> getTaglia() {
+		return mc.getTaglia();
+	}
 }

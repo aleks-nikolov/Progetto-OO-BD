@@ -21,7 +21,7 @@ public class ContenutoVendita extends JFrame{
 	private SwingController sc;
 	private Utilit‡Aspetto utilit‡;
 	
-	private ContenitoreArticolo contenitore;
+	private ContenitoreArticolo_Vendita contenitore;
 	
 	private JButton btnApplica;
 	private JButton btnAnnulla;
@@ -38,7 +38,7 @@ public class ContenutoVendita extends JFrame{
 		this.sc = sc;
 		utilit‡ = new Utilit‡Aspetto();
 		
-		contenitore = new ContenitoreArticolo(this);
+		contenitore = new ContenitoreArticolo_Vendita(this);
 		contenitore.setMinimumSize(new Dimension(1200, 150));
 		contenitore.setMaximumSize(new Dimension(1200, 150));
 		contenitore.setPreferredSize(new Dimension(1200, 150));
@@ -65,28 +65,28 @@ public class ContenutoVendita extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				AggiungiArticolo();
+				Catalogo catalogo = new Catalogo(sc, ContenutoVendita.this);
 			}
 			
 		});
 	}
 	
 	public void AggiungiArticolo() {
-		ContenitoreArticolo temp = new ContenitoreArticolo(this);
+		ContenitoreArticolo_Vendita temp = new ContenitoreArticolo_Vendita(this);
 		panel.add(temp);
 		panel.add(Box.createRigidArea(new Dimension(1200, 10)));
 		panel.revalidate();
 		panel.repaint();
 	}
 	
-	public void RimuoviArticolo(ContenitoreArticolo contenitoreDaRimuovere) {
+	public void RimuoviArticolo(ContenitoreArticolo_Vendita contenitoreDaRimuovere) {
 		panel.remove(contenitoreDaRimuovere);
 		panel.revalidate();
 		panel.repaint();
 	}
 	
 	public void ImpostaFinestra() {
-		setTitle("Aggiunta Articoli");
+		setTitle("Contenuto Vendita");
 		setBounds(100, 100, 1280, 720);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBackground(utilit‡.bg);

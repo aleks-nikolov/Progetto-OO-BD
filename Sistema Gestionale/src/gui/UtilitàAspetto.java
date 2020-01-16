@@ -18,6 +18,8 @@ public class Utilit‡Aspetto {
 	Color bg = new Color(220, 220, 220);
 	Color fg = new Color(50, 50, 50);
 	
+	Color black = new Color(0, 0, 0);
+	Color white = new Color(255, 255, 255);
 	Color greenBtn = new Color(60, 179, 113);
 	Color redBtn = new Color(178, 34, 34);
 	Color blueBtn = new Color(100, 149, 237);

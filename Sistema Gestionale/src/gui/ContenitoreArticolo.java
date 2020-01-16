@@ -36,15 +36,11 @@ public class ContenitoreArticolo extends JPanel {
 	private JPanel pannelloImmagine;
 	private JLabel labelImg;
 	private ImageIcon img;
-	private JPanel panelloLaterale;
 	private JPanel contenitoreDati;
 	private JLabel labelTaglia;
 	private JLabel labelMarca;
-	private JLabel labelQuantit‡;
-	private JButton btnRimuovi;
 	private JPanel panelloDati;
 	private JLabel labelNome;
-	private JLabel labelPrezzo;
 	private JLabel labelColore;
 	private JLabel labelDescrizione;
 	private JPanel panelloQualit‡;
@@ -58,6 +54,7 @@ public class ContenitoreArticolo extends JPanel {
 		
 		setBackground(utilit‡.bg);
 		setMinimumSize(new Dimension(1200, 150));
+		setPreferredSize(new Dimension(1200, 150));
 		
 		setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		
@@ -65,21 +62,8 @@ public class ContenitoreArticolo extends JPanel {
 		ImpostaPanelloImmagine();
 		ImpostaPanelloDati();
 		
-		AggiungiListener();
 	}
 	
-	public void AggiungiListener() {
-	
-		btnRimuovi.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				contenutoVendita.RimuoviArticolo(ContenitoreArticolo.this);
-			}
-			
-		});
-		
-	}
 	
 	public ImageIcon GetImage(int width, int height) {
 		
@@ -124,7 +108,7 @@ public class ContenitoreArticolo extends JPanel {
 		contenitoreDati.setBackground(utilit‡.bg);
 		contenitoreDati.setLayout(new BorderLayout(0, 0));
 		contenitoreDati.setBorder(new EmptyBorder(10, 10, 10, 10));
-		add(contenitoreDati, BorderLayout.CENTER);
+		add(getContenitoreDati(), BorderLayout.CENTER);
 
 		panelloDati = new JPanel();
 		panelloDati.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
@@ -177,35 +161,18 @@ public class ContenitoreArticolo extends JPanel {
 		labelTaglia.setAlignmentX(Component.CENTER_ALIGNMENT);
 		labelTaglia.setFont(utilit‡.arialS);
 		labelTaglia.setPreferredSize(new Dimension(100, 15));
+
 		
-		panelloLaterale = new JPanel();
-		panelloLaterale.setBackground(utilit‡.bg);
-		panelloLaterale.setPreferredSize(new Dimension(150, 10));
-		contenitoreDati.add(panelloLaterale, BorderLayout.EAST);
-		panelloLaterale.setBorder(new LineBorder(new Color(192, 192, 192), 2));
-		panelloLaterale.setLayout(new BoxLayout(panelloLaterale, BoxLayout.Y_AXIS));
-		
-		labelPrezzo = new JLabel("15,20\u20AC");
-		panelloLaterale.add(labelPrezzo);
-		labelPrezzo.setHorizontalTextPosition(SwingConstants.CENTER);
-		labelPrezzo.setHorizontalAlignment(SwingConstants.CENTER);
-		labelPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
-		labelPrezzo.setFont(new Font("Arial Black", Font.PLAIN, 20));
-		
-		labelQuantit‡ = new JLabel("Quantita: 10");
-		labelQuantit‡.setHorizontalAlignment(SwingConstants.CENTER);
-		labelQuantit‡.setAlignmentX(Component.CENTER_ALIGNMENT);
-		labelQuantit‡.setFont(utilit‡.arialS);
-		labelQuantit‡.setPreferredSize(new Dimension(49, 15));
-		panelloLaterale.add(labelQuantit‡);
-		
-		btnRimuovi = new JButton("X");
-		btnRimuovi.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panelloLaterale.add(btnRimuovi);
-		btnRimuovi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnRimuovi.setBackground(utilit‡.redBtn);
-		btnRimuovi.setMargin(new Insets(20, 20, 20, 20));
-		btnRimuovi.setPreferredSize(new Dimension(10, 10));
+	}
+
+	
+	//Getter
+	public JPanel getContenitoreDati() {
+		return contenitoreDati;
+	}
+
+	public Utilit‡Aspetto getUtilit‡() {
+		return utilit‡;
 	}
 	
 	
