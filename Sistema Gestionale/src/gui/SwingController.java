@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 public class SwingController {
-	/* La classe è associata a tutte le finestre possibili del programma.
+	/* La classe è associata a tutte le finestre e alcuni componenti grafici del programma.
 	 * Si occupa del controllo tra i passaggi da un frame all'altro e di
-	 *  qualsiasi funzionalità dell'interfaccia grafica.*/
+	 *  altre funzionalità dell'interfaccia grafica.*/
 	private MainController mc;
 
 	private HomePageFrame home;
@@ -35,6 +35,12 @@ public class SwingController {
 		frameDaMostrare.setVisible(true);
 	}
 	
+	
+	public Articolo getArticolo() {
+		return mc.getArticolo();
+	}
+	
+	
 	//Getter degli oggetti Frame
 	public HomePageFrame getHomePage() {
 		return home;
@@ -45,6 +51,8 @@ public class SwingController {
 	public ContenutoVendita getContenutoVendita() {
 		return contenutoVendita;
 	}
+	
+	//Getter per la logica
 	
 	public ArrayList<String> getCategoria() {
 		return mc.getCategoria();

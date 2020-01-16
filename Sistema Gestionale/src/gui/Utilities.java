@@ -3,7 +3,7 @@ package gui;
 import java.awt.Color;
 import java.awt.Font;
 
-public class Utilit‡Aspetto {
+public class Utilities {
 	
 	//Font
 	Font arial = new Font("Arial", Font.PLAIN, 14);

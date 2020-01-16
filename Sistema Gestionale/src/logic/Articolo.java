@@ -2,6 +2,9 @@ package logic;
 
 public class Articolo {
 
+	
+	
+	
 	private ComposizioneTransazione compTransazione;
 	
 	private String nome;
@@ -17,7 +20,46 @@ public class Articolo {
 	private char sesso;
 	private String imagePath;
 	
+	public Articolo() {
+		
+	}
 	
+	public Articolo(String nome, String descrizione, String categoria, String marca, String taglia, String colore,
+			float prezzoDiListino, int percentualeSaldo, int quantità, String codice, char sesso, String imagePath) {
+		super();
+		this.nome = nome;
+		this.descrizione = descrizione;
+		this.categoria = categoria;
+		this.marca = marca;
+		this.taglia = taglia;
+		this.colore = colore;
+		this.prezzoDiListino = prezzoDiListino;
+		this.percentualeSaldo = percentualeSaldo;
+		this.quantità = quantità;
+		this.codice = codice;
+		this.sesso = sesso;
+		this.imagePath = imagePath;
+	}
+	
+	
+	
+	//Metodo equals
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Articolo other = (Articolo) obj;
+		if (codice == null) {
+			if (other.codice != null)
+				return false;
+		} else if (!codice.equals(other.codice))
+			return false;
+		return true;
+	}
 	
 	//Getters e setters
 	public String getNome() {

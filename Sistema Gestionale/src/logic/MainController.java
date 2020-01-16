@@ -2,24 +2,22 @@ package logic;
 
 import gui.*;
 import java.util.ArrayList;
-
 import gui.*;
 
 public class MainController {
 
-	private static ArrayList<String> categoria = new ArrayList<String>();
-	private static ArrayList<String> marca = new ArrayList<String>();
-	private static ArrayList<String> colore = new ArrayList<String>();
-	private static ArrayList<String> taglia = new ArrayList<String>();
+	private ArrayList<String> categoria = new ArrayList<String>();
+	private ArrayList<String> marca = new ArrayList<String>();
+	private ArrayList<String> colore = new ArrayList<String>();
+	private ArrayList<String> taglia = new ArrayList<String>();
+	private ArrayList<Articolo> articoli = new ArrayList<Articolo>();
 	
 	public MainController() {
+		InizializzaArrayList();
+		
 		SwingController sc = new SwingController(this);
 		sc.Inizializza();
-		
-		InizializzaArrayList();
 	}
-	
-	
 	
 	public void InizializzaArrayList() {
 		categoria.add("CATEGORIA");
@@ -51,8 +49,15 @@ public class MainController {
 		taglia.add("L");
 		taglia.add("XL");
 		taglia.add("XXL");
+		
+		articoli.add(new Articolo("Maglietta di cotone", "Maglietta leggera di cotone", "Magliette", "Adidas", "XL", "Nero", 15.25f, 0, 5, "123", 'M', "res\\images\\magliette\\adidas_black.png"));
 	}
 	
+	public Articolo getArticolo() {
+		Articolo articolo = articoli.get(0);
+		
+		return articolo;
+	}
 	
 	//Getters e setters
 	public ArrayList<String> getCategoria() {

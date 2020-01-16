@@ -20,7 +20,7 @@ public class VenditeFrame extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
 	private SwingController sc;
-	private Utilit‡Aspetto utilit‡;
+	private Utilities utilities;
 	
 	//Definizione componenti grafici
 	private JPanel pannelloSuperiore;
@@ -39,7 +39,7 @@ public class VenditeFrame extends JFrame{
 	public VenditeFrame(SwingController sc) {
 		//Reference a SwingController
 		this.sc = sc;
-		utilit‡ = new Utilit‡Aspetto();
+		utilities = new Utilities();
 		
 		ImpostaFinestra();
 		ImpostaPanelSuperiore();
@@ -73,7 +73,7 @@ public class VenditeFrame extends JFrame{
 		setTitle("Vendite");
 		setBounds(100, 100, 1000, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBackground(utilit‡.bg);
+		setBackground(utilities.bg);
 	}
 	
 	public void ImpostaPanelSuperiore() {
@@ -84,24 +84,24 @@ public class VenditeFrame extends JFrame{
 		
 		btnNew = new JButton("+");
 		btnNew.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNew.setFont(utilit‡.arialS);
+		btnNew.setFont(utilities.arialS);
 		btnNew.setMargin(new Insets(10, 15, 10, 15));
-		btnNew.setForeground(utilit‡.fg);
-		btnNew.setBackground(utilit‡.greenBtn);
+		btnNew.setForeground(utilities.fg);
+		btnNew.setBackground(utilities.greenBtn);
 		pannelloSuperiore.add(btnNew);
 		
 		btnDelete = new JButton("-");
 		btnDelete.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnDelete.setFont(utilit‡.arialS);
+		btnDelete.setFont(utilities.arialS);
 		btnDelete.setMargin(new Insets(10, 15, 10, 15));
-		btnDelete.setForeground(utilit‡.fg);
-		btnDelete.setBackground(utilit‡.redBtn);
+		btnDelete.setForeground(utilities.fg);
+		btnDelete.setBackground(utilities.redBtn);
 		pannelloSuperiore.add(btnDelete);
 		
 		btnRefresh = new JButton("REFRESH");
 		btnRefresh.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnRefresh.setFont(utilit‡.arialS);
-		btnRefresh.setForeground(utilit‡.fg);
+		btnRefresh.setFont(utilities.arialS);
+		btnRefresh.setForeground(utilities.fg);
 		btnRefresh.setBackground(new Color(255, 255, 255));
 		btnRefresh.setMargin(new Insets(10, 10, 10, 10));
 		pannelloSuperiore.add(btnRefresh);
@@ -128,9 +128,9 @@ public class VenditeFrame extends JFrame{
 		
 		btnIndietro = new JButton("INDIETRO");
 		btnIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnIndietro.setFont(utilit‡.arialS);
-		btnIndietro.setForeground(utilit‡.fg);
-		btnIndietro.setBackground(utilit‡.redBtn);
+		btnIndietro.setFont(utilities.arialS);
+		btnIndietro.setForeground(utilities.fg);
+		btnIndietro.setBackground(utilities.redBtn);
 		btnIndietro.setMargin(new Insets(10, 20, 10, 20));
 		pannelloInferiore.add(btnIndietro);
 	}

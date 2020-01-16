@@ -14,23 +14,19 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.FlowLayout;
-import javax.swing.JButton;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.BoxLayout;
 import java.awt.Font;
 import java.awt.Component;
 import javax.swing.Box;
 import javax.swing.SwingConstants;
-import java.awt.Cursor;
 import javax.swing.border.MatteBorder;
+
+import logic.Articolo;
 
 public class ContenitoreArticolo extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private Utilit‡Aspetto utilit‡;
+	private Utilities utilities;
 	
 	private ContenutoVendita contenutoVendita;
 	private JPanel pannelloImmagine;
@@ -46,13 +42,14 @@ public class ContenitoreArticolo extends JPanel {
 	private JPanel panelloQualit‡;
 	private Component horizontalStrut;
 	private Component horizontalStrut_1;
+	private Articolo articolo;
 	
 	public ContenitoreArticolo(ContenutoVendita contenutoVendita) {
 		//Reference al parente
 		this.contenutoVendita = contenutoVendita;
-		utilit‡ = new Utilit‡Aspetto();
+		utilities = new Utilities();
 		
-		setBackground(utilit‡.bg);
+		setBackground(utilities.bg);
 		setMinimumSize(new Dimension(1200, 150));
 		setPreferredSize(new Dimension(1200, 150));
 		
@@ -61,14 +58,13 @@ public class ContenitoreArticolo extends JPanel {
 		ImpostaPanello();
 		ImpostaPanelloImmagine();
 		ImpostaPanelloDati();
-		
 	}
 	
 	
-	public ImageIcon GetImage(int width, int height) {
+	public ImageIcon GetImage(int width, int height, String path) {
 		
 		try {
-			BufferedImage temp = ImageIO.read(new File("res\\images\\magliette\\nike_black.png"));
+			BufferedImage temp = ImageIO.read(new File(path));
 			Image image = temp.getScaledInstance(width, height, Image.SCALE_SMOOTH);
 			img = new ImageIcon(image);
 		} catch (IOException e) {
@@ -78,6 +74,15 @@ public class ContenitoreArticolo extends JPanel {
 		return img;
 	}
 	
+	public void InserisciDati() {
+		articolo = contenutoVendita.getsc().getArticolo();
+		labelNome.setText(articolo.getNome());
+		labelDescrizione.setText(articolo.getDescrizione());
+		labelMarca.setText(articolo.getMarca());
+		labelTaglia.setText(articolo.getTaglia());
+		labelColore.setText(articolo.getColore());
+		labelImg.setIcon(GetImage(labelImg.getPreferredSize().width, labelImg.getPreferredSize().height, articolo.getImagePath()));
+	}
 	
 	public void ImpostaPanello() {
 		setLayout(new BorderLayout(0, 0));
@@ -88,7 +93,7 @@ public class ContenitoreArticolo extends JPanel {
 	public void ImpostaPanelloImmagine() {
 		pannelloImmagine = new JPanel();
 		pannelloImmagine.setBorder(new MatteBorder(0, 0, 0, 2, (Color) Color.GRAY));
-		pannelloImmagine.setBackground(utilit‡.bg);
+		pannelloImmagine.setBackground(utilities.bg);
 		add(pannelloImmagine, BorderLayout.WEST);
 		pannelloImmagine.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
@@ -99,34 +104,33 @@ public class ContenitoreArticolo extends JPanel {
 		labelImg.setBorder(null);
 		labelImg.setPreferredSize(new Dimension(140, 140));
 		labelImg.setMaximumSize(new Dimension(180, 300));
-		labelImg.setIcon(GetImage(labelImg.getPreferredSize().width, labelImg.getPreferredSize().height));
 	}
 	
 	public void ImpostaPanelloDati() {
 		
 		contenitoreDati = new JPanel();
-		contenitoreDati.setBackground(utilit‡.bg);
+		contenitoreDati.setBackground(utilities.bg);
 		contenitoreDati.setLayout(new BorderLayout(0, 0));
 		contenitoreDati.setBorder(new EmptyBorder(10, 10, 10, 10));
 		add(getContenitoreDati(), BorderLayout.CENTER);
 
 		panelloDati = new JPanel();
 		panelloDati.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
-		panelloDati.setBackground(utilit‡.bg);
+		panelloDati.setBackground(utilities.bg);
 		contenitoreDati.add(panelloDati, BorderLayout.CENTER);
 		panelloDati.setLayout(new BorderLayout(0, 0));
 		
-		labelNome = new JLabel("Maglietta di cotone");
+		labelNome = new JLabel();
 		panelloDati.add(labelNome, BorderLayout.NORTH);
 		labelNome.setHorizontalAlignment(SwingConstants.CENTER);
 		labelNome.setHorizontalTextPosition(SwingConstants.CENTER);
 		labelNome.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		labelNome.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
-		labelDescrizione = new JLabel("Descrizione articolo");
+		labelDescrizione = new JLabel();
 		labelDescrizione.setHorizontalAlignment(SwingConstants.CENTER);
 		labelDescrizione.setVerticalAlignment(SwingConstants.TOP);
-		labelDescrizione.setFont(utilit‡.arial);
+		labelDescrizione.setFont(utilities.arial);
 		panelloDati.add(labelDescrizione, BorderLayout.CENTER);
 		labelDescrizione.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
@@ -134,47 +138,50 @@ public class ContenitoreArticolo extends JPanel {
 		panelloQualit‡.setBorder(new MatteBorder(2, 0, 0, 0, (Color) Color.LIGHT_GRAY));
 		panelloQualit‡.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		panelloQualit‡.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		panelloQualit‡.setBackground(utilit‡.bg);
+		panelloQualit‡.setBackground(utilities.bg);
 		panelloDati.add(panelloQualit‡, BorderLayout.SOUTH);
 		
 		
-		labelMarca = new JLabel("Marca: Adidas");
+		labelMarca = new JLabel();
 		panelloQualit‡.add(labelMarca);
 		labelMarca.setAlignmentX(Component.CENTER_ALIGNMENT);
-		labelMarca.setFont(utilit‡.arialS);
+		labelMarca.setFont(utilities.arialS);
 		labelMarca.setPreferredSize(new Dimension(150, 15));
 		
 		horizontalStrut = Box.createHorizontalStrut(200);
 		panelloQualit‡.add(horizontalStrut);
 		
-		labelColore = new JLabel("Colore: nero");
+		labelColore = new JLabel();
 		labelColore.setPreferredSize(new Dimension(100, 14));
 		panelloQualit‡.add(labelColore);
 		labelColore.setAlignmentX(Component.CENTER_ALIGNMENT);
-		labelColore.setFont(utilit‡.arialS);
+		labelColore.setFont(utilities.arialS);
 		
 		horizontalStrut_1 = Box.createHorizontalStrut(200);
 		panelloQualit‡.add(horizontalStrut_1);
 		
-		labelTaglia = new JLabel("Taglia: M");
+		labelTaglia = new JLabel();
 		panelloQualit‡.add(labelTaglia);
 		labelTaglia.setAlignmentX(Component.CENTER_ALIGNMENT);
-		labelTaglia.setFont(utilit‡.arialS);
-		labelTaglia.setPreferredSize(new Dimension(100, 15));
-
-		
+		labelTaglia.setFont(utilities.arialS);
+		labelTaglia.setPreferredSize(new Dimension(100, 15));	
 	}
-
 	
 	//Getter
 	public JPanel getContenitoreDati() {
 		return contenitoreDati;
 	}
 
-	public Utilit‡Aspetto getUtilit‡() {
-		return utilit‡;
+	public Utilities getUtilities() {
+		return utilities;
 	}
 	
+	public float getPrezzoDiListino() {
+		return articolo.getPrezzoDiListino();
+	}
 	
+	public int getQuantit‡() {
+		return articolo.getQuantit‡();
+	}
 
 }
