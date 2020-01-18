@@ -15,6 +15,7 @@ import java.awt.Cursor;
 import java.awt.Component;
 import javax.swing.Box;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 import logic.Controller;
 
@@ -113,7 +114,9 @@ public class VenditeFrame extends JFrame{
 	}
 	
 	public void ImpostaPanelCentrale() {
-		table = new JTable();
+		DefaultTableModel tableData = new DefaultTableModel();
+		tableData.setColumnIdentifiers(new Object[] {"ID", "Contenuto", "Data", "Costo"});
+		table = new JTable(tableData);
 		scrollPane = new JScrollPane(table);
 		scrollPane.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		getContentPane().add(scrollPane, BorderLayout.CENTER);

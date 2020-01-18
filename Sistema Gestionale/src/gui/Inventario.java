@@ -1,32 +1,27 @@
 package gui;
 
 import java.awt.BorderLayout;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import logic.Controller;
-
-import javax.swing.JComboBox;
-import javax.swing.JScrollPane;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JToggleButton;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.border.EmptyBorder;
 
-public class Catalogo extends JFrame {
-	private static final long serialVersionUID = 1L;
-	
+import logic.Controller;
+import java.awt.Component;
+
+public class Inventario extends JFrame {
+
 	private Controller controller;
-	private ContenutoVendita contenutoVendita;
 	private Utilities utilities;
 	
 	private JPanel contentPane;
@@ -38,13 +33,11 @@ public class Catalogo extends JFrame {
 	private JToggleButton tglbtnRed;
 	private JToggleButton tglbtnGreen;
 	private JToggleButton tglbtnBlue;
-	private JButton btnAnnulla;
-
-	public Catalogo(Controller controller, ContenutoVendita contenutoVendita) {
-		//Reference a ContenutoVendita
+	private JButton btnIndietro;
+	private Component horizontalStrut;
+	
+	public Inventario(Controller controller) {
 		this.controller = controller;
-		this.contenutoVendita = contenutoVendita;
-		
 		utilities = new Utilities();
 		
 		ImpostaFinestra();
@@ -54,31 +47,21 @@ public class Catalogo extends JFrame {
 		AggiungiListener();
 	}
 	
-	
 	public void AggiungiListener() {
-		btnAnnulla.addActionListener(new ActionListener() {
+		btnIndietro.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				contenutoVendita.setEnabled(true);
-				controller.ChiudiFrame(Catalogo.this);
+				controller.CambiaFrame(Inventario.this, controller.getHomePage());
 			}
 			
 		});
 
-		this.addWindowListener(new WindowAdapter(){
-            public void windowClosing(WindowEvent e){
-                contenutoVendita.setEnabled(true);
-                controller.ChiudiFrame(Catalogo.this);
-            }
-        });
-
 	}
-
 	
 	public void ImpostaFinestra() {
-		setVisible(true);
-		setTitle("Catalogo");
+		setTitle("Inventario");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -149,16 +132,19 @@ public class Catalogo extends JFrame {
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         
         panel.add(Box.createRigidArea(new Dimension(1200, 10)));
-        panel.add(new Contenitore_catalogo(controller, this));
+        panel.add(new Contenitore_inventario(controller, this));
 	}
-
+	
 	public void ImpostaPanelloInferiore() {
 		JPanel panelloInferiore = new JPanel();
 		contentPane.add(panelloInferiore, BorderLayout.SOUTH);
 		
-		btnAnnulla = new JButton("Annulla");
-		btnAnnulla.setFont(utilities.arialL);
-		btnAnnulla.setBackground(utilities.redBtn);
-		panelloInferiore.add(btnAnnulla);
+		horizontalStrut = Box.createHorizontalStrut(1000);
+		panelloInferiore.add(horizontalStrut);
+		
+		btnIndietro = new JButton("Indietro");
+		btnIndietro.setFont(utilities.arialL);
+		btnIndietro.setBackground(utilities.redBtn);
+		panelloInferiore.add(btnIndietro);
 	}
 }

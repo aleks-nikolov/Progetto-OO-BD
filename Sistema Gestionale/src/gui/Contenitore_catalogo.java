@@ -17,6 +17,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+
+import logic.Controller;
+
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 
@@ -24,7 +27,7 @@ public class Contenitore_catalogo extends ContenitoreArticolo {
 	
 	private static final long serialVersionUID = 1L;
 
-	private ContenutoVendita contenutoVendita;
+	private Catalogo catalogo;
 
 	private JPanel panelloLaterale;
 	private JButton btnAggiungi;
@@ -33,9 +36,9 @@ public class Contenitore_catalogo extends ContenitoreArticolo {
 	private JPanel panelloQuantità;
 	private JComboBox<Integer> boxQuantità;
 	
-	public Contenitore_catalogo(ContenutoVendita cv) {
-		super(cv);
-		this.contenutoVendita = cv;
+	public Contenitore_catalogo(Controller controller, Catalogo catalogo) {
+		super(controller, catalogo);
+		this.catalogo = catalogo;
 		
 		ImpostaPanelloLaterale();
 		AggiungiListener();

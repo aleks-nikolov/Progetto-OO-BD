@@ -13,7 +13,7 @@ import logic.Controller;
 
 import java.awt.FlowLayout;
 
-public class HomePageFrame extends JFrame {
+public class HomePage extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 		
@@ -26,7 +26,7 @@ public class HomePageFrame extends JFrame {
 	private JButton btnEsci;
 	private JPanel footer;
 	
-	public HomePageFrame(Controller controller) {
+	public HomePage(Controller controller) {
 		//Reference a SwingController
 		this.controller = controller;
 		utilities = new Utilities();
@@ -43,7 +43,14 @@ public class HomePageFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				controller.CambiaFrame(HomePageFrame.this, controller.getVendite());
+				controller.CambiaFrame(HomePage.this, controller.getFinestraVendite());
+			}});
+		
+		btnInventario.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				controller.CambiaFrame(HomePage.this, controller.getFinestraInventario());
 			}});
 		
 		btnEsci.addActionListener(new ActionListener() {

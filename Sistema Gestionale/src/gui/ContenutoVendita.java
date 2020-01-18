@@ -52,7 +52,7 @@ public class ContenutoVendita extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				controller.CambiaFrame(ContenutoVendita.this, controller.getVendite());
+				controller.CambiaFrame(ContenutoVendita.this, controller.getFinestraVendite());
 			}
 			
 		});
@@ -69,7 +69,7 @@ public class ContenutoVendita extends JFrame{
 	}
 	
 	public void AggiungiArticolo() {
-		Contenitore_vendita temp = new Contenitore_vendita(this);
+		Contenitore_vendita temp = new Contenitore_vendita(controller, this);
 		panel.add(temp);
 		panel.add(Box.createRigidArea(new Dimension(1200, 10)));
 		panel.revalidate();
@@ -99,7 +99,7 @@ public class ContenutoVendita extends JFrame{
         getContentPane().add(scroll, BorderLayout.CENTER);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         
-        panel.add(new Contenitore_vendita(this));
+        panel.add(new Contenitore_vendita(controller, this));
         panel.add(Box.createRigidArea(new Dimension(1200, 10)));
 	}
 	

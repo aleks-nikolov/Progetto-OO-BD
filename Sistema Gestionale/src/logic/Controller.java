@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
-import gui.ContenutoVendita;
-import gui.HomePageFrame;
-import gui.VenditeFrame;
+import gui.*;
+
 
 public class Controller {
 
-	private HomePageFrame home;
+	private HomePage home;
+	private Inventario finestraInventario;
 	private VenditeFrame finestraVendite;
 	private ContenutoVendita contenutoVendita;
 	
@@ -27,11 +27,12 @@ public class Controller {
 	
 	public void InizializzaFinestre() {
 		//Inizializza e apre la home page
-		home = new HomePageFrame(this);
+		home = new HomePage(this);
 		home.setVisible(true);
 		
 		//Inizializza le altre finestre
 		finestraVendite = new VenditeFrame(this);
+		finestraInventario = new Inventario(this);
 		contenutoVendita = new ContenutoVendita(this);
 	}
 	
@@ -104,11 +105,14 @@ public class Controller {
 
 	
 	
-	public HomePageFrame getHomePage() {
+	public HomePage getHomePage() {
 		return home;
 	}
-	public VenditeFrame getVendite() {
+	public VenditeFrame getFinestraVendite() {
 		return finestraVendite;
+	}
+	public Inventario getFinestraInventario() {
+		return finestraInventario;
 	}
 	public ContenutoVendita getContenutoVendita() {
 		return contenutoVendita;

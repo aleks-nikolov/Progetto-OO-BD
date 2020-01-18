@@ -21,14 +21,19 @@ import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 
 import logic.Articolo;
+import logic.Controller;
 
 public class ContenitoreArticolo extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
+	private Controller controller;
 	private Utilities utilities;
 	
 	private ContenutoVendita contenutoVendita;
+	private Catalogo catalogo;
+	private Inventario inventario;
+	
 	private JPanel pannelloImmagine;
 	private JLabel labelImg;
 	private ImageIcon img;
@@ -42,13 +47,37 @@ public class ContenitoreArticolo extends JPanel {
 	private JPanel panelloQualità;
 	private Component horizontalStrut;
 	private Component horizontalStrut_1;
+	
 	private Articolo articolo;
 	
-	public ContenitoreArticolo(ContenutoVendita contenutoVendita) {
+	public ContenitoreArticolo(Controller controller, ContenutoVendita contenutoVendita) {
 		//Reference al parente
+		this.controller = controller;
 		this.contenutoVendita = contenutoVendita;
 		utilities = new Utilities();
 		
+		ImpostaPanello();
+		ImpostaPanelloImmagine();
+		ImpostaPanelloDati();
+	}
+	
+	public ContenitoreArticolo(Controller controller, Catalogo catalogo) {
+		//Reference al parente
+		this.controller = controller;
+		this.catalogo = catalogo;
+		utilities = new Utilities();
+						
+		ImpostaPanello();
+		ImpostaPanelloImmagine();
+		ImpostaPanelloDati();
+	}
+	
+	public ContenitoreArticolo(Controller controller, Inventario inventario) {
+		//Reference al parente
+		this.controller = controller;
+		this.inventario = inventario;
+		utilities = new Utilities();
+				
 		ImpostaPanello();
 		ImpostaPanelloImmagine();
 		ImpostaPanelloDati();
@@ -69,7 +98,8 @@ public class ContenitoreArticolo extends JPanel {
 	}
 	
 	public void InserisciDati() {
-		articolo = contenutoVendita.getController().getArticolo();
+		articolo = controller.getArticolo();
+		
 		labelNome.setText(articolo.getNome());
 		labelDescrizione.setText(articolo.getDescrizione());
 		labelMarca.setText(articolo.getMarca());
