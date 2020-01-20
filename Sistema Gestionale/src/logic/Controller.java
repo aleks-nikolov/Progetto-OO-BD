@@ -12,9 +12,10 @@ public class Controller {
 	private TransazioneDAO tr = new TransazioneDAO();
 	
 	private HomePage home;
-	private FinestraInventario finestraInventario;
 	private FinestraVendite finestraVendite;
+	private FinestraInventario finestraInventario;
 	private ContenutoVendita contenutoVendita;
+	private AggiuntaArticolo finestraAggiuntaArticolo;
 	
 	private ArrayList<String> categoria = new ArrayList<String>();
 	private ArrayList<String> marca = new ArrayList<String>();
@@ -44,7 +45,8 @@ public class Controller {
 		finestraVendite = new FinestraVendite(this);
 		finestraInventario = new FinestraInventario(this);
 		contenutoVendita = new ContenutoVendita(this);
-		
+		finestraAggiuntaArticolo = new AggiuntaArticolo(this);
+
 	}
 	
 	public void InizializzaArrayList() {
@@ -91,7 +93,6 @@ public class Controller {
 	}
 	
 	public void ChiudiFrame(JFrame frameDaChiudere) {
-		frameDaChiudere.setVisible(false);
 		frameDaChiudere.dispose();
 	}
 	
@@ -130,6 +131,9 @@ public class Controller {
 	}
 	public ContenutoVendita getContenutoVendita() {
 		return contenutoVendita;
+	}
+	public AggiuntaArticolo getFinestraAggiuntaArticolo() {
+		return finestraAggiuntaArticolo;
 	}
 
 }

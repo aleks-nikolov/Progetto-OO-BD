@@ -35,15 +35,19 @@ public class FinestraInventario extends JFrame {
 	private JComboBox boxCategoria;
 	private JComboBox boxMarca;
 	private JComboBox boxTaglia;
+	
 	private ButtonGroup btnGroup;
 	private JToggleButton tglbtnBlack;
 	private JToggleButton tglbtnWhite;
 	private JToggleButton tglbtnRed;
 	private JToggleButton tglbtnGreen;
 	private JToggleButton tglbtnBlue;
-	private JButton btnIndietro;
-	private Component horizontalStrut;
 	
+	private JButton btnAggiungi;
+	private JButton btnRifornimenti;
+	private JButton btnIndietro;
+
+	private Component horizontalStrut;
 	//**************************************************************************************
 	
 	public FinestraInventario(Controller controller) {
@@ -69,6 +73,15 @@ public class FinestraInventario extends JFrame {
 			}
 			
 		});
+		
+		btnAggiungi.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.CambiaFrame(FinestraInventario.this, controller.getFinestraAggiuntaArticolo());
+			}
+			
+		});
 
 	}
 	
@@ -91,7 +104,6 @@ public class FinestraInventario extends JFrame {
 		
 		boxCategoria = new JComboBox(controller.getCategoria().toArray());
 		boxCategoria.setPreferredSize(new Dimension(150, 25));
-		boxCategoria.setFont(utilities.arialS);
 		pannelloSuperiore.add(boxCategoria);
 		
 		btnGroup = new ButtonGroup();
@@ -128,13 +140,13 @@ public class FinestraInventario extends JFrame {
 		
 		boxMarca = new JComboBox(controller.getMarca().toArray());
 		boxMarca.setPreferredSize(new Dimension(150, 25));
-		boxMarca.setFont(utilities.arialS);
 		pannelloSuperiore.add(boxMarca);
 		
 		boxTaglia = new JComboBox(controller.getTaglia().toArray());
 		boxTaglia.setPreferredSize(new Dimension(150, 25));
-		boxTaglia.setFont(utilities.arialS);
 		pannelloSuperiore.add(boxTaglia);
+		
+		utilities.changeFont(pannelloSuperiore, utilities.arialS);
 		
 	}
 	
@@ -159,13 +171,22 @@ public class FinestraInventario extends JFrame {
 		pannelloInferiore = new JPanel();
 		contentPane.add(pannelloInferiore, BorderLayout.SOUTH);
 		
-		horizontalStrut = Box.createHorizontalStrut(1000);
+		horizontalStrut = Box.createHorizontalStrut(700);
 		pannelloInferiore.add(horizontalStrut);
 		
+		btnAggiungi = new JButton("Aggiungi Merce");
+		btnAggiungi.setBackground(utilities.greenBtn);
+		pannelloInferiore.add(btnAggiungi);
+		
+		btnRifornimenti = new JButton("Rifornimenti");
+		btnRifornimenti.setBackground(utilities.greenBtn);
+		pannelloInferiore.add(btnRifornimenti);
+		
 		btnIndietro = new JButton("Indietro");
-		btnIndietro.setFont(utilities.arialL);
 		btnIndietro.setBackground(utilities.redBtn);
 		pannelloInferiore.add(btnIndietro);
+		
+		utilities.changeFont(pannelloInferiore, utilities.arialL);
 		
 	}
 }

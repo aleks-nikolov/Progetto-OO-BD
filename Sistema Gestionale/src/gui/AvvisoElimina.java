@@ -16,9 +16,9 @@ import javax.swing.SwingConstants;
 public class AvvisoElimina extends JDialog {
 
 	private Utilities utilità;
+	
 	private JButton okButton;
 	private JButton cancelButton;
-	
 	
 	private final JPanel contentPanel = new JPanel();
 

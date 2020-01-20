@@ -82,7 +82,6 @@ public class HomePage extends JFrame {
 		btnVendite = new JButton("VENDITE");
 		btnVendite.setBounds(193, 40, 170, 75);
 		btnVendite.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnVendite.setFont(utilities.arialM);
 		btnVendite.setForeground(utilities.fg);
 		btnVendite.setBackground(utilities.greenBtn);
 		getContentPane().add(btnVendite);
@@ -90,7 +89,6 @@ public class HomePage extends JFrame {
 		btnInventario = new JButton("INVENTARIO");
 		btnInventario.setBounds(476, 40, 170, 75);
 		btnInventario.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnInventario.setFont(utilities.arialM);
 		btnInventario.setForeground(utilities.fg);
 		btnInventario.setBackground(utilities.greenBtn);
 		getContentPane().add(btnInventario);
@@ -98,7 +96,6 @@ public class HomePage extends JFrame {
 		btnStatistiche = new JButton("STATISTICHE");
 		btnStatistiche.setBounds(193, 209, 170, 75);
 		btnStatistiche.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnStatistiche.setFont(utilities.arialM);
 		btnStatistiche.setForeground(utilities.fg);
 		btnStatistiche.setBackground(utilities.blueBtn);
 		getContentPane().add(btnStatistiche);
@@ -106,11 +103,11 @@ public class HomePage extends JFrame {
 		btnEsci = new JButton("ESCI");
 		btnEsci.setBounds(476, 209, 170, 75);
 		btnEsci.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnEsci.setFont(utilities.arialM);
 		btnEsci.setForeground(utilities.fg);
 		btnEsci.setBackground(utilities.redBtn);
 		getContentPane().add(btnEsci);
 		
+		utilities.changeFont(getContentPane(), utilities.arialM);
 	}
 	
 	public void ImpostaFooter() {

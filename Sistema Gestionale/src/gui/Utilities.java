@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Font;
 
 public class Utilities {
@@ -23,4 +25,21 @@ public class Utilities {
 	Color greenBtn = new Color(60, 179, 113);
 	Color redBtn = new Color(178, 34, 34);
 	Color blueBtn = new Color(100, 149, 237);
+	
+//************************************************************************************
+	
+	public void changeFont (Component component, Font font) {
+	
+	    component.setFont (font);
+	    
+	    if(component instanceof Container)
+	    {
+	        for (Component child : ((Container) component).getComponents ())
+	        {
+	            changeFont(child, font);
+	        }
+	    }
+	    
+	}
+	
 }

@@ -80,10 +80,12 @@ public class FinestraVendite extends JFrame{
 
 	
 	public void ImpostaFinestra() {
+		
 		setTitle("Vendite");
 		setBounds(100, 100, 1000, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBackground(utilities.bg);
+		
 	}
 	
 	public void ImpostaPannelloSuperiore() {
@@ -94,7 +96,6 @@ public class FinestraVendite extends JFrame{
 		
 		btnNew = new JButton("+");
 		btnNew.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNew.setFont(utilities.arialS);
 		btnNew.setMargin(new Insets(10, 15, 10, 15));
 		btnNew.setForeground(utilities.fg);
 		btnNew.setBackground(utilities.greenBtn);
@@ -102,7 +103,6 @@ public class FinestraVendite extends JFrame{
 		
 		btnDelete = new JButton("-");
 		btnDelete.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnDelete.setFont(utilities.arialS);
 		btnDelete.setMargin(new Insets(10, 15, 10, 15));
 		btnDelete.setForeground(utilities.fg);
 		btnDelete.setBackground(utilities.redBtn);
@@ -110,7 +110,6 @@ public class FinestraVendite extends JFrame{
 		
 		btnRefresh = new JButton("REFRESH");
 		btnRefresh.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnRefresh.setFont(utilities.arialS);
 		btnRefresh.setForeground(utilities.fg);
 		btnRefresh.setBackground(new Color(255, 255, 255));
 		btnRefresh.setMargin(new Insets(10, 10, 10, 10));
@@ -118,18 +117,23 @@ public class FinestraVendite extends JFrame{
 		
 		upperHorizontalStrut = Box.createHorizontalStrut(700);
 		pannelloSuperiore.add(upperHorizontalStrut);
+		utilities.changeFont(pannelloSuperiore, utilities.arialS);
+		
 	}
 	
 	public void ImpostaPannelloCentrale() {
+		
 		DefaultTableModel tableData = new DefaultTableModel();
 		tableData.setColumnIdentifiers(new Object[] {"ID", "Contenuto", "Data", "Costo"});
 		table = new JTable(tableData);
 		scrollPane = new JScrollPane(table);
 		scrollPane.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
+		
 	}
 	
 	public void ImpostaPannelloInferiore() {
+		
 		pannelloInferiore = new JPanel();
 		pannelloInferiore.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		getContentPane().add(pannelloInferiore, BorderLayout.SOUTH);
@@ -145,6 +149,7 @@ public class FinestraVendite extends JFrame{
 		btnIndietro.setBackground(utilities.redBtn);
 		btnIndietro.setMargin(new Insets(10, 20, 10, 20));
 		pannelloInferiore.add(btnIndietro);
+		
 	}
 
 }
