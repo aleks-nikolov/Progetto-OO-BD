@@ -19,7 +19,8 @@ import javax.swing.table.DefaultTableModel;
 
 import logic.Controller;
 
-public class VenditeFrame extends JFrame{
+public class FinestraVendite extends JFrame{
+	
 	private static final long serialVersionUID = 1L;
 	
 	private Controller controller;
@@ -39,16 +40,20 @@ public class VenditeFrame extends JFrame{
 	private Component upperHorizontalStrut;
 	private Component lowerHorizontalStrut;
 
-	public VenditeFrame(Controller controller) {
+//**************************************************************************************
+	
+	public FinestraVendite(Controller controller) {
+		
 		//Reference a SwingController
 		this.controller = controller;
 		utilities = new Utilities();
 		
 		ImpostaFinestra();
-		ImpostaPanelSuperiore();
-		ImpostaPanelCentrale();
-		ImpostaPanelInferiore();
+		ImpostaPannelloSuperiore();
+		ImpostaPannelloCentrale();
+		ImpostaPannelloInferiore();
 		AggiungiListener();
+		
 	}
 	
 	public void AggiungiListener() {
@@ -57,7 +62,7 @@ public class VenditeFrame extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.CambiaFrame(VenditeFrame.this, controller.getContenutoVendita());
+				controller.CambiaFrame(FinestraVendite.this, controller.getContenutoVendita());
 			}
 			
 		});
@@ -66,8 +71,10 @@ public class VenditeFrame extends JFrame{
 	
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				controller.CambiaFrame(VenditeFrame.this, controller.getHomePage());
-			}});
+				controller.CambiaFrame(FinestraVendite.this, controller.getHomePage());
+			}
+			
+		});
 			
 	}
 
@@ -79,7 +86,7 @@ public class VenditeFrame extends JFrame{
 		setBackground(utilities.bg);
 	}
 	
-	public void ImpostaPanelSuperiore() {
+	public void ImpostaPannelloSuperiore() {
 		
 		pannelloSuperiore = new JPanel();
 		pannelloSuperiore.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -113,7 +120,7 @@ public class VenditeFrame extends JFrame{
 		pannelloSuperiore.add(upperHorizontalStrut);
 	}
 	
-	public void ImpostaPanelCentrale() {
+	public void ImpostaPannelloCentrale() {
 		DefaultTableModel tableData = new DefaultTableModel();
 		tableData.setColumnIdentifiers(new Object[] {"ID", "Contenuto", "Data", "Costo"});
 		table = new JTable(tableData);
@@ -122,7 +129,7 @@ public class VenditeFrame extends JFrame{
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 	}
 	
-	public void ImpostaPanelInferiore() {
+	public void ImpostaPannelloInferiore() {
 		pannelloInferiore = new JPanel();
 		pannelloInferiore.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		getContentPane().add(pannelloInferiore, BorderLayout.SOUTH);

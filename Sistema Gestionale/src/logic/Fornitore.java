@@ -11,6 +11,23 @@ public class Fornitore {
 	private String numeroCivico;
 	private String CAP;
 	
+	//Metodo equals
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Fornitore other = (Fornitore) obj;
+		if (partitaIVA == null) {
+			if (other.partitaIVA != null)
+				return false;
+		} else if (!partitaIVA.equals(other.partitaIVA))
+			return false;
+		return true;
+	}
 	
 	//Getters e setters
 	public String getNome() {

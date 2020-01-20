@@ -23,7 +23,6 @@ public class Articolo {
 	
 	public Articolo(String nome, String descrizione, String categoria, String marca, String taglia, String colore,
 			float prezzoDiListino, int percentualeSaldo, int quantità, String codice, char sesso, String imagePath) {
-		super();
 		this.nome = nome;
 		this.descrizione = descrizione;
 		this.categoria = categoria;
@@ -37,8 +36,6 @@ public class Articolo {
 		this.sesso = sesso;
 		this.imagePath = imagePath;
 	}
-	
-	
 	
 	//Metodo equals
 	@Override
@@ -58,7 +55,7 @@ public class Articolo {
 		return true;
 	}
 	
-	//Getters e setters
+	//Getter e setter
 	public String getNome() {
 		return nome;
 	}

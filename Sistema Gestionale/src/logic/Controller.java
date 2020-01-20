@@ -9,9 +9,11 @@ import gui.*;
 
 public class Controller {
 
+	private TransazioneDAO tr = new TransazioneDAO();
+	
 	private HomePage home;
-	private Inventario finestraInventario;
-	private VenditeFrame finestraVendite;
+	private FinestraInventario finestraInventario;
+	private FinestraVendite finestraVendite;
 	private ContenutoVendita contenutoVendita;
 	
 	private ArrayList<String> categoria = new ArrayList<String>();
@@ -19,21 +21,30 @@ public class Controller {
 	private ArrayList<String> colore = new ArrayList<String>();
 	private ArrayList<String> taglia = new ArrayList<String>();
 	private ArrayList<Articolo> articoli = new ArrayList<Articolo>();
+	private ArrayList<String> sessi = new ArrayList<String>();
+	
+	//**************************************************************************************
 	
 	public Controller() {
+		
+		tr.connect();
+		tr.execution();
 		InizializzaArrayList();
 		InizializzaFinestre();
+		
 	}
 	
 	public void InizializzaFinestre() {
+		
 		//Inizializza e apre la home page
 		home = new HomePage(this);
 		home.setVisible(true);
 		
 		//Inizializza le altre finestre
-		finestraVendite = new VenditeFrame(this);
-		finestraInventario = new Inventario(this);
+		finestraVendite = new FinestraVendite(this);
+		finestraInventario = new FinestraInventario(this);
 		contenutoVendita = new ContenutoVendita(this);
+		
 	}
 	
 	public void InizializzaArrayList() {
@@ -67,6 +78,10 @@ public class Controller {
 		taglia.add("XL");
 		taglia.add("XXL");
 		
+		sessi.add("M");
+		sessi.add("F");
+		sessi.add("U");
+		
 		articoli.add(new Articolo("Maglietta di cotone", "Maglietta leggera di cotone", "Magliette", "Adidas", "XL", "Nero", 15.25f, 0, 5, "123", 'M', "res\\images\\magliette\\adidas_black.png"));
 	}
 	
@@ -90,28 +105,27 @@ public class Controller {
 	public ArrayList<String> getCategoria() {
 		return categoria;
 	}
-
 	public ArrayList<String> getMarca() {
 		return marca;
 	}
-	
 	public ArrayList<String> getColore() {
 		return colore;
 	}
-	
 	public ArrayList<String> getTaglia() {
 		return taglia;
 	}
+	public ArrayList<String> getSesso() {
+		return sessi;
+	}
 
-	
 	
 	public HomePage getHomePage() {
 		return home;
 	}
-	public VenditeFrame getFinestraVendite() {
+	public FinestraVendite getFinestraVendite() {
 		return finestraVendite;
 	}
-	public Inventario getFinestraInventario() {
+	public FinestraInventario getFinestraInventario() {
 		return finestraInventario;
 	}
 	public ContenutoVendita getContenutoVendita() {

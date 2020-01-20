@@ -24,29 +24,32 @@ public class ContenutoVendita extends JFrame{
 	private Controller controller;
 	private Utilities utilities;
 	
+	private JPanel pannelloCentrale;
+	private JPanel pannelloInferiore;
+	private JScrollPane scroll;
+		
 	private JButton btnApplica;
 	private JButton btnAnnulla;
 	private JButton btnAdd;
-		
-	private JPanel pannelloInferiore;
-	private JPanel panel;
-	private JScrollPane scroll;
+
 	private Component horizontalStrut;
 	private Component horizontalStrut_1;
 
+//**************************************************************************************
 	
 	public ContenutoVendita(Controller controller){
+		
 		this.controller = controller;
 		utilities = new Utilities();
 		
 		ImpostaFinestra();
-		ImpostaPanelloCentrale();
-		ImpostaPanelInferiore();
+		ImpostaPannelloCentrale();
+		ImpostaPannelloInferiore();
 		AggiungiListener();
+		
 	}
 	
 	public void AggiungiListener() {
-		
 		
 		btnAnnulla.addActionListener(new ActionListener() {
 
@@ -66,44 +69,54 @@ public class ContenutoVendita extends JFrame{
 			}
 			
 		});
+		
 	}
 	
 	public void AggiungiArticolo() {
+		
 		Contenitore_vendita temp = new Contenitore_vendita(controller, this);
-		panel.add(temp);
-		panel.add(Box.createRigidArea(new Dimension(1200, 10)));
-		panel.revalidate();
-		panel.repaint();
+		pannelloCentrale.add(temp);
+		pannelloCentrale.add(Box.createRigidArea(new Dimension(1200, 10)));
+		pannelloCentrale.revalidate();
+		pannelloCentrale.repaint();
+		
 	}
 	
 	public void RimuoviArticolo(Contenitore_vendita contenitoreDaRimuovere) {
-		panel.remove(contenitoreDaRimuovere);
-		panel.revalidate();
-		panel.repaint();
+		
+		pannelloCentrale.remove(contenitoreDaRimuovere);
+		pannelloCentrale.revalidate();
+		pannelloCentrale.repaint();
+		
 	}
 	
 	public void ImpostaFinestra() {
+		
 		setTitle("Contenuto Vendita");
 		setBounds(100, 100, 1280, 720);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBackground(utilities.bg);
+		
 	}
 	
-	public void ImpostaPanelloCentrale() {
-		panel = new JPanel();
-		panel.setBackground(utilities.bg);
-		getContentPane().add(panel, BorderLayout.CENTER);
+	public void ImpostaPannelloCentrale() {
 		
-		scroll = new JScrollPane(panel);
+		pannelloCentrale = new JPanel();
+		pannelloCentrale.setBackground(utilities.bg);
+		getContentPane().add(pannelloCentrale, BorderLayout.CENTER);
+		
+		scroll = new JScrollPane(pannelloCentrale);
 		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         getContentPane().add(scroll, BorderLayout.CENTER);
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        pannelloCentrale.setLayout(new BoxLayout(pannelloCentrale, BoxLayout.Y_AXIS));
         
-        panel.add(new Contenitore_vendita(controller, this));
-        panel.add(Box.createRigidArea(new Dimension(1200, 10)));
+        pannelloCentrale.add(new Contenitore_vendita(controller, this));
+        pannelloCentrale.add(Box.createRigidArea(new Dimension(1200, 10)));
+        
 	}
 	
-	public void ImpostaPanelInferiore() {
+	public void ImpostaPannelloInferiore() {
+		
 		pannelloInferiore = new JPanel();
 		pannelloInferiore.setBackground(utilities.bg);
 		getContentPane().add(pannelloInferiore, BorderLayout.SOUTH);
@@ -131,6 +144,7 @@ public class ContenutoVendita extends JFrame{
 		btnAnnulla.setFont(utilities.arialM);
 		btnAnnulla.setMargin(new Insets(10, 20, 10, 20));
 		pannelloInferiore.add(btnAnnulla);
+		
 	}
 	
 	public Controller getController() {

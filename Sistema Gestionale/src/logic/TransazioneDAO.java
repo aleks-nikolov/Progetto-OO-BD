@@ -11,7 +11,7 @@ public class TransazioneDAO {
 	private String username = "postgres";
 	private String pass = "postgres";
 	
-	Connection conn;
+	private Connection conn;
 	
 	public void connect() {
 		try {

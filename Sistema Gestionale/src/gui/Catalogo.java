@@ -30,9 +30,14 @@ public class Catalogo extends JFrame {
 	private Utilities utilities;
 	
 	private JPanel contentPane;
+	private JPanel pannelloSuperiore;
+	private JPanel pannelloCentrale;
+	private JPanel pannelloInferiore;
+	
 	private JComboBox boxCategoria;
 	private JComboBox boxMarca;
 	private JComboBox boxTaglia;
+	private ButtonGroup btnGroup;
 	private JToggleButton tglbtnBlack;
 	private JToggleButton tglbtnWhite;
 	private JToggleButton tglbtnRed;
@@ -40,18 +45,20 @@ public class Catalogo extends JFrame {
 	private JToggleButton tglbtnBlue;
 	private JButton btnAnnulla;
 
+	//**************************************************************************************
+	
 	public Catalogo(Controller controller, ContenutoVendita contenutoVendita) {
-		//Reference a ContenutoVendita
+
 		this.controller = controller;
 		this.contenutoVendita = contenutoVendita;
-		
 		utilities = new Utilities();
 		
 		ImpostaFinestra();
-		ImpostaPanelloSuperiore();
-		ImpostaPanelloCentrale();
-		ImpostaPanelloInferiore();
+		ImpostaPannelloSuperiore();
+		ImpostaPannelloCentrale();
+		ImpostaPannelloInferiore();
 		AggiungiListener();
+		
 	}
 	
 	
@@ -77,6 +84,7 @@ public class Catalogo extends JFrame {
 
 	
 	public void ImpostaFinestra() {
+		
 		setVisible(true);
 		setTitle("Catalogo");
 		setBounds(100, 100, 1280, 720);
@@ -84,81 +92,88 @@ public class Catalogo extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		
 	}
 	
-	public void ImpostaPanelloSuperiore() {
-		JPanel panelloSuperiore = new JPanel();
-		contentPane.add(panelloSuperiore, BorderLayout.NORTH);
+	public void ImpostaPannelloSuperiore() {
+		
+		pannelloSuperiore = new JPanel();
+		contentPane.add(pannelloSuperiore, BorderLayout.NORTH);
 		
 		boxCategoria = new JComboBox(controller.getCategoria().toArray());
 		boxCategoria.setPreferredSize(new Dimension(150, 25));
 		boxCategoria.setFont(utilities.arialS);
-		panelloSuperiore.add(boxCategoria);
+		pannelloSuperiore.add(boxCategoria);
 		
-		ButtonGroup btnGroup = new ButtonGroup();
+		btnGroup = new ButtonGroup();
 		
 		tglbtnBlack = new JToggleButton();
 		tglbtnBlack.setPreferredSize(new Dimension(25, 25));
 		tglbtnBlack.setBackground(utilities.black);
 		btnGroup.add(tglbtnBlack);
-		panelloSuperiore.add(tglbtnBlack);
+		pannelloSuperiore.add(tglbtnBlack);
 		
 		tglbtnWhite = new JToggleButton();
 		tglbtnWhite.setPreferredSize(new Dimension(25, 25));
 		tglbtnWhite.setBackground(utilities.white);
 		btnGroup.add(tglbtnWhite);
-		panelloSuperiore.add(tglbtnWhite);
+		pannelloSuperiore.add(tglbtnWhite);
 		
 		tglbtnRed = new JToggleButton();
 		tglbtnRed.setPreferredSize(new Dimension(25, 25));
 		tglbtnRed.setBackground(utilities.redBtn);
 		btnGroup.add(tglbtnRed);
-		panelloSuperiore.add(tglbtnRed);
+		pannelloSuperiore.add(tglbtnRed);
 		
 		tglbtnGreen = new JToggleButton();
 		tglbtnGreen.setPreferredSize(new Dimension(25, 25));
 		tglbtnGreen.setBackground(utilities.greenBtn);
 		btnGroup.add(tglbtnGreen);
-		panelloSuperiore.add(tglbtnGreen);
+		pannelloSuperiore.add(tglbtnGreen);
 		
 		tglbtnBlue = new JToggleButton();
 		tglbtnBlue.setPreferredSize(new Dimension(25, 25));
 		tglbtnBlue.setBackground(utilities.blueBtn);
 		btnGroup.add(tglbtnBlue);
-		panelloSuperiore.add(tglbtnBlue);
+		pannelloSuperiore.add(tglbtnBlue);
 		
 		boxMarca = new JComboBox(controller.getMarca().toArray());
 		boxMarca.setPreferredSize(new Dimension(150, 25));
 		boxMarca.setFont(utilities.arialS);
-		panelloSuperiore.add(boxMarca);
+		pannelloSuperiore.add(boxMarca);
 		
 		boxTaglia = new JComboBox(controller.getTaglia().toArray());
 		boxTaglia.setPreferredSize(new Dimension(150, 25));
 		boxTaglia.setFont(utilities.arialS);
-		panelloSuperiore.add(boxTaglia);
+		pannelloSuperiore.add(boxTaglia);
+		
 	}
 	
-	public void ImpostaPanelloCentrale() {
-		JPanel panel = new JPanel();
-		panel.setBackground(utilities.bg);
-		getContentPane().add(panel, BorderLayout.CENTER);
+	public void ImpostaPannelloCentrale() {
 		
-		JScrollPane scroll = new JScrollPane(panel);
+		pannelloCentrale = new JPanel();
+		pannelloCentrale.setBackground(utilities.bg);
+		getContentPane().add(pannelloCentrale, BorderLayout.CENTER);
+		
+		JScrollPane scroll = new JScrollPane(pannelloCentrale);
 		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         getContentPane().add(scroll, BorderLayout.CENTER);
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        pannelloCentrale.setLayout(new BoxLayout(pannelloCentrale, BoxLayout.Y_AXIS));
         
-        panel.add(Box.createRigidArea(new Dimension(1200, 10)));
-        panel.add(new Contenitore_catalogo(controller, this));
+        pannelloCentrale.add(Box.createRigidArea(new Dimension(1200, 10)));
+        pannelloCentrale.add(new Contenitore_catalogo(controller, this));
+        
 	}
 
-	public void ImpostaPanelloInferiore() {
-		JPanel panelloInferiore = new JPanel();
-		contentPane.add(panelloInferiore, BorderLayout.SOUTH);
+	public void ImpostaPannelloInferiore() {
+		
+		pannelloInferiore = new JPanel();
+		contentPane.add(pannelloInferiore, BorderLayout.SOUTH);
 		
 		btnAnnulla = new JButton("Annulla");
 		btnAnnulla.setFont(utilities.arialL);
 		btnAnnulla.setBackground(utilities.redBtn);
-		panelloInferiore.add(btnAnnulla);
+		pannelloInferiore.add(btnAnnulla);
+		
 	}
 }

@@ -16,7 +16,7 @@ import logic.Controller;
 public class Contenitore_inventario extends ContenitoreArticolo {
 	private static final long serialVersionUID = 1L;
 
-	private Inventario inventario;
+	private FinestraInventario inventario;
 	
 	private JPanel panelloLaterale;
 	private JLabel labelQuantità;
@@ -24,7 +24,7 @@ public class Contenitore_inventario extends ContenitoreArticolo {
 	private JLabel lblPrezzo;
 	private JLabel lblQuantitInMagazzino;
 	
-	public Contenitore_inventario(Controller controller, Inventario inventario) {
+	public Contenitore_inventario(Controller controller, FinestraInventario inventario) {
 		super(controller, inventario);
 		this.inventario = inventario;
 		

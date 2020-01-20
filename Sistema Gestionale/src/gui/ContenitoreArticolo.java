@@ -32,7 +32,7 @@ public class ContenitoreArticolo extends JPanel {
 	
 	private ContenutoVendita contenutoVendita;
 	private Catalogo catalogo;
-	private Inventario inventario;
+	private FinestraInventario inventario;
 	
 	private JPanel pannelloImmagine;
 	private JLabel labelImg;
@@ -72,7 +72,7 @@ public class ContenitoreArticolo extends JPanel {
 		ImpostaPanelloDati();
 	}
 	
-	public ContenitoreArticolo(Controller controller, Inventario inventario) {
+	public ContenitoreArticolo(Controller controller, FinestraInventario inventario) {
 		//Reference al parente
 		this.controller = controller;
 		this.inventario = inventario;

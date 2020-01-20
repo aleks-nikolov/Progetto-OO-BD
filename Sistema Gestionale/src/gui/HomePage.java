@@ -20,11 +20,15 @@ public class HomePage extends JFrame {
 	private Controller controller;
 	private Utilities utilities;
 	
+	//Definizione componenti grafici
 	private JButton btnVendite;
 	private JButton btnInventario;
 	private JButton btnStatistiche;
 	private JButton btnEsci;
+	
 	private JPanel footer;
+	
+	//**************************************************************************************
 	
 	public HomePage(Controller controller) {
 		//Reference a SwingController
@@ -34,7 +38,6 @@ public class HomePage extends JFrame {
 		ImpostaFinestra();
 		ImpostaFooter();
 		AggiungiListener();
-		ImpostaFooter();
 	}
 	
 	public void AggiungiListener() {
@@ -44,25 +47,32 @@ public class HomePage extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				controller.CambiaFrame(HomePage.this, controller.getFinestraVendite());
-			}});
+			}
+			
+		});
 		
 		btnInventario.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				controller.CambiaFrame(HomePage.this, controller.getFinestraInventario());
-			}});
+			}
+			
+		});
 		
 		btnEsci.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
-			}});
+			}
+			
+		});
 		
 	}
 	
 	public void ImpostaFinestra() {
+		
 		setTitle("Home Page");
 		setBounds(100, 100, 850, 478);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -101,15 +111,16 @@ public class HomePage extends JFrame {
 		btnEsci.setBackground(utilities.redBtn);
 		getContentPane().add(btnEsci);
 		
-		
 	}
 	
 	public void ImpostaFooter() {
+		
 		footer = new JPanel();
 		footer.setBorder(new MatteBorder(2, 0, 0, 0, (Color) Color.GRAY));
 		footer.setBackground(utilities.bg);
 		footer.setBounds(0, 339, 834, 100);
 		getContentPane().add(footer);
 		footer.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
 	}
 }
