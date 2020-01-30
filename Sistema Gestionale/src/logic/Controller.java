@@ -24,7 +24,7 @@ public class Controller {
 	private ArrayList<Articolo> articoli = new ArrayList<Articolo>();
 	private ArrayList<String> sessi = new ArrayList<String>();
 	
-	//**************************************************************************************
+//**************************************************************************************
 	
 	public Controller() {
 		
@@ -80,11 +80,12 @@ public class Controller {
 		taglia.add("XL");
 		taglia.add("XXL");
 		
+		sessi.add("SESSO");
 		sessi.add("M");
 		sessi.add("F");
 		sessi.add("U");
 		
-		articoli.add(new Articolo("Maglietta di cotone", "Maglietta leggera di cotone", "Magliette", "Adidas", "XL", "Nero", 15.25f, 0, 5, "123", 'M', "res\\images\\magliette\\adidas_black.png"));
+		articoli.add(new Articolo("123", "Maglietta di cotone", "Maglietta leggera di cotone", "Magliette", "Adidas", "XL", "Nero", 15.25f, 0, 5, 'M', "res\\images\\magliette\\adidas_black.png"));
 	}
 	
 	public void CambiaFrame(JFrame frameDaNascondere, JFrame frameDaMostrare) {

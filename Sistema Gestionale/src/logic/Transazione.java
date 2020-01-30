@@ -10,6 +10,9 @@ public class Transazione {
 	private float valoreTotale;
 	private Date data;
 	
+//**************************************************************************************
+	
+	
 	//Getters e setters
 	public ComposizioneTransazione getCompTransazione() {
 		return compTransazione;

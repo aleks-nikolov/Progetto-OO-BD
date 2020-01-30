@@ -7,6 +7,8 @@ public class ComposizioneTransazione {
 	private int quantità;
 	private float valore;
 	
+//**************************************************************************************
+	
 	//Getters e setters
 	public Articolo getArticolo() {
 		return articolo;

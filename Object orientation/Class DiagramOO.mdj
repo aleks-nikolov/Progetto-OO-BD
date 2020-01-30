@@ -6554,7 +6554,7 @@
 											"top": 23,
 											"width": 198,
 											"height": 13,
-											"text": "Utilities"
+											"text": "Style"
 										},
 										{
 											"_type": "LabelView",
@@ -13804,7 +13804,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Utilities",
+					"name": "Style",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",

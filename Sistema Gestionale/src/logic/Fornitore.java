@@ -11,6 +11,8 @@ public class Fornitore {
 	private String numeroCivico;
 	private String CAP;
 	
+//**************************************************************************************
+	
 	//Metodo equals
 	@Override
 	public boolean equals(Object obj) {

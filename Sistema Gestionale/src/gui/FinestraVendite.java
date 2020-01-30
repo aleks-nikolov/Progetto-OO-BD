@@ -24,7 +24,7 @@ public class FinestraVendite extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
 	private Controller controller;
-	private Utilities utilities;
+	private Style style;
 	
 	//Definizione componenti grafici
 	private JPanel pannelloSuperiore;
@@ -46,7 +46,7 @@ public class FinestraVendite extends JFrame{
 		
 		//Reference a SwingController
 		this.controller = controller;
-		utilities = new Utilities();
+		style = new Style();
 		
 		ImpostaFinestra();
 		ImpostaPannelloSuperiore();
@@ -84,40 +84,41 @@ public class FinestraVendite extends JFrame{
 		setTitle("Vendite");
 		setBounds(100, 100, 1000, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBackground(utilities.bg);
+		setBackground(style.bg);
 		
 	}
 	
 	public void ImpostaPannelloSuperiore() {
 		
 		pannelloSuperiore = new JPanel();
-		pannelloSuperiore.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		pannelloSuperiore.setBorder(new LineBorder(style.border1, 2));
+		pannelloSuperiore.setBackground(style.bg);
 		getContentPane().add(pannelloSuperiore, BorderLayout.NORTH);
 		
 		btnNew = new JButton("+");
 		btnNew.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNew.setMargin(new Insets(10, 15, 10, 15));
-		btnNew.setForeground(utilities.fg);
-		btnNew.setBackground(utilities.greenBtn);
+		btnNew.setForeground(style.fg);
+		btnNew.setBackground(style.greenBtn);
 		pannelloSuperiore.add(btnNew);
 		
 		btnDelete = new JButton("-");
 		btnDelete.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnDelete.setMargin(new Insets(10, 15, 10, 15));
-		btnDelete.setForeground(utilities.fg);
-		btnDelete.setBackground(utilities.redBtn);
+		btnDelete.setForeground(style.fg);
+		btnDelete.setBackground(style.redBtn);
 		pannelloSuperiore.add(btnDelete);
 		
 		btnRefresh = new JButton("REFRESH");
 		btnRefresh.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnRefresh.setForeground(utilities.fg);
+		btnRefresh.setForeground(style.fg);
 		btnRefresh.setBackground(new Color(255, 255, 255));
 		btnRefresh.setMargin(new Insets(10, 10, 10, 10));
 		pannelloSuperiore.add(btnRefresh);
 		
 		upperHorizontalStrut = Box.createHorizontalStrut(700);
 		pannelloSuperiore.add(upperHorizontalStrut);
-		utilities.changeFont(pannelloSuperiore, utilities.arialS);
+		style.changeFont(pannelloSuperiore, style.defaultS);
 		
 	}
 	
@@ -126,8 +127,10 @@ public class FinestraVendite extends JFrame{
 		DefaultTableModel tableData = new DefaultTableModel();
 		tableData.setColumnIdentifiers(new Object[] {"ID", "Contenuto", "Data", "Costo"});
 		table = new JTable(tableData);
+		table.setBackground(style.bg);
 		scrollPane = new JScrollPane(table);
-		scrollPane.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		scrollPane.setBackground(style.bg);;
+		scrollPane.setBorder(new LineBorder(style.border1, 2));
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
 	}
@@ -135,7 +138,8 @@ public class FinestraVendite extends JFrame{
 	public void ImpostaPannelloInferiore() {
 		
 		pannelloInferiore = new JPanel();
-		pannelloInferiore.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		pannelloInferiore.setBackground(style.bg);
+		pannelloInferiore.setBorder(new LineBorder(style.border1, 2));
 		getContentPane().add(pannelloInferiore, BorderLayout.SOUTH);
 		
 		pannelloInferiore.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -144,9 +148,9 @@ public class FinestraVendite extends JFrame{
 		
 		btnIndietro = new JButton("INDIETRO");
 		btnIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnIndietro.setFont(utilities.arialS);
-		btnIndietro.setForeground(utilities.fg);
-		btnIndietro.setBackground(utilities.redBtn);
+		btnIndietro.setFont(style.defaultS);
+		btnIndietro.setForeground(style.fg);
+		btnIndietro.setBackground(style.redBtn);
 		btnIndietro.setMargin(new Insets(10, 20, 10, 20));
 		pannelloInferiore.add(btnIndietro);
 		

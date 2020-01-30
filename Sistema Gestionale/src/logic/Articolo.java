@@ -4,6 +4,7 @@ public class Articolo {
 
 	private ComposizioneTransazione compTransazione;
 	
+	private String codice;
 	private String nome;
 	private String descrizione;
 	private String categoria;
@@ -13,16 +14,18 @@ public class Articolo {
 	private float prezzoDiListino;
 	private int percentualeSaldo;
 	private int quantità;
-	private String codice;
 	private char sesso;
 	private String imagePath;
 	
+//**************************************************************************************	
+
 	public Articolo() {
 		
 	}
 	
-	public Articolo(String nome, String descrizione, String categoria, String marca, String taglia, String colore,
-			float prezzoDiListino, int percentualeSaldo, int quantità, String codice, char sesso, String imagePath) {
+	public Articolo(String codice, String nome, String descrizione, String categoria, String marca, String taglia, String colore,
+			float prezzoDiListino, int percentualeSaldo, int quantità, char sesso, String imagePath) {
+		this.codice = codice;
 		this.nome = nome;
 		this.descrizione = descrizione;
 		this.categoria = categoria;
@@ -32,7 +35,6 @@ public class Articolo {
 		this.prezzoDiListino = prezzoDiListino;
 		this.percentualeSaldo = percentualeSaldo;
 		this.quantità = quantità;
-		this.codice = codice;
 		this.sesso = sesso;
 		this.imagePath = imagePath;
 	}
@@ -56,6 +58,12 @@ public class Articolo {
 	}
 	
 	//Getter e setter
+	public String getCodice() {
+		return codice;
+	}
+	public void setCodice(String codice) {
+		this.codice = codice;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -109,12 +117,6 @@ public class Articolo {
 	}
 	public void setQuantità(int quantità) {
 		this.quantità = quantità;
-	}
-	public String getCodice() {
-		return codice;
-	}
-	public void setCodice(String codice) {
-		this.codice = codice;
 	}
 	public char getSesso() {
 		return sesso;

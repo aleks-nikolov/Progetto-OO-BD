@@ -18,7 +18,7 @@ public class HomePage extends JFrame {
 	private static final long serialVersionUID = 1L;
 		
 	private Controller controller;
-	private Utilities utilities;
+	private Style style;
 	
 	//Definizione componenti grafici
 	private JButton btnVendite;
@@ -28,12 +28,12 @@ public class HomePage extends JFrame {
 	
 	private JPanel footer;
 	
-	//**************************************************************************************
+//**************************************************************************************
 	
 	public HomePage(Controller controller) {
 		//Reference a SwingController
 		this.controller = controller;
-		utilities = new Utilities();
+		style = new Style();
 		
 		ImpostaFinestra();
 		ImpostaFooter();
@@ -76,45 +76,45 @@ public class HomePage extends JFrame {
 		setTitle("Home Page");
 		setBounds(100, 100, 850, 478);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setBackground(utilities.bg);
+		getContentPane().setBackground(style.bg);
 		getContentPane().setLayout(null);
 		
 		btnVendite = new JButton("VENDITE");
 		btnVendite.setBounds(193, 40, 170, 75);
 		btnVendite.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnVendite.setForeground(utilities.fg);
-		btnVendite.setBackground(utilities.greenBtn);
+		btnVendite.setForeground(style.fg);
+		btnVendite.setBackground(style.greenBtn);
 		getContentPane().add(btnVendite);
 		
 		btnInventario = new JButton("INVENTARIO");
 		btnInventario.setBounds(476, 40, 170, 75);
 		btnInventario.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnInventario.setForeground(utilities.fg);
-		btnInventario.setBackground(utilities.greenBtn);
+		btnInventario.setForeground(style.fg);
+		btnInventario.setBackground(style.greenBtn);
 		getContentPane().add(btnInventario);
 		
 		btnStatistiche = new JButton("STATISTICHE");
 		btnStatistiche.setBounds(193, 209, 170, 75);
 		btnStatistiche.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnStatistiche.setForeground(utilities.fg);
-		btnStatistiche.setBackground(utilities.blueBtn);
+		btnStatistiche.setForeground(style.fg);
+		btnStatistiche.setBackground(style.blueBtn);
 		getContentPane().add(btnStatistiche);
 		
 		btnEsci = new JButton("ESCI");
 		btnEsci.setBounds(476, 209, 170, 75);
 		btnEsci.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnEsci.setForeground(utilities.fg);
-		btnEsci.setBackground(utilities.redBtn);
+		btnEsci.setForeground(style.fg);
+		btnEsci.setBackground(style.redBtn);
 		getContentPane().add(btnEsci);
 		
-		utilities.changeFont(getContentPane(), utilities.arialM);
+		style.changeFont(getContentPane(), style.defaultM);
 	}
 	
 	public void ImpostaFooter() {
 		
 		footer = new JPanel();
 		footer.setBorder(new MatteBorder(2, 0, 0, 0, (Color) Color.GRAY));
-		footer.setBackground(utilities.bg);
+		footer.setBackground(style.bg);
 		footer.setBounds(0, 339, 834, 100);
 		getContentPane().add(footer);
 		footer.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));

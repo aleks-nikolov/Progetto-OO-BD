@@ -41,31 +41,35 @@ public class Contenitore_inventario extends ContenitoreArticolo {
 	
 	public void ImpostaPanelloLaterale() {
 		panelloLaterale = new JPanel();
-		panelloLaterale.setBackground(getUtilities().bg);
+		panelloLaterale.setBackground(getStyle().bg);
 		panelloLaterale.setPreferredSize(new Dimension(150, 10));
 		getContenitoreDati().add(panelloLaterale, BorderLayout.EAST);
 		panelloLaterale.setBorder(new LineBorder(new Color(192, 192, 192), 2));
 		panelloLaterale.setLayout(new BoxLayout(panelloLaterale, BoxLayout.Y_AXIS));
 		
 		lblPrezzo = new JLabel("PREZZO");
-		lblPrezzo.setFont(getUtilities().arialS);
+		lblPrezzo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lblPrezzo.setFont(getStyle().defaultS);
 		panelloLaterale.add(lblPrezzo);
 		
 		labelPrezzo = new JLabel();
+		labelPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panelloLaterale.add(labelPrezzo);
 		labelPrezzo.setHorizontalTextPosition(SwingConstants.CENTER);
 		labelPrezzo.setHorizontalAlignment(SwingConstants.CENTER);
-		labelPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
 		labelPrezzo.setFont(new Font("Arial Black", Font.PLAIN, 20));
 		
-		lblQuantitInMagazzino = new JLabel("quantit\u00E0 in magazzino:");
-		lblQuantitInMagazzino.setFont(getUtilities().arialS);
+		lblQuantitInMagazzino = new JLabel("<html>quantità in<br/> magazzino</html>");
+		lblQuantitInMagazzino.setHorizontalAlignment(SwingConstants.CENTER);
+		lblQuantitInMagazzino.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lblQuantitInMagazzino.setFont(getStyle().defaultS);
 		panelloLaterale.add(lblQuantitInMagazzino);
 		
 		labelQuantità = new JLabel();
 		labelQuantità.setHorizontalAlignment(SwingConstants.CENTER);
 		labelQuantità.setAlignmentX(Component.CENTER_ALIGNMENT);
-		labelQuantità.setFont(getUtilities().arialS);
+		labelQuantità.setFont(getStyle().defaultS);
 		labelQuantità.setPreferredSize(new Dimension(49, 15));
 		panelloLaterale.add(labelQuantità);
 	}

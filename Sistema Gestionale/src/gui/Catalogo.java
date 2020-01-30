@@ -27,7 +27,7 @@ public class Catalogo extends JFrame {
 	
 	private Controller controller;
 	private ContenutoVendita contenutoVendita;
-	private Utilities utilities;
+	private Style style;
 	
 	private JPanel contentPane;
 	private JPanel pannelloSuperiore;
@@ -45,13 +45,13 @@ public class Catalogo extends JFrame {
 	private JToggleButton tglbtnBlue;
 	private JButton btnAnnulla;
 
-	//**************************************************************************************
+//**************************************************************************************
 	
 	public Catalogo(Controller controller, ContenutoVendita contenutoVendita) {
 
 		this.controller = controller;
 		this.contenutoVendita = contenutoVendita;
-		utilities = new Utilities();
+		style = new Style();
 		
 		ImpostaFinestra();
 		ImpostaPannelloSuperiore();
@@ -102,49 +102,49 @@ public class Catalogo extends JFrame {
 		
 		boxCategoria = new JComboBox(controller.getCategoria().toArray());
 		boxCategoria.setPreferredSize(new Dimension(150, 25));
-		boxCategoria.setFont(utilities.arialS);
+		boxCategoria.setFont(style.defaultS);
 		pannelloSuperiore.add(boxCategoria);
 		
 		btnGroup = new ButtonGroup();
 		
 		tglbtnBlack = new JToggleButton();
 		tglbtnBlack.setPreferredSize(new Dimension(25, 25));
-		tglbtnBlack.setBackground(utilities.black);
+		tglbtnBlack.setBackground(style.black);
 		btnGroup.add(tglbtnBlack);
 		pannelloSuperiore.add(tglbtnBlack);
 		
 		tglbtnWhite = new JToggleButton();
 		tglbtnWhite.setPreferredSize(new Dimension(25, 25));
-		tglbtnWhite.setBackground(utilities.white);
+		tglbtnWhite.setBackground(style.white);
 		btnGroup.add(tglbtnWhite);
 		pannelloSuperiore.add(tglbtnWhite);
 		
 		tglbtnRed = new JToggleButton();
 		tglbtnRed.setPreferredSize(new Dimension(25, 25));
-		tglbtnRed.setBackground(utilities.redBtn);
+		tglbtnRed.setBackground(style.redBtn);
 		btnGroup.add(tglbtnRed);
 		pannelloSuperiore.add(tglbtnRed);
 		
 		tglbtnGreen = new JToggleButton();
 		tglbtnGreen.setPreferredSize(new Dimension(25, 25));
-		tglbtnGreen.setBackground(utilities.greenBtn);
+		tglbtnGreen.setBackground(style.greenBtn);
 		btnGroup.add(tglbtnGreen);
 		pannelloSuperiore.add(tglbtnGreen);
 		
 		tglbtnBlue = new JToggleButton();
 		tglbtnBlue.setPreferredSize(new Dimension(25, 25));
-		tglbtnBlue.setBackground(utilities.blueBtn);
+		tglbtnBlue.setBackground(style.blueBtn);
 		btnGroup.add(tglbtnBlue);
 		pannelloSuperiore.add(tglbtnBlue);
 		
 		boxMarca = new JComboBox(controller.getMarca().toArray());
 		boxMarca.setPreferredSize(new Dimension(150, 25));
-		boxMarca.setFont(utilities.arialS);
+		boxMarca.setFont(style.defaultS);
 		pannelloSuperiore.add(boxMarca);
 		
 		boxTaglia = new JComboBox(controller.getTaglia().toArray());
 		boxTaglia.setPreferredSize(new Dimension(150, 25));
-		boxTaglia.setFont(utilities.arialS);
+		boxTaglia.setFont(style.defaultS);
 		pannelloSuperiore.add(boxTaglia);
 		
 	}
@@ -152,7 +152,7 @@ public class Catalogo extends JFrame {
 	public void ImpostaPannelloCentrale() {
 		
 		pannelloCentrale = new JPanel();
-		pannelloCentrale.setBackground(utilities.bg);
+		pannelloCentrale.setBackground(style.bg);
 		getContentPane().add(pannelloCentrale, BorderLayout.CENTER);
 		
 		JScrollPane scroll = new JScrollPane(pannelloCentrale);
@@ -171,8 +171,8 @@ public class Catalogo extends JFrame {
 		contentPane.add(pannelloInferiore, BorderLayout.SOUTH);
 		
 		btnAnnulla = new JButton("Annulla");
-		btnAnnulla.setFont(utilities.arialL);
-		btnAnnulla.setBackground(utilities.redBtn);
+		btnAnnulla.setFont(style.defaultL);
+		btnAnnulla.setBackground(style.redBtn);
 		pannelloInferiore.add(btnAnnulla);
 		
 	}

@@ -65,7 +65,7 @@ public class Contenitore_vendita extends ContenitoreArticolo {
 	
 	public void ImpostaPanelloLaterale() {
 		panelloLaterale = new JPanel();
-		panelloLaterale.setBackground(getUtilities().bg);
+		panelloLaterale.setBackground(getStyle().bg);
 		panelloLaterale.setPreferredSize(new Dimension(150, 10));
 		getContenitoreDati().add(panelloLaterale, BorderLayout.EAST);
 		panelloLaterale.setBorder(new LineBorder(new Color(192, 192, 192), 2));
@@ -81,7 +81,7 @@ public class Contenitore_vendita extends ContenitoreArticolo {
 		labelQuantità = new JLabel();
 		labelQuantità.setHorizontalAlignment(SwingConstants.CENTER);
 		labelQuantità.setAlignmentX(Component.CENTER_ALIGNMENT);
-		labelQuantità.setFont(getUtilities().arialS);
+		labelQuantità.setFont(getStyle().defaultS);
 		labelQuantità.setPreferredSize(new Dimension(49, 15));
 		panelloLaterale.add(labelQuantità);
 		
@@ -89,7 +89,7 @@ public class Contenitore_vendita extends ContenitoreArticolo {
 		btnRimuovi.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panelloLaterale.add(btnRimuovi);
 		btnRimuovi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnRimuovi.setBackground(getUtilities().redBtn);
+		btnRimuovi.setBackground(getStyle().redBtn);
 		btnRimuovi.setMargin(new Insets(20, 20, 20, 20));
 		btnRimuovi.setPreferredSize(new Dimension(10, 10));
 	}

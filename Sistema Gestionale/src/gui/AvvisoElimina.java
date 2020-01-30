@@ -15,15 +15,17 @@ import javax.swing.SwingConstants;
 
 public class AvvisoElimina extends JDialog {
 
-	private Utilities utilità;
+	private Style style;
 	
 	private JButton okButton;
 	private JButton cancelButton;
 	
 	private final JPanel contentPanel = new JPanel();
 
+//**************************************************************************************
+	
 	public AvvisoElimina(Contenitore_vendita contenitore) {
-		utilità = new Utilities();
+		style = new Style();
 		
 		contenitore.getContenutoVendita().setEnabled(false);
 		
@@ -38,7 +40,7 @@ public class AvvisoElimina extends JDialog {
 			
 			JLabel text = new JLabel("Procedere con l'eliminazione dell'articolo?");
 			text.setHorizontalAlignment(SwingConstants.CENTER);
-			text.setFont(utilità.arialM);
+			text.setFont(style.defaultM);
 			getContentPane().add(text);
 			
 			JPanel buttonPane = new JPanel();
@@ -47,16 +49,16 @@ public class AvvisoElimina extends JDialog {
 			{
 				okButton = new JButton("OK");
 				okButton.setActionCommand("SI");
-				okButton.setBackground(utilità.greenBtn);
-				okButton.setFont(utilità.arialS);
+				okButton.setBackground(style.greenBtn);
+				okButton.setFont(style.defaultS);
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
 				cancelButton = new JButton("Cancel");
 				cancelButton.setActionCommand("NO");
-				cancelButton.setBackground(utilità.redBtn);
-				cancelButton.setFont(utilità.arialS);
+				cancelButton.setBackground(style.redBtn);
+				cancelButton.setFont(style.defaultS);
 				buttonPane.add(cancelButton);
 			}
 		}

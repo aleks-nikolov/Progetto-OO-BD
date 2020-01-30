@@ -24,7 +24,7 @@ public class FinestraInventario extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private Controller controller;
-	private Utilities utilities;
+	private Style style;
 	
 	private JPanel contentPane;
 	private JPanel pannelloSuperiore;
@@ -53,7 +53,7 @@ public class FinestraInventario extends JFrame {
 	public FinestraInventario(Controller controller) {
 		
 		this.controller = controller;
-		utilities = new Utilities();
+		style = new Style();
 		
 		ImpostaFinestra();
 		ImpostaPannelloSuperiore();
@@ -110,31 +110,31 @@ public class FinestraInventario extends JFrame {
 		
 		tglbtnBlack = new JToggleButton();
 		tglbtnBlack.setPreferredSize(new Dimension(25, 25));
-		tglbtnBlack.setBackground(utilities.black);
+		tglbtnBlack.setBackground(style.black);
 		btnGroup.add(tglbtnBlack);
 		pannelloSuperiore.add(tglbtnBlack);
 		
 		tglbtnWhite = new JToggleButton();
 		tglbtnWhite.setPreferredSize(new Dimension(25, 25));
-		tglbtnWhite.setBackground(utilities.white);
+		tglbtnWhite.setBackground(style.white);
 		btnGroup.add(tglbtnWhite);
 		pannelloSuperiore.add(tglbtnWhite);
 		
 		tglbtnRed = new JToggleButton();
 		tglbtnRed.setPreferredSize(new Dimension(25, 25));
-		tglbtnRed.setBackground(utilities.redBtn);
+		tglbtnRed.setBackground(style.redBtn);
 		btnGroup.add(tglbtnRed);
 		pannelloSuperiore.add(tglbtnRed);
 		
 		tglbtnGreen = new JToggleButton();
 		tglbtnGreen.setPreferredSize(new Dimension(25, 25));
-		tglbtnGreen.setBackground(utilities.greenBtn);
+		tglbtnGreen.setBackground(style.greenBtn);
 		btnGroup.add(tglbtnGreen);
 		pannelloSuperiore.add(tglbtnGreen);
 		
 		tglbtnBlue = new JToggleButton();
 		tglbtnBlue.setPreferredSize(new Dimension(25, 25));
-		tglbtnBlue.setBackground(utilities.blueBtn);
+		tglbtnBlue.setBackground(style.blueBtn);
 		btnGroup.add(tglbtnBlue);
 		pannelloSuperiore.add(tglbtnBlue);
 		
@@ -146,14 +146,14 @@ public class FinestraInventario extends JFrame {
 		boxTaglia.setPreferredSize(new Dimension(150, 25));
 		pannelloSuperiore.add(boxTaglia);
 		
-		utilities.changeFont(pannelloSuperiore, utilities.arialS);
+		style.changeFont(pannelloSuperiore, style.defaultS);
 		
 	}
 	
 	public void ImpostaPannelloCentrale() {
 		
 		pannelloCentrale = new JPanel();
-		pannelloCentrale.setBackground(utilities.bg);
+		pannelloCentrale.setBackground(style.bg);
 		getContentPane().add(pannelloCentrale, BorderLayout.CENTER);
 		
 		scroll = new JScrollPane(pannelloCentrale);
@@ -175,18 +175,18 @@ public class FinestraInventario extends JFrame {
 		pannelloInferiore.add(horizontalStrut);
 		
 		btnAggiungi = new JButton("Aggiungi Merce");
-		btnAggiungi.setBackground(utilities.greenBtn);
+		btnAggiungi.setBackground(style.greenBtn);
 		pannelloInferiore.add(btnAggiungi);
 		
 		btnRifornimenti = new JButton("Rifornimenti");
-		btnRifornimenti.setBackground(utilities.greenBtn);
+		btnRifornimenti.setBackground(style.greenBtn);
 		pannelloInferiore.add(btnRifornimenti);
 		
 		btnIndietro = new JButton("Indietro");
-		btnIndietro.setBackground(utilities.redBtn);
+		btnIndietro.setBackground(style.redBtn);
 		pannelloInferiore.add(btnIndietro);
 		
-		utilities.changeFont(pannelloInferiore, utilities.arialL);
+		style.changeFont(pannelloInferiore, style.defaultL);
 		
 	}
 }

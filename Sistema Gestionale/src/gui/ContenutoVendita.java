@@ -22,7 +22,7 @@ public class ContenutoVendita extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
 	private Controller controller;
-	private Utilities utilities;
+	private Style style;
 	
 	private JPanel pannelloCentrale;
 	private JPanel pannelloInferiore;
@@ -40,7 +40,7 @@ public class ContenutoVendita extends JFrame{
 	public ContenutoVendita(Controller controller){
 		
 		this.controller = controller;
-		utilities = new Utilities();
+		style = new Style();
 		
 		ImpostaFinestra();
 		ImpostaPannelloCentrale();
@@ -95,14 +95,14 @@ public class ContenutoVendita extends JFrame{
 		setTitle("Contenuto Vendita");
 		setBounds(100, 100, 1280, 720);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBackground(utilities.bg);
+		setBackground(style.bg);
 		
 	}
 	
 	public void ImpostaPannelloCentrale() {
 		
 		pannelloCentrale = new JPanel();
-		pannelloCentrale.setBackground(utilities.bg);
+		pannelloCentrale.setBackground(style.bg);
 		getContentPane().add(pannelloCentrale, BorderLayout.CENTER);
 		
 		scroll = new JScrollPane(pannelloCentrale);
@@ -118,21 +118,21 @@ public class ContenutoVendita extends JFrame{
 	public void ImpostaPannelloInferiore() {
 		
 		pannelloInferiore = new JPanel();
-		pannelloInferiore.setBackground(utilities.bg);
+		pannelloInferiore.setBackground(style.bg);
 		getContentPane().add(pannelloInferiore, BorderLayout.SOUTH);
 		
 		btnAdd = new JButton("+");
 		btnAdd.setMargin(new Insets(10, 20, 10, 20));
-		btnAdd.setFont(utilities.arialM);
-		btnAdd.setBackground(utilities.greenBtn);
+		btnAdd.setFont(style.defaultM);
+		btnAdd.setBackground(style.greenBtn);
 		pannelloInferiore.add(btnAdd);
 		
 		horizontalStrut = Box.createHorizontalStrut(600);
 		pannelloInferiore.add(horizontalStrut);
 		
 		btnApplica = new JButton("APPLICA");
-		btnApplica.setFont(utilities.arialM);
-		btnApplica.setBackground(utilities.greenBtn);
+		btnApplica.setFont(style.defaultM);
+		btnApplica.setBackground(style.greenBtn);
 		btnApplica.setMargin(new Insets(10, 20, 10, 20));
 		pannelloInferiore.add(btnApplica);
 		
@@ -140,8 +140,8 @@ public class ContenutoVendita extends JFrame{
 		pannelloInferiore.add(horizontalStrut_1);
 		
 		btnAnnulla = new JButton("ANNULLA");
-		btnAnnulla.setBackground(utilities.redBtn);
-		btnAnnulla.setFont(utilities.arialM);
+		btnAnnulla.setBackground(style.redBtn);
+		btnAnnulla.setFont(style.defaultM);
 		btnAnnulla.setMargin(new Insets(10, 20, 10, 20));
 		pannelloInferiore.add(btnAnnulla);
 		

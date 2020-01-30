@@ -28,7 +28,7 @@ public class ContenitoreArticolo extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private Controller controller;
-	private Utilities utilities;
+	private Style style;
 	
 	private ContenutoVendita contenutoVendita;
 	private Catalogo catalogo;
@@ -54,7 +54,7 @@ public class ContenitoreArticolo extends JPanel {
 		//Reference al parente
 		this.controller = controller;
 		this.contenutoVendita = contenutoVendita;
-		utilities = new Utilities();
+		style = new Style();
 		
 		ImpostaPanello();
 		ImpostaPanelloImmagine();
@@ -65,7 +65,7 @@ public class ContenitoreArticolo extends JPanel {
 		//Reference al parente
 		this.controller = controller;
 		this.catalogo = catalogo;
-		utilities = new Utilities();
+		style = new Style();
 						
 		ImpostaPanello();
 		ImpostaPanelloImmagine();
@@ -76,7 +76,7 @@ public class ContenitoreArticolo extends JPanel {
 		//Reference al parente
 		this.controller = controller;
 		this.inventario = inventario;
-		utilities = new Utilities();
+		style = new Style();
 				
 		ImpostaPanello();
 		ImpostaPanelloImmagine();
@@ -112,14 +112,14 @@ public class ContenitoreArticolo extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		setPreferredSize(new Dimension(1200, 150));
 		setMaximumSize(new Dimension(1200, 150));
-		setBackground(utilities.bg);
+		setBackground(style.bg);
 		setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 	}
 	
 	public void ImpostaPanelloImmagine() {
 		pannelloImmagine = new JPanel();
 		pannelloImmagine.setBorder(new MatteBorder(0, 0, 0, 2, (Color) Color.GRAY));
-		pannelloImmagine.setBackground(utilities.bg);
+		pannelloImmagine.setBackground(style.bg);
 		add(pannelloImmagine, BorderLayout.WEST);
 		pannelloImmagine.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
@@ -135,14 +135,14 @@ public class ContenitoreArticolo extends JPanel {
 	public void ImpostaPanelloDati() {
 		
 		contenitoreDati = new JPanel();
-		contenitoreDati.setBackground(utilities.bg);
+		contenitoreDati.setBackground(style.bg);
 		contenitoreDati.setLayout(new BorderLayout(0, 0));
 		contenitoreDati.setBorder(new EmptyBorder(10, 10, 10, 10));
 		add(getContenitoreDati(), BorderLayout.CENTER);
 
 		panelloDati = new JPanel();
 		panelloDati.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
-		panelloDati.setBackground(utilities.bg);
+		panelloDati.setBackground(style.bg);
 		contenitoreDati.add(panelloDati, BorderLayout.CENTER);
 		panelloDati.setLayout(new BorderLayout(0, 0));
 		
@@ -156,7 +156,7 @@ public class ContenitoreArticolo extends JPanel {
 		labelDescrizione = new JLabel();
 		labelDescrizione.setHorizontalAlignment(SwingConstants.CENTER);
 		labelDescrizione.setVerticalAlignment(SwingConstants.TOP);
-		labelDescrizione.setFont(utilities.arial);
+		labelDescrizione.setFont(style.arial);
 		panelloDati.add(labelDescrizione, BorderLayout.CENTER);
 		labelDescrizione.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
@@ -164,14 +164,14 @@ public class ContenitoreArticolo extends JPanel {
 		panelloQualità.setBorder(new MatteBorder(2, 0, 0, 0, (Color) Color.LIGHT_GRAY));
 		panelloQualità.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		panelloQualità.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		panelloQualità.setBackground(utilities.bg);
+		panelloQualità.setBackground(style.bg);
 		panelloDati.add(panelloQualità, BorderLayout.SOUTH);
 		
 		
 		labelMarca = new JLabel();
 		panelloQualità.add(labelMarca);
 		labelMarca.setAlignmentX(Component.CENTER_ALIGNMENT);
-		labelMarca.setFont(utilities.arialS);
+		labelMarca.setFont(style.defaultS);
 		labelMarca.setPreferredSize(new Dimension(150, 15));
 		
 		horizontalStrut = Box.createHorizontalStrut(200);
@@ -181,7 +181,7 @@ public class ContenitoreArticolo extends JPanel {
 		labelColore.setPreferredSize(new Dimension(100, 14));
 		panelloQualità.add(labelColore);
 		labelColore.setAlignmentX(Component.CENTER_ALIGNMENT);
-		labelColore.setFont(utilities.arialS);
+		labelColore.setFont(style.defaultS);
 		
 		horizontalStrut_1 = Box.createHorizontalStrut(200);
 		panelloQualità.add(horizontalStrut_1);
@@ -189,7 +189,7 @@ public class ContenitoreArticolo extends JPanel {
 		labelTaglia = new JLabel();
 		panelloQualità.add(labelTaglia);
 		labelTaglia.setAlignmentX(Component.CENTER_ALIGNMENT);
-		labelTaglia.setFont(utilities.arialS);
+		labelTaglia.setFont(style.defaultS);
 		labelTaglia.setPreferredSize(new Dimension(100, 15));	
 	}
 	
@@ -198,8 +198,8 @@ public class ContenitoreArticolo extends JPanel {
 		return contenitoreDati;
 	}
 
-	public Utilities getUtilities() {
-		return utilities;
+	public Style getStyle() {
+		return style;
 	}
 	
 	public float getPrezzoDiListino() {

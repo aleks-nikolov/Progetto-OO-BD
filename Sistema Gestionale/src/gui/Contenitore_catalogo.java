@@ -67,7 +67,7 @@ public class Contenitore_catalogo extends ContenitoreArticolo {
 	
 	public void ImpostaPanelloLaterale() {
 		panelloLaterale = new JPanel();
-		panelloLaterale.setBackground(getUtilities().bg);
+		panelloLaterale.setBackground(getStyle().bg);
 		panelloLaterale.setPreferredSize(new Dimension(150, 10));
 		getContenitoreDati().add(panelloLaterale, BorderLayout.EAST);
 		panelloLaterale.setBorder(new LineBorder(new Color(192, 192, 192), 2));
@@ -84,24 +84,24 @@ public class Contenitore_catalogo extends ContenitoreArticolo {
 		btnAggiungi.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panelloLaterale.add(btnAggiungi);
 		btnAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnAggiungi.setBackground(getUtilities().greenBtn);
+		btnAggiungi.setBackground(getStyle().greenBtn);
 		btnAggiungi.setMargin(new Insets(20, 20, 20, 20));
 		btnAggiungi.setPreferredSize(new Dimension(10, 10));
 		
 		panelloLaterale.add(Box.createRigidArea(new Dimension(150, 10)));
 		
 		panelloQuantità = new JPanel();
-		panelloQuantità.setBackground(getUtilities().bg);
+		panelloQuantità.setBackground(getStyle().bg);
 		panelloQuantità.setMaximumSize(new Dimension(150, 50));
 		panelloLaterale.add(panelloQuantità);
 		
 		labelQuantità = new JLabel("Quantit\u00E0");
-		labelQuantità.setFont(getUtilities().arialS);
+		labelQuantità.setFont(getStyle().defaultS);
 		panelloQuantità.add(labelQuantità);
 		labelQuantità.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
 		boxQuantità = new JComboBox<Integer>(new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
-		boxQuantità.setFont(getUtilities().arialS);
+		boxQuantità.setFont(getStyle().defaultS);
 		panelloQuantità.add(boxQuantità);
 	}
 }
