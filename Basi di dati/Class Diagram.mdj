@@ -123,6 +123,23 @@
 									"subViews": [
 										{
 											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFwAGt0qFj+1EI=",
+											"_parent": {
+												"$ref": "AAAAAAFvhY2BOaaPbJQ="
+											},
+											"model": {
+												"$ref": "AAAAAAFwAGt0cVj79e8="
+											},
+											"font": "Arial;13;0",
+											"left": 941,
+											"top": 118,
+											"width": 239,
+											"height": 13,
+											"text": "-SKU: String[1]",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
 											"_id": "AAAAAAFvhZRM26bR1a0=",
 											"_parent": {
 												"$ref": "AAAAAAFvhY2BOaaPbJQ="
@@ -132,10 +149,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 941,
-											"top": 118,
+											"top": 133,
 											"width": 239,
 											"height": 13,
-											"text": "-Taglia: Taglie[1]",
+											"text": "-Taglia: TAGLIE[1]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -149,10 +166,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 941,
-											"top": 133,
+											"top": 148,
 											"width": 239,
 											"height": 13,
-											"text": "-Colore: Colori[1]",
+											"text": "-Colore: COLORI[1]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -166,7 +183,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 941,
-											"top": 148,
+											"top": 163,
 											"width": 239,
 											"height": 13,
 											"text": "-Saldo: int[1]",
@@ -183,7 +200,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 941,
-											"top": 163,
+											"top": 178,
 											"width": 239,
 											"height": 13,
 											"text": "-Quantità: int[1]",
@@ -200,10 +217,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 941,
-											"top": 178,
+											"top": 193,
 											"width": 239,
 											"height": 13,
-											"text": "-Categoria: Categorie[1]",
+											"text": "-Categoria: CATEGORIE[1]",
 											"horizontalAlignment": 0
 										}
 									],
@@ -211,7 +228,7 @@
 									"left": 936,
 									"top": 113,
 									"width": 249,
-									"height": 83
+									"height": 98
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -224,7 +241,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 936,
-									"top": 196,
+									"top": 211,
 									"width": 249,
 									"height": 10
 								},
@@ -327,7 +344,7 @@
 											"top": 44,
 											"width": 143,
 											"height": 13,
-											"text": "Colori"
+											"text": "COLORI"
 										},
 										{
 											"_type": "LabelView",
@@ -630,7 +647,7 @@
 											"top": 44,
 											"width": 142,
 											"height": 13,
-											"text": "Categorie"
+											"text": "CATEGORIE"
 										},
 										{
 											"_type": "LabelView",
@@ -1851,7 +1868,7 @@
 											"top": 636,
 											"width": 255,
 											"height": 13,
-											"text": "-NumeroDiTelefono: String[0..1]",
+											"text": "-Indirizzo: String[1]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1868,41 +1885,7 @@
 											"top": 651,
 											"width": 255,
 											"height": 13,
-											"text": "-Via: String[1]",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAFvizJQeQBepx0=",
-											"_parent": {
-												"$ref": "AAAAAAFvhe/ah7KJCU0="
-											},
-											"model": {
-												"$ref": "AAAAAAFvizJQVABYxUk="
-											},
-											"font": "Arial;13;0",
-											"left": 1701,
-											"top": 666,
-											"width": 255,
-											"height": 13,
-											"text": "-NumeroCivico: String[1]",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAFvizWXNgHMPpM=",
-											"_parent": {
-												"$ref": "AAAAAAFvhe/ah7KJCU0="
-											},
-											"model": {
-												"$ref": "AAAAAAFvizWXCgHGcJM="
-											},
-											"font": "Arial;13;0",
-											"left": 1701,
-											"top": 681,
-											"width": 255,
-											"height": 13,
-											"text": "-CAP: String[1]",
+											"text": "-NumeroDiTelefono: String[0..*]",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1910,7 +1893,7 @@
 									"left": 1696,
 									"top": 601,
 									"width": 265,
-									"height": 98
+									"height": 68
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -1923,7 +1906,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1696,
-									"top": 699,
+									"top": 669,
 									"width": 265,
 									"height": 10
 								},
@@ -2304,7 +2287,7 @@
 											"top": 332,
 											"width": 143,
 											"height": 13,
-											"text": "Marche"
+											"text": "MARCHE"
 										},
 										{
 											"_type": "LabelView",
@@ -2658,7 +2641,7 @@
 											"top": 212,
 											"width": 142,
 											"height": 13,
-											"text": "Taglie"
+											"text": "TAGLIE"
 										},
 										{
 											"_type": "LabelView",
@@ -3515,7 +3498,7 @@
 											"top": 133,
 											"width": 223,
 											"height": 13,
-											"text": "-Marca: Marche[1]",
+											"text": "-Marca: MARCHE[1]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3532,7 +3515,7 @@
 											"top": 148,
 											"width": 223,
 											"height": 13,
-											"text": "-Categoria: Categorie",
+											"text": "-Categoria: CATEGORIE",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3948,6 +3931,19 @@
 							"headQualifiersCompartment": {
 								"$ref": "AAAAAAFvqg5Hv2Ra/Eg="
 							}
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAFwAGXJdle2kVc=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"font": "Arial;13;0",
+							"left": 1992,
+							"top": 576,
+							"width": 144,
+							"height": 169,
+							"text": "Indirizzo è un atttributo composto da:                1. Via                          2. Numero Civico        3. CAP"
 						}
 					]
 				},
@@ -4050,6 +4046,17 @@
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
+							"_id": "AAAAAAFwAGt0cVj79e8=",
+							"_parent": {
+								"$ref": "AAAAAAFvhY2BOaaHzgc="
+							},
+							"name": "SKU",
+							"visibility": "private",
+							"type": "String",
+							"multiplicity": "1"
+						},
+						{
+							"_type": "UMLAttribute",
 							"_id": "AAAAAAFvhZRMqKbOwSo=",
 							"_parent": {
 								"$ref": "AAAAAAFvhY2BOaaHzgc="
@@ -4117,7 +4124,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Colori",
+					"name": "COLORI",
 					"literals": [
 						{
 							"_type": "UMLEnumerationLiteral",
@@ -4183,7 +4190,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Categorie",
+					"name": "CATEGORIE",
 					"literals": [
 						{
 							"_type": "UMLEnumerationLiteral",
@@ -4517,10 +4524,10 @@
 							"_parent": {
 								"$ref": "AAAAAAFvhe/ahrKBMuI="
 							},
-							"name": "NumeroDiTelefono",
+							"name": "Indirizzo",
 							"visibility": "private",
 							"type": "String",
-							"multiplicity": "0..1"
+							"multiplicity": "1"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4528,32 +4535,10 @@
 							"_parent": {
 								"$ref": "AAAAAAFvhe/ahrKBMuI="
 							},
-							"name": "Via",
+							"name": "NumeroDiTelefono",
 							"visibility": "private",
 							"type": "String",
-							"multiplicity": "1"
-						},
-						{
-							"_type": "UMLAttribute",
-							"_id": "AAAAAAFvizJQVABYxUk=",
-							"_parent": {
-								"$ref": "AAAAAAFvhe/ahrKBMuI="
-							},
-							"name": "NumeroCivico",
-							"visibility": "private",
-							"type": "String",
-							"multiplicity": "1"
-						},
-						{
-							"_type": "UMLAttribute",
-							"_id": "AAAAAAFvizWXCgHGcJM=",
-							"_parent": {
-								"$ref": "AAAAAAFvhe/ahrKBMuI="
-							},
-							"name": "CAP",
-							"visibility": "private",
-							"type": "String",
-							"multiplicity": "1"
+							"multiplicity": "0..*"
 						}
 					]
 				},
@@ -4563,7 +4548,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Marche",
+					"name": "MARCHE",
 					"literals": [
 						{
 							"_type": "UMLEnumerationLiteral",
@@ -4645,7 +4630,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Taglie",
+					"name": "TAGLIE",
 					"literals": [
 						{
 							"_type": "UMLEnumerationLiteral",
