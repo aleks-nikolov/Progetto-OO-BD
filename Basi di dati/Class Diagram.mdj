@@ -3939,10 +3939,10 @@
 								"$ref": "AAAAAAFF+qBtyKM79qY="
 							},
 							"font": "Arial;13;0",
-							"left": 1992,
-							"top": 576,
+							"left": 1528,
+							"top": 640,
 							"width": 144,
-							"height": 169,
+							"height": 193,
 							"text": "Indirizzo è un atttributo composto da:                1. Via                          2. Numero Civico        3. CAP"
 						}
 					]
