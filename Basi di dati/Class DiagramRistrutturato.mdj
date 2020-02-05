@@ -174,23 +174,6 @@
 										},
 										{
 											"_type": "UMLAttributeView",
-											"_id": "AAAAAAFvhZcAs6bur+U=",
-											"_parent": {
-												"$ref": "AAAAAAFvhY2BOaaPbJQ="
-											},
-											"model": {
-												"$ref": "AAAAAAFvhZcAhabr3IQ="
-											},
-											"font": "Arial;13;0",
-											"left": 685,
-											"top": 171,
-											"width": 239,
-											"height": 13,
-											"text": "-Saldo: int[1]",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
 											"_id": "AAAAAAFvhZkpO6cKLH4=",
 											"_parent": {
 												"$ref": "AAAAAAFvhY2BOaaPbJQ="
@@ -200,7 +183,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 685,
-											"top": 186,
+											"top": 171,
 											"width": 239,
 											"height": 13,
 											"text": "-Quantità: int[1]",
@@ -217,7 +200,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 685,
-											"top": 201,
+											"top": 186,
 											"width": 239,
 											"height": 13,
 											"text": "-PathImmagine: String[1]",
@@ -228,7 +211,7 @@
 									"left": 680,
 									"top": 121,
 									"width": 249,
-									"height": 98
+									"height": 83
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -241,7 +224,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 680,
-									"top": 219,
+									"top": 204,
 									"width": 249,
 									"height": 10
 								},
@@ -1146,7 +1129,7 @@
 											"top": 149,
 											"width": 254,
 											"height": 13,
-											"text": "-/ValoreTotale: float[1]",
+											"text": "-ValoreTotale: float[1]",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1616,6 +1599,23 @@
 										},
 										{
 											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFwFPCi8kle8UM=",
+											"_parent": {
+												"$ref": "AAAAAAFvhe42Lq+mcMw="
+											},
+											"model": {
+												"$ref": "AAAAAAFwFPCi4UlYwSQ="
+											},
+											"font": "Arial;13;0",
+											"left": 1109,
+											"top": 429,
+											"width": 163.97265625,
+											"height": 13,
+											"text": "-Saldo: int[1]",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
 											"_id": "AAAAAAFvhe6R/rBNHs0=",
 											"_parent": {
 												"$ref": "AAAAAAFvhe42Lq+mcMw="
@@ -1625,10 +1625,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1109,
-											"top": 429,
+											"top": 444,
 											"width": 163.97265625,
 											"height": 13,
-											"text": "-/Valore: float[1]",
+											"text": "-Valore: float[1]",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1636,7 +1636,7 @@
 									"left": 1104,
 									"top": 409,
 									"width": 173.97265625,
-									"height": 38
+									"height": 53
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -1649,7 +1649,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1104,
-									"top": 447,
+									"top": 462,
 									"width": 173.97265625,
 									"height": 10
 								},
@@ -3638,17 +3638,6 @@
 						},
 						{
 							"_type": "UMLAttribute",
-							"_id": "AAAAAAFvhZcAhabr3IQ=",
-							"_parent": {
-								"$ref": "AAAAAAFvhY2BOaaHzgc="
-							},
-							"name": "Saldo",
-							"visibility": "private",
-							"type": "int",
-							"multiplicity": "1"
-						},
-						{
-							"_type": "UMLAttribute",
 							"_id": "AAAAAAFvhZkpCqcHVBA=",
 							"_parent": {
 								"$ref": "AAAAAAFvhY2BOaaHzgc="
@@ -3872,8 +3861,7 @@
 							"name": "ValoreTotale",
 							"visibility": "private",
 							"type": "float",
-							"multiplicity": "1",
-							"isDerived": true
+							"multiplicity": "1"
 						}
 					]
 				},
@@ -3990,6 +3978,17 @@
 						},
 						{
 							"_type": "UMLAttribute",
+							"_id": "AAAAAAFwFPCi4UlYwSQ=",
+							"_parent": {
+								"$ref": "AAAAAAFvhe42La+eBPk="
+							},
+							"name": "Saldo",
+							"visibility": "private",
+							"type": "int",
+							"multiplicity": "1"
+						},
+						{
+							"_type": "UMLAttribute",
 							"_id": "AAAAAAFvhe6Rz7BHYSU=",
 							"_parent": {
 								"$ref": "AAAAAAFvhe42La+eBPk="
@@ -3997,8 +3996,7 @@
 							"name": "Valore",
 							"visibility": "private",
 							"type": "float",
-							"multiplicity": "1",
-							"isDerived": true
+							"multiplicity": "1"
 						}
 					]
 				},

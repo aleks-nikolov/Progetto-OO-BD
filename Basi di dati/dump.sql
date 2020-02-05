@@ -98,15 +98,13 @@ SET default_table_access_method = heap;
 --
 
 CREATE TABLE public."Articolo" (
-    "CodiceArticolo" character(20) NOT NULL,
+    "SKU" character(20) NOT NULL,
     "Taglia" public."Taglie" NOT NULL,
     "Colore" public."Colori" NOT NULL,
-    "Saldo" integer NOT NULL,
     "Quantità" integer NOT NULL,
     "PathImmagine" character varying(200) NOT NULL,
     "CodiceABarre" character(11) NOT NULL,
-    CONSTRAINT "valorequantità" CHECK (("Quantità" >= 0)),
-    CONSTRAINT valoresaldo CHECK ((("Saldo" >= 0) AND ("Saldo" <= 100)))
+    CONSTRAINT "valorequantità" CHECK (("Quantità" >= 0))
 );
 
 
@@ -117,12 +115,12 @@ ALTER TABLE public."Articolo" OWNER TO postgres;
 --
 
 CREATE TABLE public."ComposizioneTransazione" (
-    "CodiceArticolo" character(20) NOT NULL,
+    "SKU" character(20) NOT NULL,
     "CodiceTransazione" character(20) NOT NULL,
     "Quantità" integer NOT NULL,
+    "Saldo" integer DEFAULT 0 NOT NULL,
     "Valore" double precision,
-    CONSTRAINT "valorequantità" CHECK (("Quantità" > 0)),
-    CONSTRAINT valorevalore CHECK (("Valore" >= (0)::double precision))
+    CONSTRAINT "valorequantità" CHECK (("Quantità" > 0))
 );
 
 
@@ -171,8 +169,7 @@ CREATE TABLE public."Transazione" (
     "CodiceTransazione" character(20) NOT NULL,
     "Data" date NOT NULL,
     "ValoreTotale" double precision,
-    "PartitaIva" character(11),
-    CONSTRAINT valorevaloretotale CHECK (("ValoreTotale" >= (0)::double precision))
+    "PartitaIva" character(11)
 );
 
 
@@ -182,7 +179,7 @@ ALTER TABLE public."Transazione" OWNER TO postgres;
 -- Data for Name: Articolo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Articolo" ("CodiceArticolo", "Taglia", "Colore", "Saldo", "Quantità", "PathImmagine", "CodiceABarre") FROM stdin;
+COPY public."Articolo" ("SKU", "Taglia", "Colore", "Quantità", "PathImmagine", "CodiceABarre") FROM stdin;
 \.
 
 
@@ -190,7 +187,7 @@ COPY public."Articolo" ("CodiceArticolo", "Taglia", "Colore", "Saldo", "Quantit�
 -- Data for Name: ComposizioneTransazione; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."ComposizioneTransazione" ("CodiceArticolo", "CodiceTransazione", "Quantità", "Valore") FROM stdin;
+COPY public."ComposizioneTransazione" ("SKU", "CodiceTransazione", "Quantità", "Saldo", "Valore") FROM stdin;
 \.
 
 
@@ -223,7 +220,7 @@ COPY public."Transazione" ("CodiceTransazione", "Data", "ValoreTotale", "Partita
 --
 
 ALTER TABLE ONLY public."Articolo"
-    ADD CONSTRAINT "pkArticolo" PRIMARY KEY ("CodiceArticolo");
+    ADD CONSTRAINT "pkArticolo" PRIMARY KEY ("SKU");
 
 
 --
@@ -231,7 +228,7 @@ ALTER TABLE ONLY public."Articolo"
 --
 
 ALTER TABLE ONLY public."ComposizioneTransazione"
-    ADD CONSTRAINT "pkComposizioneTransazione" PRIMARY KEY ("CodiceArticolo", "CodiceTransazione");
+    ADD CONSTRAINT "pkComposizioneTransazione" PRIMARY KEY ("SKU", "CodiceTransazione");
 
 
 --
@@ -271,7 +268,7 @@ ALTER TABLE ONLY public."Fornitore"
 --
 
 ALTER TABLE ONLY public."ComposizioneTransazione"
-    ADD CONSTRAINT "fk1ComposizioneTransazione" FOREIGN KEY ("CodiceArticolo") REFERENCES public."Articolo"("CodiceArticolo") ON UPDATE CASCADE ON DELETE CASCADE;
+    ADD CONSTRAINT "fk1ComposizioneTransazione" FOREIGN KEY ("SKU") REFERENCES public."Articolo"("SKU") ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --

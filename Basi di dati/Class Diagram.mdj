@@ -174,23 +174,6 @@
 										},
 										{
 											"_type": "UMLAttributeView",
-											"_id": "AAAAAAFvhZcAs6bur+U=",
-											"_parent": {
-												"$ref": "AAAAAAFvhY2BOaaPbJQ="
-											},
-											"model": {
-												"$ref": "AAAAAAFvhZcAhabr3IQ="
-											},
-											"font": "Arial;13;0",
-											"left": 941,
-											"top": 163,
-											"width": 239,
-											"height": 13,
-											"text": "-Saldo: int[1]",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
 											"_id": "AAAAAAFvhZkpO6cKLH4=",
 											"_parent": {
 												"$ref": "AAAAAAFvhY2BOaaPbJQ="
@@ -200,7 +183,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 941,
-											"top": 178,
+											"top": 163,
 											"width": 239,
 											"height": 13,
 											"text": "-Quantità: int[1]",
@@ -211,7 +194,7 @@
 									"left": 936,
 									"top": 113,
 									"width": 249,
-									"height": 83
+									"height": 68
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -224,7 +207,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 936,
-									"top": 196,
+									"top": 181,
 									"width": 249,
 									"height": 10
 								},
@@ -1123,7 +1106,7 @@
 											"top": 141,
 											"width": 254,
 											"height": 13,
-											"text": "-/ValoreTotale: float[1]",
+											"text": "-ValoreTotale: float[1]",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1594,6 +1577,23 @@
 										},
 										{
 											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFwFO9fAG3Mv84=",
+											"_parent": {
+												"$ref": "AAAAAAFvhe42Lq+mcMw="
+											},
+											"model": {
+												"$ref": "AAAAAAFwFO9eyW3GQe4="
+											},
+											"font": "Arial;13;0",
+											"left": 1365,
+											"top": 421,
+											"width": 163.97265625,
+											"height": 13,
+											"text": "-Saldo: int[1]",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
 											"_id": "AAAAAAFvhe6R/rBNHs0=",
 											"_parent": {
 												"$ref": "AAAAAAFvhe42Lq+mcMw="
@@ -1603,10 +1603,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1365,
-											"top": 421,
+											"top": 436,
 											"width": 163.97265625,
 											"height": 13,
-											"text": "-/Valore: float[1]",
+											"text": "-Valore: float[1]",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1614,7 +1614,7 @@
 									"left": 1360,
 									"top": 401,
 									"width": 173.97265625,
-									"height": 38
+									"height": 53
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -1627,7 +1627,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1360,
-									"top": 439,
+									"top": 454,
 									"width": 173.97265625,
 									"height": 10
 								},
@@ -4066,17 +4066,6 @@
 						},
 						{
 							"_type": "UMLAttribute",
-							"_id": "AAAAAAFvhZcAhabr3IQ=",
-							"_parent": {
-								"$ref": "AAAAAAFvhY2BOaaHzgc="
-							},
-							"name": "Saldo",
-							"visibility": "private",
-							"type": "int",
-							"multiplicity": "1"
-						},
-						{
-							"_type": "UMLAttribute",
 							"_id": "AAAAAAFvhZkpCqcHVBA=",
 							"_parent": {
 								"$ref": "AAAAAAFvhY2BOaaHzgc="
@@ -4289,8 +4278,7 @@
 							"name": "ValoreTotale",
 							"visibility": "private",
 							"type": "float",
-							"multiplicity": "1",
-							"isDerived": true
+							"multiplicity": "1"
 						}
 					]
 				},
@@ -4407,6 +4395,17 @@
 						},
 						{
 							"_type": "UMLAttribute",
+							"_id": "AAAAAAFwFO9eyW3GQe4=",
+							"_parent": {
+								"$ref": "AAAAAAFvhe42La+eBPk="
+							},
+							"name": "Saldo",
+							"visibility": "private",
+							"type": "int",
+							"multiplicity": "1"
+						},
+						{
+							"_type": "UMLAttribute",
 							"_id": "AAAAAAFvhe6Rz7BHYSU=",
 							"_parent": {
 								"$ref": "AAAAAAFvhe42La+eBPk="
@@ -4414,8 +4413,7 @@
 							"name": "Valore",
 							"visibility": "private",
 							"type": "float",
-							"multiplicity": "1",
-							"isDerived": true
+							"multiplicity": "1"
 						}
 					]
 				},
