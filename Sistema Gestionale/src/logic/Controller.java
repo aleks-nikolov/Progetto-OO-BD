@@ -1,5 +1,8 @@
 package logic;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -9,7 +12,15 @@ import gui.*;
 
 public class Controller {
 
-	private TransazioneDAO tr = new TransazioneDAO();
+	private String url = "jdbc:postgresql://dumbo.db.elephantsql.com:5432/nwiojydu";
+	private String username = "nwiojydu";
+	private String pass = "sxUptH8Xh2rWXqBwbZxRuW5kCH74h_Tw";
+	
+	private Connection conn;
+
+	private ArticoloDAO articoloDAO = new ArticoloDAO();
+	private TransazioneDAO transazioneDAO = new TransazioneDAO();
+	private ComposizioneTransazioneDAO compTransazioneDAO = new ComposizioneTransazioneDAO();
 	
 	private HomePage home;
 	private FinestraVendite finestraVendite;
@@ -28,8 +39,7 @@ public class Controller {
 	
 	public Controller() {
 		
-		tr.connect();
-		tr.execution();
+		ConnectToDatabase();
 		InizializzaArrayList();
 		InizializzaFinestre();
 		
@@ -85,9 +95,61 @@ public class Controller {
 		sessi.add("F");
 		sessi.add("U");
 		
-		articoli.add(new Articolo("123", "Maglietta di cotone", "Maglietta leggera di cotone", "Magliette", "Adidas", "XL", "Nero", 15.25f, 0, 5, 'M', "res\\images\\magliette\\adidas_black.png"));
+		articoli.add(new Articolo("123", "456", "Maglietta di cotone", "Maglietta leggera di cotone", "Magliette", "Adidas", "XL", "Nero", 15.25f, 5, "M", "res\\images\\magliette\\adidas_black.png"));
 	}
 	
+
+	public void ConnectToDatabase() {
+		
+		try {
+			Class.forName("org.postgresql.Driver");
+		} catch (ClassNotFoundException e1) {
+			System.out.println("Driver not found");
+		}
+		
+		try {
+			conn = DriverManager.getConnection(url, username, pass);
+			System.out.println("Connected to database");
+		} catch (SQLException e){
+			System.out.println("Problem connecting to database");
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public  ArrayList<Transazione> getVendite() {
+		return transazioneDAO.getVendite(conn);
+	}
+	
+	public String getContenutoTransazione(String codiceTransazione) {
+		
+		String contenuto = null;
+	
+		ArrayList<Articolo> articoli = EstraiArticoliDaComposizione(compTransazioneDAO.getCompTransazioniDi(conn, codiceTransazione));
+		
+		for(Articolo a: articoli) {
+			contenuto += " " + a.getNome() + " x" + a.getQuantità() + "\n";
+		}
+		
+		return contenuto;
+		
+	}
+	
+	
+    private ArrayList<Articolo> EstraiArticoliDaComposizione(ArrayList<ComposizioneTransazione> compTransazioni) {
+    	
+		ArrayList<Articolo> articoli = new ArrayList<Articolo>();
+		
+		for(ComposizioneTransazione comp: compTransazioni) {
+			Articolo articolo = articoloDAO.TrovaArticolo(conn, comp.getSKU());
+			articoli.add(articolo);
+		}
+		
+		return articoli;
+		
+	}
+
+//Metodi GUI
 	public void CambiaFrame(JFrame frameDaNascondere, JFrame frameDaMostrare) {
 		ChiudiFrame(frameDaNascondere);
 		frameDaMostrare.setVisible(true);
@@ -103,7 +165,7 @@ public class Controller {
 		return articolo;
 	}
 	
-	//Getters e setters
+//Getters e setters
 	public ArrayList<String> getCategoria() {
 		return categoria;
 	}

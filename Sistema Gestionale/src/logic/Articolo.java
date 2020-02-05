@@ -4,17 +4,17 @@ public class Articolo {
 
 	private ComposizioneTransazione compTransazione;
 	
-	private String codice;
+	private String sku;
+	private String codiceABarre;
 	private String nome;
 	private String descrizione;
 	private String categoria;
 	private String marca;
 	private String taglia;
 	private String colore;
-	private float prezzoDiListino;
-	private int percentualeSaldo;
+	private float prezzo;
 	private int quantità;
-	private char sesso;
+	private String sesso;
 	private String imagePath;
 	
 //**************************************************************************************	
@@ -23,17 +23,17 @@ public class Articolo {
 		
 	}
 	
-	public Articolo(String codice, String nome, String descrizione, String categoria, String marca, String taglia, String colore,
-			float prezzoDiListino, int percentualeSaldo, int quantità, char sesso, String imagePath) {
-		this.codice = codice;
+	public Articolo(String codice, String codiceABarre, String nome, String descrizione, String categoria, String marca, String taglia, String colore,
+			float prezzoDiListino, int quantità, String sesso, String imagePath) {
+		this.sku = codice;
+		this.codiceABarre = codiceABarre;
 		this.nome = nome;
 		this.descrizione = descrizione;
 		this.categoria = categoria;
 		this.marca = marca;
 		this.taglia = taglia;
 		this.colore = colore;
-		this.prezzoDiListino = prezzoDiListino;
-		this.percentualeSaldo = percentualeSaldo;
+		this.prezzo = prezzoDiListino;
 		this.quantità = quantità;
 		this.sesso = sesso;
 		this.imagePath = imagePath;
@@ -49,20 +49,26 @@ public class Articolo {
 		if (getClass() != obj.getClass())
 			return false;
 		Articolo other = (Articolo) obj;
-		if (codice == null) {
-			if (other.codice != null)
+		if (sku == null) {
+			if (other.sku != null)
 				return false;
-		} else if (!codice.equals(other.codice))
+		} else if (!sku.equals(other.sku))
 			return false;
 		return true;
 	}
 	
 	//Getter e setter
-	public String getCodice() {
-		return codice;
+	public String getSKU() {
+		return sku;
 	}
-	public void setCodice(String codice) {
-		this.codice = codice;
+	public void setSKU(String codice) {
+		this.sku = codice;
+	}
+	public String getCodiceABarre() {
+		return codiceABarre;
+	}
+	public void setCodiceABarre(String codiceABarre) {
+		this.codiceABarre = codiceABarre;
 	}
 	public String getNome() {
 		return nome;
@@ -100,17 +106,11 @@ public class Articolo {
 	public void setColore(String colore) {
 		this.colore = colore;
 	}
-	public float getPrezzoDiListino() {
-		return prezzoDiListino;
+	public float getPrezzo() {
+		return prezzo;
 	}
-	public void setPrezzoDiListino(float prezzoDiListino) {
-		this.prezzoDiListino = prezzoDiListino;
-	}
-	public int getPercentualeSaldo() {
-		return percentualeSaldo;
-	}
-	public void setPercentualeSaldo(int percentualeSaldo) {
-		this.percentualeSaldo = percentualeSaldo;
+	public void setPrezzo(float prezzoDiListino) {
+		this.prezzo = prezzoDiListino;
 	}
 	public int getQuantità() {
 		return quantità;
@@ -118,10 +118,10 @@ public class Articolo {
 	public void setQuantità(int quantità) {
 		this.quantità = quantità;
 	}
-	public char getSesso() {
+	public String getSesso() {
 		return sesso;
 	}
-	public void setSesso(char sesso) {
+	public void setSesso(String sesso) {
 		this.sesso = sesso;
 	}
 	public String getImagePath() {

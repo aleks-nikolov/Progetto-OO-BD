@@ -7,8 +7,10 @@ public class Transazione {
 	private ComposizioneTransazione compTransazione;
 	private Fornitore fornitore;
 	
+	private String codiceTransazione;
 	private float valoreTotale;
 	private Date data;
+	private String partitaIva;
 	
 //**************************************************************************************
 	
@@ -25,6 +27,12 @@ public class Transazione {
 	}
 	public void setFornitore(Fornitore fornitore) {
 		this.fornitore = fornitore;
+	}
+	public String getCodiceTransazione() {
+		return codiceTransazione;
+	}
+	public void setCodiceTransazione(String codiceTransazione) {
+		this.codiceTransazione = codiceTransazione;
 	}
 	public float getValoreTotale() {
 		return valoreTotale;

@@ -2,38 +2,48 @@ package logic;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class TransazioneDAO {
-	private String url = "jdbc:postgresql://192.168.1.6:5432/NegozioAbbigliamento";
-	private String username = "postgres";
-	private String pass = "postgres";
+
 	
-	private Connection conn;
 	
-	public void connect() {
-		try {
-			conn = DriverManager.getConnection(url, username, pass);
-			System.out.println("Connected to database");
-		} catch (SQLException e){
-			System.out.println("Problem connecting to database");
-			e.printStackTrace();
-		}
-	}
-	
-	public void execution() {
+	public ArrayList<Transazione> getVendite(Connection conn){
+		
+		ArrayList<Transazione> transazioni = new ArrayList<Transazione>();
+		ResultSet rs;
+		
+		String comando = "SELECT * FROM Transazione AS T WHERE T.PartitaIva IS NULL;";
+		
 		try {
 			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM \"Transazione\"");
+			rs = st.executeQuery(comando);
+			
 			while(rs.next()) {
-				System.out.println(rs.getString("CodiceTransazione"));
+				Transazione transazione = new Transazione();
+				transazione.setCodiceTransazione(rs.getString(1));
+				transazione.setData(rs.getDate(2));
+				transazione.setValoreTotale(rs.getFloat(3));
+				transazioni.add(transazione);
 			}
 			
+			rs.close();
+			st.close();
 		} catch (SQLException e) {
-			System.out.println("Problem with statement");
 			e.printStackTrace();
 		}
+		
+		
+		
+		return transazioni;
+		
 	}
+	
+	
+	
+	
 }

@@ -203,7 +203,7 @@ public class ContenitoreArticolo extends JPanel {
 	}
 	
 	public float getPrezzoDiListino() {
-		return articolo.getPrezzoDiListino();
+		return articolo.getPrezzo();
 	}
 	
 	public int getQuantità() {

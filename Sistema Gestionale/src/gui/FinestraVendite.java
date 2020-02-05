@@ -11,6 +11,8 @@ import java.awt.Color;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Date;
 import java.awt.Cursor;
 import java.awt.Component;
 import javax.swing.Box;
@@ -18,6 +20,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
 import logic.Controller;
+import logic.Transazione;
 
 public class FinestraVendite extends JFrame{
 	
@@ -25,6 +28,8 @@ public class FinestraVendite extends JFrame{
 	
 	private Controller controller;
 	private Style style;
+	
+	ArrayList<Transazione> vendite = new ArrayList<Transazione>();
 	
 	//Definizione componenti grafici
 	private JPanel pannelloSuperiore;
@@ -36,6 +41,7 @@ public class FinestraVendite extends JFrame{
 	private JButton btnRefresh;
 	private JButton btnIndietro;
 	
+	private DefaultTableModel tableData;
 	private JTable table;
 	private Component upperHorizontalStrut;
 	private Component lowerHorizontalStrut;
@@ -53,8 +59,25 @@ public class FinestraVendite extends JFrame{
 		ImpostaPannelloCentrale();
 		ImpostaPannelloInferiore();
 		AggiungiListener();
+		RiempiTabella();
 		
 	}
+	
+	public void RiempiTabella() {
+		
+		tableData.setRowCount(0);
+		
+		//vendite = controller.getVendite();
+		for(Transazione vendita : vendite) {
+			String codiceTransazione = vendita.getCodiceTransazione();
+			Date data = vendita.getData();
+			Float valoreTotale = vendita.getValoreTotale();
+			
+			tableData.addRow(new Object[] {codiceTransazione, controller.getContenutoTransazione(codiceTransazione), data.toString(), valoreTotale});
+		}
+		
+	}
+	
 	
 	public void AggiungiListener() {
 		
@@ -124,7 +147,7 @@ public class FinestraVendite extends JFrame{
 	
 	public void ImpostaPannelloCentrale() {
 		
-		DefaultTableModel tableData = new DefaultTableModel();
+		tableData = new DefaultTableModel();
 		tableData.setColumnIdentifiers(new Object[] {"ID", "Contenuto", "Data", "Costo"});
 		table = new JTable(tableData);
 		table.setBackground(style.bg);
