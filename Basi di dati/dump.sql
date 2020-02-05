@@ -104,7 +104,7 @@ CREATE TABLE public."Articolo" (
     "Quantità" integer NOT NULL,
     "PathImmagine" character varying(200) NOT NULL,
     "CodiceABarre" character(11) NOT NULL,
-    CONSTRAINT "valorequantità" CHECK (("Quantità" >= 0))
+    CONSTRAINT "valorequantitàArticolo" CHECK (("Quantità" >= 0))
 );
 
 
@@ -120,7 +120,7 @@ CREATE TABLE public."ComposizioneTransazione" (
     "Quantità" integer NOT NULL,
     "Saldo" integer DEFAULT 0 NOT NULL,
     "Valore" double precision,
-    CONSTRAINT "valorequantità" CHECK (("Quantità" > 0))
+    CONSTRAINT "valorequantitàCT" CHECK (("Quantità" > 0))
 );
 
 
