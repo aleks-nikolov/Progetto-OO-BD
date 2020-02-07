@@ -46,4 +46,10 @@ public class Transazione {
 	public void setData(Date data) {
 		this.data = data;
 	}
+	public String getPartitaIva() {
+		return partitaIva;
+	}
+	public void setPartitaIva(String partitaIva) {
+		this.partitaIva = partitaIva;
+	}
 }

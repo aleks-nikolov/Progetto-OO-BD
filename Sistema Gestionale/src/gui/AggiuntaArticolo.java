@@ -240,29 +240,30 @@ public class AggiuntaArticolo extends JFrame {
 		contentPane.add(boxTaglia);
 		
 		textPrezzo = new JTextField();
-		textPrezzo.setBounds(172, 394, 86, 20);
+		textPrezzo.setBounds(137, 394, 86, 20);
 		contentPane.add(textPrezzo);
 		textPrezzo.setColumns(10);
 		
 		textPath = new JTextField();
 		textPath.setColumns(10);
-		textPath.setBounds(170, 436, 250, 20);
+		textPath.setBounds(223, 436, 250, 20);
 		contentPane.add(textPath);
-		
-		btnSalva = new JButton("Salva");
-		btnSalva.setBounds(270, 510, 150, 50);
-		btnSalva.setBackground(style.greenBtn);
-		contentPane.add(btnSalva);
-		
-		btnAnnulla = new JButton("Annulla");
-		btnAnnulla.setBounds(434, 510, 150, 50);
-		btnAnnulla.setBackground(style.redBtn);
-		contentPane.add(btnAnnulla);
-		
 		
 		style.changeFont(contentPane, style.defaultS);
 
-
+		btnSalva = new JButton("SALVA");
+		btnSalva.setBounds(200, 510, 150, 50);
+		btnSalva.setBackground(style.greenBtn);
+		btnSalva.setFont(style.defaultM);
+		btnSalva.setIcon(style.saveIcon);
+		contentPane.add(btnSalva);
+		
+		btnAnnulla = new JButton("ANNULLA");
+		btnAnnulla.setBounds(395, 510, 150, 50);
+		btnAnnulla.setBackground(style.redBtn);
+		btnAnnulla.setFont(style.defaultM);
+		btnAnnulla.setIcon(style.backIcon);
+		contentPane.add(btnAnnulla);
 		
 		
 	}

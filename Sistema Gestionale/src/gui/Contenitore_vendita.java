@@ -85,12 +85,13 @@ public class Contenitore_vendita extends ContenitoreArticolo {
 		labelQuantità.setPreferredSize(new Dimension(49, 15));
 		panelloLaterale.add(labelQuantità);
 		
-		btnRimuovi = new JButton("X");
+		btnRimuovi = new JButton();
 		btnRimuovi.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panelloLaterale.add(btnRimuovi);
 		btnRimuovi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnRimuovi.setBackground(getStyle().redBtn);
-		btnRimuovi.setMargin(new Insets(20, 20, 20, 20));
+		btnRimuovi.setIcon(getStyle().deleteIcon);
+		btnRimuovi.setMargin(new Insets(5, 5, 5, 5));
 		btnRimuovi.setPreferredSize(new Dimension(10, 10));
 	}
 	

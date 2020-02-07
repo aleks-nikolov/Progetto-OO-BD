@@ -14,7 +14,7 @@ public class TransazioneDAO {
 	
 	public ArrayList<Transazione> getVendite(Connection conn){
 		
-		ArrayList<Transazione> transazioni = new ArrayList<Transazione>();
+		ArrayList<Transazione> vendite = new ArrayList<Transazione>();
 		ResultSet rs;
 		
 		String comando = "SELECT * FROM Transazione AS T WHERE T.PartitaIva IS NULL;";
@@ -28,7 +28,7 @@ public class TransazioneDAO {
 				transazione.setCodiceTransazione(rs.getString(1));
 				transazione.setData(rs.getDate(2));
 				transazione.setValoreTotale(rs.getFloat(3));
-				transazioni.add(transazione);
+				vendite.add(transazione);
 			}
 			
 			rs.close();
@@ -37,9 +37,37 @@ public class TransazioneDAO {
 			e.printStackTrace();
 		}
 		
+		return vendite;
 		
+	}
+	
+	public ArrayList<Transazione> getRifornimenti(Connection conn){
 		
-		return transazioni;
+		ArrayList<Transazione> rifornimenti = new ArrayList<Transazione>();
+		ResultSet rs;
+		
+		String comando = "SELECT * FROM Transazione AS T WHERE T.PartitaIva IS NOT NULL;";
+		
+		try {
+			Statement st = conn.createStatement();
+			rs = st.executeQuery(comando);
+			
+			while(rs.next()) {
+				Transazione transazione = new Transazione();
+				transazione.setCodiceTransazione(rs.getString(1));
+				transazione.setData(rs.getDate(2));
+				transazione.setValoreTotale(rs.getFloat(3));
+				transazione.setPartitaIva(rs.getString(4));
+				rifornimenti.add(transazione);
+			}
+			
+			rs.close();
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return rifornimenti;
 		
 	}
 	

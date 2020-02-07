@@ -124,10 +124,11 @@ public class ContenutoVendita extends JFrame{
 		pannelloInferiore.setBackground(style.bg);
 		getContentPane().add(pannelloInferiore, BorderLayout.SOUTH);
 		
-		btnAdd = new JButton("+");
-		btnAdd.setMargin(new Insets(10, 20, 10, 20));
+		btnAdd = new JButton();
+		btnAdd.setMargin(new Insets(5, 5, 5, 5));
 		btnAdd.setFont(style.defaultM);
 		btnAdd.setBackground(style.greenBtn);
+		btnAdd.setIcon(style.addIcon);
 		pannelloInferiore.add(btnAdd);
 		
 		horizontalStrut = Box.createHorizontalStrut(600);
@@ -136,7 +137,8 @@ public class ContenutoVendita extends JFrame{
 		btnApplica = new JButton("APPLICA");
 		btnApplica.setFont(style.defaultM);
 		btnApplica.setBackground(style.greenBtn);
-		btnApplica.setMargin(new Insets(10, 20, 10, 20));
+		btnApplica.setMargin(new Insets(5, 5, 5, 5));
+		btnApplica.setIcon(style.saveIcon);
 		pannelloInferiore.add(btnApplica);
 		
 		horizontalStrut_1 = Box.createHorizontalStrut(20);
@@ -145,7 +147,8 @@ public class ContenutoVendita extends JFrame{
 		btnAnnulla = new JButton("ANNULLA");
 		btnAnnulla.setBackground(style.redBtn);
 		btnAnnulla.setFont(style.defaultM);
-		btnAnnulla.setMargin(new Insets(10, 20, 10, 20));
+		btnAnnulla.setMargin(new Insets(5, 5, 5, 5));
+		btnAnnulla.setIcon(style.backIcon);
 		pannelloInferiore.add(btnAnnulla);
 		
 	}

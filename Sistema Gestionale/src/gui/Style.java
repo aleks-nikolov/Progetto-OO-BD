@@ -35,6 +35,13 @@ public class Style {
 	Color blueBtn = new Color(100, 149, 237);
 	
 	Icon refreshIcon = new ImageIcon("res\\icons\\refresh.png");
+	Icon inventoryIcon = new ImageIcon("res\\icons\\inventory.png");
+	Icon sellsIcon = new ImageIcon("res\\icons\\sells.png");
+	Icon deleteIcon = new ImageIcon("res\\icons\\delete.png");
+	Icon addIcon = new ImageIcon("res\\icons\\add.png");
+	Icon backIcon = new ImageIcon("res\\icons\\back.png");
+	Icon exitIcon = new ImageIcon("res\\icons\\exit.png");
+	Icon saveIcon = new ImageIcon("res\\icons\\save.png");
 	
 //************************************************************************************
 	

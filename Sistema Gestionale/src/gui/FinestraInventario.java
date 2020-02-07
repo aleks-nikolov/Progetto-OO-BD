@@ -147,11 +147,11 @@ public class FinestraInventario extends JFrame {
 			
 		});
 		
-		btnIndietro.addActionListener(new ActionListener() {
+		btnRifornimenti.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.CambiaFrame(FinestraInventario.this, controller.getHomePage());
+				controller.CambiaFrame(FinestraInventario.this, controller.getFinestraRifornimenti());
 			}
 			
 		});
@@ -161,6 +161,15 @@ public class FinestraInventario extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller.CambiaFrame(FinestraInventario.this, controller.getFinestraAggiuntaArticolo());
+			}
+			
+		});
+
+		btnIndietro.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.CambiaFrame(FinestraInventario.this, controller.getHomePage());
 			}
 			
 		});
@@ -256,19 +265,25 @@ public class FinestraInventario extends JFrame {
 		pannelloInferiore = new JPanel();
 		contentPane.add(pannelloInferiore, BorderLayout.SOUTH);
 		
-		horizontalStrut = Box.createHorizontalStrut(700);
+		horizontalStrut = Box.createHorizontalStrut(600);
 		pannelloInferiore.add(horizontalStrut);
 		
 		btnAggiungi = new JButton("Aggiungi Merce");
+		btnAggiungi.setMargin(new Insets(5, 5, 5, 5));
 		btnAggiungi.setBackground(style.greenBtn);
+		btnAggiungi.setIcon(style.addIcon);
 		pannelloInferiore.add(btnAggiungi);
 		
 		btnRifornimenti = new JButton("Rifornimenti");
+		btnRifornimenti.setMargin(new Insets(5, 5, 5, 5));
 		btnRifornimenti.setBackground(style.greenBtn);
+		btnRifornimenti.setIcon(style.inventoryIcon);
 		pannelloInferiore.add(btnRifornimenti);
 		
 		btnIndietro = new JButton("Indietro");
+		btnIndietro.setMargin(new Insets(5, 5, 5, 5));
 		btnIndietro.setBackground(style.redBtn);
+		btnIndietro.setIcon(style.backIcon);
 		pannelloInferiore.add(btnIndietro);
 		
 		style.changeFont(pannelloInferiore, style.defaultL);

@@ -258,6 +258,7 @@ public class Catalogo extends JFrame {
 		btnAnnulla = new JButton("Annulla");
 		btnAnnulla.setFont(style.defaultL);
 		btnAnnulla.setBackground(style.redBtn);
+		btnAnnulla.setIcon(style.backIcon);
 		pannelloInferiore.add(btnAnnulla);
 		
 	}

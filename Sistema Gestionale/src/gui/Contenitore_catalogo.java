@@ -80,12 +80,13 @@ public class Contenitore_catalogo extends ContenitoreArticolo {
 		labelPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
 		labelPrezzo.setFont(new Font("Arial Black", Font.PLAIN, 20));
 		
-		btnAggiungi = new JButton("+");
+		btnAggiungi = new JButton();
 		btnAggiungi.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panelloLaterale.add(btnAggiungi);
 		btnAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAggiungi.setBackground(getStyle().greenBtn);
-		btnAggiungi.setMargin(new Insets(20, 20, 20, 20));
+		btnAggiungi.setMargin(new Insets(5, 5, 5, 5));
+		btnAggiungi.setIcon(getStyle().addIcon);
 		btnAggiungi.setPreferredSize(new Dimension(10, 10));
 		
 		panelloLaterale.add(Box.createRigidArea(new Dimension(150, 10)));

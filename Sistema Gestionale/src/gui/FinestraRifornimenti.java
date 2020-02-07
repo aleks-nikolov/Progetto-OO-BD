@@ -1,35 +1,35 @@
 package gui;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import javax.swing.JScrollPane;
-import java.awt.FlowLayout;
-import javax.swing.JTable;
-import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.FlowLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Date;
-import java.awt.Cursor;
-import java.awt.Component;
 import javax.swing.Box;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
 import logic.Controller;
 import logic.Transazione;
 
-public class FinestraVendite extends JFrame{
-	
+public class FinestraRifornimenti extends JFrame {
+
 	private static final long serialVersionUID = 1L;
 	
 	private Controller controller;
 	private Style style;
 	
-	ArrayList<Transazione> vendite = new ArrayList<Transazione>();
+	ArrayList<Transazione> rifornimenti = new ArrayList<Transazione>();
 	
 	//Definizione componenti grafici
 	private JPanel pannelloSuperiore;
@@ -39,6 +39,7 @@ public class FinestraVendite extends JFrame{
 	private JButton btnNew;
 	private JButton btnDelete;
 	private JButton btnRefresh;
+	private JButton btnAggiungi;
 	private JButton btnIndietro;
 	
 	private DefaultTableModel tableData;
@@ -48,7 +49,7 @@ public class FinestraVendite extends JFrame{
 
 //**************************************************************************************
 	
-	public FinestraVendite(Controller controller) {
+	public FinestraRifornimenti(Controller controller) {
 		
 		//Reference a SwingController
 		this.controller = controller;
@@ -67,13 +68,14 @@ public class FinestraVendite extends JFrame{
 		
 		tableData.setRowCount(0);
 		
-		//vendite = controller.getVendite();
-		for(Transazione vendita : vendite) {
-			String codiceTransazione = vendita.getCodiceTransazione();
-			Date data = vendita.getData();
-			Float valoreTotale = vendita.getValoreTotale();
+		rifornimenti = controller.getRifornimenti();
+		for(Transazione rifornimento : rifornimenti) {
+			String codiceTransazione = rifornimento.getCodiceTransazione();
+			Date data = rifornimento.getData();
+			Float valoreTotale = rifornimento.getValoreTotale();
+			String partitaIVA = rifornimento.getPartitaIva();
 			
-			tableData.addRow(new Object[] {codiceTransazione, controller.getContenutoTransazione(codiceTransazione), data.toString(), valoreTotale});
+			tableData.addRow(new Object[] {codiceTransazione, controller.getContenutoTransazione(codiceTransazione), partitaIVA, data.toString(), valoreTotale.toString()});
 		}
 		
 	}
@@ -85,7 +87,7 @@ public class FinestraVendite extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.CambiaFrame(FinestraVendite.this, controller.getContenutoVendita());
+				
 			}
 			
 		});
@@ -99,11 +101,20 @@ public class FinestraVendite extends JFrame{
 			
 		});
 		
+		btnAggiungi.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.CambiaFrame(FinestraRifornimenti.this, controller.getFinestraAggiuntaFornitore());
+			}
+			
+		});
+		
 		btnIndietro.addActionListener(new ActionListener() {
 	
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				controller.CambiaFrame(FinestraVendite.this, controller.getHomePage());
+				controller.CambiaFrame(FinestraRifornimenti.this, controller.getFinestraInventario());
 			}
 			
 		});
@@ -113,7 +124,7 @@ public class FinestraVendite extends JFrame{
 	
 	public void ImpostaFinestra() {
 		
-		setTitle("Vendite");
+		setTitle("Rifornimenti");
 		setBounds(100, 100, 1000, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBackground(style.bg);
@@ -160,7 +171,7 @@ public class FinestraVendite extends JFrame{
 	public void ImpostaPannelloCentrale() {
 		
 		tableData = new DefaultTableModel();
-		tableData.setColumnIdentifiers(new Object[] {"ID", "Contenuto", "Data", "Costo"});
+		tableData.setColumnIdentifiers(new Object[] {"ID", "Contenuto", "Fornitore", "Data", "Costo"});
 		table = new JTable(tableData);
 		table.setBackground(style.bg);
 		scrollPane = new JScrollPane(table);
@@ -178,12 +189,21 @@ public class FinestraVendite extends JFrame{
 		getContentPane().add(pannelloInferiore, BorderLayout.SOUTH);
 		
 		pannelloInferiore.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		lowerHorizontalStrut = Box.createHorizontalStrut(700);
+		lowerHorizontalStrut = Box.createHorizontalStrut(500);
 		pannelloInferiore.add(lowerHorizontalStrut);
+		
+		btnAggiungi = new JButton("AGGIUNGI FORNITORE");
+		btnAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnAggiungi.setFont(style.defaultS);
+		btnAggiungi.setForeground(style.fg);
+		btnAggiungi.setBackground(style.greenBtn);
+		btnAggiungi.setMargin(new Insets(5, 5, 5, 5));
+		btnAggiungi.setIcon(style.addIcon);
+		pannelloInferiore.add(btnAggiungi);
 		
 		btnIndietro = new JButton("INDIETRO");
 		btnIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnIndietro.setFont(style.defaultM);
+		btnIndietro.setFont(style.defaultS);
 		btnIndietro.setForeground(style.fg);
 		btnIndietro.setBackground(style.redBtn);
 		btnIndietro.setMargin(new Insets(5, 5, 5, 5));

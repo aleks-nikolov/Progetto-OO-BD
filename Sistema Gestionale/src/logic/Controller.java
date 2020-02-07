@@ -26,8 +26,10 @@ public class Controller {
 	private HomePage home;
 	private FinestraVendite finestraVendite;
 	private FinestraInventario finestraInventario;
+	private FinestraRifornimenti finestraRifornimenti;
 	private ContenutoVendita contenutoVendita;
 	private AggiuntaArticolo finestraAggiuntaArticolo;
+	private AggiuntaFornitore finestraAggiuntaFornitore;
 	
 	private ArrayList<String> categoria = new ArrayList<String>();
 	private ArrayList<String> marca = new ArrayList<String>();
@@ -55,8 +57,10 @@ public class Controller {
 		//Inizializza le altre finestre
 		finestraVendite = new FinestraVendite(this);
 		finestraInventario = new FinestraInventario(this);
+		finestraRifornimenti = new FinestraRifornimenti(this);
 		contenutoVendita = new ContenutoVendita(this);
 		finestraAggiuntaArticolo = new AggiuntaArticolo(this);
+		finestraAggiuntaFornitore = new AggiuntaFornitore(this);
 
 	}
 	
@@ -121,6 +125,10 @@ public class Controller {
 		return transazioneDAO.getVendite(conn);
 	}
 	
+	public  ArrayList<Transazione> getRifornimenti() {
+		return transazioneDAO.getRifornimenti(conn);
+	}
+	
 	public String getContenutoTransazione(String codiceTransazione) {
 		
 		String contenuto = null;
@@ -155,6 +163,11 @@ public class Controller {
     
     public ArrayList<Articolo> getAllArticoli(String filtroSQL) {
     	return articoloDAO.getAllArticoli(conn, filtroSQL);
+    }
+    
+    
+    public void NuovoFornitore(Fornitore fornitore) {
+    	fornitoreDAO.NuovoFornitore(conn, fornitore);
     }
     
 //Metodi GUI
@@ -200,11 +213,17 @@ public class Controller {
 	public FinestraInventario getFinestraInventario() {
 		return finestraInventario;
 	}
+	public FinestraRifornimenti getFinestraRifornimenti() {
+		return finestraRifornimenti;
+	}
 	public ContenutoVendita getContenutoVendita() {
 		return contenutoVendita;
 	}
 	public AggiuntaArticolo getFinestraAggiuntaArticolo() {
 		return finestraAggiuntaArticolo;
+	}
+	public AggiuntaFornitore getFinestraAggiuntaFornitore() {
+		return finestraAggiuntaFornitore;
 	}
 
 }
