@@ -2,8 +2,11 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -16,6 +19,7 @@ import javax.swing.JToggleButton;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
+import logic.Articolo;
 import logic.Controller;
 import java.awt.Component;
 
@@ -25,6 +29,8 @@ public class FinestraInventario extends JFrame {
 	
 	private Controller controller;
 	private Style style;
+	
+	private ArrayList<Articolo> articoliInMagazzino = new ArrayList<Articolo>();
 	
 	private JPanel contentPane;
 	private JPanel pannelloSuperiore;
@@ -43,6 +49,7 @@ public class FinestraInventario extends JFrame {
 	private JToggleButton tglbtnGreen;
 	private JToggleButton tglbtnBlue;
 	
+	private JButton btnRefresh;
 	private JButton btnAggiungi;
 	private JButton btnRifornimenti;
 	private JButton btnIndietro;
@@ -60,10 +67,85 @@ public class FinestraInventario extends JFrame {
 		ImpostaPannelloCentrale();
 		ImpostaPannelloInferiore();
 		AggiungiListener();
+		//RiempiInventario();
+		
+	}
+	
+	public void RiempiInventario() {
+		
+		SvuotaInventario();
+		articoliInMagazzino = controller.getAllArticoli(CreaFiltroSQL());
+		
+		for (Articolo articolo : articoliInMagazzino) {
+			
+			Contenitore_inventario contenitore = new Contenitore_inventario(controller, this);
+			contenitore.InserisciDati(articolo);
+			AggiungiContenitore(contenitore);
+			
+		}
+		
+		pannelloCentrale.revalidate();
+		pannelloCentrale.repaint();
+		
+	}
+	
+	public void AggiungiContenitore(Contenitore_inventario contenitore) {
+		
+        pannelloCentrale.add(Box.createRigidArea(new Dimension(1200, 10)));
+        pannelloCentrale.add(contenitore);
+        
+	}
+	
+	public void SvuotaInventario() {
+		
+		pannelloCentrale.removeAll();
+		pannelloCentrale.revalidate();
+		pannelloCentrale.repaint();
+		
+	}
+	
+	public String CreaFiltroSQL() {
+		
+		String filtro = " WHERE TRUE";
+		
+		if(boxCategoria.getSelectedItem().toString() != "CATEGORIA") 
+			filtro += " AND DA.Categoria = " + boxCategoria.getSelectedItem().toString();
+
+		if(boxMarca.getSelectedItem().toString() != "MARCA") 
+			filtro += " AND DA.Marca = " + boxMarca.getSelectedItem().toString();
+
+		if(boxTaglia.getSelectedItem().toString() != "TAGLIA") 
+			filtro += " AND A.Taglia = " + boxTaglia.getSelectedItem().toString();
+
+		if(tglbtnBlack.isSelected()) 
+			filtro += " AND A.Colore = Nero";
+		
+		if(tglbtnWhite.isSelected()) 
+			filtro += " AND A.Colore = Bianco";
+		
+		if(tglbtnRed.isSelected()) 
+			filtro += " AND A.Colore = Rosso";
+		
+		if(tglbtnGreen.isSelected()) 
+			filtro += " AND A.Colore = Verde";
+		
+		if(tglbtnBlue.isSelected()) 
+			filtro += " AND A.Colore = Blu";
+		
+		return filtro;
 		
 	}
 	
 	public void AggiungiListener() {
+		
+		btnRefresh.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				RiempiInventario();
+			}
+			
+		});
 		
 		btnIndietro.addActionListener(new ActionListener() {
 
@@ -146,6 +228,11 @@ public class FinestraInventario extends JFrame {
 		boxTaglia.setPreferredSize(new Dimension(150, 25));
 		pannelloSuperiore.add(boxTaglia);
 		
+		btnRefresh = new JButton("");
+		btnRefresh.setIcon(style.refreshIcon);
+		btnRefresh.setMargin(new Insets(5, 5, 5, 5));
+		pannelloSuperiore.add(btnRefresh);
+		
 		style.changeFont(pannelloSuperiore, style.defaultS);
 		
 	}
@@ -160,9 +247,7 @@ public class FinestraInventario extends JFrame {
 		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         getContentPane().add(scroll, BorderLayout.CENTER);
         pannelloCentrale.setLayout(new BoxLayout(pannelloCentrale, BoxLayout.Y_AXIS));
-        
-        pannelloCentrale.add(Box.createRigidArea(new Dimension(1200, 10)));
-        pannelloCentrale.add(new Contenitore_inventario(controller, this));
+
         
 	}
 	

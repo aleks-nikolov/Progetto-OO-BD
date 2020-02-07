@@ -21,6 +21,7 @@ public class Controller {
 	private ArticoloDAO articoloDAO = new ArticoloDAO();
 	private TransazioneDAO transazioneDAO = new TransazioneDAO();
 	private ComposizioneTransazioneDAO compTransazioneDAO = new ComposizioneTransazioneDAO();
+	private FornitoreDAO fornitoreDAO = new FornitoreDAO();
 	
 	private HomePage home;
 	private FinestraVendite finestraVendite;
@@ -98,7 +99,6 @@ public class Controller {
 		articoli.add(new Articolo("123", "456", "Maglietta di cotone", "Maglietta leggera di cotone", "Magliette", "Adidas", "XL", "Nero", 15.25f, 5, "M", "res\\images\\magliette\\adidas_black.png"));
 	}
 	
-
 	public void ConnectToDatabase() {
 		
 		try {
@@ -149,6 +149,14 @@ public class Controller {
 		
 	}
 
+    public void NuovoArticolo(Articolo articolo) {
+    	articoloDAO.NuovoArticolo(conn, articolo);
+    }
+    
+    public ArrayList<Articolo> getAllArticoli(String filtroSQL) {
+    	return articoloDAO.getAllArticoli(conn, filtroSQL);
+    }
+    
 //Metodi GUI
 	public void CambiaFrame(JFrame frameDaNascondere, JFrame frameDaMostrare) {
 		ChiudiFrame(frameDaNascondere);

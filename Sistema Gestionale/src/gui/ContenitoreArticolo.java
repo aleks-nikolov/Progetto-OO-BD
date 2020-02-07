@@ -30,6 +30,8 @@ public class ContenitoreArticolo extends JPanel {
 	private Controller controller;
 	private Style style;
 	
+	private Articolo articoloContenuto;
+	
 	private ContenutoVendita contenutoVendita;
 	private Catalogo catalogo;
 	private FinestraInventario inventario;
@@ -97,8 +99,9 @@ public class ContenitoreArticolo extends JPanel {
 		return img;
 	}
 	
-	public void InserisciDati() {
-		articolo = controller.getArticolo();
+	public void InserisciDati(Articolo articolo) {
+
+		this.articolo = articolo;
 		
 		labelNome.setText(articolo.getNome());
 		labelDescrizione.setText(articolo.getDescrizione());
@@ -106,6 +109,7 @@ public class ContenitoreArticolo extends JPanel {
 		labelTaglia.setText(articolo.getTaglia());
 		labelColore.setText(articolo.getColore());
 		labelImg.setIcon(GetImage(labelImg.getPreferredSize().width, labelImg.getPreferredSize().height, articolo.getImagePath()));
+		
 	}
 	
 	public void ImpostaPanello() {
@@ -202,12 +206,8 @@ public class ContenitoreArticolo extends JPanel {
 		return style;
 	}
 	
-	public float getPrezzoDiListino() {
-		return articolo.getPrezzo();
+	public Articolo getArticolo() {
+		return articolo;
 	}
 	
-	public int getQuantità() {
-		return articolo.getQuantità();
-	}
-
 }

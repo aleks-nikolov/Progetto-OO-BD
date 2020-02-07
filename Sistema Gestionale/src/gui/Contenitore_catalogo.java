@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import logic.Articolo;
 import logic.Controller;
 
 import javax.swing.JTextField;
@@ -42,7 +43,6 @@ public class Contenitore_catalogo extends ContenitoreArticolo {
 		
 		ImpostaPanelloLaterale();
 		AggiungiListener();
-		InserisciDati();
 	}
 
 	
@@ -53,16 +53,16 @@ public class Contenitore_catalogo extends ContenitoreArticolo {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
+				catalogo.contenutoVendita.AggiungiArticolo(Contenitore_catalogo.this.getArticolo());
 			}
 			
 		});
 	}
 	
 	@Override
-	public void InserisciDati() {
-		super.InserisciDati();
-		labelPrezzo.setText(Float.toString(getPrezzoDiListino()));
+	public void InserisciDati(Articolo articolo) {
+		super.InserisciDati(articolo);
+		labelPrezzo.setText(Float.toString(getArticolo().getPrezzo()));
 	}
 	
 	public void ImpostaPanelloLaterale() {

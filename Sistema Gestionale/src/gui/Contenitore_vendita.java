@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import logic.Articolo;
 import logic.Controller;
 
 public class Contenitore_vendita extends ContenitoreArticolo {
@@ -35,7 +36,6 @@ public class Contenitore_vendita extends ContenitoreArticolo {
 		
 		ImpostaPanelloLaterale();
 		AggiungiListener();
-		InserisciDati();
 	}
 	
 	public void AggiungiListener() {
@@ -57,10 +57,10 @@ public class Contenitore_vendita extends ContenitoreArticolo {
 	}
 	
 	@Override
-	public void InserisciDati() {
-		super.InserisciDati();
-		labelPrezzo.setText(Float.toString(getPrezzoDiListino()));
-		labelQuantità.setText(Integer.toString(getQuantità()));
+	public void InserisciDati(Articolo articolo) {
+		super.InserisciDati(articolo);
+		labelPrezzo.setText(Float.toString(getArticolo().getPrezzo()));
+		labelQuantità.setText(Integer.toString(getArticolo().getQuantità()));
 	}
 	
 	public void ImpostaPanelloLaterale() {

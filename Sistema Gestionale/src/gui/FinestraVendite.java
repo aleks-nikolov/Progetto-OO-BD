@@ -90,6 +90,15 @@ public class FinestraVendite extends JFrame{
 			
 		});
 		
+		btnRefresh.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				RiempiTabella();
+			}
+			
+		});
+		
 		btnIndietro.addActionListener(new ActionListener() {
 	
 			@Override
@@ -132,15 +141,16 @@ public class FinestraVendite extends JFrame{
 		btnDelete.setBackground(style.redBtn);
 		pannelloSuperiore.add(btnDelete);
 		
-		btnRefresh = new JButton("REFRESH");
+		upperHorizontalStrut = Box.createHorizontalStrut(700);
+		pannelloSuperiore.add(upperHorizontalStrut);
+		
+		btnRefresh = new JButton("");
 		btnRefresh.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnRefresh.setForeground(style.fg);
 		btnRefresh.setBackground(new Color(255, 255, 255));
-		btnRefresh.setMargin(new Insets(10, 10, 10, 10));
+		btnRefresh.setMargin(new Insets(5, 5, 5, 5));
+		btnRefresh.setIcon(style.refreshIcon);
 		pannelloSuperiore.add(btnRefresh);
-		
-		upperHorizontalStrut = Box.createHorizontalStrut(700);
-		pannelloSuperiore.add(upperHorizontalStrut);
 		style.changeFont(pannelloSuperiore, style.defaultS);
 		
 	}

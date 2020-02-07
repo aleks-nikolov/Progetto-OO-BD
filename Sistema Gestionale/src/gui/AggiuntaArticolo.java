@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import logic.Articolo;
 import logic.Controller;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
@@ -22,7 +24,7 @@ public class AggiuntaArticolo extends JFrame {
 	
 	private JPanel contentPane;
 	
-	private JTextField textCodice;
+	private JTextField textSku;
 	private JTextField textNome;
 	private JTextArea areaDescrizione;
 	private JTextField textPrezzo;
@@ -38,6 +40,7 @@ public class AggiuntaArticolo extends JFrame {
 	private JTextField textPath;
 	
 	ArrayList<String> contenitoreDati;
+	private JTextField textCodice;
 
 //**************************************************************************************
 	
@@ -78,6 +81,7 @@ public class AggiuntaArticolo extends JFrame {
 		boolean formCompilato = true;
 		contenitoreDati = new ArrayList<String>();
 		
+		contenitoreDati.add(textSku.getText());
 		contenitoreDati.add(textCodice.getText());
 		contenitoreDati.add(textNome.getText());
 		contenitoreDati.add(areaDescrizione.getText());
@@ -88,7 +92,6 @@ public class AggiuntaArticolo extends JFrame {
 		contenitoreDati.add((String) boxTaglia.getSelectedItem());
 		contenitoreDati.add(textPrezzo.getText());
 		
-		
 		for (String testo : contenitoreDati) {
 			formCompilato = ControlloValidità(testo.trim());
 		}
@@ -96,7 +99,7 @@ public class AggiuntaArticolo extends JFrame {
 		contenitoreDati.add(textPath.getText());
 		
 		if (formCompilato) {
-			NuovoArticolo();
+			NuovoArticolo(contenitoreDati);
 		} else {
 			
 			JDialog dialog = new JDialog(this, "ATTENZIONE");
@@ -106,13 +109,30 @@ public class AggiuntaArticolo extends JFrame {
 			
 			JLabel messaggio = new JLabel();
 			messaggio.setText("Dati mancanti: compilare tutti i campi obbligatori");
-			dialog.add(messaggio);
+			dialog.getContentPane().add(messaggio);
 			
 		}
 	}
 	
-	public void NuovoArticolo() {
-		System.out.println("Aggiungo nuovo articolo!");
+	public void NuovoArticolo(ArrayList<String> dati) {
+		
+		Articolo articolo = new Articolo();
+
+		articolo.setSKU(dati.get(0));
+		articolo.setCodiceABarre(dati.get(1));
+		articolo.setNome(dati.get(2));
+		articolo.setDescrizione(dati.get(3));
+		articolo.setCategoria(dati.get(4));
+		articolo.setMarca(dati.get(5));
+		articolo.setColore(dati.get(6));
+		articolo.setSesso(dati.get(7));
+		articolo.setTaglia(dati.get(8));
+		articolo.setPrezzo(Float.parseFloat(dati.get(9)));
+		articolo.setImagePath(dati.get(10));
+		
+		controller.NuovoArticolo(articolo);
+		controller.CambiaFrame(AggiuntaArticolo.this, controller.getFinestraInventario());
+		
 	}
 	
 	public boolean ControlloValidità(String testo) {
@@ -151,16 +171,20 @@ public class AggiuntaArticolo extends JFrame {
 		label.setBounds(10, 11, 250, 20);
 		contentPane.add(label);
 		
-		JLabel lblCodice = new JLabel("Codice: ");
-		lblCodice.setBounds(20, 52, 120, 14);
+		JLabel lblSku = new JLabel("Sku:");
+		lblSku.setBounds(20, 52, 120, 14);
+		contentPane.add(lblSku);
+		
+		JLabel lblCodice = new JLabel("Codice Prodotto: ");
+		lblCodice.setBounds(20, 85, 120, 14);
 		contentPane.add(lblCodice);
 		
 		JLabel lblNome = new JLabel("Nome Prodotto: ");
-		lblNome.setBounds(20, 92, 140, 20);
+		lblNome.setBounds(20, 117, 140, 20);
 		contentPane.add(lblNome);
 		
 		JLabel lblDescrizione = new JLabel("Descrizione: ");
-		lblDescrizione.setBounds(18, 125, 120, 20);
+		lblDescrizione.setBounds(20, 148, 120, 20);
 		contentPane.add(lblDescrizione);
 		
 		JLabel lblPrezzo = new JLabel("Prezzo:");
@@ -171,18 +195,23 @@ public class AggiuntaArticolo extends JFrame {
 		lblPath.setBounds(20, 439, 140, 14);
 		contentPane.add(lblPath);
 		
+		textSku = new JTextField();
+		textSku.setColumns(10);
+		textSku.setBounds(170, 50, 250, 20);
+		contentPane.add(textSku);
+		
 		textCodice = new JTextField();
 		textCodice.setColumns(10);
-		textCodice.setBounds(170, 49, 250, 20);
+		textCodice.setBounds(170, 85, 250, 20);
 		contentPane.add(textCodice);
 		
 		textNome = new JTextField();
-		textNome.setBounds(170, 92, 250, 20);
+		textNome.setBounds(170, 120, 250, 20);
 		contentPane.add(textNome);
 		textNome.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(170, 124, 250, 82);
+		scrollPane.setBounds(170, 148, 250, 76);
 		contentPane.add(scrollPane);
 		
 		areaDescrizione = new JTextArea();
@@ -232,7 +261,8 @@ public class AggiuntaArticolo extends JFrame {
 		
 		
 		style.changeFont(contentPane, style.defaultS);
-		
+
+
 		
 		
 	}

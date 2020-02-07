@@ -12,6 +12,7 @@ import java.awt.Component;
 import javax.swing.Box;
 import javax.swing.ScrollPaneConstants;
 
+import logic.Articolo;
 import logic.Controller;
 
 import javax.swing.BoxLayout;
@@ -49,6 +50,27 @@ public class ContenutoVendita extends JFrame{
 		
 	}
 	
+	
+	public void AggiungiArticolo(Articolo articolo) {
+		
+		Contenitore_vendita contenitore = new Contenitore_vendita(controller, this);
+		contenitore.InserisciDati(articolo);
+		pannelloCentrale.add(contenitore);
+		pannelloCentrale.add(Box.createRigidArea(new Dimension(1200, 10)));
+		pannelloCentrale.revalidate();
+		pannelloCentrale.repaint();
+		
+	}
+	
+	public void RimuoviArticolo(Contenitore_vendita contenitoreDaRimuovere) {
+		
+		pannelloCentrale.remove(contenitoreDaRimuovere);
+		pannelloCentrale.revalidate();
+		pannelloCentrale.repaint();
+		
+	}
+	
+	
 	public void AggiungiListener() {
 		
 		btnAnnulla.addActionListener(new ActionListener() {
@@ -71,25 +93,7 @@ public class ContenutoVendita extends JFrame{
 		});
 		
 	}
-	
-	public void AggiungiArticolo() {
-		
-		Contenitore_vendita temp = new Contenitore_vendita(controller, this);
-		pannelloCentrale.add(temp);
-		pannelloCentrale.add(Box.createRigidArea(new Dimension(1200, 10)));
-		pannelloCentrale.revalidate();
-		pannelloCentrale.repaint();
-		
-	}
-	
-	public void RimuoviArticolo(Contenitore_vendita contenitoreDaRimuovere) {
-		
-		pannelloCentrale.remove(contenitoreDaRimuovere);
-		pannelloCentrale.revalidate();
-		pannelloCentrale.repaint();
-		
-	}
-	
+
 	public void ImpostaFinestra() {
 		
 		setTitle("Contenuto Vendita");
@@ -109,8 +113,7 @@ public class ContenutoVendita extends JFrame{
 		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         getContentPane().add(scroll, BorderLayout.CENTER);
         pannelloCentrale.setLayout(new BoxLayout(pannelloCentrale, BoxLayout.Y_AXIS));
-        
-        pannelloCentrale.add(new Contenitore_vendita(controller, this));
+ 
         pannelloCentrale.add(Box.createRigidArea(new Dimension(1200, 10)));
         
 	}

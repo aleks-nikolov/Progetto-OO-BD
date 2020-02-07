@@ -5,6 +5,9 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 public class Style {
 	
 	//Font
@@ -23,11 +26,15 @@ public class Style {
 	Color border1 = Color.decode("#545E75");
 	Color border2 = Color.decode("#82A0BC");
 	
+	Color boxBackground = Color.decode("#545E75");
+	
 	Color black = new Color(0, 0, 0);
 	Color white = new Color(255, 255, 255);
 	Color greenBtn = new Color(60, 179, 113);
 	Color redBtn = new Color(178, 34, 34);
 	Color blueBtn = new Color(100, 149, 237);
+	
+	Icon refreshIcon = new ImageIcon("res\\icons\\refresh.png");
 	
 //************************************************************************************
 	
