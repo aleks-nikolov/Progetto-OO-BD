@@ -174,6 +174,7 @@ public class Catalogo extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setBackground(style.bg);
 		setContentPane(contentPane);
 		
 	}
@@ -181,6 +182,7 @@ public class Catalogo extends JFrame {
 	public void ImpostaPannelloSuperiore() {
 		
 		pannelloSuperiore = new JPanel();
+		pannelloSuperiore.setBackground(style.bg);
 		contentPane.add(pannelloSuperiore, BorderLayout.NORTH);
 		
 		boxCategoria = new JComboBox(controller.getCategoria().toArray());
@@ -245,6 +247,7 @@ public class Catalogo extends JFrame {
 		
 		JScrollPane scroll = new JScrollPane(pannelloCentrale);
 		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scroll.setBackground(style.bg);
         getContentPane().add(scroll, BorderLayout.CENTER);
         pannelloCentrale.setLayout(new BoxLayout(pannelloCentrale, BoxLayout.Y_AXIS));
         
@@ -253,6 +256,7 @@ public class Catalogo extends JFrame {
 	public void ImpostaPannelloInferiore() {
 		
 		pannelloInferiore = new JPanel();
+		pannelloInferiore.setBackground(style.bg);
 		contentPane.add(pannelloInferiore, BorderLayout.SOUTH);
 		
 		btnAnnulla = new JButton("Annulla");

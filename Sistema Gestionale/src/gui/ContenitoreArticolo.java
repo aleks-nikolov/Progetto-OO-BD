@@ -122,7 +122,7 @@ public class ContenitoreArticolo extends JPanel {
 	
 	public void ImpostaPanelloImmagine() {
 		pannelloImmagine = new JPanel();
-		pannelloImmagine.setBorder(new MatteBorder(0, 0, 0, 2, (Color) Color.GRAY));
+		pannelloImmagine.setBorder(new MatteBorder(0, 0, 0, 2, style.border1));
 		pannelloImmagine.setBackground(style.bg);
 		add(pannelloImmagine, BorderLayout.WEST);
 		pannelloImmagine.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -145,7 +145,7 @@ public class ContenitoreArticolo extends JPanel {
 		add(getContenitoreDati(), BorderLayout.CENTER);
 
 		panelloDati = new JPanel();
-		panelloDati.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
+		panelloDati.setBorder(new LineBorder(style.border1, 2));
 		panelloDati.setBackground(style.bg);
 		contenitoreDati.add(panelloDati, BorderLayout.CENTER);
 		panelloDati.setLayout(new BorderLayout(0, 0));
@@ -165,7 +165,7 @@ public class ContenitoreArticolo extends JPanel {
 		labelDescrizione.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
 		panelloQualità = new JPanel();
-		panelloQualità.setBorder(new MatteBorder(2, 0, 0, 0, (Color) Color.LIGHT_GRAY));
+		panelloQualità.setBorder(new MatteBorder(2, 0, 0, 0, (Color) style.border1));
 		panelloQualità.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		panelloQualità.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		panelloQualità.setBackground(style.bg);

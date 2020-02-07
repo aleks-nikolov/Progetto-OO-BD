@@ -117,6 +117,7 @@ public class FinestraVendite extends JFrame{
 		setBounds(100, 100, 1000, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBackground(style.bg);
+		getContentPane().setBackground(style.bg);
 		
 	}
 	

@@ -68,7 +68,7 @@ public class Contenitore_vendita extends ContenitoreArticolo {
 		panelloLaterale.setBackground(getStyle().bg);
 		panelloLaterale.setPreferredSize(new Dimension(150, 10));
 		getContenitoreDati().add(panelloLaterale, BorderLayout.EAST);
-		panelloLaterale.setBorder(new LineBorder(new Color(192, 192, 192), 2));
+		panelloLaterale.setBorder(new LineBorder(getStyle().border1, 2));
 		panelloLaterale.setLayout(new BoxLayout(panelloLaterale, BoxLayout.Y_AXIS));
 		
 		labelPrezzo = new JLabel();

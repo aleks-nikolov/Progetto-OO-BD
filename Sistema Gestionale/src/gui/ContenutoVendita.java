@@ -100,6 +100,7 @@ public class ContenutoVendita extends JFrame{
 		setBounds(100, 100, 1280, 720);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBackground(style.bg);
+		getContentPane().setBackground(style.bg);
 		
 	}
 	
