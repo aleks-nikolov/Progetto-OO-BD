@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import logic.Articolo;
 import logic.Controller;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -81,7 +82,6 @@ public class AggiuntaArticolo extends JFrame {
 		boolean formCompilato = true;
 		contenitoreDati = new ArrayList<String>();
 		
-		contenitoreDati.add(textSku.getText());
 		contenitoreDati.add(textCodice.getText());
 		contenitoreDati.add(textNome.getText());
 		contenitoreDati.add(areaDescrizione.getText());
@@ -102,14 +102,7 @@ public class AggiuntaArticolo extends JFrame {
 			NuovoArticolo(contenitoreDati);
 		} else {
 			
-			JDialog dialog = new JDialog(this, "ATTENZIONE");
-			dialog.setBounds(700, 400, 300, 100);
-			dialog.setVisible(true);
-			dialog.setResizable(false);
-			
-			JLabel messaggio = new JLabel();
-			messaggio.setText("Dati mancanti: compilare tutti i campi obbligatori");
-			dialog.getContentPane().add(messaggio);
+			JOptionPane.showMessageDialog(this, "Dati mancanti: compilare tutti i campi obbligatori", "Attenzione",  JOptionPane.INFORMATION_MESSAGE);
 			
 		}
 	}
@@ -118,17 +111,16 @@ public class AggiuntaArticolo extends JFrame {
 		
 		Articolo articolo = new Articolo();
 
-		articolo.setSKU(dati.get(0));
-		articolo.setCodiceABarre(dati.get(1));
-		articolo.setNome(dati.get(2));
-		articolo.setDescrizione(dati.get(3));
-		articolo.setCategoria(dati.get(4));
-		articolo.setMarca(dati.get(5));
-		articolo.setColore(dati.get(6));
-		articolo.setSesso(dati.get(7));
-		articolo.setTaglia(dati.get(8));
-		articolo.setPrezzo(Float.parseFloat(dati.get(9)));
-		articolo.setImagePath(dati.get(10));
+		articolo.setCodiceABarre(dati.get(0));
+		articolo.setNome(dati.get(1));
+		articolo.setDescrizione(dati.get(2));
+		articolo.setCategoria(dati.get(3));
+		articolo.setMarca(dati.get(4));
+		articolo.setColore(dati.get(5));
+		articolo.setSesso(dati.get(6));
+		articolo.setTaglia(dati.get(7));
+		articolo.setPrezzo(Float.parseFloat(dati.get(8)));
+		articolo.setImagePath(dati.get(9));
 		
 		controller.NuovoArticolo(articolo);
 		controller.CambiaFrame(AggiuntaArticolo.this, controller.getFinestraInventario());

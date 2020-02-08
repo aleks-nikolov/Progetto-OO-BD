@@ -66,7 +66,7 @@ public class Catalogo extends JFrame {
 		ImpostaPannelloCentrale();
 		ImpostaPannelloInferiore();
 		AggiungiListener();
-		//RiempiCatalogo();
+		RiempiCatalogo();
 		
 	}
 	
@@ -77,7 +77,7 @@ public class Catalogo extends JFrame {
 		
 		for (Articolo articolo : articoliInCatalogo) {
 			
-			Contenitore_catalogo contenitore = new Contenitore_catalogo(controller, this);
+			ContenitoreCatalogo contenitore = new ContenitoreCatalogo(controller, this);
 			contenitore.InserisciDati(articolo);
 			AggiungiContenitore(contenitore);
 			
@@ -88,7 +88,7 @@ public class Catalogo extends JFrame {
 		
 	}
 	
-	public void AggiungiContenitore(Contenitore_catalogo contenitore) {
+	public void AggiungiContenitore(ContenitoreCatalogo contenitore) {
 		
 		pannelloCentrale.add(Box.createRigidArea(new Dimension(1200, 10)));
         pannelloCentrale.add(contenitore);

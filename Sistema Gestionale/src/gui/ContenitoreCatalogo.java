@@ -9,6 +9,8 @@ import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -19,48 +21,47 @@ import javax.swing.border.LineBorder;
 import logic.Articolo;
 import logic.Controller;
 
-public class Contenitore_vendita extends ContenitoreArticolo {
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+
+public class ContenitoreCatalogo extends ContenitoreArticolo {
+	
 	private static final long serialVersionUID = 1L;
-	
-	private ContenutoVendita contenutoVendita;
-	private AvvisoElimina dialog;
-	
+
+	private Catalogo catalogo;
+
 	private JPanel panelloLaterale;
-	private JButton btnRimuovi;
-	private JLabel labelQuantità;
+	private JButton btnAggiungi;
 	private JLabel labelPrezzo;
+	private JLabel labelQuantità;
+	private JPanel panelloQuantità;
+	private JComboBox<Integer> boxQuantità;
 	
-	public Contenitore_vendita(Controller controller, ContenutoVendita contenutoVendita) {
-		super(controller, contenutoVendita);
-		this.contenutoVendita = contenutoVendita;
+	public ContenitoreCatalogo(Controller controller, Catalogo catalogo) {
+		super(controller, catalogo);
+		this.catalogo = catalogo;
 		
 		ImpostaPanelloLaterale();
 		AggiungiListener();
 	}
-	
+
+
 	public void AggiungiListener() {
 		
-		btnRimuovi.addActionListener(new ActionListener() {
+		btnAggiungi.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				dialog = new AvvisoElimina(Contenitore_vendita.this);
-				
+				catalogo.contenutoVendita.AggiungiArticolo(ContenitoreCatalogo.this.getArticolo());
 			}
 			
 		});
-	}
-	
-	public void Rimuovi() {
-		contenutoVendita.RimuoviArticolo(Contenitore_vendita.this);
-		dialog = null;
 	}
 	
 	@Override
 	public void InserisciDati(Articolo articolo) {
 		super.InserisciDati(articolo);
 		labelPrezzo.setText(Float.toString(getArticolo().getPrezzo()));
-		labelQuantità.setText(Integer.toString(getArticolo().getQuantità()));
 	}
 	
 	public void ImpostaPanelloLaterale() {
@@ -78,24 +79,29 @@ public class Contenitore_vendita extends ContenitoreArticolo {
 		labelPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
 		labelPrezzo.setFont(new Font("Arial Black", Font.PLAIN, 20));
 		
-		labelQuantità = new JLabel();
-		labelQuantità.setHorizontalAlignment(SwingConstants.CENTER);
-		labelQuantità.setAlignmentX(Component.CENTER_ALIGNMENT);
-		labelQuantità.setFont(getStyle().defaultS);
-		labelQuantità.setPreferredSize(new Dimension(49, 15));
-		panelloLaterale.add(labelQuantità);
+		btnAggiungi = new JButton();
+		btnAggiungi.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panelloLaterale.add(btnAggiungi);
+		btnAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnAggiungi.setBackground(getStyle().greenBtn);
+		btnAggiungi.setMargin(new Insets(5, 5, 5, 5));
+		btnAggiungi.setIcon(getStyle().addIcon);
+		btnAggiungi.setPreferredSize(new Dimension(10, 10));
 		
-		btnRimuovi = new JButton();
-		btnRimuovi.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panelloLaterale.add(btnRimuovi);
-		btnRimuovi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnRimuovi.setBackground(getStyle().redBtn);
-		btnRimuovi.setIcon(getStyle().deleteIcon);
-		btnRimuovi.setMargin(new Insets(5, 5, 5, 5));
-		btnRimuovi.setPreferredSize(new Dimension(10, 10));
-	}
-	
-	public ContenutoVendita getContenutoVendita() {
-		return contenutoVendita;
+		panelloLaterale.add(Box.createRigidArea(new Dimension(150, 10)));
+		
+		panelloQuantità = new JPanel();
+		panelloQuantità.setBackground(getStyle().bg);
+		panelloQuantità.setMaximumSize(new Dimension(150, 50));
+		panelloLaterale.add(panelloQuantità);
+		
+		labelQuantità = new JLabel("Quantit\u00E0");
+		labelQuantità.setFont(getStyle().defaultS);
+		panelloQuantità.add(labelQuantità);
+		labelQuantità.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		boxQuantità = new JComboBox<Integer>(new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+		boxQuantità.setFont(getStyle().defaultS);
+		panelloQuantità.add(boxQuantità);
 	}
 }

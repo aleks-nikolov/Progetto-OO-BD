@@ -78,7 +78,7 @@ public class FinestraInventario extends JFrame {
 		
 		for (Articolo articolo : articoliInMagazzino) {
 			
-			Contenitore_inventario contenitore = new Contenitore_inventario(controller, this);
+			ContenitoreInventario contenitore = new ContenitoreInventario(controller, this);
 			contenitore.InserisciDati(articolo);
 			AggiungiContenitore(contenitore);
 			
@@ -89,7 +89,7 @@ public class FinestraInventario extends JFrame {
 		
 	}
 	
-	public void AggiungiContenitore(Contenitore_inventario contenitore) {
+	public void AggiungiContenitore(ContenitoreInventario contenitore) {
 		
         pannelloCentrale.add(Box.createRigidArea(new Dimension(1200, 10)));
         pannelloCentrale.add(contenitore);

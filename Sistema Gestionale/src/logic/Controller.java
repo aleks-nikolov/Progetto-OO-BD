@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import gui.*;
 
@@ -66,26 +67,26 @@ public class Controller {
 	
 	public void InizializzaArrayList() {
 		categoria.add("CATEGORIA");
-		categoria.add("magliette");
-		categoria.add("maglioni");
-		categoria.add("giacche");
-		categoria.add("pantaloni");
-		categoria.add("camicie");
-		categoria.add("accessori");
+		categoria.add("Magliette");
+		categoria.add("Maglioni");
+		categoria.add("Giacche");
+		categoria.add("Pantaloni");
+		categoria.add("Camicie");
+		categoria.add("Accessori");
 		
 		marca.add("MARCA");
-		marca.add("adidas");
-		marca.add("nike");
-		marca.add("h&m");
-		marca.add("bershka");
-		marca.add("piazzaitalia");
+		marca.add("Adidas");
+		marca.add("Nike");
+		marca.add("H&M");
+		marca.add("Bershka");
+		marca.add("Piazzaitalia");
 		
 		colore.add("COLORE");
-		colore.add("nero");
-		colore.add("bianco");
-		colore.add("rosso");
-		colore.add("verde");
-		colore.add("blu");
+		colore.add("Nero");
+		colore.add("Bianco");
+		colore.add("Rosso");
+		colore.add("Verde");
+		colore.add("Vlu");
 		
 		taglia.add("TAGLIA");
 		taglia.add("XS");
@@ -108,15 +109,13 @@ public class Controller {
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e1) {
-			System.out.println("Driver not found");
+			JOptionPane.showMessageDialog(null, "Driver not found", "Errore",  JOptionPane.ERROR_MESSAGE);
 		}
 		
 		try {
 			conn = DriverManager.getConnection(url, username, pass);
-			System.out.println("Connected to database");
 		} catch (SQLException e){
-			System.out.println("Problem connecting to database");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Errore",  JOptionPane.ERROR_MESSAGE);
 		}
 		
 	}

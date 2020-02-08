@@ -23,7 +23,7 @@ public class Style {
 	Color bg = new Color(220, 220, 220);
 	Color fg = new Color(50, 50, 50);
 	
-	Color border1 = Color.decode("#545E75");
+	Color border1 = Color.decode("#4A594B");
 	Color border2 = Color.decode("#82A0BC");
 	
 	Color boxBackground = Color.decode("#545E75");

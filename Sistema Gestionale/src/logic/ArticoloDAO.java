@@ -99,16 +99,7 @@ public class ArticoloDAO {
 		
 		try {
 			
-			PreparedStatement pst = conn.prepareStatement("INSERT INTO Articolo VALUES(?, ?, ?, ?, ?);");
-			pst.setString(1, articolo.getSKU());
-			pst.setString(2, articolo.getTaglia());
-			pst.setString(3, articolo.getColore());
-			pst.setInt(4, 0); //Imposto la quantità a zero, dato che non ce ne sono esemplari in magazzino
-			pst.setString(5, articolo.getCodiceABarre());
-			
-			pst.executeUpdate();
-			
-			PreparedStatement pst2 = conn.prepareStatement("INSERT INTO DescrittoreArticolo VALUES(?, ?, ?, ?, ?, ?, ?);");
+			PreparedStatement pst2 = conn.prepareStatement("INSERT INTO DescrittoreArticolo VALUES(?, CAST(? AS \"Marche\"), CAST(? AS \"Categorie\"), ?, ?, ?, ?);");
 			pst2.setString(1, articolo.getCodiceABarre());
 			pst2.setString(2, articolo.getMarca());
 			pst2.setString(3, articolo.getCategoria());
@@ -118,7 +109,15 @@ public class ArticoloDAO {
 			pst2.setString(7, articolo.getDescrizione());
 			
 			pst2.executeUpdate();
+
+			PreparedStatement pst = conn.prepareStatement("INSERT INTO Articolo(Taglia, Colore, Quantità, CodiceABarre) VALUES(CAST(? AS \"Taglie\"), CAST(? AS \"Colori\"), ?, ?, ?);");
+			pst.setString(1, articolo.getTaglia());
+			pst.setString(2, articolo.getColore());
+			pst.setInt(3, 0); //Imposto la quantità a zero, dato che non ce ne sono esemplari in magazzino
+			pst.setString(4, articolo.getImagePath());
+			pst.setString(5, articolo.getCodiceABarre());
 			
+			pst.executeUpdate();
 			pst.close();
 			pst2.close();
 			

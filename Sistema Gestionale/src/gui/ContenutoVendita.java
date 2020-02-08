@@ -53,7 +53,7 @@ public class ContenutoVendita extends JFrame{
 	
 	public void AggiungiArticolo(Articolo articolo) {
 		
-		Contenitore_vendita contenitore = new Contenitore_vendita(controller, this);
+		ContenitoreVendita contenitore = new ContenitoreVendita(controller, this);
 		contenitore.InserisciDati(articolo);
 		pannelloCentrale.add(contenitore);
 		pannelloCentrale.add(Box.createRigidArea(new Dimension(1200, 10)));
@@ -62,7 +62,7 @@ public class ContenutoVendita extends JFrame{
 		
 	}
 	
-	public void RimuoviArticolo(Contenitore_vendita contenitoreDaRimuovere) {
+	public void RimuoviArticolo(ContenitoreVendita contenitoreDaRimuovere) {
 		
 		pannelloCentrale.remove(contenitoreDaRimuovere);
 		pannelloCentrale.revalidate();
