@@ -12,7 +12,8 @@ public class Articolo {
 	private String marca;
 	private String taglia;
 	private String colore;
-	private float prezzo;
+	private float prezzoDiListino;
+	private float prezzoFornitore;
 	private int quantità;
 	private String sesso;
 	private String imagePath;
@@ -24,7 +25,7 @@ public class Articolo {
 	}
 	
 	public Articolo(String codice, String codiceABarre, String nome, String descrizione, String categoria, String marca, String taglia, String colore,
-			float prezzoDiListino, int quantità, String sesso, String imagePath) {
+			float prezzoDiListino, float prezzoFornitore, int quantità, String sesso, String imagePath) {
 		this.sku = codice;
 		this.codiceABarre = codiceABarre;
 		this.nome = nome;
@@ -33,7 +34,8 @@ public class Articolo {
 		this.marca = marca;
 		this.taglia = taglia;
 		this.colore = colore;
-		this.prezzo = prezzoDiListino;
+		this.prezzoDiListino = prezzoDiListino;
+		this.prezzoFornitore = prezzoFornitore;
 		this.quantità = quantità;
 		this.sesso = sesso;
 		this.imagePath = imagePath;
@@ -106,11 +108,18 @@ public class Articolo {
 	public void setColore(String colore) {
 		this.colore = colore;
 	}
-	public float getPrezzo() {
-		return prezzo;
+	public float getPrezzoDiListino() {
+		return prezzoDiListino;
 	}
-	public void setPrezzo(float prezzoDiListino) {
-		this.prezzo = prezzoDiListino;
+	public void setPrezzoDiListino(float prezzoDiListino) {
+		this.prezzoDiListino = prezzoDiListino;
+	}
+	public float getPrezzoFornitore() {
+		return prezzoFornitore;
+	}
+
+	public void setPrezzoFornitore(float prezzoFornitore) {
+		this.prezzoFornitore = prezzoFornitore;
 	}
 	public int getQuantità() {
 		return quantità;

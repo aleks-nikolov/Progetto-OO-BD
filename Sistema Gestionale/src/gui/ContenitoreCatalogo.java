@@ -61,7 +61,7 @@ public class ContenitoreCatalogo extends ContenitoreArticolo {
 	@Override
 	public void InserisciDati(Articolo articolo) {
 		super.InserisciDati(articolo);
-		labelPrezzo.setText(Float.toString(getArticolo().getPrezzo()));
+		labelPrezzo.setText(Float.toString(getArticolo().getPrezzoDiListino()));
 	}
 	
 	public void ImpostaPanelloLaterale() {

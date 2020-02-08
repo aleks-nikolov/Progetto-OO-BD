@@ -34,7 +34,8 @@ public class ArticoloDAO {
 				articolo.setMarca(rs.getString("Marca"));
 				articolo.setCategoria(rs.getString("Categoria"));
 				articolo.setSesso(rs.getString("Sesso"));
-				articolo.setPrezzo(rs.getFloat("PrezzoDiListino"));
+				articolo.setPrezzoDiListino(rs.getFloat("PrezzoDiListino"));
+				articolo.setPrezzoFornitore(rs.getFloat("PrezzoFornitore"));
 				articolo.setNome(rs.getString("Nome"));
 				articolo.setDescrizione(rs.getString("Descrizione"));
 				
@@ -78,7 +79,8 @@ public class ArticoloDAO {
 			articolo.setMarca(rs2.getString("Marca"));
 			articolo.setCategoria(rs2.getString("Categoria"));
 			articolo.setSesso(rs2.getString("Sesso"));
-			articolo.setPrezzo(rs2.getFloat("PrezzoDiListino"));
+			articolo.setPrezzoDiListino(rs2.getFloat("PrezzoDiListino"));
+			articolo.setPrezzoFornitore(rs2.getFloat("PrezzoFornitore"));
 			articolo.setNome(rs2.getString("Nome"));
 			articolo.setDescrizione(rs2.getString("Descrizione"));
 			
@@ -99,14 +101,15 @@ public class ArticoloDAO {
 		
 		try {
 			
-			PreparedStatement pst2 = conn.prepareStatement("INSERT INTO DescrittoreArticolo VALUES(?, CAST(? AS \"Marche\"), CAST(? AS \"Categorie\"), ?, ?, ?, ?);");
+			PreparedStatement pst2 = conn.prepareStatement("INSERT INTO DescrittoreArticolo VALUES(?, CAST(? AS \"Marche\"), CAST(? AS \"Categorie\"), ?, ?, ?, ?, ?);");
 			pst2.setString(1, articolo.getCodiceABarre());
 			pst2.setString(2, articolo.getMarca());
 			pst2.setString(3, articolo.getCategoria());
 			pst2.setString(4, articolo.getSesso());
-			pst2.setFloat(5, articolo.getPrezzo());
-			pst2.setString(6, articolo.getNome());
-			pst2.setString(7, articolo.getDescrizione());
+			pst2.setFloat(5, articolo.getPrezzoDiListino());
+			pst2.setFloat(6, articolo.getPrezzoFornitore());
+			pst2.setString(7, articolo.getNome());
+			pst2.setString(8, articolo.getDescrizione());
 			
 			pst2.executeUpdate();
 

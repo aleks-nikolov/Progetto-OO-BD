@@ -24,8 +24,6 @@ public class AggiuntaArticolo extends JFrame {
 	private Style style;
 	
 	private JPanel contentPane;
-	
-	private JTextField textSku;
 	private JTextField textNome;
 	private JTextArea areaDescrizione;
 	private JTextField textPrezzo;
@@ -119,7 +117,8 @@ public class AggiuntaArticolo extends JFrame {
 		articolo.setColore(dati.get(5));
 		articolo.setSesso(dati.get(6));
 		articolo.setTaglia(dati.get(7));
-		articolo.setPrezzo(Float.parseFloat(dati.get(8)));
+		articolo.setPrezzoDiListino(Float.parseFloat(dati.get(8)));
+		articolo.setPrezzoFornitore(Float.parseFloat(dati.get(8)) * 0.75f);
 		articolo.setImagePath(dati.get(9));
 		
 		controller.NuovoArticolo(articolo);
@@ -160,12 +159,8 @@ public class AggiuntaArticolo extends JFrame {
 	public void ImpostaForm() {
 		
 		JLabel label = new JLabel("Inserire I dati dell'articolo");
-		label.setBounds(10, 11, 250, 20);
+		label.setBounds(10, 22, 250, 20);
 		contentPane.add(label);
-		
-		JLabel lblSku = new JLabel("Sku:");
-		lblSku.setBounds(20, 52, 120, 14);
-		contentPane.add(lblSku);
 		
 		JLabel lblCodice = new JLabel("Codice Prodotto: ");
 		lblCodice.setBounds(20, 85, 120, 14);
@@ -186,11 +181,6 @@ public class AggiuntaArticolo extends JFrame {
 		JLabel lblPath = new JLabel("(Opzionale) Path Immagine:");
 		lblPath.setBounds(20, 439, 140, 14);
 		contentPane.add(lblPath);
-		
-		textSku = new JTextField();
-		textSku.setColumns(10);
-		textSku.setBounds(170, 50, 250, 20);
-		contentPane.add(textSku);
 		
 		textCodice = new JTextField();
 		textCodice.setColumns(10);

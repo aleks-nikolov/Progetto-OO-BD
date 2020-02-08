@@ -100,8 +100,7 @@ public class Controller {
 		sessi.add("M");
 		sessi.add("F");
 		sessi.add("U");
-		
-		articoli.add(new Articolo("123", "456", "Maglietta di cotone", "Maglietta leggera di cotone", "Magliette", "Adidas", "XL", "Nero", 15.25f, 5, "M", "res\\images\\magliette\\adidas_black.png"));
+
 	}
 	
 	public void ConnectToDatabase() {
