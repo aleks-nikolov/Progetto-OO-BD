@@ -157,16 +157,16 @@ public class Controller {
 	}
 
     public void NuovoArticolo(Articolo articolo) {
-    	articoloDAO.NuovoArticolo(conn, articolo);
+    	articoloDAO.InserisciArticolo(conn, articolo);
     }
     
-    public ArrayList<Articolo> getAllArticoli(String filtroSQL) {
-    	return articoloDAO.getAllArticoli(conn, filtroSQL);
+    public ArrayList<Articolo> getArticoliByFiltro(String filtroSQL) {
+    	return articoloDAO.acquisisciArticoliByFiltro(conn, filtroSQL);
     }
     
     
     public void NuovoFornitore(Fornitore fornitore) {
-    	fornitoreDAO.NuovoFornitore(conn, fornitore);
+    	fornitoreDAO.InserisciFornitore(conn, fornitore);
     }
     
 //Metodi GUI

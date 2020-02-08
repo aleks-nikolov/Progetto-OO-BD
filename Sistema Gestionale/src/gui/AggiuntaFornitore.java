@@ -93,7 +93,7 @@ public class AggiuntaFornitore extends JFrame {
 
 		
 		if (formCompilato) {
-			NuovoFornitore(contenitoreDati);
+			CostruisciFornitore(contenitoreDati);
 		} else {
 			
 			JDialog dialog = new JDialog(this, "ATTENZIONE");
@@ -108,7 +108,7 @@ public class AggiuntaFornitore extends JFrame {
 		}
 	}
 	
-	public void NuovoFornitore(ArrayList<String> dati) {
+	public void CostruisciFornitore(ArrayList<String> dati) {
 		
 		Fornitore fornitore = new Fornitore();
 

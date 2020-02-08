@@ -99,7 +99,7 @@ public class AggiuntaArticolo extends JFrame {
 		contenitoreDati.add(textPath.getText());
 		
 		if (formCompilato) {
-			NuovoArticolo(contenitoreDati);
+			CostruisciArticolo(contenitoreDati);
 		} else {
 			
 			JOptionPane.showMessageDialog(this, "Dati mancanti: compilare tutti i campi obbligatori", "Attenzione",  JOptionPane.INFORMATION_MESSAGE);
@@ -107,7 +107,7 @@ public class AggiuntaArticolo extends JFrame {
 		}
 	}
 	
-	public void NuovoArticolo(ArrayList<String> dati) {
+	public void CostruisciArticolo(ArrayList<String> dati) {
 		
 		Articolo articolo = new Articolo();
 

@@ -73,7 +73,7 @@ public class Catalogo extends JFrame {
 	public void RiempiCatalogo() {
 	
 		SvuotaCatalogo();
-		articoliInCatalogo = controller.getAllArticoli(CreaFiltroSQL());
+		articoliInCatalogo = controller.getArticoliByFiltro(CreaFiltroSQL());
 		
 		for (Articolo articolo : articoliInCatalogo) {
 			

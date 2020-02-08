@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class FornitoreDAO {
 
-	public void NuovoFornitore(Connection conn, Fornitore fornitore) {
+	public void InserisciFornitore(Connection conn, Fornitore fornitore) {
 
 		try {
 					

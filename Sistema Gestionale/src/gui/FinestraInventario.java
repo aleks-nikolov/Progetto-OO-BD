@@ -67,14 +67,14 @@ public class FinestraInventario extends JFrame {
 		ImpostaPannelloCentrale();
 		ImpostaPannelloInferiore();
 		AggiungiListener();
-		//RiempiInventario();
+		RiempiInventario();
 		
 	}
 	
 	public void RiempiInventario() {
 		
 		SvuotaInventario();
-		articoliInMagazzino = controller.getAllArticoli(CreaFiltroSQL());
+		articoliInMagazzino = controller.getArticoliByFiltro(CreaFiltroSQL());
 		
 		for (Articolo articolo : articoliInMagazzino) {
 			

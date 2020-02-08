@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class ArticoloDAO {
 
-	public ArrayList<Articolo> getAllArticoli(Connection conn, String filtro) {
+	public ArrayList<Articolo> acquisisciArticoliByFiltro(Connection conn, String filtro) {
 		
 		ArrayList<Articolo> articoli = new ArrayList<Articolo>();
 		Articolo articolo = new Articolo();
@@ -95,7 +95,7 @@ public class ArticoloDAO {
 		
 	}
 	
-	public void NuovoArticolo(Connection conn, Articolo articolo) {
+	public void InserisciArticolo(Connection conn, Articolo articolo) {
 		
 		try {
 			
