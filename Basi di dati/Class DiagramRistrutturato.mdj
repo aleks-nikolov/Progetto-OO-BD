@@ -3117,7 +3117,24 @@
 											"top": 642,
 											"width": 239,
 											"height": 13,
-											"text": "-PrezzodiListino: float[1]",
+											"text": "-PrezzoDiListino: float[1]",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFwMHPiUcUC9qg=",
+											"_parent": {
+												"$ref": "AAAAAAFvqUG6WflBTOY="
+											},
+											"model": {
+												"$ref": "AAAAAAFwMHPiPMT5R6g="
+											},
+											"font": "Arial;13;0",
+											"left": 685,
+											"top": 657,
+											"width": 239,
+											"height": 13,
+											"text": "-PrezzoMagazzino: float[1]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3131,7 +3148,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 685,
-											"top": 657,
+											"top": 672,
 											"width": 239,
 											"height": 13,
 											"text": "-Nome: String[1]",
@@ -3148,7 +3165,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 685,
-											"top": 672,
+											"top": 687,
 											"width": 239,
 											"height": 13,
 											"text": "-Descrizione: String[1]",
@@ -3159,7 +3176,7 @@
 									"left": 680,
 									"top": 577,
 									"width": 249,
-									"height": 113
+									"height": 128
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -3172,7 +3189,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 680,
-									"top": 690,
+									"top": 705,
 									"width": 249,
 									"height": 10
 								},
@@ -4317,7 +4334,18 @@
 							"_parent": {
 								"$ref": "AAAAAAFvqUG6WPk514w="
 							},
-							"name": "PrezzodiListino",
+							"name": "PrezzoDiListino",
+							"visibility": "private",
+							"type": "float",
+							"multiplicity": "1"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAFwMHPiPMT5R6g=",
+							"_parent": {
+								"$ref": "AAAAAAFvqUG6WPk514w="
+							},
+							"name": "PrezzoMagazzino",
 							"visibility": "private",
 							"type": "float",
 							"multiplicity": "1"

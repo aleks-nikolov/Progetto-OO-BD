@@ -3537,6 +3537,23 @@
 										},
 										{
 											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFwMHRK9Rqty7I=",
+											"_parent": {
+												"$ref": "AAAAAAFvqgx2kF1sx48="
+											},
+											"model": {
+												"$ref": "AAAAAAFwMHRK3xqhytc="
+											},
+											"font": "Arial;13;0",
+											"left": 565,
+											"top": 193,
+											"width": 223,
+											"height": 13,
+											"text": "-PrezzoMagazzino: float[1]",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
 											"_id": "AAAAAAFvqgzU42DRSFE=",
 											"_parent": {
 												"$ref": "AAAAAAFvqgx2kF1sx48="
@@ -3546,7 +3563,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 565,
-											"top": 193,
+											"top": 208,
 											"width": 223,
 											"height": 13,
 											"text": "-Nome: String[1]",
@@ -3563,7 +3580,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 565,
-											"top": 208,
+											"top": 223,
 											"width": 223,
 											"height": 13,
 											"text": "-Descrizione: String[1]",
@@ -3574,7 +3591,7 @@
 									"left": 560,
 									"top": 113,
 									"width": 233,
-									"height": 113
+									"height": 128
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -3587,7 +3604,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 560,
-									"top": 226,
+									"top": 241,
 									"width": 233,
 									"height": 10
 								},
@@ -4764,6 +4781,17 @@
 								"$ref": "AAAAAAFvqgx2j11k5O0="
 							},
 							"name": "PrezzoDiListino",
+							"visibility": "private",
+							"type": "float",
+							"multiplicity": "1"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAFwMHRK3xqhytc=",
+							"_parent": {
+								"$ref": "AAAAAAFvqgx2j11k5O0="
+							},
+							"name": "PrezzoMagazzino",
 							"visibility": "private",
 							"type": "float",
 							"multiplicity": "1"
