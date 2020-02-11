@@ -242,6 +242,23 @@
 										},
 										{
 											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFwNOMtNAmLoTA=",
+											"_parent": {
+												"$ref": "AAAAAAFvhY2BOaaPbJQ="
+											},
+											"model": {
+												"$ref": "AAAAAAFwNOMtHAmIIF4="
+											},
+											"font": "Arial;13;0",
+											"left": 581,
+											"top": 1039,
+											"width": 239,
+											"height": 13,
+											"text": "-PrezzoMagazzino: float[1]",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
 											"_id": "AAAAAAFvhZkpO6cKLH4=",
 											"_parent": {
 												"$ref": "AAAAAAFvhY2BOaaPbJQ="
@@ -251,7 +268,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 581,
-											"top": 1039,
+											"top": 1054,
 											"width": 239,
 											"height": 13,
 											"text": "-Quantità: int[1]",
@@ -268,7 +285,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 581,
-											"top": 1054,
+											"top": 1069,
 											"width": 239,
 											"height": 13,
 											"text": "-Codice: String[1]",
@@ -285,7 +302,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 581,
-											"top": 1069,
+											"top": 1084,
 											"width": 239,
 											"height": 13,
 											"text": "-Sesso: char[1]",
@@ -302,7 +319,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 581,
-											"top": 1084,
+											"top": 1099,
 											"width": 239,
 											"height": 13,
 											"text": "-Categoria: Categorie[1]",
@@ -319,7 +336,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 581,
-											"top": 1099,
+											"top": 1114,
 											"width": 239,
 											"height": 13,
 											"text": "-PathImmagine: String[1]",
@@ -330,7 +347,7 @@
 									"left": 576,
 									"top": 929,
 									"width": 249,
-									"height": 188
+									"height": 203
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -343,7 +360,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 576,
-									"top": 1117,
+									"top": 1132,
 									"width": 249,
 									"height": 10
 								},
@@ -12298,6 +12315,17 @@
 								"$ref": "AAAAAAFvhY2BOaaHzgc="
 							},
 							"name": "PrezzoDiListino",
+							"visibility": "private",
+							"type": "float",
+							"multiplicity": "1"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAFwNOMtHAmIIF4=",
+							"_parent": {
+								"$ref": "AAAAAAFvhY2BOaaHzgc="
+							},
+							"name": "PrezzoMagazzino",
 							"visibility": "private",
 							"type": "float",
 							"multiplicity": "1"
