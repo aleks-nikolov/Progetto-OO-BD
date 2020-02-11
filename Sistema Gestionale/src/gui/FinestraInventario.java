@@ -109,28 +109,28 @@ public class FinestraInventario extends JFrame {
 		String filtro = " WHERE TRUE";
 		
 		if(boxCategoria.getSelectedItem().toString() != "CATEGORIA") 
-			filtro += " AND DA.Categoria = " + boxCategoria.getSelectedItem().toString();
+			filtro += " AND A.Categoria = " + '\'' + boxCategoria.getSelectedItem().toString() + '\'';
 
 		if(boxMarca.getSelectedItem().toString() != "MARCA") 
-			filtro += " AND DA.Marca = " + boxMarca.getSelectedItem().toString();
+			filtro += " AND A.Marca = " + '\'' + boxMarca.getSelectedItem().toString() + '\'';
 
 		if(boxTaglia.getSelectedItem().toString() != "TAGLIA") 
-			filtro += " AND A.Taglia = " + boxTaglia.getSelectedItem().toString();
+			filtro += " AND A.Taglia = " + '\'' + boxTaglia.getSelectedItem().toString() + '\'';
 
 		if(tglbtnBlack.isSelected()) 
-			filtro += " AND A.Colore = Nero";
+			filtro += " AND A.Colore = 'Nero'";
 		
 		if(tglbtnWhite.isSelected()) 
-			filtro += " AND A.Colore = Bianco";
+			filtro += " AND A.Colore = 'Bianco'";
 		
 		if(tglbtnRed.isSelected()) 
-			filtro += " AND A.Colore = Rosso";
+			filtro += " AND A.Colore = 'Rosso'";
 		
 		if(tglbtnGreen.isSelected()) 
-			filtro += " AND A.Colore = Verde";
+			filtro += " AND A.Colore = 'Verde'";
 		
 		if(tglbtnBlue.isSelected()) 
-			filtro += " AND A.Colore = Blu";
+			filtro += " AND A.Colore = 'Blu'";
 		
 		return filtro;
 		

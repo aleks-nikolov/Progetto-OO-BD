@@ -36,7 +36,7 @@ public class ContenitoreInventario extends ContenitoreArticolo {
 	public void InserisciDati(Articolo articolo) {
 		super.InserisciDati(articolo);
 		labelPrezzo.setText(Float.toString(getArticolo().getPrezzoDiListino()));
-		labelQuantità.setText(Integer.toString(getArticolo().getQuantità()));
+		labelQuantità.setText(Integer.toString(getArticolo().getQuantita()));
 	}
 	
 	public void ImpostaPanelloLaterale() {
@@ -58,7 +58,7 @@ public class ContenitoreInventario extends ContenitoreArticolo {
 		panelloLaterale.add(labelPrezzo);
 		labelPrezzo.setHorizontalTextPosition(SwingConstants.CENTER);
 		labelPrezzo.setHorizontalAlignment(SwingConstants.CENTER);
-		labelPrezzo.setFont(new Font("Arial Black", Font.PLAIN, 20));
+		labelPrezzo.setFont(getStyle().defaultM);
 		
 		lblQuantitInMagazzino = new JLabel("<html>quantità in<br/> magazzino</html>");
 		lblQuantitInMagazzino.setHorizontalAlignment(SwingConstants.CENTER);

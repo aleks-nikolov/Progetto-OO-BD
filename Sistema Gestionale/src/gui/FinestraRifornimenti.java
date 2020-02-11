@@ -87,7 +87,7 @@ public class FinestraRifornimenti extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				controller.CambiaFrame(FinestraRifornimenti.this, controller.getContenutoRifornimento());
 			}
 			
 		});

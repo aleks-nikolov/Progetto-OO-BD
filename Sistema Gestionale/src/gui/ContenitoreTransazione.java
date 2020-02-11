@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -19,20 +20,24 @@ import javax.swing.border.LineBorder;
 import logic.Articolo;
 import logic.Controller;
 
-public class ContenitoreVendita extends ContenitoreArticolo {
+public class ContenitoreTransazione extends ContenitoreArticolo {
 	private static final long serialVersionUID = 1L;
 	
-	private ContenutoVendita contenutoVendita;
+	private ContenutoTransazione contenutoTransazione;
 	private AvvisoElimina dialog;
 	
 	private JPanel panelloLaterale;
 	private JButton btnRimuovi;
+	
 	private JLabel labelQuantità;
+	private JLabel labelSaldo;
 	private JLabel labelPrezzo;
 	
-	public ContenitoreVendita(Controller controller, ContenutoVendita contenutoVendita) {
-		super(controller, contenutoVendita);
-		this.contenutoVendita = contenutoVendita;
+	private JComboBox<Integer> boxSaldo;
+	
+	public ContenitoreTransazione(Controller controller, ContenutoTransazione contenutoTransazione) {
+		super(controller, contenutoTransazione);
+		this.contenutoTransazione = contenutoTransazione;
 		
 		ImpostaPanelloLaterale();
 		AggiungiListener();
@@ -44,26 +49,33 @@ public class ContenitoreVendita extends ContenitoreArticolo {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				dialog = new AvvisoElimina(ContenitoreVendita.this);
-				
+				dialog = new AvvisoElimina(ContenitoreTransazione.this);
 			}
 			
 		});
 	}
 	
 	public void Rimuovi() {
-		contenutoVendita.RimuoviArticolo(ContenitoreVendita.this);
+		contenutoTransazione.RimuoviArticolo(ContenitoreTransazione.this);
 		dialog = null;
 	}
 	
 	@Override
 	public void InserisciDati(Articolo articolo) {
 		super.InserisciDati(articolo);
-		labelPrezzo.setText(Float.toString(getArticolo().getPrezzoDiListino()));
-		labelQuantità.setText(Integer.toString(getArticolo().getQuantità()));
+		
+		if(contenutoTransazione.getTipoTransazione().equals("vendita"))
+			labelPrezzo.setText(Float.toString(getArticolo().getPrezzoDiListino()));
+		else
+			labelPrezzo.setText(Float.toString(getArticolo().getPrezzoMagazzino()));
+	}
+	
+	public void InserisciQuantità(int quantità) {
+		labelQuantità.setText(Integer.toString(quantità));
 	}
 	
 	public void ImpostaPanelloLaterale() {
+		
 		panelloLaterale = new JPanel();
 		panelloLaterale.setBackground(getStyle().bg);
 		panelloLaterale.setPreferredSize(new Dimension(150, 10));
@@ -76,7 +88,7 @@ public class ContenitoreVendita extends ContenitoreArticolo {
 		labelPrezzo.setHorizontalTextPosition(SwingConstants.CENTER);
 		labelPrezzo.setHorizontalAlignment(SwingConstants.CENTER);
 		labelPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
-		labelPrezzo.setFont(new Font("Arial Black", Font.PLAIN, 20));
+		labelPrezzo.setFont(getStyle().defaultM);
 		
 		labelQuantità = new JLabel();
 		labelQuantità.setHorizontalAlignment(SwingConstants.CENTER);
@@ -84,6 +96,17 @@ public class ContenitoreVendita extends ContenitoreArticolo {
 		labelQuantità.setFont(getStyle().defaultS);
 		labelQuantità.setPreferredSize(new Dimension(49, 15));
 		panelloLaterale.add(labelQuantità);
+		
+		labelSaldo = new JLabel("Saldo %");
+		labelSaldo.setHorizontalAlignment(SwingConstants.CENTER);
+		labelSaldo.setAlignmentX(Component.CENTER_ALIGNMENT);
+		labelSaldo.setFont(getStyle().defaultS);
+		labelSaldo.setPreferredSize(new Dimension(49, 15));
+		panelloLaterale.add(labelSaldo);
+		
+		boxSaldo = new JComboBox<Integer>(new Integer[] {0, 10, 20, 30, 40, 50, 60, 70, 80, 90});
+		boxSaldo.setFont(getStyle().defaultS);
+		panelloLaterale.add(boxSaldo);
 		
 		btnRimuovi = new JButton();
 		btnRimuovi.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -93,9 +116,10 @@ public class ContenitoreVendita extends ContenitoreArticolo {
 		btnRimuovi.setIcon(getStyle().deleteIcon);
 		btnRimuovi.setMargin(new Insets(5, 5, 5, 5));
 		btnRimuovi.setPreferredSize(new Dimension(10, 10));
+		
 	}
 	
-	public ContenutoVendita getContenutoVendita() {
-		return contenutoVendita;
+	public ContenutoTransazione getContenutoVendita() {
+		return contenutoTransazione;
 	}
 }

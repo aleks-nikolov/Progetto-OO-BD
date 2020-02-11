@@ -19,16 +19,17 @@ public class Controller {
 	
 	private Connection conn;
 
-	private ArticoloDAO articoloDAO = new ArticoloDAO();
-	private TransazioneDAO transazioneDAO = new TransazioneDAO();
-	private ComposizioneTransazioneDAO compTransazioneDAO = new ComposizioneTransazioneDAO();
-	private FornitoreDAO fornitoreDAO = new FornitoreDAO();
+	private ArticoloDAO articoloDAO = new ArticoloDAO(this);
+	private TransazioneDAO transazioneDAO = new TransazioneDAO(this);
+	private ComposizioneTransazioneDAO compTransazioneDAO = new ComposizioneTransazioneDAO(this);
+	private FornitoreDAO fornitoreDAO = new FornitoreDAO(this);
 	
 	private HomePage home;
 	private FinestraVendite finestraVendite;
 	private FinestraInventario finestraInventario;
 	private FinestraRifornimenti finestraRifornimenti;
-	private ContenutoVendita contenutoVendita;
+	private ContenutoTransazione contenutoVendita;
+	private ContenutoTransazione contenutoRifornimento;
 	private AggiuntaArticolo finestraAggiuntaArticolo;
 	private AggiuntaFornitore finestraAggiuntaFornitore;
 	
@@ -38,7 +39,8 @@ public class Controller {
 	private ArrayList<String> taglia = new ArrayList<String>();
 	private ArrayList<Articolo> articoli = new ArrayList<Articolo>();
 	private ArrayList<String> sessi = new ArrayList<String>();
-	
+	private ArrayList<String> fornitori = new ArrayList<String>();
+ 	
 //**************************************************************************************
 	
 	public Controller() {
@@ -53,15 +55,17 @@ public class Controller {
 		
 		//Inizializza e apre la home page
 		home = new HomePage(this);
-		home.setVisible(true);
 		
 		//Inizializza le altre finestre
 		finestraVendite = new FinestraVendite(this);
 		finestraInventario = new FinestraInventario(this);
 		finestraRifornimenti = new FinestraRifornimenti(this);
-		contenutoVendita = new ContenutoVendita(this);
+		contenutoVendita = new ContenutoTransazione(this, "vendita");
+		contenutoRifornimento = new ContenutoTransazione(this, "rifornimento");
 		finestraAggiuntaArticolo = new AggiuntaArticolo(this);
 		finestraAggiuntaFornitore = new AggiuntaFornitore(this);
+		
+		home.setVisible(true);
 
 	}
 	
@@ -108,13 +112,13 @@ public class Controller {
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e1) {
-			JOptionPane.showMessageDialog(null, "Driver not found", "Errore",  JOptionPane.ERROR_MESSAGE);
+			MostraMessaggioErrore("Errore", "Driver non trovato!");
 		}
 		
 		try {
 			conn = DriverManager.getConnection(url, username, pass);
 		} catch (SQLException e){
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Errore",  JOptionPane.ERROR_MESSAGE);
+			MostraMessaggioErrore("Errore", e.getMessage());
 		}
 		
 	}
@@ -134,7 +138,7 @@ public class Controller {
 		ArrayList<Articolo> articoli = EstraiArticoliDaComposizione(compTransazioneDAO.getCompTransazioniDi(conn, codiceTransazione));
 		
 		for(Articolo a: articoli) {
-			contenuto += " " + a.getNome() + " x" + a.getQuantità() + "\n";
+			contenuto += " " + a.getNome() + " x" + a.getQuantita() + "\n";
 		}
 		
 		return contenuto;
@@ -184,6 +188,10 @@ public class Controller {
 		return articolo;
 	}
 	
+	public void MostraMessaggioErrore(String titolo, String testo) {
+		JOptionPane.showMessageDialog(null, testo, titolo,  JOptionPane.ERROR_MESSAGE);
+	}
+	
 //Getters e setters
 	public ArrayList<String> getCategoria() {
 		return categoria;
@@ -200,6 +208,9 @@ public class Controller {
 	public ArrayList<String> getSesso() {
 		return sessi;
 	}
+	public ArrayList<String> getFornitori() {
+		return fornitori;
+	}
 
 	
 	public HomePage getHomePage() {
@@ -214,8 +225,11 @@ public class Controller {
 	public FinestraRifornimenti getFinestraRifornimenti() {
 		return finestraRifornimenti;
 	}
-	public ContenutoVendita getContenutoVendita() {
+	public ContenutoTransazione getContenutoVendita() {
 		return contenutoVendita;
+	}
+	public ContenutoTransazione getContenutoRifornimento() {
+		return contenutoRifornimento;
 	}
 	public AggiuntaArticolo getFinestraAggiuntaArticolo() {
 		return finestraAggiuntaArticolo;

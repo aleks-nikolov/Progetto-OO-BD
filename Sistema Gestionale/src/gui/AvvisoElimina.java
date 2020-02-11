@@ -24,7 +24,7 @@ public class AvvisoElimina extends JDialog {
 
 //**************************************************************************************
 	
-	public AvvisoElimina(ContenitoreVendita contenitore) {
+	public AvvisoElimina(ContenitoreTransazione contenitore) {
 		style = new Style();
 		
 		contenitore.getContenutoVendita().setEnabled(false);

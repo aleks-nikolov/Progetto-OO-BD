@@ -33,14 +33,16 @@ public class AggiuntaArticolo extends JFrame {
 	private JComboBox boxSesso;
 	private JComboBox boxTaglia;
 
+	private JTextField textCodice;
+	private JTextField textPrezzoMagazzino;
+	
+	private JTextField textPath;
 	
 	private JButton btnSalva;
 	private JButton btnAnnulla;
-	private JTextField textPath;
 	
 	ArrayList<String> contenitoreDati;
-	private JTextField textCodice;
-
+	
 //**************************************************************************************
 	
 	public AggiuntaArticolo(Controller controller) {
@@ -89,6 +91,7 @@ public class AggiuntaArticolo extends JFrame {
 		contenitoreDati.add((String) boxSesso.getSelectedItem());
 		contenitoreDati.add((String) boxTaglia.getSelectedItem());
 		contenitoreDati.add(textPrezzo.getText());
+		contenitoreDati.add(textPrezzoMagazzino.getText());
 		
 		for (String testo : contenitoreDati) {
 			formCompilato = ControlloValidità(testo.trim());
@@ -118,8 +121,8 @@ public class AggiuntaArticolo extends JFrame {
 		articolo.setSesso(dati.get(6));
 		articolo.setTaglia(dati.get(7));
 		articolo.setPrezzoDiListino(Float.parseFloat(dati.get(8)));
-		articolo.setPrezzoFornitore(Float.parseFloat(dati.get(8)) * 0.75f);
-		articolo.setImagePath(dati.get(9));
+		articolo.setPrezzoMagazzino(Float.parseFloat(dati.get(9)));
+		articolo.setImagePath(dati.get(10));
 		
 		controller.NuovoArticolo(articolo);
 		controller.CambiaFrame(AggiuntaArticolo.this, controller.getFinestraInventario());
@@ -128,8 +131,7 @@ public class AggiuntaArticolo extends JFrame {
 	
 	public boolean ControlloValidità(String testo) {
 		
-		if (testo.isEmpty() || testo.length() > 200
-							|| testo.equals("CATEGORIA") 
+		if (testo.isEmpty() || testo.equals("CATEGORIA") 
 							|| testo.equals("MARCA") 
 							|| testo.equals("COLORE") 
 							|| testo.equals("SESSO") 
@@ -162,8 +164,8 @@ public class AggiuntaArticolo extends JFrame {
 		label.setBounds(10, 22, 250, 20);
 		contentPane.add(label);
 		
-		JLabel lblCodice = new JLabel("Codice Prodotto: ");
-		lblCodice.setBounds(20, 85, 120, 14);
+		JLabel lblCodice = new JLabel("Codice a Barre: ");
+		lblCodice.setBounds(20, 53, 195, 14);
 		contentPane.add(lblCodice);
 		
 		JLabel lblNome = new JLabel("Nome Prodotto: ");
@@ -175,7 +177,7 @@ public class AggiuntaArticolo extends JFrame {
 		contentPane.add(lblDescrizione);
 		
 		JLabel lblPrezzo = new JLabel("Prezzo:");
-		lblPrezzo.setBounds(20, 394, 120, 20);
+		lblPrezzo.setBounds(20, 373, 120, 20);
 		contentPane.add(lblPrezzo);
 		
 		JLabel lblPath = new JLabel("(Opzionale) Path Immagine:");
@@ -184,16 +186,16 @@ public class AggiuntaArticolo extends JFrame {
 		
 		textCodice = new JTextField();
 		textCodice.setColumns(10);
-		textCodice.setBounds(170, 85, 250, 20);
+		textCodice.setBounds(30, 78, 250, 20);
 		contentPane.add(textCodice);
 		
 		textNome = new JTextField();
-		textNome.setBounds(170, 120, 250, 20);
+		textNome.setBounds(187, 117, 250, 20);
 		contentPane.add(textNome);
 		textNome.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(170, 148, 250, 76);
+		scrollPane.setBounds(187, 145, 250, 76);
 		contentPane.add(scrollPane);
 		
 		areaDescrizione = new JTextArea();
@@ -222,16 +224,14 @@ public class AggiuntaArticolo extends JFrame {
 		contentPane.add(boxTaglia);
 		
 		textPrezzo = new JTextField();
-		textPrezzo.setBounds(137, 394, 86, 20);
+		textPrezzo.setBounds(187, 373, 86, 20);
 		contentPane.add(textPrezzo);
 		textPrezzo.setColumns(10);
 		
 		textPath = new JTextField();
 		textPath.setColumns(10);
-		textPath.setBounds(223, 436, 250, 20);
+		textPath.setBounds(30, 464, 329, 20);
 		contentPane.add(textPath);
-		
-		style.changeFont(contentPane, style.defaultS);
 
 		btnSalva = new JButton("SALVA");
 		btnSalva.setBounds(200, 510, 150, 50);
@@ -247,6 +247,16 @@ public class AggiuntaArticolo extends JFrame {
 		btnAnnulla.setIcon(style.backIcon);
 		contentPane.add(btnAnnulla);
 		
+		textPrezzoMagazzino = new JTextField();
+		textPrezzoMagazzino.setColumns(10);
+		textPrezzoMagazzino.setBounds(187, 404, 86, 20);
+		contentPane.add(textPrezzoMagazzino);
+		
+		JLabel lblPrezzoMagazzino = new JLabel("Prezzo magazzino:");
+		lblPrezzoMagazzino.setBounds(20, 404, 120, 20);
+		contentPane.add(lblPrezzoMagazzino);
+		
+		style.changeFont(contentPane, style.defaultS);
 		
 	}
 }

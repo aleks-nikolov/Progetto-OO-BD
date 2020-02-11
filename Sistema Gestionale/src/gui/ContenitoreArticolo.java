@@ -32,7 +32,7 @@ public class ContenitoreArticolo extends JPanel {
 	
 	private Articolo articoloContenuto;
 	
-	private ContenutoVendita contenutoVendita;
+	private ContenutoTransazione contenutoVendita;
 	private Catalogo catalogo;
 	private FinestraInventario inventario;
 	
@@ -52,7 +52,10 @@ public class ContenitoreArticolo extends JPanel {
 	
 	private Articolo articolo;
 	
-	public ContenitoreArticolo(Controller controller, ContenutoVendita contenutoVendita) {
+	/**
+	 * @wbp.parser.constructor
+	 */
+	public ContenitoreArticolo(Controller controller, ContenutoTransazione contenutoVendita) {
 		//Reference al parente
 		this.controller = controller;
 		this.contenutoVendita = contenutoVendita;
@@ -145,7 +148,7 @@ public class ContenitoreArticolo extends JPanel {
 		add(getContenitoreDati(), BorderLayout.CENTER);
 
 		panelloDati = new JPanel();
-		panelloDati.setBorder(new LineBorder(style.border1, 2));
+		panelloDati.setBorder(new LineBorder(style.border2, 2));
 		panelloDati.setBackground(style.bg);
 		contenitoreDati.add(panelloDati, BorderLayout.CENTER);
 		panelloDati.setLayout(new BorderLayout(0, 0));
@@ -165,7 +168,7 @@ public class ContenitoreArticolo extends JPanel {
 		labelDescrizione.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
 		panelloQualità = new JPanel();
-		panelloQualità.setBorder(new MatteBorder(2, 0, 0, 0, (Color) style.border1));
+		panelloQualità.setBorder(new MatteBorder(2, 0, 0, 0, (Color) style.border2));
 		panelloQualità.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		panelloQualità.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		panelloQualità.setBackground(style.bg);
@@ -210,4 +213,7 @@ public class ContenitoreArticolo extends JPanel {
 		return articolo;
 	}
 	
+	public Controller getController() {
+		return controller;
+	}
 }

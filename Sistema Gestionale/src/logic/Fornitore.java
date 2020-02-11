@@ -11,6 +11,8 @@ public class Fornitore {
 	private String numeroCivico;
 	private String CAP;
 	
+	private float saldoFornitore;
+	
 //**************************************************************************************
 	
 	//Metodo equals

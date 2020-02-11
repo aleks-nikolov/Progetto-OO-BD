@@ -10,7 +10,11 @@ import java.util.ArrayList;
 
 public class TransazioneDAO {
 
+	Controller controller;
 	
+	public TransazioneDAO(Controller controller) {
+		this.controller = controller;
+	}
 	
 	public ArrayList<Transazione> getVendite(Connection conn){
 		
@@ -34,6 +38,7 @@ public class TransazioneDAO {
 			rs.close();
 			st.close();
 		} catch (SQLException e) {
+			controller.MostraMessaggioErrore("Errore DAO", e.getMessage());
 			e.printStackTrace();
 		}
 		
@@ -64,6 +69,7 @@ public class TransazioneDAO {
 			rs.close();
 			st.close();
 		} catch (SQLException e) {
+			controller.MostraMessaggioErrore("Errore DAO", e.getMessage());
 			e.printStackTrace();
 		}
 		

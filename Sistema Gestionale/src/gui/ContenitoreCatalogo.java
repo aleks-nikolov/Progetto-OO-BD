@@ -9,6 +9,7 @@ import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -52,7 +53,8 @@ public class ContenitoreCatalogo extends ContenitoreArticolo {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				catalogo.contenutoVendita.AggiungiArticolo(ContenitoreCatalogo.this.getArticolo());
+				catalogo.contenutoTransazione.AggiungiArticolo(ContenitoreCatalogo.this.getArticolo(), (Integer) boxQuantità.getSelectedItem());
+				catalogo.dispatchEvent(new WindowEvent(catalogo, WindowEvent.WINDOW_CLOSING));
 			}
 			
 		});
@@ -61,7 +63,10 @@ public class ContenitoreCatalogo extends ContenitoreArticolo {
 	@Override
 	public void InserisciDati(Articolo articolo) {
 		super.InserisciDati(articolo);
-		labelPrezzo.setText(Float.toString(getArticolo().getPrezzoDiListino()));
+		if(catalogo.contenutoTransazione.getTipoTransazione().equals("vendita"))
+			labelPrezzo.setText(Float.toString(getArticolo().getPrezzoDiListino()));
+		else
+			labelPrezzo.setText(Float.toString(getArticolo().getPrezzoMagazzino()));
 	}
 	
 	public void ImpostaPanelloLaterale() {

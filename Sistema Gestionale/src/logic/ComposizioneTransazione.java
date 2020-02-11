@@ -5,10 +5,13 @@ public class ComposizioneTransazione {
 	private String skuArticolo;
 	private String codiceTransazione;
 	private int quantità;
-	private int saldo;
+	private float saldo = 0.0f;
 	private float valore;
 	
 //**************************************************************************************
+	
+	
+	
 	
 	//Getters e setters
 	public String getSKU() {
@@ -29,10 +32,10 @@ public class ComposizioneTransazione {
 	public void setQuantità(int quantità) {
 		this.quantità = quantità;
 	}
-	public int getSaldo() {
+	public float getSaldo() {
 		return saldo;
 	}
-	public void setSaldo(int saldo) {
+	public void setSaldo(float saldo) {
 		this.saldo = saldo;
 	}
 	public float getValore() {

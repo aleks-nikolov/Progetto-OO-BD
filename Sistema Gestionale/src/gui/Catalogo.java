@@ -29,7 +29,7 @@ public class Catalogo extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private Controller controller;
-	public ContenutoVendita contenutoVendita;
+	public ContenutoTransazione contenutoTransazione;
 	private Style style;
 	
 	private ArrayList<Articolo> articoliInCatalogo = new ArrayList<Articolo>();
@@ -55,10 +55,10 @@ public class Catalogo extends JFrame {
 
 //**************************************************************************************
 	
-	public Catalogo(Controller controller, ContenutoVendita contenutoVendita) {
+	public Catalogo(Controller controller, ContenutoTransazione contenutoVendita) {
 
 		this.controller = controller;
-		this.contenutoVendita = contenutoVendita;
+		this.contenutoTransazione = contenutoVendita;
 		style = new Style();
 		
 		ImpostaFinestra();
@@ -108,28 +108,28 @@ public class Catalogo extends JFrame {
 		String filtro = " WHERE TRUE";
 		
 		if(boxCategoria.getSelectedItem().toString() != "CATEGORIA") 
-			filtro += " AND DA.Categoria = " + boxCategoria.getSelectedItem().toString();
+			filtro += " AND A.Categoria = " + '\'' + boxCategoria.getSelectedItem().toString() + '\'';
 
 		if(boxMarca.getSelectedItem().toString() != "MARCA") 
-			filtro += " AND DA.Marca = " + boxMarca.getSelectedItem().toString();
+			filtro += " AND A.Marca = " + '\'' + boxMarca.getSelectedItem().toString() + '\'';
 
 		if(boxTaglia.getSelectedItem().toString() != "TAGLIA") 
-			filtro += " AND A.Taglia = " + boxTaglia.getSelectedItem().toString();
+			filtro += " AND A.Taglia = " + '\'' + boxTaglia.getSelectedItem().toString() + '\'';
 
 		if(tglbtnBlack.isSelected()) 
-			filtro += " AND A.Colore = Nero";
+			filtro += " AND A.Colore = 'Nero'";
 		
 		if(tglbtnWhite.isSelected()) 
-			filtro += " AND A.Colore = Bianco";
+			filtro += " AND A.Colore = 'Bianco'";
 		
 		if(tglbtnRed.isSelected()) 
-			filtro += " AND A.Colore = Rosso";
+			filtro += " AND A.Colore = 'Rosso'";
 		
 		if(tglbtnGreen.isSelected()) 
-			filtro += " AND A.Colore = Verde";
+			filtro += " AND A.Colore = 'Verde'";
 		
 		if(tglbtnBlue.isSelected()) 
-			filtro += " AND A.Colore = Blu";
+			filtro += " AND A.Colore = 'Blu'";
 		
 		return filtro;
 		
@@ -150,7 +150,7 @@ public class Catalogo extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				contenutoVendita.setEnabled(true);
+				contenutoTransazione.setEnabled(true);
 				controller.ChiudiFrame(Catalogo.this);
 			}
 			
@@ -158,7 +158,7 @@ public class Catalogo extends JFrame {
 
 		this.addWindowListener(new WindowAdapter(){
             public void windowClosing(WindowEvent e){
-                contenutoVendita.setEnabled(true);
+                contenutoTransazione.setEnabled(true);
                 controller.ChiudiFrame(Catalogo.this);
             }
         });
@@ -170,7 +170,7 @@ public class Catalogo extends JFrame {
 		
 		setVisible(true);
 		setTitle("Catalogo");
-		setBounds(100, 100, 1280, 720);
+		setBounds(300, 200, 1280, 720);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

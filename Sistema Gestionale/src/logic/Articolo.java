@@ -13,8 +13,8 @@ public class Articolo {
 	private String taglia;
 	private String colore;
 	private float prezzoDiListino;
-	private float prezzoFornitore;
-	private int quantità;
+	private float prezzoMagazzino;
+	private int quantita;
 	private String sesso;
 	private String imagePath;
 	
@@ -35,8 +35,8 @@ public class Articolo {
 		this.taglia = taglia;
 		this.colore = colore;
 		this.prezzoDiListino = prezzoDiListino;
-		this.prezzoFornitore = prezzoFornitore;
-		this.quantità = quantità;
+		this.prezzoMagazzino = prezzoFornitore;
+		this.quantita = quantità;
 		this.sesso = sesso;
 		this.imagePath = imagePath;
 	}
@@ -114,18 +114,18 @@ public class Articolo {
 	public void setPrezzoDiListino(float prezzoDiListino) {
 		this.prezzoDiListino = prezzoDiListino;
 	}
-	public float getPrezzoFornitore() {
-		return prezzoFornitore;
+	public float getPrezzoMagazzino() {
+		return prezzoMagazzino;
 	}
 
-	public void setPrezzoFornitore(float prezzoFornitore) {
-		this.prezzoFornitore = prezzoFornitore;
+	public void setPrezzoMagazzino(float prezzoFornitore) {
+		this.prezzoMagazzino = prezzoFornitore;
 	}
-	public int getQuantità() {
-		return quantità;
+	public int getQuantita() {
+		return quantita;
 	}
-	public void setQuantità(int quantità) {
-		this.quantità = quantità;
+	public void setQuantita(int quantità) {
+		this.quantita = quantità;
 	}
 	public String getSesso() {
 		return sesso;

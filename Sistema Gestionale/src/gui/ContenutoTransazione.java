@@ -5,25 +5,26 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Component;
 import javax.swing.Box;
 import javax.swing.ScrollPaneConstants;
-
 import logic.Articolo;
 import logic.Controller;
 
 import javax.swing.BoxLayout;
 import java.awt.Dimension;
 
-public class ContenutoVendita extends JFrame{
+public class ContenutoTransazione extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
 	
 	private Controller controller;
 	private Style style;
+	private String tipoTransazione;
 	
 	private JPanel pannelloCentrale;
 	private JPanel pannelloInferiore;
@@ -33,14 +34,19 @@ public class ContenutoVendita extends JFrame{
 	private JButton btnAnnulla;
 	private JButton btnAdd;
 
+	private JComboBox boxFornitore;
+	
 	private Component horizontalStrut;
 	private Component horizontalStrut_1;
+	private Component horizontalStrut_2;
 
 //**************************************************************************************
 	
-	public ContenutoVendita(Controller controller){
+	public ContenutoTransazione(Controller controller, String tipoTransazione){
 		
 		this.controller = controller;
+		//tipoTransazione può essere "vendita" o "rifornimento"
+		this.tipoTransazione = tipoTransazione;
 		style = new Style();
 		
 		ImpostaFinestra();
@@ -51,10 +57,13 @@ public class ContenutoVendita extends JFrame{
 	}
 	
 	
-	public void AggiungiArticolo(Articolo articolo) {
+	public void AggiungiArticolo(Articolo articolo, int quantità) {
 		
-		ContenitoreVendita contenitore = new ContenitoreVendita(controller, this);
+		ContenitoreTransazione contenitore = new ContenitoreTransazione(controller, this);
+		
 		contenitore.InserisciDati(articolo);
+		contenitore.InserisciQuantità(quantità);
+		
 		pannelloCentrale.add(contenitore);
 		pannelloCentrale.add(Box.createRigidArea(new Dimension(1200, 10)));
 		pannelloCentrale.revalidate();
@@ -62,7 +71,7 @@ public class ContenutoVendita extends JFrame{
 		
 	}
 	
-	public void RimuoviArticolo(ContenitoreVendita contenitoreDaRimuovere) {
+	public void RimuoviArticolo(ContenitoreTransazione contenitoreDaRimuovere) {
 		
 		pannelloCentrale.remove(contenitoreDaRimuovere);
 		pannelloCentrale.revalidate();
@@ -70,30 +79,56 @@ public class ContenutoVendita extends JFrame{
 		
 	}
 	
+	public void CreaNuovaVendita() {
+		
+	}
+	
+	public void CreaNuovoRifornimento() {
+		
+	}
+	
 	
 	public void AggiungiListener() {
-		
-		btnAnnulla.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				controller.CambiaFrame(ContenutoVendita.this, controller.getFinestraVendite());
-			}
-			
-		});
 		
 		btnAdd.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				ContenutoVendita.this.setEnabled(false);
-				Catalogo catalogo = new Catalogo(controller, ContenutoVendita.this);
+				ContenutoTransazione.this.setEnabled(false);
+				Catalogo catalogo = new Catalogo(controller, ContenutoTransazione.this);
 			}
 			
 		});
 		
+		btnApplica.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				if(tipoTransazione.equals("vendita")) {
+					CreaNuovaVendita();
+				} else {
+					CreaNuovoRifornimento();
+				}
+				
+			}
+			
+		});
+		
+		btnAnnulla.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				controller.CambiaFrame(ContenutoTransazione.this, controller.getFinestraVendite());
+			}
+			
+		});
+		
+		
+		
 	}
 
+	
 	public void ImpostaFinestra() {
 		
 		setTitle("Contenuto Vendita");
@@ -132,8 +167,26 @@ public class ContenutoVendita extends JFrame{
 		btnAdd.setIcon(style.addIcon);
 		pannelloInferiore.add(btnAdd);
 		
-		horizontalStrut = Box.createHorizontalStrut(600);
-		pannelloInferiore.add(horizontalStrut);
+		if(tipoTransazione.equals("rifornimento")) {
+			
+			horizontalStrut = Box.createHorizontalStrut(200);
+			pannelloInferiore.add(horizontalStrut);
+		
+			boxFornitore = new JComboBox(controller.getFornitori().toArray());
+			boxFornitore.setPreferredSize(new Dimension(200, 25));
+			boxFornitore.setFont(style.defaultS);
+			pannelloInferiore.add(boxFornitore);
+			
+			horizontalStrut_1 = Box.createHorizontalStrut(200);
+			pannelloInferiore.add(horizontalStrut_1);
+			
+		}
+		else {
+			
+			horizontalStrut = Box.createHorizontalStrut(600);
+			pannelloInferiore.add(horizontalStrut);
+			
+		}
 		
 		btnApplica = new JButton("APPLICA");
 		btnApplica.setFont(style.defaultM);
@@ -142,8 +195,8 @@ public class ContenutoVendita extends JFrame{
 		btnApplica.setIcon(style.saveIcon);
 		pannelloInferiore.add(btnApplica);
 		
-		horizontalStrut_1 = Box.createHorizontalStrut(20);
-		pannelloInferiore.add(horizontalStrut_1);
+		horizontalStrut_2 = Box.createHorizontalStrut(20);
+		pannelloInferiore.add(horizontalStrut_2);
 		
 		btnAnnulla = new JButton("ANNULLA");
 		btnAnnulla.setBackground(style.redBtn);
@@ -156,5 +209,9 @@ public class ContenutoVendita extends JFrame{
 	
 	public Controller getController() {
 		return controller;
+	}
+	
+	public String getTipoTransazione() {
+		return tipoTransazione;
 	}
 }

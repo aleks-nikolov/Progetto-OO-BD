@@ -9,6 +9,12 @@ import java.util.ArrayList;
 
 public class ComposizioneTransazioneDAO {
 
+	Controller controller;
+	
+	public ComposizioneTransazioneDAO(Controller controller) {
+		this.controller = controller;
+	}
+	
 	public ArrayList<ComposizioneTransazione> getCompTransazioniDi(Connection conn, String codiceTransazione) {
 		
 		ArrayList<ComposizioneTransazione> composizioni = new ArrayList<ComposizioneTransazione>();
@@ -34,6 +40,7 @@ public class ComposizioneTransazioneDAO {
 			pst.close();
 			
 		} catch (SQLException e) {
+			controller.MostraMessaggioErrore("Errore DAO", e.getMessage());
 			e.printStackTrace();
 		}
 		
