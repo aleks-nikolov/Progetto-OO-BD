@@ -64,9 +64,9 @@ public class ContenitoreCatalogo extends ContenitoreArticolo {
 	public void InserisciDati(Articolo articolo) {
 		super.InserisciDati(articolo);
 		if(catalogo.contenutoTransazione.getTipoTransazione().equals("vendita"))
-			labelPrezzo.setText(Float.toString(getArticolo().getPrezzoDiListino()));
+			labelPrezzo.setText(String.format("%.2f", getArticolo().getPrezzoDiListino()) + "€");
 		else
-			labelPrezzo.setText(Float.toString(getArticolo().getPrezzoMagazzino()));
+			labelPrezzo.setText(String.format("%.2f", getArticolo().getPrezzoMagazzino()) + "€");
 	}
 	
 	public void ImpostaPanelloLaterale() {
