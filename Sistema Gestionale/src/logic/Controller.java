@@ -188,7 +188,7 @@ public class Controller {
     	return articoloDAO.acquisisciArticoliByFiltro(conn, filtroSQL);
     }
     
-public void CostruisciFornitore(ArrayList<String> dati) {
+    public void CostruisciFornitore(ArrayList<String> dati) {
 		
 		Fornitore fornitore = new Fornitore();
 
@@ -210,6 +210,35 @@ public void CostruisciFornitore(ArrayList<String> dati) {
     public String getPartitaByNome(String nome) {
     	return fornitoreDAO.getPartitaFornitore(conn, nome);
     }
+    
+	public void NuovoRifornimento(LocalDate date, String partitaIVA) {
+		
+		Transazione transazione = new Transazione();
+		transazione.setData(date);
+		transazione.setPartitaIva(partitaIVA);
+		
+		transazioneDAO.InserisciRifornimento(conn, transazione);
+		
+	}
+	
+public void NuovaVendita(LocalDate date) {
+		
+		Transazione transazione = new Transazione();
+		transazione.setData(date);
+		
+		transazioneDAO.InserisciVendita(conn, transazione);
+		
+	}
+	
+	public void NuovaComposizioneTransazione(ArrayList<String> dati) {
+		
+		ComposizioneTransazione compTransazione = new ComposizioneTransazione();
+		compTransazione.setSKU(Integer.parseInt(dati.get(0)));
+		compTransazione.setQuantità(Integer.parseInt(dati.get(1)));
+		compTransazione.setSaldo(Float.parseFloat(dati.get(2)) / 100.0f);
+		
+		compTransazioneDAO.InserisciComposizione(conn, compTransazione);
+	}
     
 //Metodi GUI
 	public void CambiaFrame(JFrame frameDaNascondere, JFrame frameDaMostrare) {
@@ -235,25 +264,6 @@ public void CostruisciFornitore(ArrayList<String> dati) {
 		JOptionPane.showMessageDialog(null, testo, titolo,  JOptionPane.INFORMATION_MESSAGE);
 	}
 	
-	public void NuovoRifornimento(LocalDate date, String partitaIVA) {
-		
-		Transazione transazione = new Transazione();
-		transazione.setData(date);
-		transazione.setPartitaIva(partitaIVA);
-		
-		transazioneDAO.InserisciRifornimento(conn, transazione);
-		
-	}
-	
-	public void NuovaComposizioneTransazione(ArrayList<String> dati) {
-		
-		ComposizioneTransazione compTransazione = new ComposizioneTransazione();
-		compTransazione.setSKU(Integer.parseInt(dati.get(0)));
-		compTransazione.setQuantità(Integer.parseInt(dati.get(1)));
-		compTransazione.setSaldo(Float.parseFloat(dati.get(2)) / 100.0f);
-		
-		compTransazioneDAO.InserisciComposizione(conn, compTransazione);
-	}
 	
 //Getters e setters
 	public ArrayList<String> getCategoria() {

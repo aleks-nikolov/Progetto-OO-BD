@@ -100,6 +100,27 @@ public class TransazioneDAO {
 		
 	}
 	
+
+	public void InserisciVendita(Connection conn, Transazione transazione) {
+	
+		String comando = "INSERT INTO Transazione(data) VALUES (?);";
+		
+		try {
+			
+			PreparedStatement pst = conn.prepareStatement(comando);
+			pst.setDate(1, Date.valueOf(transazione.getData()));
+			pst.executeUpdate();
+			
+			pst.close();
+					
+		} catch (SQLException e) {
+			controller.MostraMessaggioErrore("Errore DAO", e.getMessage());
+			e.printStackTrace();
+			
+		}
+		
+	}
+	
 	
 	
 	
