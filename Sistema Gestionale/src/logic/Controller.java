@@ -159,11 +159,31 @@ public class Controller {
 		
 	}
 
+    public void CostruisciArticolo(ArrayList<String> dati) {
+		
+		Articolo articolo = new Articolo();
+
+		articolo.setCodiceABarre(dati.get(0));
+		articolo.setNome(dati.get(1));
+		articolo.setDescrizione(dati.get(2));
+		articolo.setCategoria(dati.get(3));
+		articolo.setMarca(dati.get(4));
+		articolo.setColore(dati.get(5));
+		articolo.setSesso(dati.get(6));
+		articolo.setTaglia(dati.get(7));
+		articolo.setPrezzoDiListino(Float.parseFloat(dati.get(8)));
+		articolo.setPrezzoMagazzino(Float.parseFloat(dati.get(9)));
+		articolo.setImagePath(dati.get(10));
+		
+		NuovoArticolo(articolo);
+		
+	}
+    
     public void NuovoArticolo(Articolo articolo) {
     	articoloDAO.InserisciArticolo(conn, articolo);
     }
     
-    public ArrayList<Articolo> getArticoliByFiltro(String filtroSQL) {
+    public ArrayList<Articolo> getArticoliByFiltro(ArrayList<String> filtroSQL) {
     	return articoloDAO.acquisisciArticoliByFiltro(conn, filtroSQL);
     }
     
