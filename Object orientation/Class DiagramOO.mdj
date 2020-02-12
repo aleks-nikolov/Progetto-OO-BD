@@ -135,7 +135,7 @@
 											"top": 934,
 											"width": 239,
 											"height": 13,
-											"text": "-SKU: String[1]",
+											"text": "-SKU: int[1]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -12244,7 +12244,7 @@
 							},
 							"name": "SKU",
 							"visibility": "private",
-							"type": "String",
+							"type": "int",
 							"multiplicity": "1"
 						},
 						{
