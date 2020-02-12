@@ -2,7 +2,7 @@ package logic;
 
 public class ComposizioneTransazione {
 
-	private String skuArticolo;
+	private int skuArticolo;
 	private String codiceTransazione;
 	private int quantità;
 	private float saldo = 0.0f;
@@ -14,10 +14,10 @@ public class ComposizioneTransazione {
 	
 	
 	//Getters e setters
-	public String getSKU() {
+	public int getSKU() {
 		return skuArticolo;
 	}
-	public void setSKU(String sku) {
+	public void setSKU(int sku) {
 		this.skuArticolo = sku;
 	}
 	public String getCodiceTransazione() {

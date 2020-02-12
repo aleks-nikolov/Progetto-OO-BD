@@ -32,12 +32,11 @@ public class ArticoloDAO {
 				
 				articolo = new Articolo();
 				
-				articolo.setSKU(rs.getString("SKU"));
+				articolo.setSKU(rs.getInt("SKU"));
 				articolo.setTaglia(rs.getString("Taglia"));
 				articolo.setColore(rs.getString("Colore"));
 				articolo.setQuantita(rs.getInt("Quantita"));
 				articolo.setImagePath(rs.getString("PathImmagine"));
-				articolo.setSKU(rs.getString("SKU"));
 				articolo.setCodiceABarre(rs.getString("CodiceABarre"));
 				articolo.setMarca(rs.getString("Marca"));
 				articolo.setCategoria(rs.getString("Categoria"));
@@ -93,7 +92,7 @@ public class ArticoloDAO {
 			
 		}
 	
-	public Articolo TrovaArticolo(Connection conn, String sku) {
+	public Articolo TrovaArticolo(Connection conn, int sku) {
 		
 		Articolo articolo = new Articolo();
 		ResultSet rs;
@@ -102,15 +101,14 @@ public class ArticoloDAO {
 		
 		try {
 			PreparedStatement pst = conn.prepareStatement(comando);
-			pst.setString(1, sku);
+			pst.setInt(1, sku);
 			rs = pst.executeQuery();
 			
-			articolo.setSKU(rs.getString("SKU"));
+			articolo.setSKU(rs.getInt("SKU"));
 			articolo.setTaglia(rs.getString("Taglia"));
 			articolo.setColore(rs.getString("Colore"));
 			articolo.setQuantita(rs.getInt("Quantita"));
 			articolo.setImagePath(rs.getString("PathImmagine"));
-			articolo.setSKU(rs.getString("SKU"));
 			articolo.setCodiceABarre(rs.getString("CodiceABarre"));
 			articolo.setMarca(rs.getString("Marca"));
 			articolo.setCategoria(rs.getString("Categoria"));

@@ -9,6 +9,8 @@ import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -34,6 +36,8 @@ public class ContenitoreTransazione extends ContenitoreArticolo {
 	private JLabel labelPrezzo;
 	
 	private JComboBox<Integer> boxSaldo;
+	
+	private int quantità;
 	
 	public ContenitoreTransazione(Controller controller, ContenutoTransazione contenutoTransazione) {
 		super(controller, contenutoTransazione);
@@ -73,7 +77,18 @@ public class ContenitoreTransazione extends ContenitoreArticolo {
 	}
 	
 	public void InserisciQuantità(int quantità) {
+		this.quantità = quantità;
 		labelQuantità.setText("x" + Integer.toString(quantità));
+	}
+
+	public ArrayList<String> getDatiComposizione() {
+		
+		ArrayList<String> dati = new ArrayList<String>();
+		dati.add(String.valueOf(getArticolo().getSKU()));
+		dati.add(String.valueOf(quantità));
+		dati.add(String.valueOf(boxSaldo.getSelectedItem()));
+		
+		return dati;
 	}
 	
 	public void ImpostaPanelloLaterale() {
@@ -130,5 +145,9 @@ public class ContenitoreTransazione extends ContenitoreArticolo {
 	
 	public ContenutoTransazione getContenutoVendita() {
 		return contenutoTransazione;
+	}
+	
+	public int getQuantità() {
+		return quantità;
 	}
 }

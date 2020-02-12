@@ -3,6 +3,7 @@ package logic;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -206,6 +207,10 @@ public void CostruisciFornitore(ArrayList<String> dati) {
     	fornitoreDAO.InserisciFornitore(conn, fornitore);
     }
     
+    public String getPartitaByNome(String nome) {
+    	return fornitoreDAO.getPartitaFornitore(conn, nome);
+    }
+    
 //Metodi GUI
 	public void CambiaFrame(JFrame frameDaNascondere, JFrame frameDaMostrare) {
 		ChiudiFrame(frameDaNascondere);
@@ -230,6 +235,26 @@ public void CostruisciFornitore(ArrayList<String> dati) {
 		JOptionPane.showMessageDialog(null, testo, titolo,  JOptionPane.INFORMATION_MESSAGE);
 	}
 	
+	public void NuovoRifornimento(LocalDate date, String partitaIVA) {
+		
+		Transazione transazione = new Transazione();
+		transazione.setData(date);
+		transazione.setPartitaIva(partitaIVA);
+		
+		transazioneDAO.InserisciRifornimento(conn, transazione);
+		
+	}
+	
+	public void NuovaComposizioneTransazione(ArrayList<String> dati) {
+		
+		ComposizioneTransazione compTransazione = new ComposizioneTransazione();
+		compTransazione.setSKU(Integer.parseInt(dati.get(0)));
+		compTransazione.setQuantità(Integer.parseInt(dati.get(1)));
+		compTransazione.setSaldo(Float.parseFloat(dati.get(2)) / 100.0f);
+		
+		compTransazioneDAO.InserisciComposizione(conn, compTransazione);
+	}
+	
 //Getters e setters
 	public ArrayList<String> getCategoria() {
 		return categoria;
@@ -247,7 +272,7 @@ public void CostruisciFornitore(ArrayList<String> dati) {
 		return sessi;
 	}
 	public ArrayList<String> getFornitori() {
-		return fornitori;
+		return fornitoreDAO.getNomiFornitori(conn);
 	}
 
 	

@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.sql.Date;
 
 public class TransazioneDAO {
 
@@ -30,7 +32,7 @@ public class TransazioneDAO {
 			while(rs.next()) {
 				Transazione transazione = new Transazione();
 				transazione.setCodiceTransazione(rs.getString(1));
-				transazione.setData(rs.getDate(2));
+				transazione.setData(rs.getDate(2).toLocalDate());
 				transazione.setValoreTotale(rs.getFloat(3));
 				vendite.add(transazione);
 			}
@@ -60,7 +62,7 @@ public class TransazioneDAO {
 			while(rs.next()) {
 				Transazione transazione = new Transazione();
 				transazione.setCodiceTransazione(rs.getString(1));
-				transazione.setData(rs.getDate(2));
+				transazione.setData(rs.getDate(2).toLocalDate());
 				transazione.setValoreTotale(rs.getFloat(3));
 				transazione.setPartitaIva(rs.getString(4));
 				rifornimenti.add(transazione);
@@ -74,6 +76,27 @@ public class TransazioneDAO {
 		}
 		
 		return rifornimenti;
+		
+	}
+	
+	public void InserisciRifornimento(Connection conn, Transazione transazione) {
+	
+		String comando = "INSERT INTO Transazione(data, partitaiva) VALUES (?, ?);";
+		
+		try {
+			
+			PreparedStatement pst = conn.prepareStatement(comando);
+			pst.setDate(1, Date.valueOf(transazione.getData()));
+			pst.setString(2, transazione.getPartitaIva());
+			pst.executeUpdate();
+			
+			pst.close();
+					
+		} catch (SQLException e) {
+			controller.MostraMessaggioErrore("Errore DAO", e.getMessage());
+			e.printStackTrace();
+			
+		}
 		
 	}
 	

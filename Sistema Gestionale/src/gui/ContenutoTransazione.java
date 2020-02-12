@@ -9,12 +9,15 @@ import javax.swing.JComboBox;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
 import java.awt.Component;
 import javax.swing.Box;
 import javax.swing.ScrollPaneConstants;
 import logic.Articolo;
+import logic.ComposizioneTransazione;
 import logic.Controller;
-
 import javax.swing.BoxLayout;
 import java.awt.Dimension;
 
@@ -25,6 +28,8 @@ public class ContenutoTransazione extends JFrame{
 	private Controller controller;
 	private Style style;
 	private String tipoTransazione;
+	
+	private ArrayList<ContenitoreTransazione> contenitori;
 	
 	private JPanel pannelloCentrale;
 	private JPanel pannelloInferiore;
@@ -48,6 +53,7 @@ public class ContenutoTransazione extends JFrame{
 		//tipoTransazione può essere "vendita" o "rifornimento"
 		this.tipoTransazione = tipoTransazione;
 		style = new Style();
+		contenitori = new ArrayList<ContenitoreTransazione>();
 		
 		ImpostaFinestra();
 		ImpostaPannelloCentrale();
@@ -60,10 +66,11 @@ public class ContenutoTransazione extends JFrame{
 	public void AggiungiArticolo(Articolo articolo, int quantità) {
 		
 		ContenitoreTransazione contenitore = new ContenitoreTransazione(controller, this);
-		
+
 		contenitore.InserisciDati(articolo);
 		contenitore.InserisciQuantità(quantità);
 		
+		contenitori.add(contenitore);
 		pannelloCentrale.add(contenitore);
 		pannelloCentrale.add(Box.createRigidArea(new Dimension(1200, 10)));
 		pannelloCentrale.revalidate();
@@ -73,6 +80,7 @@ public class ContenutoTransazione extends JFrame{
 	
 	public void RimuoviArticolo(ContenitoreTransazione contenitoreDaRimuovere) {
 		
+		contenitori.remove(contenitoreDaRimuovere);
 		pannelloCentrale.remove(contenitoreDaRimuovere);
 		pannelloCentrale.revalidate();
 		pannelloCentrale.repaint();
@@ -84,6 +92,17 @@ public class ContenutoTransazione extends JFrame{
 	}
 	
 	public void CreaNuovoRifornimento() {
+		
+		LocalDate date = LocalDate.now();
+		String partitaIVA = controller.getPartitaByNome(boxFornitore.getSelectedItem().toString());
+		
+		controller.NuovoRifornimento(date, partitaIVA);
+		
+		for (ContenitoreTransazione contenitore : contenitori) {
+			
+			controller.NuovaComposizioneTransazione(contenitore.getDatiComposizione());
+			
+		}
 		
 	}
 	

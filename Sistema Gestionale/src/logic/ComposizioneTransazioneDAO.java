@@ -30,7 +30,7 @@ public class ComposizioneTransazioneDAO {
 			while(rs.next()) {
 				ComposizioneTransazione compTransazione = new ComposizioneTransazione();
 				compTransazione.setCodiceTransazione(rs.getString(1));
-				compTransazione.setSKU(rs.getString(2));
+				compTransazione.setSKU(rs.getInt(2));
 				compTransazione.setQuantità(rs.getInt(3));
 				compTransazione.setValore(rs.getFloat(4));
 				composizioni.add(compTransazione);
@@ -45,6 +45,27 @@ public class ComposizioneTransazioneDAO {
 		}
 		
 		return composizioni;
+		
+	}
+	
+	public void InserisciComposizione(Connection conn, ComposizioneTransazione compTransazione) {
+		
+		String comando = "INSERT INTO ComposizioneTransazione(sku, quantita, saldo) VALUES (?, ?, ?);";
+		
+		try {
+			PreparedStatement pst = conn.prepareStatement(comando);
+			pst.setInt(1, compTransazione.getSKU());
+			pst.setInt(2, compTransazione.getQuantità());
+			pst.setFloat(3, compTransazione.getSaldo());
+			
+			pst.executeUpdate();
+			
+			pst.close();
+			
+		} catch (SQLException e) {
+			controller.MostraMessaggioErrore("Errore DAO", e.getMessage());
+			e.printStackTrace();
+		}
 		
 	}
 	

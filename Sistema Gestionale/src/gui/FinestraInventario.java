@@ -115,6 +115,11 @@ public class FinestraInventario extends JFrame {
 
 		filtro.add(2, boxTaglia.getSelectedItem().toString());
 
+	
+		if(btnGroup.getSelection() == null) {
+			filtro.add(3, "COLORE");
+		} else {
+			
 		if(tglbtnBlack.isSelected()) 
 			filtro.add(3, "NERO");
 		
@@ -130,7 +135,8 @@ public class FinestraInventario extends JFrame {
 		if(tglbtnBlue.isSelected()) 
 			filtro.add(3, "BLU");
 		
-		filtro.add(3, "COLORE");
+		}
+		
 		
 		return filtro;
 		

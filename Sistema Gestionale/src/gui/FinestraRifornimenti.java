@@ -8,6 +8,7 @@ import java.awt.FlowLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.Box;
@@ -71,7 +72,7 @@ public class FinestraRifornimenti extends JFrame {
 		rifornimenti = controller.getRifornimenti();
 		for(Transazione rifornimento : rifornimenti) {
 			String codiceTransazione = rifornimento.getCodiceTransazione();
-			Date data = rifornimento.getData();
+			LocalDate data = rifornimento.getData();
 			Float valoreTotale = rifornimento.getValoreTotale();
 			String partitaIVA = rifornimento.getPartitaIva();
 			

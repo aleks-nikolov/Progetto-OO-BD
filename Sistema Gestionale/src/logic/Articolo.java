@@ -1,10 +1,10 @@
 package logic;
 
 public class Articolo {
-
+	
 	private ComposizioneTransazione compTransazione;
 	
-	private String sku;
+	private int sku;
 	private String codiceABarre;
 	private String nome;
 	private String descrizione;
@@ -24,9 +24,9 @@ public class Articolo {
 		
 	}
 	
-	public Articolo(String codice, String codiceABarre, String nome, String descrizione, String categoria, String marca, String taglia, String colore,
+	public Articolo(int sku, String codiceABarre, String nome, String descrizione, String categoria, String marca, String taglia, String colore,
 			float prezzoDiListino, float prezzoFornitore, int quantità, String sesso, String imagePath) {
-		this.sku = codice;
+		this.sku = sku;
 		this.codiceABarre = codiceABarre;
 		this.nome = nome;
 		this.descrizione = descrizione;
@@ -51,19 +51,16 @@ public class Articolo {
 		if (getClass() != obj.getClass())
 			return false;
 		Articolo other = (Articolo) obj;
-		if (sku == null) {
-			if (other.sku != null)
-				return false;
-		} else if (!sku.equals(other.sku))
+		if (sku != other.sku)
 			return false;
 		return true;
 	}
 	
 	//Getter e setter
-	public String getSKU() {
+	public int getSKU() {
 		return sku;
 	}
-	public void setSKU(String codice) {
+	public void setSKU(int codice) {
 		this.sku = codice;
 	}
 	public String getCodiceABarre() {

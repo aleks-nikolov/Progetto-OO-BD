@@ -1,6 +1,6 @@
 package logic;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Transazione {
 
@@ -9,7 +9,7 @@ public class Transazione {
 	
 	private String codiceTransazione;
 	private float valoreTotale;
-	private Date data;
+	private LocalDate data;
 	private String partitaIva;
 	
 //**************************************************************************************
@@ -40,10 +40,10 @@ public class Transazione {
 	public void setValoreTotale(float valoreTotale) {
 		this.valoreTotale = valoreTotale;
 	}
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 	public String getPartitaIva() {

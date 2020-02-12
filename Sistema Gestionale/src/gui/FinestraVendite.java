@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.awt.Cursor;
@@ -70,7 +71,7 @@ public class FinestraVendite extends JFrame{
 		//vendite = controller.getVendite();
 		for(Transazione vendita : vendite) {
 			String codiceTransazione = vendita.getCodiceTransazione();
-			Date data = vendita.getData();
+			LocalDate data = vendita.getData();
 			Float valoreTotale = vendita.getValoreTotale();
 			
 			tableData.addRow(new Object[] {codiceTransazione, controller.getContenutoTransazione(codiceTransazione), data.toString(), valoreTotale});
