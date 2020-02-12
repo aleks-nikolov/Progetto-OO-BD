@@ -89,6 +89,14 @@ public class ContenutoTransazione extends JFrame{
 	
 	public void CreaNuovaVendita() {
 		
+		LocalDate date = LocalDate.now();
+		
+		controller.NuovaVendita(date);
+		
+		for (ContenitoreTransazione contenitore : contenitori) {
+			controller.NuovaComposizioneTransazione(contenitore.getDatiComposizione());
+		}
+		
 	}
 	
 	public void CreaNuovoRifornimento() {
@@ -99,9 +107,7 @@ public class ContenutoTransazione extends JFrame{
 		controller.NuovoRifornimento(date, partitaIVA);
 		
 		for (ContenitoreTransazione contenitore : contenitori) {
-			
 			controller.NuovaComposizioneTransazione(contenitore.getDatiComposizione());
-			
 		}
 		
 	}
@@ -138,7 +144,10 @@ public class ContenutoTransazione extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				controller.CambiaFrame(ContenutoTransazione.this, controller.getFinestraVendite());
+				if(tipoTransazione.equals("vendita"))
+					controller.CambiaFrame(ContenutoTransazione.this, controller.getFinestraVendite());
+				else
+					controller.CambiaFrame(ContenutoTransazione.this, controller.getFinestraRifornimenti());
 			}
 			
 		});
