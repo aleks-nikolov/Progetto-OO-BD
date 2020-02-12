@@ -2,16 +2,12 @@ package gui;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Cursor;
-import javax.swing.JPanel;
-import javax.swing.border.MatteBorder;
 
 import logic.Controller;
 
-import java.awt.FlowLayout;
 
 public class HomePage extends JFrame {
 	

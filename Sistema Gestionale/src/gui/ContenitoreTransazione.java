@@ -82,7 +82,7 @@ public class ContenitoreTransazione extends ContenitoreArticolo {
 		pannelloLaterale.setBackground(getStyle().bg);
 		pannelloLaterale.setPreferredSize(new Dimension(150, 10));
 		getContenitoreDati().add(pannelloLaterale, BorderLayout.EAST);
-		pannelloLaterale.setBorder(new LineBorder(getStyle().border1, 2));
+		pannelloLaterale.setBorder(new LineBorder(getStyle().border2, 2));
 		pannelloLaterale.setLayout(new BoxLayout(pannelloLaterale, BoxLayout.Y_AXIS));
 		
 		labelPrezzo = new JLabel();

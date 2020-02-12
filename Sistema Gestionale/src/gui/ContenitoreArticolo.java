@@ -125,7 +125,7 @@ public class ContenitoreArticolo extends JPanel {
 	
 	public void ImpostaPanelloImmagine() {
 		pannelloImmagine = new JPanel();
-		pannelloImmagine.setBorder(new MatteBorder(0, 0, 0, 2, style.border1));
+		pannelloImmagine.setBorder(new MatteBorder(0, 0, 0, 2, style.border2));
 		pannelloImmagine.setBackground(style.bg);
 		add(pannelloImmagine, BorderLayout.WEST);
 		pannelloImmagine.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));

@@ -187,6 +187,20 @@ public class Controller {
     	return articoloDAO.acquisisciArticoliByFiltro(conn, filtroSQL);
     }
     
+public void CostruisciFornitore(ArrayList<String> dati) {
+		
+		Fornitore fornitore = new Fornitore();
+
+		fornitore.setPartitaIVA(dati.get(0));
+		fornitore.setNome(dati.get(1));
+		fornitore.setVia(dati.get(2));
+		fornitore.setNumeroCivico(dati.get(3));
+		fornitore.setCAP(dati.get(4));
+		fornitore.setNumeroDiTelefono(dati.get(5));
+		
+		NuovoFornitore(fornitore);
+		
+	}
     
     public void NuovoFornitore(Fornitore fornitore) {
     	fornitoreDAO.InserisciFornitore(conn, fornitore);
@@ -210,6 +224,10 @@ public class Controller {
 	
 	public void MostraMessaggioErrore(String titolo, String testo) {
 		JOptionPane.showMessageDialog(null, testo, titolo,  JOptionPane.ERROR_MESSAGE);
+	}
+	
+	public void MostraMessaggioAvviso(String titolo, String testo) {
+		JOptionPane.showMessageDialog(null, testo, titolo,  JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 //Getters e setters

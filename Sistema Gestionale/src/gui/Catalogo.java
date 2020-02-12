@@ -4,10 +4,6 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import logic.Articolo;
-import logic.Controller;
-
 import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
 import javax.swing.Box;
@@ -20,11 +16,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-
 import javax.swing.JToggleButton;
 import javax.swing.ScrollPaneConstants;
 import java.awt.Insets;
 
+import logic.Articolo;
+import logic.Controller;
 public class Catalogo extends JFrame {
 	private static final long serialVersionUID = 1L;
 	

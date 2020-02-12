@@ -1,10 +1,8 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Font;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -44,7 +42,7 @@ public class ContenitoreInventario extends ContenitoreArticolo {
 		panelloLaterale.setBackground(getStyle().bg);
 		panelloLaterale.setPreferredSize(new Dimension(150, 10));
 		getContenitoreDati().add(panelloLaterale, BorderLayout.EAST);
-		panelloLaterale.setBorder(new LineBorder(getStyle().border1, 2));
+		panelloLaterale.setBorder(new LineBorder(getStyle().border2, 2));
 		panelloLaterale.setLayout(new BoxLayout(panelloLaterale, BoxLayout.Y_AXIS));
 		
 		lblPrezzo = new JLabel("PREZZO");

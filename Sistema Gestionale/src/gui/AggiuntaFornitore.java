@@ -1,28 +1,19 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-
-import logic.Articolo;
 import logic.Controller;
-import logic.Fornitore;
 
 public class AggiuntaFornitore extends JFrame {
-
+	private static final long serialVersionUID = 1L;
+	
 	private Controller controller;
 	private Style style;
 	
@@ -93,35 +84,11 @@ public class AggiuntaFornitore extends JFrame {
 
 		
 		if (formCompilato) {
-			CostruisciFornitore(contenitoreDati);
+			controller.CostruisciFornitore(contenitoreDati);
+			controller.CambiaFrame(AggiuntaFornitore.this, controller.getFinestraRifornimenti());
 		} else {
-			
-			JDialog dialog = new JDialog(this, "ATTENZIONE");
-			dialog.setBounds(700, 400, 300, 100);
-			dialog.setVisible(true);
-			dialog.setResizable(false);
-			
-			JLabel messaggio = new JLabel();
-			messaggio.setText("Dati mancanti: compilare tutti i campi obbligatori");
-			dialog.getContentPane().add(messaggio);
-			
+			controller.MostraMessaggioAvviso("ATTENZIONE", "Dati mancanti o invalidi");
 		}
-	}
-	
-	public void CostruisciFornitore(ArrayList<String> dati) {
-		
-		Fornitore fornitore = new Fornitore();
-
-		fornitore.setPartitaIVA(dati.get(0));
-		fornitore.setNome(dati.get(1));
-		fornitore.setVia(dati.get(2));
-		fornitore.setNumeroCivico(dati.get(3));
-		fornitore.setCAP(dati.get(4));
-		fornitore.setNumeroDiTelefono(dati.get(5));
-		
-		controller.NuovoFornitore(fornitore);
-		controller.CambiaFrame(AggiuntaFornitore.this, controller.getFinestraRifornimenti());
-		
 	}
 	
 	public boolean ControlloValidità(String testo) {
@@ -151,7 +118,7 @@ public class AggiuntaFornitore extends JFrame {
 	
 	public void ImpostaForm() {
 		
-		JLabel label = new JLabel("Inserire I dati dell'articolo");
+		JLabel label = new JLabel("Inserire I dati del fornitore");
 		label.setBounds(10, 11, 250, 20);
 		contentPane.add(label);
 		
@@ -168,7 +135,7 @@ public class AggiuntaFornitore extends JFrame {
 		contentPane.add(lblVia);
 		
 		JLabel lblNumeroCivico = new JLabel("Numero civico:");
-		lblNumeroCivico.setBounds(346, 120, 97, 20);
+		lblNumeroCivico.setBounds(346, 120, 120, 20);
 		contentPane.add(lblNumeroCivico);
 		
 		JLabel lblCAP = new JLabel("CAP: ");

@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import logic.Controller;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -16,7 +15,8 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 
 public class AggiuntaArticolo extends JFrame {
-
+	private static final long serialVersionUID = 1L;
+	
 	private Controller controller;
 	private Style style;
 	
@@ -100,9 +100,7 @@ public class AggiuntaArticolo extends JFrame {
 			controller.CostruisciArticolo(contenitoreDati);
 			controller.CambiaFrame(AggiuntaArticolo.this, controller.getFinestraInventario());
 		} else {
-			
-			JOptionPane.showMessageDialog(this, "Dati mancanti: compilare tutti i campi obbligatori", "Attenzione",  JOptionPane.INFORMATION_MESSAGE);
-			
+			controller.MostraMessaggioAvviso("ATTENZIONE", "Dati mancanti o invalidi");
 		}
 	}
 	
