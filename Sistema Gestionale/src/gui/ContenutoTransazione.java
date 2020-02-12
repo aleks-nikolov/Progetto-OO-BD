@@ -131,7 +131,11 @@ public class ContenutoTransazione extends JFrame{
 	
 	public void ImpostaFinestra() {
 		
-		setTitle("Contenuto Vendita");
+		if(tipoTransazione == "vendita")
+			setTitle("Contenuto Vendita");
+		else
+			setTitle("Contenuto Rifornimento");
+			
 		setBounds(100, 100, 1280, 720);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBackground(style.bg);
