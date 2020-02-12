@@ -26,7 +26,7 @@ public class ContenitoreTransazione extends ContenitoreArticolo {
 	private ContenutoTransazione contenutoTransazione;
 	private AvvisoElimina dialog;
 	
-	private JPanel panelloLaterale;
+	private JPanel pannelloLaterale;
 	private JButton btnRimuovi;
 	
 	private JLabel labelQuantità;
@@ -65,26 +65,28 @@ public class ContenitoreTransazione extends ContenitoreArticolo {
 		super.InserisciDati(articolo);
 		
 		if(contenutoTransazione.getTipoTransazione().equals("vendita"))
-			labelPrezzo.setText(Float.toString(getArticolo().getPrezzoDiListino()));
+			labelPrezzo.setText(String.format("%.2f", getArticolo().getPrezzoDiListino()) + "€");
 		else
-			labelPrezzo.setText(Float.toString(getArticolo().getPrezzoMagazzino()));
+			labelPrezzo.setText(String.format("%.2f", getArticolo().getPrezzoMagazzino()) + "€");
+		
+		
 	}
 	
 	public void InserisciQuantità(int quantità) {
-		labelQuantità.setText(Integer.toString(quantità));
+		labelQuantità.setText("x" + Integer.toString(quantità));
 	}
 	
 	public void ImpostaPanelloLaterale() {
 		
-		panelloLaterale = new JPanel();
-		panelloLaterale.setBackground(getStyle().bg);
-		panelloLaterale.setPreferredSize(new Dimension(150, 10));
-		getContenitoreDati().add(panelloLaterale, BorderLayout.EAST);
-		panelloLaterale.setBorder(new LineBorder(getStyle().border1, 2));
-		panelloLaterale.setLayout(new BoxLayout(panelloLaterale, BoxLayout.Y_AXIS));
+		pannelloLaterale = new JPanel();
+		pannelloLaterale.setBackground(getStyle().bg);
+		pannelloLaterale.setPreferredSize(new Dimension(150, 10));
+		getContenitoreDati().add(pannelloLaterale, BorderLayout.EAST);
+		pannelloLaterale.setBorder(new LineBorder(getStyle().border1, 2));
+		pannelloLaterale.setLayout(new BoxLayout(pannelloLaterale, BoxLayout.Y_AXIS));
 		
 		labelPrezzo = new JLabel();
-		panelloLaterale.add(labelPrezzo);
+		pannelloLaterale.add(labelPrezzo);
 		labelPrezzo.setHorizontalTextPosition(SwingConstants.CENTER);
 		labelPrezzo.setHorizontalAlignment(SwingConstants.CENTER);
 		labelPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -95,27 +97,34 @@ public class ContenitoreTransazione extends ContenitoreArticolo {
 		labelQuantità.setAlignmentX(Component.CENTER_ALIGNMENT);
 		labelQuantità.setFont(getStyle().defaultS);
 		labelQuantità.setPreferredSize(new Dimension(49, 15));
-		panelloLaterale.add(labelQuantità);
+		pannelloLaterale.add(labelQuantità);
+		
+		JPanel pannelloSaldo = new JPanel();
+		pannelloSaldo.setBackground(getStyle().bg);
+		pannelloSaldo.setPreferredSize(new Dimension(100, 15));
+		pannelloSaldo.setAlignmentX(Component.CENTER_ALIGNMENT);
+		pannelloLaterale.add(pannelloSaldo);
 		
 		labelSaldo = new JLabel("Saldo %");
 		labelSaldo.setHorizontalAlignment(SwingConstants.CENTER);
 		labelSaldo.setAlignmentX(Component.CENTER_ALIGNMENT);
 		labelSaldo.setFont(getStyle().defaultS);
-		labelSaldo.setPreferredSize(new Dimension(49, 15));
-		panelloLaterale.add(labelSaldo);
+		labelSaldo.setPreferredSize(new Dimension(80, 20));
+		pannelloSaldo.add(labelSaldo);
 		
 		boxSaldo = new JComboBox<Integer>(new Integer[] {0, 10, 20, 30, 40, 50, 60, 70, 80, 90});
 		boxSaldo.setFont(getStyle().defaultS);
-		panelloLaterale.add(boxSaldo);
+		boxSaldo.setPreferredSize(new Dimension(50, 20));
+		pannelloSaldo.add(boxSaldo);
 		
 		btnRimuovi = new JButton();
 		btnRimuovi.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panelloLaterale.add(btnRimuovi);
+		pannelloLaterale.add(btnRimuovi);
 		btnRimuovi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnRimuovi.setBackground(getStyle().redBtn);
 		btnRimuovi.setIcon(getStyle().deleteIcon);
 		btnRimuovi.setMargin(new Insets(5, 5, 5, 5));
-		btnRimuovi.setPreferredSize(new Dimension(10, 10));
+		btnRimuovi.setPreferredSize(new Dimension(40, 40));
 		
 	}
 	

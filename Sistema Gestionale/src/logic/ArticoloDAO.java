@@ -15,7 +15,7 @@ public class ArticoloDAO {
 		this.controller = controller;
 	}
 	
-	public ArrayList<Articolo> acquisisciArticoliByFiltro(Connection conn, String filtro) {
+	public ArrayList<Articolo> acquisisciArticoliByFiltro(Connection conn, ArrayList<String> datiFiltro) {
 		
 		ArrayList<Articolo> articoli = new ArrayList<Articolo>();
 	
@@ -23,7 +23,7 @@ public class ArticoloDAO {
 			
 			Articolo articolo;
 			
-			String comando = "SELECT * FROM articolicondescrittori AS A" + filtro + ";";
+			String comando = "SELECT * FROM articolicondescrittori AS A" + CreaFiltroSQL(datiFiltro) + ";";
 			
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery(comando);
@@ -59,6 +59,39 @@ public class ArticoloDAO {
 		
 		return articoli;
 	}
+	
+	//datiFiltro sarà formattato come {categoria, marca, taglia, colore}
+	public String CreaFiltroSQL(ArrayList<String> datiFiltro) {
+			
+			String filtro = " WHERE TRUE";
+			
+			if(datiFiltro.get(0).toString() != "CATEGORIA") 
+				filtro += " AND A.Categoria = " + '\'' + datiFiltro.get(0).toString() + '\'';
+	
+			if(datiFiltro.get(1).toString() != "MARCA") 
+				filtro += " AND A.Marca = " + '\'' + datiFiltro.get(1).toString() + '\'';
+	
+			if(datiFiltro.get(2).toString() != "TAGLIA") 
+				filtro += " AND A.Taglia = " + '\'' + datiFiltro.get(2).toString() + '\'';
+	
+			if(datiFiltro.get(3) == "NERO") 
+				filtro += " AND A.Colore = 'Nero'";
+			
+			if(datiFiltro.get(3) == "BIANCO") 
+				filtro += " AND A.Colore = 'Bianco'";
+			
+			if(datiFiltro.get(3) == "ROSSO") 
+				filtro += " AND A.Colore = 'Rosso'";
+			
+			if(datiFiltro.get(3) == "VERDE") 
+				filtro += " AND A.Colore = 'Verde'";
+			
+			if(datiFiltro.get(3) == "BLU") 
+				filtro += " AND A.Colore = 'Blu'";
+			
+			return filtro;
+			
+		}
 	
 	public Articolo TrovaArticolo(Connection conn, String sku) {
 		

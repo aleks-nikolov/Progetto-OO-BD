@@ -73,7 +73,7 @@ public class Catalogo extends JFrame {
 	public void RiempiCatalogo() {
 	
 		SvuotaCatalogo();
-		articoliInCatalogo = controller.getArticoliByFiltro(CreaFiltroSQL());
+		articoliInCatalogo = controller.getArticoliByFiltro(CreaFiltro());
 		
 		for (Articolo articolo : articoliInCatalogo) {
 			
@@ -103,37 +103,38 @@ public class Catalogo extends JFrame {
 		
 	}
 	
-	public String CreaFiltroSQL() {
+	//Crea un filtro del tipo {categoria, marca, taglia, colore} che viene poi convertito in un where statement da ArticoloDAO
+	public ArrayList<String> CreaFiltro() {
 		
-		String filtro = " WHERE TRUE";
+		ArrayList<String> filtro = new ArrayList<String>();
 		
-		if(boxCategoria.getSelectedItem().toString() != "CATEGORIA") 
-			filtro += " AND A.Categoria = " + '\'' + boxCategoria.getSelectedItem().toString() + '\'';
+		filtro.add(0, boxCategoria.getSelectedItem().toString());
 
-		if(boxMarca.getSelectedItem().toString() != "MARCA") 
-			filtro += " AND A.Marca = " + '\'' + boxMarca.getSelectedItem().toString() + '\'';
+		filtro.add(1, boxMarca.getSelectedItem().toString());
 
-		if(boxTaglia.getSelectedItem().toString() != "TAGLIA") 
-			filtro += " AND A.Taglia = " + '\'' + boxTaglia.getSelectedItem().toString() + '\'';
+		filtro.add(2, boxTaglia.getSelectedItem().toString());
 
 		if(tglbtnBlack.isSelected()) 
-			filtro += " AND A.Colore = 'Nero'";
+			filtro.add(3, "NERO");
 		
 		if(tglbtnWhite.isSelected()) 
-			filtro += " AND A.Colore = 'Bianco'";
+			filtro.add(3, "BIANCO");
 		
 		if(tglbtnRed.isSelected()) 
-			filtro += " AND A.Colore = 'Rosso'";
+			filtro.add(3, "ROSSO");
 		
 		if(tglbtnGreen.isSelected()) 
-			filtro += " AND A.Colore = 'Verde'";
+			filtro.add(3, "VERDE");
 		
 		if(tglbtnBlue.isSelected()) 
-			filtro += " AND A.Colore = 'Blu'";
+			filtro.add(3, "BLU");
+		
+		filtro.add(3, "COLORE");
 		
 		return filtro;
 		
 	}
+	
 	
 	public void AggiungiListener() {
 		

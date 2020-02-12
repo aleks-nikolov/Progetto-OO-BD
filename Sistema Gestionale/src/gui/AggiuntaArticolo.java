@@ -6,15 +6,12 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import logic.Articolo;
 import logic.Controller;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 
@@ -100,33 +97,13 @@ public class AggiuntaArticolo extends JFrame {
 		contenitoreDati.add(textPath.getText());
 		
 		if (formCompilato) {
-			CostruisciArticolo(contenitoreDati);
+			controller.CostruisciArticolo(contenitoreDati);
+			controller.CambiaFrame(AggiuntaArticolo.this, controller.getFinestraInventario());
 		} else {
 			
 			JOptionPane.showMessageDialog(this, "Dati mancanti: compilare tutti i campi obbligatori", "Attenzione",  JOptionPane.INFORMATION_MESSAGE);
 			
 		}
-	}
-	
-	public void CostruisciArticolo(ArrayList<String> dati) {
-		
-		Articolo articolo = new Articolo();
-
-		articolo.setCodiceABarre(dati.get(0));
-		articolo.setNome(dati.get(1));
-		articolo.setDescrizione(dati.get(2));
-		articolo.setCategoria(dati.get(3));
-		articolo.setMarca(dati.get(4));
-		articolo.setColore(dati.get(5));
-		articolo.setSesso(dati.get(6));
-		articolo.setTaglia(dati.get(7));
-		articolo.setPrezzoDiListino(Float.parseFloat(dati.get(8)));
-		articolo.setPrezzoMagazzino(Float.parseFloat(dati.get(9)));
-		articolo.setImagePath(dati.get(10));
-		
-		controller.NuovoArticolo(articolo);
-		controller.CambiaFrame(AggiuntaArticolo.this, controller.getFinestraInventario());
-		
 	}
 	
 	public boolean ControlloValidità(String testo) {

@@ -35,7 +35,7 @@ public class ContenitoreInventario extends ContenitoreArticolo {
 	@Override
 	public void InserisciDati(Articolo articolo) {
 		super.InserisciDati(articolo);
-		labelPrezzo.setText(Float.toString(getArticolo().getPrezzoDiListino()));
+		labelPrezzo.setText(String.format("%.2f", getArticolo().getPrezzoDiListino()) + "€");
 		labelQuantità.setText(Integer.toString(getArticolo().getQuantita()));
 	}
 	
