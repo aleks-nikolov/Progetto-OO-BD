@@ -85,19 +85,19 @@ public class Catalogo extends JFrame {
 		
 	}
 	
-	public void AggiungiContenitore(ContenitoreCatalogo contenitore) {
-		
-		pannelloCentrale.add(Box.createRigidArea(new Dimension(1200, 10)));
-        pannelloCentrale.add(contenitore);
-        
-	}
-	
 	public void SvuotaCatalogo() {
 		
 		pannelloCentrale.removeAll();
 		pannelloCentrale.revalidate();
 		pannelloCentrale.repaint();
 		
+	}
+	
+	public void AggiungiContenitore(ContenitoreCatalogo contenitore) {
+		
+		pannelloCentrale.add(Box.createRigidArea(new Dimension(1200, 10)));
+        pannelloCentrale.add(contenitore);
+        
 	}
 	
 	//Crea un filtro del tipo {categoria, marca, taglia, colore} che viene poi convertito in un where statement da ArticoloDAO

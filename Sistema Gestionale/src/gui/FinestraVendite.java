@@ -78,8 +78,7 @@ public class FinestraVendite extends JFrame{
 		}
 		
 	}
-	
-	
+
 	public void AggiungiListener() {
 		
 		btnNew.addActionListener(new ActionListener() {
@@ -111,7 +110,6 @@ public class FinestraVendite extends JFrame{
 			
 	}
 
-	
 	public void ImpostaFinestra() {
 		
 		setTitle("Vendite");
