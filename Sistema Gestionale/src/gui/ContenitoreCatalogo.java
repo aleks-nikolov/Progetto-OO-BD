@@ -46,7 +46,6 @@ public class ContenitoreCatalogo extends ContenitoreArticolo {
 		AggiungiListener();
 	}
 
-
 	public void AggiungiListener() {
 		
 		btnAggiungi.addActionListener(new ActionListener() {
@@ -68,6 +67,7 @@ public class ContenitoreCatalogo extends ContenitoreArticolo {
 		else
 			labelPrezzo.setText(String.format("%.2f", getArticolo().getPrezzoMagazzino()) + "€");
 	}
+	
 	
 	public void ImpostaPanelloLaterale() {
 		panelloLaterale = new JPanel();

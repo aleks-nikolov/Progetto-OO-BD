@@ -71,6 +71,46 @@ public class FinestraInventario extends JFrame {
 		
 	}
 	
+	public void AggiungiListener() {
+		
+		btnRefresh.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				RiempiInventario();
+			}
+			
+		});
+		
+		btnRifornimenti.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.CambiaFrame(FinestraInventario.this, controller.getFinestraRifornimenti());
+			}
+			
+		});
+		
+		btnAggiungi.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.CambiaFrame(FinestraInventario.this, controller.getFinestraAggiuntaArticolo());
+			}
+			
+		});
+
+		btnIndietro.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.CambiaFrame(FinestraInventario.this, controller.getHomePage());
+			}
+			
+		});
+
+	}
+	
 	public void RiempiInventario() {
 		
 		SvuotaInventario();
@@ -140,46 +180,6 @@ public class FinestraInventario extends JFrame {
 		
 		return filtro;
 		
-	}
-	
-	public void AggiungiListener() {
-		
-		btnRefresh.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				RiempiInventario();
-			}
-			
-		});
-		
-		btnRifornimenti.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				controller.CambiaFrame(FinestraInventario.this, controller.getFinestraRifornimenti());
-			}
-			
-		});
-		
-		btnAggiungi.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				controller.CambiaFrame(FinestraInventario.this, controller.getFinestraAggiuntaArticolo());
-			}
-			
-		});
-
-		btnIndietro.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				controller.CambiaFrame(FinestraInventario.this, controller.getHomePage());
-			}
-			
-		});
-
 	}
 	
 	public void ImpostaFinestra() {

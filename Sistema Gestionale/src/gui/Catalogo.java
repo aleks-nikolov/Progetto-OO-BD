@@ -67,6 +67,36 @@ public class Catalogo extends JFrame {
 		
 	}
 	
+	public void AggiungiListener() {
+		
+		btnRefresh.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				RiempiCatalogo();
+			}
+			
+		});
+		
+		btnAnnulla.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				contenutoTransazione.setEnabled(true);
+				controller.ChiudiFrame(Catalogo.this);
+			}
+			
+		});
+
+		this.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                contenutoTransazione.setEnabled(true);
+                controller.ChiudiFrame(Catalogo.this);
+            }
+        });
+
+	}
+	
 	public void RiempiCatalogo() {
 	
 		SvuotaCatalogo();
@@ -135,38 +165,6 @@ public class Catalogo extends JFrame {
 		return filtro;
 		
 	}
-	
-	
-	public void AggiungiListener() {
-		
-		btnRefresh.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				RiempiCatalogo();
-			}
-			
-		});
-		
-		btnAnnulla.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				contenutoTransazione.setEnabled(true);
-				controller.ChiudiFrame(Catalogo.this);
-			}
-			
-		});
-
-		this.addWindowListener(new WindowAdapter(){
-            public void windowClosing(WindowEvent e){
-                contenutoTransazione.setEnabled(true);
-                controller.ChiudiFrame(Catalogo.this);
-            }
-        });
-
-	}
-
 	
 	public void ImpostaFinestra() {
 		

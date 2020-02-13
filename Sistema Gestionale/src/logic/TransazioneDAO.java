@@ -116,7 +116,25 @@ public class TransazioneDAO {
 		} catch (SQLException e) {
 			controller.MostraMessaggioErrore("Errore DAO", e.getMessage());
 			e.printStackTrace();
+		}
+		
+	}
+
+	public void EliminaByCodice(Connection conn, String codiceTransazione) {
+		
+		String comando = "DELETE FROM Transazione AS T WHERE T.CodiceTransazione = ?;";
+		
+		try {
 			
+			PreparedStatement pst = conn.prepareStatement(comando);	
+			pst.setString(1, codiceTransazione);
+			pst.executeUpdate();
+			
+			pst.close();
+			
+		} catch (SQLException e) {
+			controller.MostraMessaggioErrore("Errore DAO", e.getMessage());
+			e.printStackTrace();
 		}
 		
 	}

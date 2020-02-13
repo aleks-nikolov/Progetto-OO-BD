@@ -26,7 +26,7 @@ public class AvvisoElimina extends JDialog {
 	public AvvisoElimina(ContenitoreTransazione contenitore) {
 		style = new Style();
 		
-		contenitore.getContenutoVendita().setEnabled(false);
+		contenitore.getContenutoTransazione().setEnabled(false);
 		
 		setVisible(true);
 		setTitle("Attenzione");
@@ -66,8 +66,9 @@ public class AvvisoElimina extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				contenitore.getContenutoVendita().setEnabled(true);
+				contenitore.getContenutoTransazione().setEnabled(true);
 				contenitore.Rimuovi();
+				contenitore.getContenutoTransazione().AggiornaPrezzoTotale();
 				AvvisoElimina.this.setVisible(false);
 			}});
 		
@@ -75,7 +76,7 @@ public class AvvisoElimina extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				contenitore.getContenutoVendita().setEnabled(true);
+				contenitore.getContenutoTransazione().setEnabled(true);
 				AvvisoElimina.this.setVisible(false);
 			}});
 

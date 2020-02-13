@@ -139,9 +139,12 @@ public class ArticoloDAO {
 			
 			ResultSet rs = controlloEsistenzaCodice.executeQuery();
 			
+			String comandoInserzioneDescrittore = "INSERT INTO DescrittoreArticolo VALUES(?, CAST(? AS \"Marche\"), CAST(? AS \"Categorie\"), ?, ?, ?, ?, ?);";
+			String comandoInserzioneArticolo = "INSERT INTO Articolo(Taglia, Colore, Quantita, PathImmagine, CodiceABarre) VALUES(CAST(? AS \"Taglie\"), CAST(? AS \"Colori\"), ?, ?, ?);";
+			
 			if(rs.next() == false) {
 				
-				PreparedStatement pst1 = conn.prepareStatement("INSERT INTO DescrittoreArticolo VALUES(?, CAST(? AS \"Marche\"), CAST(? AS \"Categorie\"), ?, ?, ?, ?, ?);");
+				PreparedStatement pst1 = conn.prepareStatement(comandoInserzioneDescrittore);
 				pst1.setString(1, articolo.getCodiceABarre());
 				pst1.setString(2, articolo.getMarca());
 				pst1.setString(3, articolo.getCategoria());
@@ -157,7 +160,7 @@ public class ArticoloDAO {
 
 			}
 			
-			PreparedStatement pst2 = conn.prepareStatement("INSERT INTO Articolo(Taglia, Colore, Quantita, PathImmagine, CodiceABarre) VALUES(CAST(? AS \"Taglie\"), CAST(? AS \"Colori\"), ?, ?, ?);");
+			PreparedStatement pst2 = conn.prepareStatement(comandoInserzioneArticolo);
 			pst2.setString(1, articolo.getTaglia());
 			pst2.setString(2, articolo.getColore());
 			pst2.setInt(3, 0); //Imposto la quantità a zero, dato che non ce ne sono esemplari in magazzino

@@ -20,6 +20,7 @@ import logic.ComposizioneTransazione;
 import logic.Controller;
 import javax.swing.BoxLayout;
 import java.awt.Dimension;
+import javax.swing.JLabel;
 
 public class ContenutoTransazione extends JFrame{
 	
@@ -38,13 +39,16 @@ public class ContenutoTransazione extends JFrame{
 	private JButton btnApplica;
 	private JButton btnAnnulla;
 	private JButton btnAdd;
+	
+	private JLabel lblTotale;
+	private JLabel lblValoreTotale;
 
 	private JComboBox boxFornitore;
 	
 	private Component horizontalStrut;
 	private Component horizontalStrut_1;
 	private Component horizontalStrut_2;
-
+	
 //**************************************************************************************
 	
 	public ContenutoTransazione(Controller controller, String tipoTransazione){
@@ -61,57 +65,6 @@ public class ContenutoTransazione extends JFrame{
 		AggiungiListener();
 		
 	}
-	
-	
-	public void AggiungiArticolo(Articolo articolo, int quantità) {
-		
-		ContenitoreTransazione contenitore = new ContenitoreTransazione(controller, this);
-
-		contenitore.InserisciDati(articolo);
-		contenitore.InserisciQuantità(quantità);
-		
-		contenitori.add(contenitore);
-		pannelloCentrale.add(contenitore);
-		pannelloCentrale.add(Box.createRigidArea(new Dimension(1200, 10)));
-		pannelloCentrale.revalidate();
-		pannelloCentrale.repaint();
-		
-	}
-	
-	public void RimuoviArticolo(ContenitoreTransazione contenitoreDaRimuovere) {
-		
-		contenitori.remove(contenitoreDaRimuovere);
-		pannelloCentrale.remove(contenitoreDaRimuovere);
-		pannelloCentrale.revalidate();
-		pannelloCentrale.repaint();
-		
-	}
-	
-	public void CreaNuovaVendita() {
-		
-		LocalDate date = LocalDate.now();
-		
-		controller.NuovaVendita(date);
-		
-		for (ContenitoreTransazione contenitore : contenitori) {
-			controller.NuovaComposizioneTransazione(contenitore.getDatiComposizione());
-		}
-		
-	}
-	
-	public void CreaNuovoRifornimento() {
-		
-		LocalDate date = LocalDate.now();
-		String partitaIVA = controller.getPartitaByNome(boxFornitore.getSelectedItem().toString());
-		
-		controller.NuovoRifornimento(date, partitaIVA);
-		
-		for (ContenitoreTransazione contenitore : contenitori) {
-			controller.NuovaComposizioneTransazione(contenitore.getDatiComposizione());
-		}
-		
-	}
-	
 	
 	public void AggiungiListener() {
 		
@@ -152,7 +105,68 @@ public class ContenutoTransazione extends JFrame{
 			
 		});
 		
+	}
+	
+	public void AggiungiArticolo(Articolo articolo, int quantità) {
 		
+		ContenitoreTransazione contenitore = new ContenitoreTransazione(controller, this);
+
+		contenitore.InserisciDati(articolo);
+		contenitore.InserisciQuantità(quantità);
+		
+		contenitori.add(contenitore);
+		pannelloCentrale.add(contenitore);
+		pannelloCentrale.add(Box.createRigidArea(new Dimension(1200, 10)));
+		pannelloCentrale.revalidate();
+		pannelloCentrale.repaint();
+		
+		AggiornaPrezzoTotale();
+		
+	}
+	
+	public void RimuoviArticolo(ContenitoreTransazione contenitoreDaRimuovere) {
+		
+		contenitori.remove(contenitoreDaRimuovere);
+		pannelloCentrale.remove(contenitoreDaRimuovere);
+		pannelloCentrale.revalidate();
+		pannelloCentrale.repaint();
+		
+	}
+	
+	public void AggiornaPrezzoTotale() {
+		
+		float valoreTotale = 0.0f;
+		
+		for (ContenitoreTransazione contenitore : contenitori) {
+			valoreTotale += (contenitore.getPrezzo() * contenitore.getQuantità());
+		}
+		
+		lblValoreTotale.setText(String.format("%.2f", valoreTotale) + "€");
+		
+	}
+	
+	public void CreaNuovaVendita() {
+		
+		LocalDate date = LocalDate.now();
+		
+		controller.NuovaVendita(date);
+		
+		for (ContenitoreTransazione contenitore : contenitori) {
+			controller.NuovaComposizioneTransazione(contenitore.getDatiComposizione());
+		}
+		
+	}
+	
+	public void CreaNuovoRifornimento() {
+		
+		LocalDate date = LocalDate.now();
+		String partitaIVA = controller.getPartitaByNome(boxFornitore.getSelectedItem().toString());
+		
+		controller.NuovoRifornimento(date, partitaIVA);
+		
+		for (ContenitoreTransazione contenitore : contenitori) {
+			controller.NuovaComposizioneTransazione(contenitore.getDatiComposizione());
+		}
 		
 	}
 
@@ -236,6 +250,16 @@ public class ContenutoTransazione extends JFrame{
 		btnAnnulla.setMargin(new Insets(5, 5, 5, 5));
 		btnAnnulla.setIcon(style.backIcon);
 		pannelloInferiore.add(btnAnnulla);
+		
+		horizontalStrut_2 = Box.createHorizontalStrut(10);
+		
+		lblTotale = new JLabel("TOTALE:");
+		lblTotale.setFont(style.defaultM);
+		pannelloInferiore.add(lblTotale);
+		
+		lblValoreTotale = new JLabel("0.00€");
+		lblValoreTotale.setFont(style.defaultM);
+		pannelloInferiore.add(lblValoreTotale);
 		
 	}
 	

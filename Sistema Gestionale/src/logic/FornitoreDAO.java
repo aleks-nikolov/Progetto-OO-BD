@@ -17,9 +17,11 @@ public class FornitoreDAO {
 	
 	public void InserisciFornitore(Connection conn, Fornitore fornitore) {
 
+		String comando = "INSERT INTO Fornitore VALUES(?, ?, ?, ?, ?, ?);";
+		
 		try {
 					
-			PreparedStatement pst = conn.prepareStatement("INSERT INTO Fornitore VALUES(?, ?, ?, ?, ?, ?);");
+			PreparedStatement pst = conn.prepareStatement(comando);
 			pst.setString(1, fornitore.getPartitaIVA());
 			pst.setString(2, fornitore.getNome());
 			pst.setString(3, fornitore.getVia());
@@ -41,11 +43,12 @@ public class FornitoreDAO {
 	public ArrayList<String> getNomiFornitori(Connection conn) {
 		
 		ArrayList<String> fornitori = new ArrayList<String>();
+		String comando = "SELECT F.Nome FROM Fornitore AS F;";
 		
 		try {
 			
 			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery("SELECT F.Nome FROM Fornitore AS F;");
+			ResultSet rs = st.executeQuery(comando);
 			
 			while(rs.next()) {
 				fornitori.add(rs.getString("Nome"));
@@ -67,10 +70,11 @@ public class FornitoreDAO {
 	public String getPartitaFornitore(Connection conn, String nome) {
 		
 		String partitaIVA = "";
+		String comando = "SELECT F.partitaiva FROM Fornitore AS F WHERE F.Nome = ?;";
 		
 		try {
 			
-			PreparedStatement pst = conn.prepareStatement("SELECT F.partitaiva FROM Fornitore AS F WHERE F.Nome = ?");
+			PreparedStatement pst = conn.prepareStatement(comando);
 			pst.setString(1, nome);
 			ResultSet rs = pst.executeQuery();
 			

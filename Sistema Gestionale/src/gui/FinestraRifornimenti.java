@@ -65,23 +65,6 @@ public class FinestraRifornimenti extends JFrame {
 		
 	}
 	
-	public void RiempiTabella() {
-		
-		tableData.setRowCount(0);
-		
-		rifornimenti = controller.getRifornimenti();
-		for(Transazione rifornimento : rifornimenti) {
-			String codiceTransazione = rifornimento.getCodiceTransazione();
-			LocalDate data = rifornimento.getData();
-			Float valoreTotale = rifornimento.getValoreTotale();
-			String partitaIVA = rifornimento.getPartitaIva();
-			
-			tableData.addRow(new Object[] {codiceTransazione, controller.getContenutoTransazione(codiceTransazione), partitaIVA, data.toString(), valoreTotale.toString()});
-		}
-		
-	}
-	
-	
 	public void AggiungiListener() {
 		
 		btnNew.addActionListener(new ActionListener() {
@@ -111,6 +94,15 @@ public class FinestraRifornimenti extends JFrame {
 			
 		});
 		
+		btnDelete.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.EliminaTransazioneByCodice(String.valueOf(table.getModel().getValueAt(table.getSelectedRow(), 1)));
+			}
+			
+		});
+		
 		btnIndietro.addActionListener(new ActionListener() {
 	
 			@Override
@@ -121,7 +113,23 @@ public class FinestraRifornimenti extends JFrame {
 		});
 			
 	}
-
+	
+	public void RiempiTabella() {
+		
+		tableData.setRowCount(0);
+		
+		rifornimenti = controller.getRifornimenti();
+		for(Transazione rifornimento : rifornimenti) {
+			String codiceTransazione = rifornimento.getCodiceTransazione();
+			LocalDate data = rifornimento.getData();
+			Float valoreTotale = rifornimento.getValoreTotale();
+			String partitaIVA = rifornimento.getPartitaIva();
+			
+			tableData.addRow(new Object[] {codiceTransazione, controller.getContenutoTransazione(codiceTransazione), partitaIVA, data.toString(), valoreTotale.toString()});
+		}
+		
+	}
+	
 	
 	public void ImpostaFinestra() {
 		

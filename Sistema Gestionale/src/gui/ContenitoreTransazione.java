@@ -31,9 +31,9 @@ public class ContenitoreTransazione extends ContenitoreArticolo {
 	private JPanel pannelloLaterale;
 	private JButton btnRimuovi;
 	
-	private JLabel labelQuantità;
-	private JLabel labelSaldo;
-	private JLabel labelPrezzo;
+	private JLabel lblQuantita;
+	private JLabel lblSaldo;
+	private JLabel lblPrezzo;
 	
 	private JComboBox<Integer> boxSaldo;
 	
@@ -57,6 +57,18 @@ public class ContenitoreTransazione extends ContenitoreArticolo {
 			}
 			
 		});
+		
+		boxSaldo.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(contenutoTransazione.getTipoTransazione().equals("vendita"))
+					AggiornaPrezzo(getArticolo().getPrezzoDiListino());
+				else
+					AggiornaPrezzo(getArticolo().getPrezzoMagazzino());
+			}
+			
+		});
 	}
 	
 	public void Rimuovi() {
@@ -67,18 +79,27 @@ public class ContenitoreTransazione extends ContenitoreArticolo {
 	@Override
 	public void InserisciDati(Articolo articolo) {
 		super.InserisciDati(articolo);
-		
-		if(contenutoTransazione.getTipoTransazione().equals("vendita"))
-			labelPrezzo.setText(String.format("%.2f", getArticolo().getPrezzoDiListino()) + "€");
+
+		if(contenutoTransazione.getTipoTransazione().equals("vendita")) 
+			AggiornaPrezzo(getArticolo().getPrezzoDiListino());
 		else
-			labelPrezzo.setText(String.format("%.2f", getArticolo().getPrezzoMagazzino()) + "€");
+			AggiornaPrezzo(getArticolo().getPrezzoMagazzino());
 		
+	}
+	
+	public void AggiornaPrezzo(float prezzo) {
+		
+		float saldo = Float.parseFloat(boxSaldo.getSelectedItem().toString());
+		prezzo -= prezzo * (saldo / 100);
+		
+		lblPrezzo.setText(String.format("%.2f", prezzo) + "€");
+		contenutoTransazione.AggiornaPrezzoTotale();
 		
 	}
 	
 	public void InserisciQuantità(int quantità) {
 		this.quantità = quantità;
-		labelQuantità.setText("x" + Integer.toString(quantità));
+		lblQuantita.setText("x" + Integer.toString(quantità));
 	}
 
 	public ArrayList<String> getDatiComposizione() {
@@ -100,19 +121,19 @@ public class ContenitoreTransazione extends ContenitoreArticolo {
 		pannelloLaterale.setBorder(new LineBorder(getStyle().border2, 2));
 		pannelloLaterale.setLayout(new BoxLayout(pannelloLaterale, BoxLayout.Y_AXIS));
 		
-		labelPrezzo = new JLabel();
-		pannelloLaterale.add(labelPrezzo);
-		labelPrezzo.setHorizontalTextPosition(SwingConstants.CENTER);
-		labelPrezzo.setHorizontalAlignment(SwingConstants.CENTER);
-		labelPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
-		labelPrezzo.setFont(getStyle().defaultM);
+		lblPrezzo = new JLabel();
+		pannelloLaterale.add(lblPrezzo);
+		lblPrezzo.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblPrezzo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lblPrezzo.setFont(getStyle().defaultM);
 		
-		labelQuantità = new JLabel();
-		labelQuantità.setHorizontalAlignment(SwingConstants.CENTER);
-		labelQuantità.setAlignmentX(Component.CENTER_ALIGNMENT);
-		labelQuantità.setFont(getStyle().defaultS);
-		labelQuantità.setPreferredSize(new Dimension(49, 15));
-		pannelloLaterale.add(labelQuantità);
+		lblQuantita = new JLabel();
+		lblQuantita.setHorizontalAlignment(SwingConstants.CENTER);
+		lblQuantita.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lblQuantita.setFont(getStyle().defaultS);
+		lblQuantita.setPreferredSize(new Dimension(49, 15));
+		pannelloLaterale.add(lblQuantita);
 		
 		JPanel pannelloSaldo = new JPanel();
 		pannelloSaldo.setBackground(getStyle().bg);
@@ -120,12 +141,12 @@ public class ContenitoreTransazione extends ContenitoreArticolo {
 		pannelloSaldo.setAlignmentX(Component.CENTER_ALIGNMENT);
 		pannelloLaterale.add(pannelloSaldo);
 		
-		labelSaldo = new JLabel("Saldo %");
-		labelSaldo.setHorizontalAlignment(SwingConstants.CENTER);
-		labelSaldo.setAlignmentX(Component.CENTER_ALIGNMENT);
-		labelSaldo.setFont(getStyle().defaultS);
-		labelSaldo.setPreferredSize(new Dimension(80, 20));
-		pannelloSaldo.add(labelSaldo);
+		lblSaldo = new JLabel("Saldo %");
+		lblSaldo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSaldo.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lblSaldo.setFont(getStyle().defaultS);
+		lblSaldo.setPreferredSize(new Dimension(80, 20));
+		pannelloSaldo.add(lblSaldo);
 		
 		boxSaldo = new JComboBox<Integer>(new Integer[] {0, 10, 20, 30, 40, 50, 60, 70, 80, 90});
 		boxSaldo.setFont(getStyle().defaultS);
@@ -143,11 +164,15 @@ public class ContenitoreTransazione extends ContenitoreArticolo {
 		
 	}
 	
-	public ContenutoTransazione getContenutoVendita() {
+	public ContenutoTransazione getContenutoTransazione() {
 		return contenutoTransazione;
 	}
 	
 	public int getQuantità() {
 		return quantità;
+	}
+	
+	public float getPrezzo() {
+		return Float.valueOf(lblPrezzo.getText().substring(0, lblPrezzo.getText().length() - 1));
 	}
 }

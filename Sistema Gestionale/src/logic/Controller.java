@@ -229,6 +229,10 @@ public class Controller {
 		compTransazioneDAO.InserisciComposizione(conn, compTransazione);
 	}
     
+	public void EliminaTransazioneByCodice(String codiceTransazione) {
+		transazioneDAO.EliminaByCodice(conn, codiceTransazione);
+	}
+	
 //Metodi GUI
 	public void CambiaFrame(JFrame frameDaNascondere, JFrame frameDaMostrare) {
 		ChiudiFrame(frameDaNascondere);

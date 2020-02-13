@@ -64,21 +64,6 @@ public class FinestraVendite extends JFrame{
 		
 	}
 	
-	public void RiempiTabella() {
-		
-		tableData.setRowCount(0);
-		
-		//vendite = controller.getVendite();
-		for(Transazione vendita : vendite) {
-			String codiceTransazione = vendita.getCodiceTransazione();
-			LocalDate data = vendita.getData();
-			Float valoreTotale = vendita.getValoreTotale();
-			
-			tableData.addRow(new Object[] {codiceTransazione, controller.getContenutoTransazione(codiceTransazione), data.toString(), valoreTotale});
-		}
-		
-	}
-
 	public void AggiungiListener() {
 		
 		btnNew.addActionListener(new ActionListener() {
@@ -86,6 +71,15 @@ public class FinestraVendite extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller.CambiaFrame(FinestraVendite.this, controller.getContenutoVendita());
+			}
+			
+		});
+		
+		btnDelete.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.EliminaTransazioneByCodice(String.valueOf(table.getModel().getValueAt(table.getSelectedRow(), 1)));
 			}
 			
 		});
@@ -108,6 +102,21 @@ public class FinestraVendite extends JFrame{
 			
 		});
 			
+	}
+	
+	public void RiempiTabella() {
+		
+		tableData.setRowCount(0);
+		
+		//vendite = controller.getVendite();
+		for(Transazione vendita : vendite) {
+			String codiceTransazione = vendita.getCodiceTransazione();
+			LocalDate data = vendita.getData();
+			Float valoreTotale = vendita.getValoreTotale();
+			
+			tableData.addRow(new Object[] {codiceTransazione, controller.getContenutoTransazione(codiceTransazione), data.toString(), valoreTotale});
+		}
+		
 	}
 
 	public void ImpostaFinestra() {
