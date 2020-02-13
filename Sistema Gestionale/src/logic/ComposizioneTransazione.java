@@ -10,9 +10,6 @@ public class ComposizioneTransazione {
 	
 //**************************************************************************************
 	
-	
-	
-	
 	//Getters e setters
 	public int getSKU() {
 		return skuArticolo;

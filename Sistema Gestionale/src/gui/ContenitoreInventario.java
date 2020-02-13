@@ -58,7 +58,7 @@ public class ContenitoreInventario extends ContenitoreArticolo {
 		labelPrezzo.setHorizontalAlignment(SwingConstants.CENTER);
 		labelPrezzo.setFont(getStyle().defaultM);
 		
-		lblQuantitInMagazzino = new JLabel("<html>quantità in<br/> magazzino</html>");
+		lblQuantitInMagazzino = new JLabel("<html>QUANTITÀ IN<br/> MAGAZZINO</html>");
 		lblQuantitInMagazzino.setHorizontalAlignment(SwingConstants.CENTER);
 		lblQuantitInMagazzino.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lblQuantitInMagazzino.setFont(getStyle().defaultS);
@@ -67,7 +67,7 @@ public class ContenitoreInventario extends ContenitoreArticolo {
 		labelQuantità = new JLabel();
 		labelQuantità.setHorizontalAlignment(SwingConstants.CENTER);
 		labelQuantità.setAlignmentX(Component.CENTER_ALIGNMENT);
-		labelQuantità.setFont(getStyle().defaultS);
+		labelQuantità.setFont(getStyle().defaultM);
 		labelQuantità.setPreferredSize(new Dimension(49, 15));
 		panelloLaterale.add(labelQuantità);
 	}

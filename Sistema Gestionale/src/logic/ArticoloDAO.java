@@ -36,7 +36,7 @@ public class ArticoloDAO {
 				articolo.setTaglia(rs.getString("Taglia"));
 				articolo.setColore(rs.getString("Colore"));
 				articolo.setQuantita(rs.getInt("Quantita"));
-				articolo.setImagePath(rs.getString("PathImmagine"));
+				articolo.setPathImmagine(rs.getString("PathImmagine"));
 				articolo.setCodiceABarre(rs.getString("CodiceABarre"));
 				articolo.setMarca(rs.getString("Marca"));
 				articolo.setCategoria(rs.getString("Categoria"));
@@ -108,7 +108,7 @@ public class ArticoloDAO {
 			articolo.setTaglia(rs.getString("Taglia"));
 			articolo.setColore(rs.getString("Colore"));
 			articolo.setQuantita(rs.getInt("Quantita"));
-			articolo.setImagePath(rs.getString("PathImmagine"));
+			articolo.setPathImmagine(rs.getString("PathImmagine"));
 			articolo.setCodiceABarre(rs.getString("CodiceABarre"));
 			articolo.setMarca(rs.getString("Marca"));
 			articolo.setCategoria(rs.getString("Categoria"));
@@ -161,7 +161,7 @@ public class ArticoloDAO {
 			pst2.setString(1, articolo.getTaglia());
 			pst2.setString(2, articolo.getColore());
 			pst2.setInt(3, 0); //Imposto la quantità a zero, dato che non ce ne sono esemplari in magazzino
-			pst2.setString(4, articolo.getImagePath());
+			pst2.setString(4, articolo.getPathImmagine());
 			pst2.setString(5, articolo.getCodiceABarre());
 			
 			pst2.executeUpdate();

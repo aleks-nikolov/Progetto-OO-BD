@@ -145,8 +145,7 @@ public class Controller {
 		return contenuto;
 		
 	}
-	
-	
+
     private ArrayList<Articolo> EstraiArticoliDaComposizione(ArrayList<ComposizioneTransazione> compTransazioni) {
     	
 		ArrayList<Articolo> articoli = new ArrayList<Articolo>();
@@ -160,55 +159,45 @@ public class Controller {
 		
 	}
 
-    public void CostruisciArticolo(ArrayList<String> dati) {
-		
-		Articolo articolo = new Articolo();
-
-		articolo.setCodiceABarre(dati.get(0));
-		articolo.setNome(dati.get(1));
-		articolo.setDescrizione(dati.get(2));
-		articolo.setCategoria(dati.get(3));
-		articolo.setMarca(dati.get(4));
-		articolo.setColore(dati.get(5));
-		articolo.setSesso(dati.get(6));
-		articolo.setTaglia(dati.get(7));
-		articolo.setPrezzoDiListino(Float.parseFloat(dati.get(8)));
-		articolo.setPrezzoMagazzino(Float.parseFloat(dati.get(9)));
-		articolo.setImagePath(dati.get(10));
-		
-		NuovoArticolo(articolo);
-		
-	}
-    
-    public void NuovoArticolo(Articolo articolo) {
+    public void NuovoArticolo(ArrayList<String> dati) {
+    	
+    	Articolo articolo = new Articolo(dati.get(0),
+				 						 dati.get(1),
+				 						 dati.get(2),
+				 						 dati.get(3),
+				 						 dati.get(4),
+				 						 dati.get(5),
+				 						 dati.get(6),
+				 						 dati.get(7),
+				 						 Float.parseFloat(dati.get(8)),
+				 						 Float.parseFloat(dati.get(9)),
+				 						 dati.get(10)
+    									);
+    	
     	articoloDAO.InserisciArticolo(conn, articolo);
+    	
     }
     
     public ArrayList<Articolo> getArticoliByFiltro(ArrayList<String> filtroSQL) {
     	return articoloDAO.acquisisciArticoliByFiltro(conn, filtroSQL);
     }
     
-    public void CostruisciFornitore(ArrayList<String> dati) {
-		
-		Fornitore fornitore = new Fornitore();
-
-		fornitore.setPartitaIVA(dati.get(0));
-		fornitore.setNome(dati.get(1));
-		fornitore.setVia(dati.get(2));
-		fornitore.setNumeroCivico(dati.get(3));
-		fornitore.setCAP(dati.get(4));
-		fornitore.setNumeroDiTelefono(dati.get(5));
-		
-		NuovoFornitore(fornitore);
-		
-	}
-    
-    public void NuovoFornitore(Fornitore fornitore) {
+    public void NuovoFornitore(ArrayList<String> dati) {
+    	
+    	Fornitore fornitore = new Fornitore(dati.get(0),
+				dati.get(1),
+				dati.get(2),
+				dati.get(3),
+				dati.get(4),
+				dati.get(5)
+			   );
+    	
+    	
     	fornitoreDAO.InserisciFornitore(conn, fornitore);
     }
     
-    public String getPartitaByNome(String nome) {
-    	return fornitoreDAO.getPartitaFornitore(conn, nome);
+    public String getPartitaByNome(String nomeFornitore) {
+    	return fornitoreDAO.getPartitaFornitore(conn, nomeFornitore);
     }
     
 	public void NuovoRifornimento(LocalDate date, String partitaIVA) {
@@ -221,7 +210,7 @@ public class Controller {
 		
 	}
 	
-public void NuovaVendita(LocalDate date) {
+	public void NuovaVendita(LocalDate date) {
 		
 		Transazione transazione = new Transazione();
 		transazione.setData(date);
@@ -249,13 +238,7 @@ public void NuovaVendita(LocalDate date) {
 	public void ChiudiFrame(JFrame frameDaChiudere) {
 		frameDaChiudere.dispose();
 	}
-	
-	public Articolo getArticolo() {
-		Articolo articolo = articoli.get(0);
-		
-		return articolo;
-	}
-	
+
 	public void MostraMessaggioErrore(String titolo, String testo) {
 		JOptionPane.showMessageDialog(null, testo, titolo,  JOptionPane.ERROR_MESSAGE);
 	}

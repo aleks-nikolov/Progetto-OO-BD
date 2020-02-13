@@ -6,7 +6,6 @@ public class Transazione {
 
 	private ComposizioneTransazione compTransazione;
 	private Fornitore fornitore;
-	
 	private String codiceTransazione;
 	private float valoreTotale;
 	private LocalDate data;

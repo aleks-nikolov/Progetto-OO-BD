@@ -97,7 +97,7 @@ public class AggiuntaArticolo extends JFrame {
 		contenitoreDati.add(textPath.getText());
 		
 		if (formCompilato) {
-			controller.CostruisciArticolo(contenitoreDati);
+			controller.NuovoArticolo(contenitoreDati);
 			controller.CambiaFrame(AggiuntaArticolo.this, controller.getFinestraInventario());
 		} else {
 			controller.MostraMessaggioAvviso("ATTENZIONE", "Dati mancanti o invalidi");
@@ -152,7 +152,7 @@ public class AggiuntaArticolo extends JFrame {
 		contentPane.add(lblDescrizione);
 		
 		JLabel lblPrezzo = new JLabel("Prezzo:");
-		lblPrezzo.setBounds(20, 373, 120, 20);
+		lblPrezzo.setBounds(20, 373, 157, 20);
 		contentPane.add(lblPrezzo);
 		
 		JLabel lblPath = new JLabel("(Opzionale) Path Immagine:");
@@ -228,7 +228,7 @@ public class AggiuntaArticolo extends JFrame {
 		contentPane.add(textPrezzoMagazzino);
 		
 		JLabel lblPrezzoMagazzino = new JLabel("Prezzo magazzino:");
-		lblPrezzoMagazzino.setBounds(20, 404, 120, 20);
+		lblPrezzoMagazzino.setBounds(20, 404, 165, 20);
 		contentPane.add(lblPrezzoMagazzino);
 		
 		style.changeFont(contentPane, style.defaultS);

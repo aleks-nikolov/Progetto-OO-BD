@@ -29,7 +29,6 @@ public class HomePage extends JFrame {
 		style = new Style();
 		
 		ImpostaFinestra();
-		ImpostaFooter();
 		AggiungiListener();
 	}
 	
@@ -99,7 +98,4 @@ public class HomePage extends JFrame {
 		style.changeFont(getContentPane(), style.defaultM);
 	}
 	
-	public void ImpostaFooter() {
-		
-	}
 }

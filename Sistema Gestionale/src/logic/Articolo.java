@@ -10,35 +10,33 @@ public class Articolo {
 	private String descrizione;
 	private String categoria;
 	private String marca;
-	private String taglia;
 	private String colore;
+	private String sesso;
+	private String taglia;
 	private float prezzoDiListino;
 	private float prezzoMagazzino;
 	private int quantita;
-	private String sesso;
-	private String imagePath;
+	private String pathImmagine;
 	
 //**************************************************************************************	
-
+	
 	public Articolo() {
 		
 	}
 	
-	public Articolo(int sku, String codiceABarre, String nome, String descrizione, String categoria, String marca, String taglia, String colore,
-			float prezzoDiListino, float prezzoFornitore, int quantità, String sesso, String imagePath) {
-		this.sku = sku;
+	public Articolo(String codiceABarre, String nome, String descrizione, String categoria, String marca, String colore,
+					String sesso, String taglia, Float prezzoDiListino, Float prezzoMagazzino, String pathImmagine) {
 		this.codiceABarre = codiceABarre;
 		this.nome = nome;
 		this.descrizione = descrizione;
 		this.categoria = categoria;
 		this.marca = marca;
-		this.taglia = taglia;
 		this.colore = colore;
-		this.prezzoDiListino = prezzoDiListino;
-		this.prezzoMagazzino = prezzoFornitore;
-		this.quantita = quantità;
 		this.sesso = sesso;
-		this.imagePath = imagePath;
+		this.taglia = taglia;
+		this.prezzoDiListino = prezzoDiListino;
+		this.prezzoMagazzino = prezzoMagazzino;
+		this.pathImmagine = pathImmagine;
 	}
 	
 	//Metodo equals
@@ -130,11 +128,11 @@ public class Articolo {
 	public void setSesso(String sesso) {
 		this.sesso = sesso;
 	}
-	public String getImagePath() {
-		return imagePath;
+	public String getPathImmagine() {
+		return pathImmagine;
 	}
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
+	public void setPathImmagine(String imagePath) {
+		this.pathImmagine = imagePath;
 	}
 	
 }

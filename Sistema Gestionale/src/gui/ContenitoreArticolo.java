@@ -111,7 +111,7 @@ public class ContenitoreArticolo extends JPanel {
 		labelMarca.setText(articolo.getMarca());
 		labelTaglia.setText(articolo.getTaglia());
 		labelColore.setText(articolo.getColore());
-		labelImg.setIcon(GetImage(labelImg.getPreferredSize().width, labelImg.getPreferredSize().height, articolo.getImagePath()));
+		labelImg.setIcon(GetImage(labelImg.getPreferredSize().width, labelImg.getPreferredSize().height, articolo.getPathImmagine()));
 		
 	}
 	

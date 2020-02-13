@@ -15,6 +15,19 @@ public class Fornitore {
 	
 //**************************************************************************************
 	
+	public Fornitore() {
+		
+	}
+	
+	public Fornitore(String partitaIVA, String nome, String via, String numeroCivico, String CAP, String numeroDiTelefono) {
+		this.partitaIVA = partitaIVA;
+		this.nome = nome;
+		this.via = via;
+		this.numeroCivico = numeroCivico;
+		this.CAP = CAP;
+		this.numeroDiTelefono = numeroDiTelefono;
+	}
+
 	//Metodo equals
 	@Override
 	public boolean equals(Object obj) {

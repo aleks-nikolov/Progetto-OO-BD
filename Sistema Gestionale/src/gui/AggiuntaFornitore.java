@@ -84,7 +84,7 @@ public class AggiuntaFornitore extends JFrame {
 
 		
 		if (formCompilato) {
-			controller.CostruisciFornitore(contenitoreDati);
+			controller.NuovoFornitore(contenitoreDati);
 			controller.CambiaFrame(AggiuntaFornitore.this, controller.getFinestraRifornimenti());
 		} else {
 			controller.MostraMessaggioAvviso("ATTENZIONE", "Dati mancanti o invalidi");
