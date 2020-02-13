@@ -178,8 +178,8 @@ public class Controller {
     	
     }
     
-    public ArrayList<Articolo> getArticoliByFiltro(ArrayList<String> filtroSQL) {
-    	return articoloDAO.acquisisciArticoliByFiltro(conn, filtroSQL);
+    public ArrayList<Articolo> getArticoliByFiltro(ArrayList<String> filtro) {
+    	return articoloDAO.acquisisciArticoliByFiltro(conn, filtro);
     }
     
     public void NuovoFornitore(ArrayList<String> dati) {
