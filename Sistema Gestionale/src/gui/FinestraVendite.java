@@ -1,11 +1,13 @@
 package gui;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import java.awt.FlowLayout;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Insets;
@@ -18,6 +20,7 @@ import java.awt.Cursor;
 import java.awt.Component;
 import javax.swing.Box;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import logic.Controller;
@@ -30,7 +33,7 @@ public class FinestraVendite extends JFrame{
 	private Controller controller;
 	private Style style;
 	
-	ArrayList<Transazione> vendite = new ArrayList<Transazione>();
+	ArrayList<ArrayList<String>> datiVendite = new ArrayList<ArrayList<String>>();
 	
 	//Definizione componenti grafici
 	private JPanel pannelloSuperiore;
@@ -60,7 +63,7 @@ public class FinestraVendite extends JFrame{
 		ImpostaPannelloCentrale();
 		ImpostaPannelloInferiore();
 		AggiungiListener();
-		//RiempiTabella();
+		RiempiTabella();
 		
 	}
 	
@@ -88,7 +91,7 @@ public class FinestraVendite extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//RiempiTabella();
+				RiempiTabella();
 			}
 			
 		});
@@ -108,13 +111,10 @@ public class FinestraVendite extends JFrame{
 		
 		tableData.setRowCount(0);
 		
-		//vendite = controller.getVendite();
-		for(Transazione vendita : vendite) {
-			String codiceTransazione = vendita.getCodiceTransazione();
-			LocalDate data = vendita.getData();
-			Float valoreTotale = vendita.getValoreTotale();
-			
-			tableData.addRow(new Object[] {codiceTransazione, controller.getContenutoTransazione(codiceTransazione), data.toString(), valoreTotale});
+		datiVendite = controller.getVendite();
+		
+		for(ArrayList<String> datiVendita : datiVendite) {
+			tableData.addRow(new Object[] {datiVendita.get(0), datiVendita.get(1), datiVendita.get(2), datiVendita.get(3)});
 		}
 		
 	}
@@ -175,6 +175,15 @@ public class FinestraVendite extends JFrame{
 		scrollPane = new JScrollPane(table);
 		scrollPane.setBackground(style.bg);;
 		scrollPane.setBorder(new LineBorder(style.border1, 2));
+		
+		//Centra i dati della tabella in ogni cella
+		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+		centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+		for(int i = 0; i < table.getColumnCount(); i++){
+	         table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+	    }
+		
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
 	}

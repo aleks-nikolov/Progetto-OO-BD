@@ -17,7 +17,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import logic.Controller;
@@ -30,7 +32,7 @@ public class FinestraRifornimenti extends JFrame {
 	private Controller controller;
 	private Style style;
 	
-	ArrayList<Transazione> rifornimenti = new ArrayList<Transazione>();
+	ArrayList<ArrayList<String>> datiRifornimenti = new ArrayList<ArrayList<String>>();
 	
 	//Definizione componenti grafici
 	private JPanel pannelloSuperiore;
@@ -61,7 +63,7 @@ public class FinestraRifornimenti extends JFrame {
 		ImpostaPannelloCentrale();
 		ImpostaPannelloInferiore();
 		AggiungiListener();
-		//RiempiTabella();
+		RiempiTabella();
 		
 	}
 	
@@ -80,7 +82,7 @@ public class FinestraRifornimenti extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//RiempiTabella();
+				RiempiTabella();
 			}
 			
 		});
@@ -118,14 +120,10 @@ public class FinestraRifornimenti extends JFrame {
 		
 		tableData.setRowCount(0);
 		
-		rifornimenti = controller.getRifornimenti();
-		for(Transazione rifornimento : rifornimenti) {
-			String codiceTransazione = rifornimento.getCodiceTransazione();
-			LocalDate data = rifornimento.getData();
-			Float valoreTotale = rifornimento.getValoreTotale();
-			String partitaIVA = rifornimento.getPartitaIva();
-			
-			tableData.addRow(new Object[] {codiceTransazione, controller.getContenutoTransazione(codiceTransazione), partitaIVA, data.toString(), valoreTotale.toString()});
+		datiRifornimenti = controller.getRifornimenti();
+		
+		for(ArrayList<String> datiRifornimento : datiRifornimenti) {
+			tableData.addRow(new Object[] {datiRifornimento.get(0), datiRifornimento.get(1), datiRifornimento.get(2), datiRifornimento.get(3), datiRifornimento.get(4)});
 		}
 		
 	}
@@ -186,6 +184,15 @@ public class FinestraRifornimenti extends JFrame {
 		scrollPane = new JScrollPane(table);
 		scrollPane.setBackground(style.bg);;
 		scrollPane.setBorder(new LineBorder(style.border1, 2));
+		
+		//Centra i dati della tabella in ogni cella
+		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+		centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+		for(int i = 0; i < table.getColumnCount(); i++){
+	         table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+	    }
+		
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
 	}

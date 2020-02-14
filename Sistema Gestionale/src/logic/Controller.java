@@ -124,22 +124,22 @@ public class Controller {
 		
 	}
 	
-	public  ArrayList<Transazione> getVendite() {
+	public ArrayList<ArrayList<String>> getVendite() {
 		return transazioneDAO.getVendite(conn);
 	}
 	
-	public  ArrayList<Transazione> getRifornimenti() {
+	public ArrayList<ArrayList<String>> getRifornimenti() {
 		return transazioneDAO.getRifornimenti(conn);
 	}
 	
 	public String getContenutoTransazione(String codiceTransazione) {
 		
-		String contenuto = null;
+		String contenuto = "";
 	
 		ArrayList<Articolo> articoli = EstraiArticoliDaComposizione(compTransazioneDAO.getCompTransazioniDi(conn, codiceTransazione));
 		
 		for(Articolo a: articoli) {
-			contenuto += " " + a.getNome() + " x" + a.getQuantita() + "\n";
+			contenuto += " " + a.getNome() + "\n";
 		}
 		
 		return contenuto;
@@ -224,7 +224,9 @@ public class Controller {
 		ComposizioneTransazione compTransazione = new ComposizioneTransazione();
 		compTransazione.setSKU(Integer.parseInt(dati.get(0)));
 		compTransazione.setQuantità(Integer.parseInt(dati.get(1)));
-		compTransazione.setSaldo(Float.parseFloat(dati.get(2)) / 100.0f);
+		compTransazione.setSaldo(Integer.parseInt(dati.get(2)));
+		
+		System.out.println(compTransazione.getSKU() + "   " + compTransazione.getQuantità() + "   " + compTransazione.getSaldo());
 		
 		compTransazioneDAO.InserisciComposizione(conn, compTransazione);
 	}

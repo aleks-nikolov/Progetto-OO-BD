@@ -104,6 +104,7 @@ public class ArticoloDAO {
 			pst.setInt(1, sku);
 			rs = pst.executeQuery();
 			
+			rs.next();
 			articolo.setSKU(rs.getInt("SKU"));
 			articolo.setTaglia(rs.getString("Taglia"));
 			articolo.setColore(rs.getString("Colore"));
@@ -114,7 +115,7 @@ public class ArticoloDAO {
 			articolo.setCategoria(rs.getString("Categoria"));
 			articolo.setSesso(rs.getString("Sesso"));
 			articolo.setPrezzoDiListino(rs.getFloat("PrezzoDiListino"));
-			articolo.setPrezzoMagazzino(rs.getFloat("PrezzoFornitore"));
+			articolo.setPrezzoMagazzino(rs.getFloat("PrezzoMagazzino"));
 			articolo.setNome(rs.getString("Nome"));
 			articolo.setDescrizione(rs.getString("Descrizione"));
 			
