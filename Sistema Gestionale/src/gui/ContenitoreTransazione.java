@@ -151,6 +151,7 @@ public class ContenitoreTransazione extends ContenitoreArticolo {
 		pannelloSaldo.add(boxSaldo);
 		
 		btnRimuovi = new JButton();
+		btnRimuovi.setToolTipText("rimuovi il seguente articolo");
 		btnRimuovi.setAlignmentX(Component.CENTER_ALIGNMENT);
 		pannelloLaterale.add(btnRimuovi);
 		btnRimuovi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

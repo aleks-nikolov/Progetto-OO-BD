@@ -246,6 +246,7 @@ public class FinestraInventario extends JFrame {
 		pannelloSuperiore.add(boxTaglia);
 		
 		btnRefresh = new JButton("");
+		btnRefresh.setToolTipText("rinfresca filtro");
 		btnRefresh.setIcon(style.refreshIcon);
 		btnRefresh.setMargin(new Insets(5, 5, 5, 5));
 		pannelloSuperiore.add(btnRefresh);
@@ -279,18 +280,21 @@ public class FinestraInventario extends JFrame {
 		pannelloInferiore.add(horizontalStrut);
 		
 		btnAggiungi = new JButton("Aggiungi Merce");
+		btnAggiungi.setToolTipText("aggiungi un nuovo tipo di articolo in inventario");
 		btnAggiungi.setMargin(new Insets(5, 5, 5, 5));
 		btnAggiungi.setBackground(style.greenBtn);
 		btnAggiungi.setIcon(style.addIcon);
 		pannelloInferiore.add(btnAggiungi);
 		
 		btnRifornimenti = new JButton("Rifornimenti");
+		btnRifornimenti.setToolTipText("apri finestra rifornimenti");
 		btnRifornimenti.setMargin(new Insets(5, 5, 5, 5));
 		btnRifornimenti.setBackground(style.greenBtn);
 		btnRifornimenti.setIcon(style.inventoryIcon);
 		pannelloInferiore.add(btnRifornimenti);
 		
 		btnIndietro = new JButton("Indietro");
+		btnIndietro.setToolTipText("torna a home page");
 		btnIndietro.setMargin(new Insets(5, 5, 5, 5));
 		btnIndietro.setBackground(style.redBtn);
 		btnIndietro.setIcon(style.backIcon);

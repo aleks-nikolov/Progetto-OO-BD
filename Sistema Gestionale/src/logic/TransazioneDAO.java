@@ -135,7 +135,7 @@ public class TransazioneDAO {
 		try {
 			
 			PreparedStatement pst = conn.prepareStatement(comando);	
-			pst.setString(1, codiceTransazione);
+			pst.setInt(1, Integer.parseInt(codiceTransazione));
 			pst.executeUpdate();
 			
 			pst.close();

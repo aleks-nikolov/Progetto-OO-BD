@@ -233,6 +233,7 @@ public class Catalogo extends JFrame {
 		pannelloSuperiore.add(boxTaglia);
 		
 		btnRefresh = new JButton("");
+		btnRefresh.setToolTipText("rinfresca filtro");
 		btnRefresh.setIcon(style.refreshIcon);
 		btnRefresh.setMargin(new Insets(5, 5, 5, 5));
 		pannelloSuperiore.add(btnRefresh);
@@ -260,6 +261,7 @@ public class Catalogo extends JFrame {
 		contentPane.add(pannelloInferiore, BorderLayout.SOUTH);
 		
 		btnAnnulla = new JButton("Annulla");
+		btnAnnulla.setToolTipText("torna indietro");
 		btnAnnulla.setFont(style.defaultL);
 		btnAnnulla.setBackground(style.redBtn);
 		btnAnnulla.setIcon(style.backIcon);

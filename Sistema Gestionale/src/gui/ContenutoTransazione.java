@@ -205,6 +205,7 @@ public class ContenutoTransazione extends JFrame{
 		getContentPane().add(pannelloInferiore, BorderLayout.SOUTH);
 		
 		btnAdd = new JButton();
+		btnAdd.setToolTipText("aggiungi un nuovo articolo alla transazione");
 		btnAdd.setMargin(new Insets(5, 5, 5, 5));
 		btnAdd.setFont(style.defaultM);
 		btnAdd.setBackground(style.greenBtn);
@@ -233,6 +234,7 @@ public class ContenutoTransazione extends JFrame{
 		}
 		
 		btnApplica = new JButton("APPLICA");
+		btnApplica.setToolTipText("salva transazione");
 		btnApplica.setFont(style.defaultM);
 		btnApplica.setBackground(style.greenBtn);
 		btnApplica.setMargin(new Insets(5, 5, 5, 5));
@@ -243,6 +245,7 @@ public class ContenutoTransazione extends JFrame{
 		pannelloInferiore.add(horizontalStrut_2);
 		
 		btnAnnulla = new JButton("ANNULLA");
+		btnAnnulla.setToolTipText("torna indietro");
 		btnAnnulla.setBackground(style.redBtn);
 		btnAnnulla.setFont(style.defaultM);
 		btnAnnulla.setMargin(new Insets(5, 5, 5, 5));

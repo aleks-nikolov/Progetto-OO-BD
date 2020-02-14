@@ -81,6 +81,7 @@ public class ContenitoreCatalogo extends ContenitoreArticolo {
 		labelPrezzo.setFont(new Font("Arial Black", Font.PLAIN, 20));
 		
 		btnAggiungi = new JButton();
+		btnAggiungi.setToolTipText("aggiungi il seguente articolo");
 		btnAggiungi.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panelloLaterale.add(btnAggiungi);
 		btnAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

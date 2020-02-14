@@ -78,7 +78,8 @@ public class FinestraVendite extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.EliminaTransazioneByCodice(String.valueOf(table.getModel().getValueAt(table.getSelectedRow(), 1)));
+				controller.EliminaTransazioneByCodice(String.valueOf(table.getModel().getValueAt(table.getSelectedRow(), 0)));
+				RiempiTabella();
 			}
 			
 		});
@@ -110,7 +111,7 @@ public class FinestraVendite extends JFrame{
 		datiVendite = controller.getVendite();
 		
 		for(ArrayList<String> datiVendita : datiVendite) {
-			tableData.addRow(new Object[] {datiVendita.get(0), datiVendita.get(1), datiVendita.get(2), datiVendita.get(3)});
+			tableData.addRow(new Object[] {datiVendita.get(0), datiVendita.get(1), datiVendita.get(2), String.format("%.2f", Float.parseFloat(datiVendita.get(3))) + "€"});
 		}
 		
 	}
@@ -133,6 +134,7 @@ public class FinestraVendite extends JFrame{
 		getContentPane().add(pannelloSuperiore, BorderLayout.NORTH);
 		
 		btnNew = new JButton();
+		btnNew.setToolTipText("aggiungi una nuova vendita");
 		btnNew.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNew.setMargin(new Insets(5, 5, 5, 5));
 		btnNew.setForeground(style.fg);
@@ -141,6 +143,7 @@ public class FinestraVendite extends JFrame{
 		pannelloSuperiore.add(btnNew);
 		
 		btnDelete = new JButton();
+		btnDelete.setToolTipText("elimina la vendita selezionata");
 		btnDelete.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnDelete.setMargin(new Insets(5, 5, 5, 5));
 		btnDelete.setForeground(style.fg);
@@ -152,6 +155,7 @@ public class FinestraVendite extends JFrame{
 		pannelloSuperiore.add(upperHorizontalStrut);
 		
 		btnRefresh = new JButton("");
+		btnRefresh.setToolTipText("rinfresca tabella");
 		btnRefresh.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnRefresh.setForeground(style.fg);
 		btnRefresh.setBackground(new Color(255, 255, 255));
@@ -198,6 +202,7 @@ public class FinestraVendite extends JFrame{
 		pannelloInferiore.add(lowerHorizontalStrut);
 		
 		btnIndietro = new JButton("INDIETRO");
+		btnIndietro.setToolTipText("torna a home page");
 		btnIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnIndietro.setFont(style.defaultM);
 		btnIndietro.setForeground(style.fg);

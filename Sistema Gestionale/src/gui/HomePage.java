@@ -72,6 +72,7 @@ public class HomePage extends JFrame {
 		getContentPane().setLayout(null);
 		
 		btnVendite = new JButton("VENDITE");
+		btnVendite.setToolTipText("apri finestra vendite");
 		btnVendite.setBounds(140, 50, 200, 60);
 		btnVendite.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnVendite.setForeground(style.fg);
@@ -80,6 +81,7 @@ public class HomePage extends JFrame {
 		getContentPane().add(btnVendite);
 		
 		btnInventario = new JButton("INVENTARIO");
+		btnInventario.setToolTipText("apri inventario delle merci");
 		btnInventario.setBounds(140, 180, 200, 60);
 		btnInventario.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnInventario.setForeground(style.fg);
@@ -88,6 +90,7 @@ public class HomePage extends JFrame {
 		getContentPane().add(btnInventario);
 		
 		btnEsci = new JButton("ESCI");
+		btnEsci.setToolTipText("esci dall'applicazione");
 		btnEsci.setBounds(150, 320, 170, 60);
 		btnEsci.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnEsci.setForeground(style.fg);

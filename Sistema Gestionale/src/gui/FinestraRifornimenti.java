@@ -97,7 +97,8 @@ public class FinestraRifornimenti extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.EliminaTransazioneByCodice(String.valueOf(table.getModel().getValueAt(table.getSelectedRow(), 1)));
+				controller.EliminaTransazioneByCodice(String.valueOf(table.getModel().getValueAt(table.getSelectedRow(), 0)));
+				RiempiTabella();
 			}
 			
 		});
@@ -120,7 +121,7 @@ public class FinestraRifornimenti extends JFrame {
 		datiRifornimenti = controller.getRifornimenti();
 		
 		for(ArrayList<String> datiRifornimento : datiRifornimenti) {
-			tableData.addRow(new Object[] {datiRifornimento.get(0), datiRifornimento.get(1), datiRifornimento.get(2), datiRifornimento.get(3), datiRifornimento.get(4)});
+			tableData.addRow(new Object[] {datiRifornimento.get(0), datiRifornimento.get(1), datiRifornimento.get(2), datiRifornimento.get(3), String.format("%.2f", Float.parseFloat(datiRifornimento.get(4))) + "€"});
 		}
 		
 	}
@@ -143,6 +144,7 @@ public class FinestraRifornimenti extends JFrame {
 		getContentPane().add(pannelloSuperiore, BorderLayout.NORTH);
 		
 		btnNew = new JButton();
+		btnNew.setToolTipText("effettua un rifornimento");
 		btnNew.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNew.setMargin(new Insets(5, 5, 5, 5));
 		btnNew.setForeground(style.fg);
@@ -151,6 +153,7 @@ public class FinestraRifornimenti extends JFrame {
 		pannelloSuperiore.add(btnNew);
 		
 		btnDelete = new JButton();
+		btnDelete.setToolTipText("elimina un rifornimento effettuato");
 		btnDelete.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnDelete.setMargin(new Insets(5, 5, 5, 5));
 		btnDelete.setForeground(style.fg);
@@ -162,6 +165,7 @@ public class FinestraRifornimenti extends JFrame {
 		pannelloSuperiore.add(upperHorizontalStrut);
 		
 		btnRefresh = new JButton("");
+		btnRefresh.setToolTipText("rinfresca tabella rifornimenti");
 		btnRefresh.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnRefresh.setForeground(style.fg);
 		btnRefresh.setBackground(new Color(255, 255, 255));
@@ -208,6 +212,7 @@ public class FinestraRifornimenti extends JFrame {
 		pannelloInferiore.add(lowerHorizontalStrut);
 		
 		btnAggiungi = new JButton("AGGIUNGI FORNITORE");
+		btnAggiungi.setToolTipText("aggiungi un nuovo fornitore");
 		btnAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAggiungi.setFont(style.defaultS);
 		btnAggiungi.setForeground(style.fg);
@@ -217,6 +222,7 @@ public class FinestraRifornimenti extends JFrame {
 		pannelloInferiore.add(btnAggiungi);
 		
 		btnIndietro = new JButton("INDIETRO");
+		btnIndietro.setToolTipText("torna all'inventario");
 		btnIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnIndietro.setFont(style.defaultS);
 		btnIndietro.setForeground(style.fg);
