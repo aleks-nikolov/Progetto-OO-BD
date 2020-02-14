@@ -205,7 +205,7 @@ public class ContenutoTransazione extends JFrame{
 		getContentPane().add(pannelloInferiore, BorderLayout.SOUTH);
 		
 		btnAdd = new JButton();
-		btnAdd.setToolTipText("aggiungi un nuovo articolo alla transazione");
+		btnAdd.setToolTipText("apri catalogo");
 		btnAdd.setMargin(new Insets(5, 5, 5, 5));
 		btnAdd.setFont(style.defaultM);
 		btnAdd.setBackground(style.greenBtn);
