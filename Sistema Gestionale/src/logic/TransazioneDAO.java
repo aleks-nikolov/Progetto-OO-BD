@@ -18,23 +18,28 @@ public class TransazioneDAO {
 		this.controller = controller;
 	}
 	
-	public ArrayList<Transazione> getVendite(Connection conn){
+	public ArrayList<ArrayList<String>> getVendite(Connection conn){
 		
-		ArrayList<Transazione> vendite = new ArrayList<Transazione>();
+		ArrayList<ArrayList<String>> datiVendite = new ArrayList<ArrayList<String>>();
 		ResultSet rs;
 		
-		String comando = "SELECT * FROM Transazione AS T WHERE T.PartitaIva IS NULL;";
+		String comando = "SELECT * FROM vendite;";
 		
 		try {
 			Statement st = conn.createStatement();
 			rs = st.executeQuery(comando);
-			
+
 			while(rs.next()) {
-				Transazione transazione = new Transazione();
-				transazione.setCodiceTransazione(rs.getString(1));
-				transazione.setData(rs.getDate(2).toLocalDate());
-				transazione.setValoreTotale(rs.getFloat(3));
-				vendite.add(transazione);
+
+				ArrayList<String> datiVendita = new ArrayList<String>();
+				
+				datiVendita.add(rs.getString("id"));
+				datiVendita.add(rs.getString("contenuto"));
+				Date date = rs.getDate("data");
+				datiVendita.add(date.toString());
+				datiVendita.add(String.valueOf(rs.getFloat("costo")));
+			
+				datiVendite.add(datiVendita);
 			}
 			
 			rs.close();
@@ -44,28 +49,33 @@ public class TransazioneDAO {
 			e.printStackTrace();
 		}
 		
-		return vendite;
+		return datiVendite;
 		
 	}
 	
-	public ArrayList<Transazione> getRifornimenti(Connection conn){
+	public ArrayList<ArrayList<String>> getRifornimenti(Connection conn){
 		
-		ArrayList<Transazione> rifornimenti = new ArrayList<Transazione>();
+		ArrayList<ArrayList<String>> datiRifornimenti = new ArrayList<ArrayList<String>>();
 		ResultSet rs;
 		
-		String comando = "SELECT * FROM Transazione AS T WHERE T.PartitaIva IS NOT NULL;";
+		String comando = "SELECT * FROM rifornimenti;";
 		
 		try {
 			Statement st = conn.createStatement();
 			rs = st.executeQuery(comando);
 			
 			while(rs.next()) {
-				Transazione transazione = new Transazione();
-				transazione.setCodiceTransazione(rs.getString(1));
-				transazione.setData(rs.getDate(2).toLocalDate());
-				transazione.setValoreTotale(rs.getFloat(3));
-				transazione.setPartitaIva(rs.getString(4));
-				rifornimenti.add(transazione);
+
+				ArrayList<String> datiRifornimento = new ArrayList<String>();
+				
+				datiRifornimento.add(rs.getString("id"));
+				datiRifornimento.add(rs.getString("contenuto"));
+				datiRifornimento.add(rs.getString("fornitore"));
+				Date date = rs.getDate("data");
+				datiRifornimento.add(date.toString());
+				datiRifornimento.add(String.valueOf(rs.getFloat("costo")));
+			
+				datiRifornimenti.add(datiRifornimento);
 			}
 			
 			rs.close();
@@ -75,7 +85,7 @@ public class TransazioneDAO {
 			e.printStackTrace();
 		}
 		
-		return rifornimenti;
+		return datiRifornimenti;
 		
 	}
 	

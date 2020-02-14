@@ -24,7 +24,7 @@ public class ComposizioneTransazioneDAO {
 		
 		try {
 			PreparedStatement pst = conn.prepareStatement(comando);
-			pst.setString(1, codiceTransazione);
+			pst.setInt(1, Integer.parseInt(codiceTransazione));
 			rs = pst.executeQuery();
 			
 			while(rs.next()) {
@@ -56,7 +56,7 @@ public class ComposizioneTransazioneDAO {
 			PreparedStatement pst = conn.prepareStatement(comando);
 			pst.setInt(1, compTransazione.getSKU());
 			pst.setInt(2, compTransazione.getQuantità());
-			pst.setFloat(3, compTransazione.getSaldo());
+			pst.setInt(3, compTransazione.getSaldo());
 			
 			pst.executeUpdate();
 			
