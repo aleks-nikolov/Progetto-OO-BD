@@ -2,16 +2,12 @@ package logic;
 
 public class Fornitore {
 
-	private Transazione transazione;
-	
 	private String nome;
 	private String partitaIVA;
 	private String numeroDiTelefono;
 	private String via;
 	private String numeroCivico;
 	private String CAP;
-	
-	private float saldoFornitore;
 	
 //**************************************************************************************
 	

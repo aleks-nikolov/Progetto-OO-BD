@@ -1,7 +1,6 @@
 package gui;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
@@ -13,9 +12,7 @@ import java.awt.Color;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.awt.Cursor;
 import java.awt.Component;
 import javax.swing.Box;
@@ -24,7 +21,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import logic.Controller;
-import logic.Transazione;
 
 public class FinestraVendite extends JFrame{
 	

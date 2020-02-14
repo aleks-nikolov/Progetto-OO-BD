@@ -1,9 +1,7 @@
 package logic;
 
 public class Articolo {
-	
-	private ComposizioneTransazione compTransazione;
-	
+
 	private int sku;
 	private String codiceABarre;
 	private String nome;

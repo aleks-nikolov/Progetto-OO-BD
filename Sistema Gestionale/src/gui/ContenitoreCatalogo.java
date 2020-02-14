@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -9,8 +8,6 @@ import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -18,11 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-
 import logic.Articolo;
 import logic.Controller;
-
-import javax.swing.JTextField;
 import javax.swing.JComboBox;
 
 public class ContenitoreCatalogo extends ContenitoreArticolo {
@@ -53,7 +47,9 @@ public class ContenitoreCatalogo extends ContenitoreArticolo {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				catalogo.contenutoTransazione.AggiungiArticolo(ContenitoreCatalogo.this.getArticolo(), (Integer) boxQuantità.getSelectedItem());
-				catalogo.dispatchEvent(new WindowEvent(catalogo, WindowEvent.WINDOW_CLOSING));
+				//catalogo.dispatchEvent(new WindowEvent(catalogo, WindowEvent.WINDOW_CLOSING));
+				catalogo.contenutoTransazione.setEnabled(true);
+				getController().ChiudiFrame(catalogo);
 			}
 			
 		});
