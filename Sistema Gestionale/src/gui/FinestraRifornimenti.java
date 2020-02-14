@@ -132,7 +132,7 @@ public class FinestraRifornimenti extends JFrame {
 	public void ImpostaFinestra() {
 		
 		setTitle("Rifornimenti");
-		setBounds(100, 100, 1000, 600);
+		setBounds(100, 100, 1200, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBackground(style.bg);
 		
@@ -191,7 +191,9 @@ public class FinestraRifornimenti extends JFrame {
 
 		for(int i = 0; i < table.getColumnCount(); i++){
 	         table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-	    }
+		}
+		table.getColumnModel().getColumn(1).setPreferredWidth(700);
+		table.setRowHeight(30);
 		
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
