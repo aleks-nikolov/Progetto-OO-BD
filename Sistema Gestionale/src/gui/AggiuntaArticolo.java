@@ -78,8 +78,7 @@ public class AggiuntaArticolo extends JFrame {
 		
 		boolean formCompilato = true;
 		contenitoreDati = new ArrayList<String>();
-		
-		contenitoreDati.add(textCodice.getText());
+
 		contenitoreDati.add(textNome.getText());
 		contenitoreDati.add(areaDescrizione.getText());
 		contenitoreDati.add((String) boxCategoria.getSelectedItem());
@@ -88,9 +87,10 @@ public class AggiuntaArticolo extends JFrame {
 		contenitoreDati.add((String) boxSesso.getSelectedItem());
 		contenitoreDati.add((String) boxTaglia.getSelectedItem());
 		
-		if(Float.parseFloat(textPrezzo.getText()) > 0.0f && Float.parseFloat(textPrezzoMagazzino.getText()) > 0.0f) {
+		if(Float.parseFloat(textPrezzo.getText()) > 0.0f && Float.parseFloat(textPrezzoMagazzino.getText()) > 0.0f && textCodice.getText().length() == 11) {
 			contenitoreDati.add(textPrezzo.getText());
 			contenitoreDati.add(textPrezzoMagazzino.getText());
+			contenitoreDati.add(textCodice.getText());
 		} else {
 			contenitoreDati.add("");
 		}
@@ -149,8 +149,8 @@ public class AggiuntaArticolo extends JFrame {
 		label.setBounds(10, 22, 250, 20);
 		contentPane.add(label);
 		
-		JLabel lblCodice = new JLabel("Codice a Barre: ");
-		lblCodice.setBounds(20, 53, 195, 14);
+		JLabel lblCodice = new JLabel("Codice a Barre (11 caratteri): ");
+		lblCodice.setBounds(20, 53, 240, 14);
 		contentPane.add(lblCodice);
 		
 		JLabel lblNome = new JLabel("Nome Prodotto: ");

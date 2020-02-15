@@ -71,23 +71,27 @@ public class AggiuntaFornitore extends JFrame {
 		boolean formCompilato = true;
 		contenitoreDati = new ArrayList<String>();
 		
-		contenitoreDati.add(textPartita.getText());
 		contenitoreDati.add(textNome.getText());
 		contenitoreDati.add(textVia.getText());
 		contenitoreDati.add(textNumeroCivico.getText());
 		contenitoreDati.add(textCAP.getText());
 		contenitoreDati.add(textTelefono.getText());
 		
+		if(textPartita.getText().length() == 11)
+			contenitoreDati.add(textPartita.getText());
+		else
+			contenitoreDati.add("");
+		
 		for (String testo : contenitoreDati) {
 			formCompilato = ControlloValidità(testo.trim());
 		}
-
 		
 		if (formCompilato) {
 			controller.NuovoFornitore(contenitoreDati);
 			controller.CambiaFrame(AggiuntaFornitore.this, controller.getFinestraRifornimenti());
 		} else {
 			controller.MostraMessaggioAvviso("ATTENZIONE", "Dati mancanti o invalidi");
+			contenitoreDati.removeAll(contenitoreDati);
 		}
 	}
 	
@@ -122,58 +126,58 @@ public class AggiuntaFornitore extends JFrame {
 		label.setBounds(10, 11, 250, 20);
 		contentPane.add(label);
 		
-		JLabel lblPartita = new JLabel("PartitaIVA:");
-		lblPartita.setBounds(20, 52, 120, 14);
+		JLabel lblPartita = new JLabel("PartitaIVA (11 caratteri):");
+		lblPartita.setBounds(20, 52, 349, 14);
 		contentPane.add(lblPartita);
 		
 		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setBounds(20, 85, 120, 14);
+		lblNome.setBounds(20, 116, 120, 14);
 		contentPane.add(lblNome);
 		
 		JLabel lblVia = new JLabel("Via:");
-		lblVia.setBounds(20, 120, 120, 20);
+		lblVia.setBounds(20, 151, 120, 20);
 		contentPane.add(lblVia);
 		
 		JLabel lblNumeroCivico = new JLabel("Numero civico:");
-		lblNumeroCivico.setBounds(346, 120, 120, 20);
+		lblNumeroCivico.setBounds(346, 151, 120, 20);
 		contentPane.add(lblNumeroCivico);
 		
 		JLabel lblCAP = new JLabel("CAP: ");
-		lblCAP.setBounds(20, 163, 97, 20);
+		lblCAP.setBounds(20, 194, 97, 20);
 		contentPane.add(lblCAP);
 		
 		JLabel lblTelefono = new JLabel("Numero di telefono:");
-		lblTelefono.setBounds(21, 202, 140, 14);
+		lblTelefono.setBounds(21, 233, 170, 14);
 		contentPane.add(lblTelefono);
 		
 		textPartita = new JTextField();
 		textPartita.setColumns(10);
-		textPartita.setBounds(119, 49, 250, 20);
+		textPartita.setBounds(30, 77, 250, 20);
 		contentPane.add(textPartita);
 		
 		textNome = new JTextField();
 		textNome.setColumns(10);
-		textNome.setBounds(119, 82, 250, 20);
+		textNome.setBounds(119, 113, 250, 20);
 		contentPane.add(textNome);
 		
 		textVia = new JTextField();
-		textVia.setBounds(119, 120, 217, 20);
+		textVia.setBounds(119, 151, 217, 20);
 		contentPane.add(textVia);
 		textVia.setColumns(10);
 
 		textNumeroCivico = new JTextField();
 		textNumeroCivico.setColumns(10);
-		textNumeroCivico.setBounds(464, 120, 120, 20);
+		textNumeroCivico.setBounds(464, 151, 120, 20);
 		contentPane.add(textNumeroCivico);
 		
 		textCAP = new JTextField();
-		textCAP.setBounds(123, 163, 120, 20);
+		textCAP.setBounds(123, 194, 120, 20);
 		contentPane.add(textCAP);
 		textCAP.setColumns(10);
 		
 		textTelefono = new JTextField();
 		textTelefono.setColumns(10);
-		textTelefono.setBounds(171, 199, 250, 20);
+		textTelefono.setBounds(201, 230, 250, 20);
 		contentPane.add(textTelefono);
 		
 		style.changeFont(contentPane, style.defaultS);

@@ -132,16 +132,16 @@ public class Controller {
 
     public void NuovoArticolo(ArrayList<String> dati) {
     	
-    	Articolo articolo = new Articolo(dati.get(0),
+    	Articolo articolo = new Articolo(dati.get(9),
+				 						 dati.get(0),
 				 						 dati.get(1),
 				 						 dati.get(2),
 				 						 dati.get(3),
 				 						 dati.get(4),
 				 						 dati.get(5),
 				 						 dati.get(6),
-				 						 dati.get(7),
+				 						 Float.parseFloat(dati.get(7)),
 				 						 Float.parseFloat(dati.get(8)),
-				 						 Float.parseFloat(dati.get(9)),
 				 						 dati.get(10)
     									);
     	
@@ -155,12 +155,12 @@ public class Controller {
     
     public void NuovoFornitore(ArrayList<String> dati) {
     	
-    	Fornitore fornitore = new Fornitore(dati.get(0),
+    	Fornitore fornitore = new Fornitore(dati.get(5),
+				dati.get(0),
 				dati.get(1),
 				dati.get(2),
 				dati.get(3),
-				dati.get(4),
-				dati.get(5)
+				dati.get(4)
 			   );
     	
     	
