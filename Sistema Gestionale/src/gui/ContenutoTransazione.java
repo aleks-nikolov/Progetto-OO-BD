@@ -234,6 +234,7 @@ public class ContenutoTransazione extends JFrame{
 		btnAdd.setFont(style.defaultM);
 		btnAdd.setBackground(style.greenBtn);
 		btnAdd.setIcon(style.addIcon);
+		btnAdd.setFocusable(false);
 		pannelloInferiore.add(btnAdd);
 		
 		if(tipoTransazione.equals("rifornimento")) {
@@ -263,6 +264,7 @@ public class ContenutoTransazione extends JFrame{
 		btnApplica.setBackground(style.greenBtn);
 		btnApplica.setMargin(new Insets(5, 5, 5, 5));
 		btnApplica.setIcon(style.saveIcon);
+		btnApplica.setFocusable(false);
 		pannelloInferiore.add(btnApplica);
 		
 		horizontalStrut_2 = Box.createHorizontalStrut(20);
@@ -274,6 +276,7 @@ public class ContenutoTransazione extends JFrame{
 		btnAnnulla.setFont(style.defaultM);
 		btnAnnulla.setMargin(new Insets(5, 5, 5, 5));
 		btnAnnulla.setIcon(style.backIcon);
+		btnAnnulla.setFocusable(false);
 		pannelloInferiore.add(btnAnnulla);
 		
 		horizontalStrut_2 = Box.createHorizontalStrut(10);

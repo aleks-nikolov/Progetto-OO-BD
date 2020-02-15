@@ -236,6 +236,7 @@ public class Catalogo extends JFrame {
 		btnRefresh.setToolTipText("rinfresca filtro");
 		btnRefresh.setIcon(style.refreshIcon);
 		btnRefresh.setMargin(new Insets(5, 5, 5, 5));
+		btnRefresh.setFocusable(false);
 		pannelloSuperiore.add(btnRefresh);
 		
 	}
@@ -266,6 +267,7 @@ public class Catalogo extends JFrame {
 		btnAnnulla.setFont(style.defaultL);
 		btnAnnulla.setBackground(style.redBtn);
 		btnAnnulla.setIcon(style.backIcon);
+		btnAnnulla.setFocusable(false);
 		pannelloInferiore.add(btnAnnulla);
 		
 	}

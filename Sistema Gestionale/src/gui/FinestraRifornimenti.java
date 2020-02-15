@@ -152,6 +152,7 @@ public class FinestraRifornimenti extends JFrame {
 		btnNew.setForeground(style.fg);
 		btnNew.setBackground(style.greenBtn);
 		btnNew.setIcon(style.addIcon);
+		btnNew.setFocusable(false);
 		pannelloSuperiore.add(btnNew);
 		
 		btnDelete = new JButton();
@@ -161,6 +162,7 @@ public class FinestraRifornimenti extends JFrame {
 		btnDelete.setForeground(style.fg);
 		btnDelete.setBackground(style.redBtn);
 		btnDelete.setIcon(style.deleteIcon);
+		btnDelete.setFocusable(false);
 		pannelloSuperiore.add(btnDelete);
 		
 		upperHorizontalStrut = Box.createHorizontalStrut(700);
@@ -173,7 +175,9 @@ public class FinestraRifornimenti extends JFrame {
 		btnRefresh.setBackground(new Color(255, 255, 255));
 		btnRefresh.setMargin(new Insets(5, 5, 5, 5));
 		btnRefresh.setIcon(style.refreshIcon);
+		btnRefresh.setFocusable(false);
 		pannelloSuperiore.add(btnRefresh);
+		
 		style.changeFont(pannelloSuperiore, style.defaultS);
 		
 	}
@@ -221,6 +225,7 @@ public class FinestraRifornimenti extends JFrame {
 		btnAggiungi.setBackground(style.greenBtn);
 		btnAggiungi.setMargin(new Insets(5, 5, 5, 5));
 		btnAggiungi.setIcon(style.addIcon);
+		btnAggiungi.setFocusable(false);
 		pannelloInferiore.add(btnAggiungi);
 		
 		btnIndietro = new JButton("INDIETRO");
@@ -231,6 +236,7 @@ public class FinestraRifornimenti extends JFrame {
 		btnIndietro.setBackground(style.redBtn);
 		btnIndietro.setMargin(new Insets(5, 5, 5, 5));
 		btnIndietro.setIcon(style.backIcon);
+		btnIndietro.setFocusable(false);
 		pannelloInferiore.add(btnIndietro);
 		
 	}

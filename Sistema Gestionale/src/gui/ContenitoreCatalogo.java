@@ -94,12 +94,13 @@ public class ContenitoreCatalogo extends ContenitoreArticolo {
 		btnAggiungi = new JButton();
 		btnAggiungi.setToolTipText("aggiungi il seguente articolo");
 		btnAggiungi.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panelloLaterale.add(btnAggiungi);
 		btnAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAggiungi.setBackground(getStyle().greenBtn);
 		btnAggiungi.setMargin(new Insets(5, 5, 5, 5));
 		btnAggiungi.setIcon(getStyle().addIcon);
 		btnAggiungi.setPreferredSize(new Dimension(10, 10));
+		btnAggiungi.setFocusable(false);
+		panelloLaterale.add(btnAggiungi);
 		
 		panelloLaterale.add(Box.createRigidArea(new Dimension(150, 10)));
 		

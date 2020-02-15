@@ -78,6 +78,7 @@ public class HomePage extends JFrame {
 		btnVendite.setForeground(style.fg);
 		btnVendite.setBackground(style.greenBtn);
 		btnVendite.setIcon(style.sellsIcon);
+		btnVendite.setFocusable(false);
 		getContentPane().add(btnVendite);
 		
 		btnInventario = new JButton("INVENTARIO");
@@ -87,6 +88,7 @@ public class HomePage extends JFrame {
 		btnInventario.setForeground(style.fg);
 		btnInventario.setBackground(style.greenBtn);
 		btnInventario.setIcon(style.inventoryIcon);
+		btnInventario.setFocusable(false);
 		getContentPane().add(btnInventario);
 		
 		btnEsci = new JButton("ESCI");
@@ -96,6 +98,7 @@ public class HomePage extends JFrame {
 		btnEsci.setForeground(style.fg);
 		btnEsci.setBackground(style.redBtn);
 		btnEsci.setIcon(style.exitIcon);
+		btnEsci.setFocusable(false);
 		getContentPane().add(btnEsci);
 		
 		style.changeFont(getContentPane(), style.defaultM);

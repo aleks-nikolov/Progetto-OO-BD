@@ -187,6 +187,7 @@ public class AggiuntaFornitore extends JFrame {
 		btnSalva.setBackground(style.greenBtn);
 		btnSalva.setFont(style.defaultM);
 		btnSalva.setIcon(style.saveIcon);
+		btnSalva.setFocusable(false);
 		contentPane.add(btnSalva);
 		
 		btnAnnulla = new JButton("ANNULLA");
@@ -194,6 +195,7 @@ public class AggiuntaFornitore extends JFrame {
 		btnAnnulla.setBackground(style.redBtn);
 		btnAnnulla.setFont(style.defaultM);
 		btnAnnulla.setIcon(style.backIcon);
+		btnAnnulla.setFocusable(false);
 		contentPane.add(btnAnnulla);
 
 	}

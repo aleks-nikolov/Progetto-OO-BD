@@ -250,6 +250,7 @@ public class FinestraInventario extends JFrame {
 		btnRefresh.setIcon(style.refreshIcon);
 		btnRefresh.setBackground(style.white);
 		btnRefresh.setMargin(new Insets(5, 5, 5, 5));
+		btnRefresh.setFocusable(false);
 		pannelloSuperiore.add(btnRefresh);
 		
 		style.changeFont(pannelloSuperiore, style.defaultS);
@@ -286,6 +287,7 @@ public class FinestraInventario extends JFrame {
 		btnAggiungi.setMargin(new Insets(5, 5, 5, 5));
 		btnAggiungi.setBackground(style.greenBtn);
 		btnAggiungi.setIcon(style.addIcon);
+		btnAggiungi.setFocusable(false);
 		pannelloInferiore.add(btnAggiungi);
 		
 		btnRifornimenti = new JButton("Rifornimenti");
@@ -293,6 +295,7 @@ public class FinestraInventario extends JFrame {
 		btnRifornimenti.setMargin(new Insets(5, 5, 5, 5));
 		btnRifornimenti.setBackground(style.greenBtn);
 		btnRifornimenti.setIcon(style.inventoryIcon);
+		btnRifornimenti.setFocusable(false);
 		pannelloInferiore.add(btnRifornimenti);
 		
 		btnIndietro = new JButton("Indietro");
@@ -300,6 +303,7 @@ public class FinestraInventario extends JFrame {
 		btnIndietro.setMargin(new Insets(5, 5, 5, 5));
 		btnIndietro.setBackground(style.redBtn);
 		btnIndietro.setIcon(style.backIcon);
+		btnIndietro.setFocusable(false);
 		pannelloInferiore.add(btnIndietro);
 		
 		style.changeFont(pannelloInferiore, style.defaultL);

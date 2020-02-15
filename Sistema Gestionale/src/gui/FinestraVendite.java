@@ -142,6 +142,7 @@ public class FinestraVendite extends JFrame{
 		btnNew.setForeground(style.fg);
 		btnNew.setBackground(style.greenBtn);
 		btnNew.setIcon(style.addIcon);
+		btnNew.setFocusable(false);
 		pannelloSuperiore.add(btnNew);
 		
 		btnDelete = new JButton();
@@ -151,6 +152,7 @@ public class FinestraVendite extends JFrame{
 		btnDelete.setForeground(style.fg);
 		btnDelete.setBackground(style.redBtn);
 		btnDelete.setIcon(style.deleteIcon);
+		btnDelete.setFocusable(false);
 		pannelloSuperiore.add(btnDelete);
 		
 		upperHorizontalStrut = Box.createHorizontalStrut(700);
@@ -163,6 +165,7 @@ public class FinestraVendite extends JFrame{
 		btnRefresh.setBackground(style.white);
 		btnRefresh.setMargin(new Insets(5, 5, 5, 5));
 		btnRefresh.setIcon(style.refreshIcon);
+		btnRefresh.setFocusable(false);
 		pannelloSuperiore.add(btnRefresh);
 		style.changeFont(pannelloSuperiore, style.defaultS);
 		
@@ -211,6 +214,7 @@ public class FinestraVendite extends JFrame{
 		btnIndietro.setBackground(style.redBtn);
 		btnIndietro.setMargin(new Insets(5, 5, 5, 5));
 		btnIndietro.setIcon(style.backIcon);
+		btnIndietro.setFocusable(false);
 		pannelloInferiore.add(btnIndietro);
 		
 	}

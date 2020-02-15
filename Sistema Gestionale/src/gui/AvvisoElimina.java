@@ -53,6 +53,7 @@ public class AvvisoElimina extends JDialog {
 				okButton.setActionCommand("SI");
 				okButton.setBackground(style.greenBtn);
 				okButton.setFont(style.defaultS);
+				okButton.setFocusable(false);
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
@@ -61,6 +62,7 @@ public class AvvisoElimina extends JDialog {
 				cancelButton.setActionCommand("NO");
 				cancelButton.setBackground(style.redBtn);
 				cancelButton.setFont(style.defaultS);
+				cancelButton.setFocusable(false);
 				buttonPane.add(cancelButton);
 			}
 		}

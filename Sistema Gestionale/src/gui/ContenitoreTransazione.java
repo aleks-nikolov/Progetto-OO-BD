@@ -156,12 +156,13 @@ public class ContenitoreTransazione extends ContenitoreArticolo {
 		btnRimuovi = new JButton();
 		btnRimuovi.setToolTipText("rimuovi il seguente articolo");
 		btnRimuovi.setAlignmentX(Component.CENTER_ALIGNMENT);
-		pannelloLaterale.add(btnRimuovi);
 		btnRimuovi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnRimuovi.setBackground(getStyle().redBtn);
 		btnRimuovi.setIcon(getStyle().deleteIcon);
 		btnRimuovi.setMargin(new Insets(5, 5, 5, 5));
 		btnRimuovi.setPreferredSize(new Dimension(40, 40));
+		btnRimuovi.setFocusable(false);
+		pannelloLaterale.add(btnRimuovi);
 		
 	}
 	
