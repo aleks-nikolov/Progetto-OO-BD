@@ -96,7 +96,7 @@ public class ContenitoreArticolo extends JPanel {
 			Image image = temp.getScaledInstance(width, height, Image.SCALE_SMOOTH);
 			img = new ImageIcon(image);
 		} catch (IOException e) {
-			e.printStackTrace();
+			return GetImage(width, height, "res\\images\\noimage.png");
 		}
 		
 		return img;
@@ -108,9 +108,9 @@ public class ContenitoreArticolo extends JPanel {
 		
 		labelNome.setText(articolo.getNome());
 		labelDescrizione.setText(articolo.getDescrizione());
-		labelMarca.setText(articolo.getMarca());
-		labelTaglia.setText(articolo.getTaglia());
-		labelColore.setText(articolo.getColore());
+		labelMarca.setText("Marca: " + articolo.getMarca());
+		labelTaglia.setText("Taglia: " +articolo.getTaglia());
+		labelColore.setText("Colore: " +articolo.getColore());
 		labelImg.setIcon(GetImage(labelImg.getPreferredSize().width, labelImg.getPreferredSize().height, articolo.getPathImmagine()));
 		
 	}
@@ -181,23 +181,24 @@ public class ContenitoreArticolo extends JPanel {
 		labelMarca.setFont(style.defaultS);
 		labelMarca.setPreferredSize(new Dimension(150, 15));
 		
-		horizontalStrut = Box.createHorizontalStrut(200);
+		horizontalStrut = Box.createHorizontalStrut(125);
 		panelloQualità.add(horizontalStrut);
 		
 		labelColore = new JLabel();
-		labelColore.setPreferredSize(new Dimension(100, 14));
+		labelColore.setPreferredSize(new Dimension(200, 14));
 		panelloQualità.add(labelColore);
 		labelColore.setAlignmentX(Component.CENTER_ALIGNMENT);
 		labelColore.setFont(style.defaultS);
+		labelColore.setPreferredSize(new Dimension(150, 15));
 		
-		horizontalStrut_1 = Box.createHorizontalStrut(200);
+		horizontalStrut_1 = Box.createHorizontalStrut(125);
 		panelloQualità.add(horizontalStrut_1);
 		
 		labelTaglia = new JLabel();
 		panelloQualità.add(labelTaglia);
 		labelTaglia.setAlignmentX(Component.CENTER_ALIGNMENT);
 		labelTaglia.setFont(style.defaultS);
-		labelTaglia.setPreferredSize(new Dimension(100, 15));	
+		labelTaglia.setPreferredSize(new Dimension(150, 15));	
 	}
 	
 	//Getter
