@@ -16,10 +16,8 @@
   <icon></icon>
   <classPath>
     <mainClass>logic.Driver</mainClass>
-    <cp>lib\postgresql-42.2.9.jar</cp>
-    <cp>jgoodies-forms-1.8.0.jar</cp>
-    <cp>miglayout15-swing.jar</cp>
     <cp>org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</cp>
+    <cp>lib\postgresql-42.2.9.jar</cp>
     <cp>src</cp>
     <cp>bin</cp>
   </classPath>
