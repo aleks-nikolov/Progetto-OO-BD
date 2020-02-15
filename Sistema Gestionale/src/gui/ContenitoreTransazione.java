@@ -35,6 +35,7 @@ public class ContenitoreTransazione extends ContenitoreArticolo {
 	private JComboBox<Integer> boxSaldo;
 	
 	private int quantità;
+	private float prezzo;
 	
 	public ContenitoreTransazione(Controller controller, ContenutoTransazione contenutoTransazione) {
 		super(controller, contenutoTransazione);
@@ -88,6 +89,8 @@ public class ContenitoreTransazione extends ContenitoreArticolo {
 		
 		float saldo = Float.parseFloat(boxSaldo.getSelectedItem().toString());
 		prezzo -= prezzo * (saldo / 100);
+		
+		this.prezzo = prezzo;
 		
 		lblPrezzo.setText(String.format("%.2f", prezzo) + "€");
 		contenutoTransazione.AggiornaPrezzoTotale();
@@ -171,6 +174,6 @@ public class ContenitoreTransazione extends ContenitoreArticolo {
 	}
 	
 	public float getPrezzo() {
-		return Float.valueOf(lblPrezzo.getText().substring(0, lblPrezzo.getText().length() - 1));
+		return prezzo;
 	}
 }

@@ -50,22 +50,14 @@ public class ComposizioneTransazioneDAO {
 	
 	public void InserisciComposizione(Connection conn, ComposizioneTransazione compTransazione) {
 		
-		String comandoUltimaTransazine = "SELECT MAX(T.CodiceTransazione) FROM Transazione AS T;";
-		String comando = "INSERT INTO ComposizioneTransazione(sku, codicetransazione, quantita, saldo) VALUES (?, ?, ?, ?);";
+		String comando = "INSERT INTO ComposizioneTransazione(sku, quantita, saldo) VALUES (?, ?, ?);";
 		
 		try {
-			
-			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery(comandoUltimaTransazine);
-			
-			rs.next();
-			int codiceUltimaTransazione = rs.getInt(1);
-			
+
 			PreparedStatement pst = conn.prepareStatement(comando);
 			pst.setInt(1, compTransazione.getSKU());
-			pst.setInt(2, codiceUltimaTransazione);
-			pst.setInt(3, compTransazione.getQuantità());
-			pst.setInt(4, compTransazione.getSaldo());
+			pst.setInt(2, compTransazione.getQuantità());
+			pst.setInt(3, compTransazione.getSaldo());
 			
 			pst.executeUpdate();
 			

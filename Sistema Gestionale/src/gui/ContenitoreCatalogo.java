@@ -8,6 +8,8 @@ import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -44,26 +46,35 @@ public class ContenitoreCatalogo extends ContenitoreArticolo {
 		
 		btnAggiungi.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			
+			if((Integer) boxQuantità.getSelectedItem() > 0) {
 				catalogo.contenutoTransazione.AggiungiArticolo(ContenitoreCatalogo.this.getArticolo(), (Integer) boxQuantità.getSelectedItem());
-				//catalogo.dispatchEvent(new WindowEvent(catalogo, WindowEvent.WINDOW_CLOSING));
 				catalogo.contenutoTransazione.setEnabled(true);
 				getController().ChiudiFrame(catalogo);
+			} else {
+				
+				getController().MostraMessaggioAvviso("Impossibile effettuare l'ordine", "Insufficiente quantità d'articolo");
+				
 			}
 			
+		}
 		});
+		
 	}
 	
 	@Override
 	public void InserisciDati(Articolo articolo) {
+		
 		super.InserisciDati(articolo);
-		if(catalogo.contenutoTransazione.getTipoTransazione().equals("vendita"))
+		if(catalogo.contenutoTransazione.getTipoTransazione().equals("vendita")) {
 			labelPrezzo.setText(String.format("%.2f", getArticolo().getPrezzoDiListino()) + "€");
-		else
+		} else {
 			labelPrezzo.setText(String.format("%.2f", getArticolo().getPrezzoMagazzino()) + "€");
+		}
+		
 	}
-	
 	
 	public void ImpostaPanelloLaterale() {
 		panelloLaterale = new JPanel();
@@ -101,7 +112,7 @@ public class ContenitoreCatalogo extends ContenitoreArticolo {
 		labelQuantità.setFont(getStyle().defaultS);
 		panelloQuantità.add(labelQuantità);
 		labelQuantità.setAlignmentX(Component.CENTER_ALIGNMENT);
-		
+
 		boxQuantità = new JComboBox<Integer>(new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
 		boxQuantità.setFont(getStyle().defaultS);
 		panelloQuantità.add(boxQuantità);

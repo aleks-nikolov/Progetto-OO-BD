@@ -87,6 +87,13 @@ public class ContenutoTransazione extends JFrame{
 					CreaNuovoRifornimento();
 				}
 				
+				//RimuoviAllArticoli();
+				
+				if(tipoTransazione.equals("vendita"))
+					controller.CambiaFrame(ContenutoTransazione.this, controller.getFinestraVendite());
+				else
+					controller.CambiaFrame(ContenutoTransazione.this, controller.getFinestraRifornimenti());
+
 			}
 			
 		});
@@ -131,12 +138,20 @@ public class ContenutoTransazione extends JFrame{
 		
 	}
 	
+	public void RimuoviAllArticoli() {
+		
+		for(ContenitoreTransazione contenitore : contenitori) {
+			contenitori.remove(contenitore);
+		}
+		
+	}
+	
 	public void AggiornaPrezzoTotale() {
 		
 		float valoreTotale = 0.0f;
 		
 		for (ContenitoreTransazione contenitore : contenitori) {
-			valoreTotale += (contenitore.getPrezzo() * contenitore.getQuantità());
+			valoreTotale += (contenitore.getPrezzo() * (float) contenitore.getQuantità());
 		}
 		
 		lblValoreTotale.setText(String.format("%.2f", valoreTotale) + "€");
@@ -217,7 +232,7 @@ public class ContenutoTransazione extends JFrame{
 			horizontalStrut = Box.createHorizontalStrut(200);
 			pannelloInferiore.add(horizontalStrut);
 		
-			boxFornitore = new JComboBox(controller.getFornitori().toArray());
+			boxFornitore = new JComboBox<>(controller.getFornitori().toArray());
 			boxFornitore.setPreferredSize(new Dimension(200, 25));
 			boxFornitore.setFont(style.defaultS);
 			pannelloInferiore.add(boxFornitore);
