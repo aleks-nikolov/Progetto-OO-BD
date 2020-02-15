@@ -18,15 +18,8 @@ public class Style {
 	Font defaultM = new Font("Arial Black", Font.PLAIN, 16);
 	Font defaultL = new Font("Arial Black", Font.PLAIN, 20);
 	
-	
 	//Colori
-	Color bg = new Color(220, 220, 220);
-	Color fg = new Color(50, 50, 50);
 	
-	Color border1 = new Color(100, 100, 100);
-	Color border2 = new Color(180, 180, 180);
-	
-	Color boxBackground = Color.decode("#545E75");
 	
 	Color black = new Color(0, 0, 0);
 	Color white = new Color(255, 255, 255);
@@ -34,6 +27,15 @@ public class Style {
 	Color redBtn = new Color(178, 34, 34);
 	Color blueBtn = new Color(100, 149, 237);
 	
+	Color bg = new Color(220, 220, 220);
+	Color fg = new Color(50, 50, 50);
+	
+	Color border1 = new Color(100, 100, 100);
+	Color border2 = new Color(180, 180, 180);
+	
+	Color boxBackground = white;
+	
+	//Icone
 	Icon refreshIcon = new ImageIcon("res\\icons\\refresh.png");
 	Icon inventoryIcon = new ImageIcon("res\\icons\\inventory.png");
 	Icon sellsIcon = new ImageIcon("res\\icons\\sells.png");

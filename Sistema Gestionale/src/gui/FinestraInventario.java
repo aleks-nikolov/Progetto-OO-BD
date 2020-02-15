@@ -248,6 +248,7 @@ public class FinestraInventario extends JFrame {
 		btnRefresh = new JButton("");
 		btnRefresh.setToolTipText("rinfresca filtro");
 		btnRefresh.setIcon(style.refreshIcon);
+		btnRefresh.setBackground(style.white);
 		btnRefresh.setMargin(new Insets(5, 5, 5, 5));
 		pannelloSuperiore.add(btnRefresh);
 		

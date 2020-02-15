@@ -160,7 +160,7 @@ public class FinestraVendite extends JFrame{
 		btnRefresh.setToolTipText("rinfresca tabella");
 		btnRefresh.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnRefresh.setForeground(style.fg);
-		btnRefresh.setBackground(new Color(255, 255, 255));
+		btnRefresh.setBackground(style.white);
 		btnRefresh.setMargin(new Insets(5, 5, 5, 5));
 		btnRefresh.setIcon(style.refreshIcon);
 		pannelloSuperiore.add(btnRefresh);
