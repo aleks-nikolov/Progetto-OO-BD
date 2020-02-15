@@ -249,6 +249,7 @@ public class Catalogo extends JFrame {
 		JScrollPane scroll = new JScrollPane(pannelloCentrale);
 		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scroll.setBackground(style.bg);
+		scroll.getVerticalScrollBar().setUnitIncrement(20);
         getContentPane().add(scroll, BorderLayout.CENTER);
         pannelloCentrale.setLayout(new BoxLayout(pannelloCentrale, BoxLayout.Y_AXIS));
         

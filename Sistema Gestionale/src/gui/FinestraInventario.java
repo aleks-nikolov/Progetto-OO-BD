@@ -265,6 +265,7 @@ public class FinestraInventario extends JFrame {
 		scroll = new JScrollPane(pannelloCentrale);
 		scroll.setBackground(style.bg);
 		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scroll.getVerticalScrollBar().setUnitIncrement(20);
         getContentPane().add(scroll, BorderLayout.CENTER);
         pannelloCentrale.setLayout(new BoxLayout(pannelloCentrale, BoxLayout.Y_AXIS));
 

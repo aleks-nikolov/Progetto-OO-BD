@@ -87,7 +87,7 @@ public class ContenutoTransazione extends JFrame{
 					CreaNuovoRifornimento();
 				}
 				
-				//RimuoviAllArticoli();
+				RimuoviAllArticoli();
 				
 				if(tipoTransazione.equals("vendita"))
 					controller.CambiaFrame(ContenutoTransazione.this, controller.getFinestraVendite());
@@ -140,12 +140,20 @@ public class ContenutoTransazione extends JFrame{
 	
 	public void RimuoviAllArticoli() {
 		
+		//Si usa un ArrayList ausiliaria per evitare la ConcurrentModificationException
+		ArrayList<ContenitoreTransazione> daRimuovere = new ArrayList<ContenitoreTransazione>();
+		
 		for(ContenitoreTransazione contenitore : contenitori) {
-			contenitori.remove(contenitore);
+			daRimuovere.add(contenitore);
+			pannelloCentrale.remove(contenitore);
+			pannelloCentrale.revalidate();
+			pannelloCentrale.repaint();
 		}
 		
+		contenitori.removeAll(daRimuovere);
+		
 	}
-	
+
 	public void AggiornaPrezzoTotale() {
 		
 		float valoreTotale = 0.0f;
@@ -206,6 +214,7 @@ public class ContenutoTransazione extends JFrame{
 		
 		scroll = new JScrollPane(pannelloCentrale);
 		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scroll.getVerticalScrollBar().setUnitIncrement(20);
         getContentPane().add(scroll, BorderLayout.CENTER);
         pannelloCentrale.setLayout(new BoxLayout(pannelloCentrale, BoxLayout.Y_AXIS));
  
