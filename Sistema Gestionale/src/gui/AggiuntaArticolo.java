@@ -87,20 +87,29 @@ public class AggiuntaArticolo extends JFrame {
 		contenitoreDati.add((String) boxColore.getSelectedItem());
 		contenitoreDati.add((String) boxSesso.getSelectedItem());
 		contenitoreDati.add((String) boxTaglia.getSelectedItem());
-		contenitoreDati.add(textPrezzo.getText());
-		contenitoreDati.add(textPrezzoMagazzino.getText());
+		
+		if(Float.parseFloat(textPrezzo.getText()) > 0.0f && Float.parseFloat(textPrezzoMagazzino.getText()) > 0.0f) {
+			contenitoreDati.add(textPrezzo.getText());
+			contenitoreDati.add(textPrezzoMagazzino.getText());
+		} else {
+			contenitoreDati.add("");
+		}
 		
 		for (String testo : contenitoreDati) {
 			formCompilato = ControlloValidità(testo.trim());
 		}
 		
-		contenitoreDati.add(textPath.getText());
+		if(!textPath.getText().isEmpty())
+			contenitoreDati.add(textPath.getText());
+		else
+			contenitoreDati.add("res\\images\\noimage.png");
 		
 		if (formCompilato) {
 			controller.NuovoArticolo(contenitoreDati);
 			controller.CambiaFrame(AggiuntaArticolo.this, controller.getFinestraInventario());
 		} else {
 			controller.MostraMessaggioAvviso("ATTENZIONE", "Dati mancanti o invalidi");
+			contenitoreDati.removeAll(contenitoreDati);
 		}
 	}
 	
@@ -110,7 +119,8 @@ public class AggiuntaArticolo extends JFrame {
 							|| testo.equals("MARCA") 
 							|| testo.equals("COLORE") 
 							|| testo.equals("SESSO") 
-							|| testo.equals("TAGLIA")) 
+							|| testo.equals("TAGLIA")
+							) 
 		{
 			return false;
 		}
@@ -155,8 +165,8 @@ public class AggiuntaArticolo extends JFrame {
 		lblPrezzo.setBounds(20, 373, 157, 20);
 		contentPane.add(lblPrezzo);
 		
-		JLabel lblPath = new JLabel("(Opzionale) Path Immagine:");
-		lblPath.setBounds(20, 439, 140, 14);
+		JLabel lblPath = new JLabel("(Opzionale) Path Immagine -- separare le directory con \\\\");
+		lblPath.setBounds(20, 439, 508, 14);
 		contentPane.add(lblPath);
 		
 		textCodice = new JTextField();
@@ -205,7 +215,7 @@ public class AggiuntaArticolo extends JFrame {
 		
 		textPath = new JTextField();
 		textPath.setColumns(10);
-		textPath.setBounds(30, 464, 329, 20);
+		textPath.setBounds(30, 464, 407, 20);
 		contentPane.add(textPath);
 
 		btnSalva = new JButton("SALVA");

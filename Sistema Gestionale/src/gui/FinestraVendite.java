@@ -78,8 +78,10 @@ public class FinestraVendite extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.EliminaTransazioneByCodice(String.valueOf(table.getModel().getValueAt(table.getSelectedRow(), 0)));
-				RiempiTabella();
+				if(!table.getSelectionModel().isSelectionEmpty()) {
+					controller.EliminaTransazioneByCodice(String.valueOf(table.getModel().getValueAt(table.getSelectedRow(), 0)));
+					RiempiTabella();
+				}
 			}
 			
 		});
